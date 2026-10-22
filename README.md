@@ -1,8 +1,36 @@
-# Temp Converter
+# Temp Converter + sitio de invitaciones de boda
 
-A tiny Python utility for converting temperatures between Celsius and Fahrenheit.
+Este repositorio contiene dos cosas:
 
-## Usage
+1. **`temp_converter.py`** — utilidad Python para convertir temperaturas (ver abajo).
+2. **`site/`** — sitio estático en español de invitaciones de boda digitales (landing + constructor + invitación de ejemplo).
+
+## Sitio de invitaciones (`site/`)
+
+| Página | Qué es |
+|---|---|
+| `site/index.html` | Landing: cómo funciona, funciones, plantillas, precios, FAQ |
+| `site/crear.html` | Constructor con vista previa en vivo y enlace para compartir |
+| `site/invitacion.html` | La invitación que ven los invitados (acepta parámetros en la URL) |
+
+Para verlo en local:
+
+```bash
+cd site && python3 -m http.server 8080
+# abrir http://localhost:8080
+```
+
+**Cambiar la marca:** edita `site/assets/js/brand.js` (nombre, email, WhatsApp, Instagram, colores). Todo el sitio lo lee de ahí.
+
+**Plantillas:** `botanica`, `clasica`, `minimal`, `mediterranea`, `boho`, `nocturna` — se eligen con `?plantilla=...` en `invitacion.html`.
+
+El sitio no tiene backend: las confirmaciones de asistencia se guardan en `localStorage` como demo. Para producción hace falta conectar el formulario RSVP a una base de datos y añadir pasarela de pago.
+
+Análisis del mercado español y posicionamiento: [`docs/analisis-mercado-es.md`](docs/analisis-mercado-es.md).
+
+Se puede publicar directamente en GitHub Pages (carpeta `site/`), Netlify o Vercel sin build.
+
+## Temp converter
 
 ```python
 from temp_converter import celsius_to_fahrenheit, fahrenheit_to_celsius
@@ -11,7 +39,7 @@ celsius_to_fahrenheit(0)    # 32.0
 fahrenheit_to_celsius(212)  # 100.0
 ```
 
-## Running the tests
+Tests:
 
 ```bash
 pip install -r requirements.txt

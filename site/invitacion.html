@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es" data-tpl="botanica">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lucía &amp; Pablo · ¡Nos casamos!</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/invitacion.css">
+  <script src="assets/js/brand.js"></script>
+</head>
+<body>
+
+<!-- PORTADA -->
+<section class="cover">
+  <div class="ornament"></div>
+  <svg class="leaf a" width="260" height="260" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M50 5c20 20 25 45 10 70C45 55 40 30 50 5zm-5 80C30 70 15 55 5 35c20 5 35 20 40 50z"/></svg>
+  <svg class="leaf b" width="260" height="260" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M50 5c20 20 25 45 10 70C45 55 40 30 50 5zm-5 80C30 70 15 55 5 35c20 5 35 20 40 50z"/></svg>
+  <div class="wrap">
+    <p class="intro" data-intro>¡Nos casamos!</p>
+    <h1 class="names"><span data-n1>Lucía</span><span class="amp">&amp;</span><span data-n2>Pablo</span></h1>
+    <p class="date" data-fecha-larga>Sábado, 12 de junio de 2027</p>
+    <p class="place" data-ciudad>Sevilla</p>
+  </div>
+  <div class="scroll-hint">Desliza ↓</div>
+</section>
+
+<!-- CUENTA ATRÁS -->
+<section>
+  <div class="wrap">
+    <span class="label">Faltan</span>
+    <div class="countdown" data-countdown>
+      <div><b data-d>0</b><span>días</span></div>
+      <div><b data-h>00</b><span>horas</span></div>
+      <div><b data-m>00</b><span>min</span></div>
+      <div><b data-s>00</b><span>seg</span></div>
+    </div>
+    <div class="actions">
+      <a class="btn btn-ghost" href="#" data-ics>📅 Añadir al calendario</a>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section class="story">
+  <div class="wrap">
+    <span class="label">Nuestra historia</span>
+    <p data-historia></p>
+  </div>
+</section>
+
+<!-- LUGARES -->
+<section>
+  <div class="wrap venues">
+    <span class="label">Dónde y cuándo</span>
+    <article class="card venue">
+      <h3>Ceremonia</h3>
+      <div class="time" data-cer-hora>13:00</div>
+      <b data-cer-lugar>Iglesia de Santa Ana</b>
+      <p class="addr" data-cer-dir>Calle Vázquez de Leca, 1, Triana, Sevilla</p>
+      <a class="btn btn-fill btn-block" data-map-cer href="#" target="_blank" rel="noopener">📍 Cómo llegar</a>
+    </article>
+    <article class="card venue">
+      <h3>Celebración</h3>
+      <div class="time" data-cel-hora>15:00</div>
+      <b data-cel-lugar>Hacienda La Alquería</b>
+      <p class="addr" data-cel-dir>Carretera de Utrera km 4, Alcalá de Guadaíra</p>
+      <a class="btn btn-fill btn-block" data-map-cel href="#" target="_blank" rel="noopener">📍 Cómo llegar</a>
+    </article>
+  </div>
+</section>
+
+<!-- PROGRAMA -->
+<section>
+  <div class="wrap">
+    <span class="label">Programa del día</span>
+    <ul class="timeline" data-programa>
+      <li><time>13:00</time><span class="dot"></span><div><b>Ceremonia</b><small>Iglesia de Santa Ana</small></div></li>
+      <li><time>15:00</time><span class="dot"></span><div><b>Cóctel de bienvenida</b><small>Hacienda La Alquería</small></div></li>
+      <li><time>17:00</time><span class="dot"></span><div><b>Banquete</b><small>Menú con opción vegetariana</small></div></li>
+      <li><time>20:00</time><span class="dot"></span><div><b>Primer baile y barra libre</b><small>¡Hasta que el cuerpo aguante!</small></div></li>
+      <li><time>00:00</time><span class="dot"></span><div><b>Recena</b><small>Para reponer fuerzas</small></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- DRESS CODE -->
+<section>
+  <div class="wrap center">
+    <span class="label">Dress code</span>
+    <div class="palette" aria-hidden="true">
+      <span style="background:#6b7f5e"></span><span style="background:#c4704f"></span><span style="background:#d9c3a5"></span><span style="background:#2d5f8a"></span><span style="background:#7a5c8a"></span>
+    </div>
+    <p class="soft" data-dress></p>
+  </div>
+</section>
+
+<!-- TRANSPORTE -->
+<section>
+  <div class="wrap">
+    <span class="label">Transporte y alojamiento</span>
+    <div class="card">
+      <p>🚌 <span data-bus></span></p>
+      <p class="soft" style="margin:0">🏨 Tenemos precio especial en el Hotel Alcázar (código BODA2027). Indicad en el formulario si necesitáis habitación.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REGALOS -->
+<section>
+  <div class="wrap">
+    <span class="label">Regalos</span>
+    <div class="card">
+      <p class="soft" data-regalo-txt></p>
+      <p style="font-size:.8rem;font-weight:700;margin-bottom:6px">Transferencia</p>
+      <div class="iban"><span id="iban" data-iban></span><button type="button" data-copy="#iban">Copiar</button></div>
+      <p style="font-size:.8rem;font-weight:700;margin:14px 0 6px">Bizum</p>
+      <div class="iban"><span id="bizum" data-bizum></span><button type="button" data-copy="#bizum">Copiar</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section>
+  <div class="wrap">
+    <span class="label">Nosotros</span>
+    <div class="gallery" aria-label="Galería de fotos (marcadores de posición)">
+      <div>📷</div><div>📷</div><div>📷</div><div>📷</div><div>📷</div>
+    </div>
+    <p class="soft center" style="font-size:.8rem;margin-top:10px">Después de la boda, aquí podréis subir vuestras fotos al álbum colaborativo.</p>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp">
+  <div class="wrap">
+    <span class="label">Confirmación de asistencia</span>
+    <h2 class="h2">¿Contamos contigo?</h2>
+    <p class="soft center" style="margin-top:-10px">Por favor, confirma antes del <b data-plazo></b>.</p>
+    <form class="card" novalidate>
+      <div class="field">
+        <label for="nombre">Nombre y apellidos</label>
+        <input id="nombre" name="nombre" required placeholder="Marta García">
+      </div>
+      <div class="field">
+        <label>¿Vendrás?</label>
+        <div class="choice">
+          <label><input type="radio" name="asiste" value="si" checked><span>¡Sí, allí estaré!</span></label>
+          <label><input type="radio" name="asiste" value="no"><span>No podré ir</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="acomp">¿Cuántas personas venís en total?</label>
+        <select id="acomp" name="personas"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+      </div>
+      <div class="field">
+        <label for="menu">Menú</label>
+        <select id="menu" name="menu"><option>Carne</option><option>Pescado</option><option>Vegetariano</option><option>Vegano</option><option>Infantil</option></select>
+      </div>
+      <div class="field">
+        <label for="alergias">Alergias o intolerancias</label>
+        <input id="alergias" name="alergias" placeholder="Gluten, frutos secos…">
+      </div>
+      <div class="field">
+        <label>¿Usarás el autobús?</label>
+        <div class="choice">
+          <label><input type="radio" name="bus" value="si"><span>Sí, ida y vuelta</span></label>
+          <label><input type="radio" name="bus" value="no" checked><span>No, voy por mi cuenta</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label>¿Necesitas alojamiento?</label>
+        <div class="choice">
+          <label><input type="radio" name="hotel" value="si"><span>Sí</span></label>
+          <label><input type="radio" name="hotel" value="no" checked><span>No</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="mensaje">Un mensaje para los novios (opcional)</label>
+        <textarea id="mensaje" name="mensaje" rows="3" placeholder="¡Qué ganas!"></textarea>
+      </div>
+      <button class="btn btn-fill btn-block" type="submit">Confirmar asistencia</button>
+      <p class="soft center" style="font-size:.75rem;margin:12px 0 0">Demo: la respuesta se guarda solo en este navegador.</p>
+    </form>
+    <div class="thanks card">
+      <h3>¡Gracias, <span data-thanks-name></span>!</h3>
+      <p class="soft" data-thanks-msg></p>
+      <a class="btn btn-ghost" data-wa href="#" target="_blank" rel="noopener">💬 Escribir a los novios</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Con todo nuestro cariño, <span data-n1>Lucía</span> y <span data-n2>Pablo</span></p>
+    <p>Invitación creada con <a href="index.html" data-brand-name>Enlace</a></p>
+  </div>
+</footer>
+
+<button class="music" type="button" aria-label="Música" aria-pressed="false">♪</button>
+
+<script src="assets/js/invitacion.js"></script>
+</body>
+</html>
