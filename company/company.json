@@ -1,0 +1,62 @@
+{
+  "legal_name": "SYNTH MASHI, S.L.",
+  "short_name": "Synth Mashi",
+  "legal_form": "Sociedad de Responsabilidad Limitada (S.L.)",
+  "country": "ES",
+  "tax_id": null,
+  "share_capital": {
+    "amount": 3000.0,
+    "currency": "EUR",
+    "formatted": "3.000,00 €"
+  },
+  "duration": "Indefinida",
+  "activity_start_date": "2026-10-01",
+  "fiscal_year_end": "31/12",
+  "standard_bylaws": true,
+  "employees": 1,
+  "address": {
+    "street": "Travesía Huesca",
+    "number": "8",
+    "floor": "0",
+    "door": "3",
+    "postal_code": "28100",
+    "city": "Alcobendas",
+    "province": "Madrid",
+    "region": "Comunidad de Madrid",
+    "country": "España",
+    "formatted_lines": [
+      "Travesía Huesca, 8, Piso 0, Puerta 3",
+      "28100 Alcobendas, Madrid",
+      "España"
+    ],
+    "formatted_single_line": "Travesía Huesca, 8, Piso 0, Puerta 3, 28100 Alcobendas, Madrid, España",
+    "cadastral_reference": "6783701VK4868S0006GQ"
+  },
+  "registered_office": "same_as_address",
+  "tax_address": "same_as_address",
+  "notification_address": "same_as_address",
+  "circe": {
+    "due_number": "083796579Y",
+    "entry_registry": "202600062085126",
+    "pae": "ADECLA: MADRID: FINUTIVE SL",
+    "verification_code": "21316092-50150313O3GAHF6KG2FI",
+    "verification_url": "https://sedeaplicaciones.serviciosmin.gob.es/Arce",
+    "signed_at": "2026-10-14T13:27:40",
+    "document_page": "1 of 10"
+  },
+  "contact": {
+    "email": null,
+    "phone": null,
+    "website": null
+  },
+  "mercantile_registry": {
+    "registry": "Registro Mercantil de Madrid",
+    "tomo": null,
+    "folio": null,
+    "hoja": null,
+    "inscripcion": null
+  },
+  "administrator": null,
+  "cnae": null,
+  "source": "Documento Único Electrónico CIRCE 083796579Y, page 1, printed 2026-10-14"
+}
