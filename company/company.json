@@ -45,9 +45,24 @@
     "document_page": "1 of 10"
   },
   "contact": {
-    "email": null,
-    "phone": null,
-    "website": null
+    "email": "exp.span.group@gmail.com",
+    "phone": "+34 634 118 579",
+    "phone_raw": "634118579",
+    "phone_prefix": "34",
+    "website": null,
+    "notification_channel": "E-mail"
+  },
+  "share_capital_detail": {
+    "shares": 3000,
+    "nominal_value_eur": 1.0,
+    "numbering": "1-3000"
+  },
+  "sole_shareholder_company": true,
+  "activity_center": {
+    "name": "CENTRO ACTIVIDAD",
+    "surface_m2": 19.0,
+    "address": "same_as_address",
+    "main_premises": true
   },
   "mercantile_registry": {
     "registry": "Registro Mercantil de Madrid",
@@ -56,7 +71,48 @@
     "hoja": null,
     "inscripcion": null
   },
-  "administrator": null,
-  "cnae": null,
-  "source": "Documento Único Electrónico CIRCE 083796579Y, page 1, printed 2026-10-14"
+  "administrator": {
+    "name": "María Shimina Shimina",
+    "role": "Administradora única",
+    "remuneration": "Fija",
+    "note": "Personal identifiers (DNI, NSS, birth date, home address, spouse) intentionally not stored here"
+  },
+  "cnae": {
+    "principal": {
+      "code": "4621",
+      "description": "Comercio al por mayor de cereales, tabaco en rama, simientes y alimentos para animales"
+    },
+    "others": [
+      {"code": "4661", "description": "Comercio al por mayor de maquinaria, equipos y suministros agrícolas"},
+      {"code": "4622", "description": "Comercio al por mayor de flores y plantas"},
+      {"code": "4775", "description": "Comercio al por menor de productos de cosmética e higiene"},
+      {"code": "7020", "description": "Otras actividades de consultoría de gestión empresarial"},
+      {"code": "8559", "description": "Otra educación n.c.o.p."},
+      {"code": "4619", "description": "Actividades de los agentes del comercio al por mayor no especializado"},
+      {"code": "4712", "description": "Otro comercio al por menor no especializado"},
+      {"code": "4690", "description": "Comercio al por mayor no especializado"},
+      {"code": "4791", "description": "Actividades de servicios de intermediación para el comercio al por menor no especializado"},
+      {"code": "4685", "description": "Comercio al por mayor de productos químicos"},
+      {"code": "4611", "description": "Actividades de intermediarios del comercio al por mayor de materias primas agrarias, animales vivos, materias primas textiles y productos semielaborados"},
+      {"code": "4776", "description": "Comercio al por menor de flores, plantas, fertilizantes, animales de compañía y alimentos para estos"},
+      {"code": "4650", "description": "Comercio al por mayor de equipos para las tecnologías de la información y las comunicaciones"},
+      {"code": "4664", "description": "Comercio al por mayor de otra maquinaria y equipo"},
+      {"code": "4778", "description": "Comercio al por menor de otros productos nuevos"},
+      {"code": "6210", "description": "Actividades de programación informática"},
+      {"code": "6220", "description": "Actividades de consultoría informática y gestión de instalaciones informáticas"},
+      {"code": "6290", "description": "Otros servicios relacionados con las tecnologías de la información y la informática"},
+      {"code": "4645", "description": "Comercio al por mayor de productos de perfumería y cosmética"},
+      {"code": "6310", "description": "Infraestructura informática, procesamiento de datos, hosting y actividades relacionadas"},
+      {"code": "6391", "description": "Actividades de portales de búsqueda en la web"},
+      {"code": "6392", "description": "Otros servicios de información"},
+      {"code": "5829", "description": "Edición de otros programas informáticos"},
+      {"code": "6039", "description": "Otras actividades de distribución de contenidos"},
+      {"code": "6120", "description": "Actividades de reventa de telecomunicaciones y servicios de intermediación para telecomunicaciones"},
+      {"code": "6190", "description": "Otras actividades de telecomunicaciones"},
+      {"code": "4792", "description": "Actividades de servicios de intermediación para el comercio al por menor especializado"},
+      {"code": "7311", "description": "Actividades de las agencias de publicidad"},
+      {"code": "8230", "description": "Organización de convenciones y ferias de muestras"}
+    ]
+  },
+  "source": "Documento Único Electrónico CIRCE 083796579Y, pages 1-4, printed 2026-10-14"
 }
