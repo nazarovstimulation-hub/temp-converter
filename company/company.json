@@ -3,7 +3,9 @@
   "short_name": "Synth Mashi",
   "legal_form": "Sociedad de Responsabilidad Limitada (S.L.)",
   "country": "ES",
-  "tax_id": null,
+  "tax_id": "B05675947",
+  "nif": "B05675947",
+  "vat_number": "ESB05675947",
   "share_capital": {
     "amount": 3000.0,
     "currency": "EUR",
@@ -68,7 +70,7 @@
     "registry": "Registro Mercantil de Madrid",
     "tomo": null,
     "folio": null,
-    "hoja": null,
+    "hoja": "M-898556",
     "inscripcion": null
   },
   "administrator": {

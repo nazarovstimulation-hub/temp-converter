@@ -21,7 +21,9 @@ Política de Privacidad, условия и т.д.).
 | Estatutos tipo | Sí |
 | Denominación obtenida de la bolsa del RMC | Sí |
 | Número de personas trabajadoras | 1 |
-| NIF / CIF | *(нет на стр. 1 документа — дополнить)* |
+| NIF / CIF | B05675947 |
+| NIF-IVA (формат для VIES / счетов в ЕС) | ESB05675947 |
+| Registro Mercantil | Registro Mercantil de Madrid, hoja M-898556 |
 
 ## Адреса
 
@@ -119,14 +121,15 @@ España
 
 ## Данные, которых нет в документе (дополнить при появлении)
 
-- NIF / CIF (на стр. 1–4 DUE отсутствует; для S.L. имеет вид B + 7 цифр + контрольный знак, для VIES — с префиксом ES)
-- Данные регистрации в Registro Mercantil (tomo, folio, hoja, inscripción)
+- Tomo, folio и inscripción в Registro Mercantil (известна только hoja M-898556)
 - Домен / сайт (в уставе ст. 4 веб-страница пока не определена)
+
+NIF B05675947 и hoja M-898556 получены от владельца 24/10/2026, не из DUE.
 
 ## Готовый блок для футера сайта
 
 ```
-SYNTH MASHI, S.L.
+SYNTH MASHI, S.L. · CIF B05675947
 Travesía Huesca, 8, Piso 0, Puerta 3
 28100 Alcobendas (Madrid), España
 ```
@@ -135,9 +138,9 @@ Travesía Huesca, 8, Piso 0, Puerta 3
 
 ```
 Titular: SYNTH MASHI, S.L.
-NIF: [дополнить]
+NIF: B05675947
 Domicilio social: Travesía Huesca, 8, Piso 0, Puerta 3, 28100 Alcobendas, Madrid, España
-Datos registrales: [дополнить tomo/folio/hoja Registro Mercantil de Madrid]
+Datos registrales: Inscrita en el Registro Mercantil de Madrid, hoja M-898556
 Correo electrónico: exp.span.group@gmail.com
 Teléfono: +34 634 118 579
 ```
