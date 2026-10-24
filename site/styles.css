@@ -2,11 +2,15 @@
    Tokens
    ─────────────────────────────────────────────── */
 :root {
-  --brand: #e2513a;          /* coral cálido: fiesta, España */
-  --brand-dark: #c23f2b;
-  --brand-soft: #fdeae6;
-  --accent: #f6b73c;         /* ámbar */
-  --ink: #1d1a19;
+  /* Paleta tomada del logotipo Fiestalia: coral, violeta, ámbar */
+  --brand: #ef4f49;          /* coral del logo */
+  --brand-dark: #d63a35;
+  --brand-soft: #fde6e4;
+  --purple: #5a1f9a;         /* violeta del logo */
+  --purple-dark: #2a1550;
+  --purple-soft: #efe6fa;
+  --accent: #f2a230;         /* ámbar de la chispa */
+  --ink: #241a2e;
   --ink-2: #4b4542;
   --ink-3: #8a817d;
   --line: #ebe4e0;
@@ -20,6 +24,7 @@
   --shadow-lg: 0 30px 60px rgba(29, 26, 25, .14);
   --max: 1140px;
   --font: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
 * { box-sizing: border-box; }
@@ -48,7 +53,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: var(--brand);
 }
 .eyebrow::before { content: ""; width: 20px; height: 2px; background: var(--brand); border-radius: 2px; }
-.h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; margin-top: 14px; }
+.h2 { font-family: var(--font-display); font-size: clamp(30px, 4vw, 44px); font-weight: 700; margin-top: 14px; letter-spacing: 0; }
 .lead { font-size: 18px; color: var(--ink-2); margin-top: 16px; max-width: 640px; }
 .center { text-align: center; }
 .center .lead { margin-inline: auto; }
@@ -79,11 +84,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-bottom: 1px solid var(--line);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 20px; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
-.logo-mark {
-  width: 34px; height: 34px; border-radius: 10px; background: var(--brand);
-  display: grid; place-items: center; color: #fff;
-}
+.logo { display: flex; align-items: center; }
+.logo-img { height: 38px; width: auto; }
+.logo-footer .logo-img { height: 44px; }
 .nav-links { display: flex; gap: 28px; font-weight: 600; color: var(--ink-2); }
 .nav-links a:hover { color: var(--ink); }
 .nav-cta { display: flex; gap: 10px; align-items: center; }
@@ -98,11 +101,11 @@ ul { margin: 0; padding: 0; list-style: none; }
   padding: 72px 0 40px;
   background:
     radial-gradient(900px 500px at 85% -10%, var(--brand-soft), transparent 60%),
-    radial-gradient(600px 400px at -10% 110%, #fff4d6, transparent 60%);
+    radial-gradient(700px 450px at -10% 110%, var(--purple-soft), transparent 60%);
 }
 .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
-.hero h1 { font-size: clamp(36px, 5.4vw, 62px); font-weight: 800; letter-spacing: -.025em; }
-.hero h1 em { font-style: normal; color: var(--brand); }
+.hero h1 { font-family: var(--font-display); font-size: clamp(38px, 5.4vw, 64px); font-weight: 700; letter-spacing: 0; }
+.hero h1 em { font-style: italic; color: var(--purple); }
 .hero .lead { font-size: 20px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; align-items: center; }
 .hero-note { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--ink-2); font-size: 15px; font-weight: 600; }
@@ -180,12 +183,12 @@ ul { margin: 0; padding: 0; list-style: none; }
 .feature .icon { width: 52px; height: 52px; border-radius: 16px; background: #fff; border: 1px solid var(--line); color: var(--brand); display: grid; place-items: center; }
 .feature h3 { font-size: 20px; font-weight: 800; margin-top: 18px; }
 .feature p { color: var(--ink-2); margin-top: 8px; }
-.tag { display: inline-block; margin-left: 8px; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 999px; background: var(--accent); color: var(--ink); vertical-align: middle; letter-spacing: .04em; }
+.tag { display: inline-block; margin-left: 8px; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 999px; background: var(--purple); color: #fff; vertical-align: middle; letter-spacing: .04em; }
 
 /* ───────────────────────────────────────────────
    Live Wall
    ─────────────────────────────────────────────── */
-.livewall { background: var(--ink); color: #fff; overflow: hidden; }
+.livewall { background: var(--purple-dark); color: #fff; overflow: hidden; }
 .livewall .eyebrow { color: var(--accent); }
 .livewall .eyebrow::before { background: var(--accent); }
 .livewall .lead { color: #cfc6c1; }
@@ -194,7 +197,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .livewall ul.checks li { display: flex; gap: 12px; align-items: flex-start; color: #efe8e4; }
 .livewall ul.checks svg { flex: none; color: var(--accent); margin-top: 3px; }
 .screen {
-  border-radius: 16px; background: #0e0c0b; padding: 14px; border: 1px solid #332d2a;
+  border-radius: 16px; background: #190c33; padding: 14px; border: 1px solid #4a2f7a;
   box-shadow: 0 40px 80px rgba(0,0,0,.5);
 }
 .screen-bar { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #9d938e; padding: 0 4px 12px; }
@@ -251,7 +254,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .plan { position: relative; display: flex; flex-direction: column; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 26px; transition: box-shadow .2s, border-color .2s; }
 .plan.featured { background: #fff; border-color: var(--brand); box-shadow: var(--shadow-lg); }
 .plan.recommended { outline: 3px solid var(--accent); outline-offset: 3px; }
-.plan-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--brand); color: #fff; font-size: 12px; font-weight: 800; padding: 5px 12px; border-radius: 999px; letter-spacing: .04em; white-space: nowrap; }
+.plan-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--purple); color: #fff; font-size: 12px; font-weight: 800; padding: 5px 12px; border-radius: 999px; letter-spacing: .04em; white-space: nowrap; }
 .plan h3 { font-size: 20px; font-weight: 800; }
 .plan .price { margin-top: 12px; display: flex; align-items: baseline; gap: 6px; }
 .plan .price b { font-size: 42px; font-weight: 800; letter-spacing: -.03em; }
@@ -295,10 +298,10 @@ ul { margin: 0; padding: 0; list-style: none; }
    CTA + footer
    ─────────────────────────────────────────────── */
 .cta {
-  background: linear-gradient(135deg, var(--brand), #f07a3e 60%, var(--accent));
+  background: linear-gradient(135deg, var(--purple) 0%, var(--brand) 55%, var(--accent) 100%);
   color: #fff; border-radius: 28px; padding: 64px 40px; text-align: center; position: relative; overflow: hidden;
 }
-.cta h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; }
+.cta h2 { font-family: var(--font-display); font-size: clamp(30px, 4vw, 46px); font-weight: 700; }
 .cta p { margin-top: 14px; font-size: 18px; opacity: .95; }
 .cta .btn { margin-top: 30px; }
 .footer { padding: 56px 0 32px; color: var(--ink-2); }
@@ -327,6 +330,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   }
   .hero { padding-top: 44px; }
   .hero-grid, .livewall-grid { grid-template-columns: 1fr; }
+  .logo-img { height: 30px; }
   .mock { height: 440px; margin-top: 10px; }
   .phone { width: 230px; height: 440px; right: 0; }
   .phone-screen { border-radius: 30px; }

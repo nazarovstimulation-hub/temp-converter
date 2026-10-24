@@ -10,6 +10,7 @@ site/
   styles.css   # estilos (tokens de color en :root)
   app.js       # calculador de planes, mockups animados, menú, FAQ
   brand.js     # ← nombre de marca, contacto, precios y planes
+  assets/      # logo.png, mark.png, favicon.png, apple-touch-icon.png
 docs/
   analisis-mercado-es.md   # análisis del mercado español y competidores (en ruso)
 ```
