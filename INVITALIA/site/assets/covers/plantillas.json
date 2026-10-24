@@ -1,10 +1,266 @@
 [
-  { "template": "Palazzo",  "cover": "assets/covers/palazzo.webp",  "mini": "assets/covers/palazzo-mini.webp",  "source": "30-ivory.webp" },
-  { "template": "Linea",    "cover": "assets/covers/linea.webp",    "mini": "assets/covers/linea-mini.webp",    "source": "28-luna.webp" },
-  { "template": "Heritage", "cover": "assets/covers/heritage.webp", "mini": "assets/covers/heritage-mini.webp", "source": "29-roma.webp" },
-  { "template": "Amalfi",   "cover": "assets/covers/amalfi.webp",   "mini": "assets/covers/amalfi-mini.webp",   "source": "27-riviera.webp" },
-  { "template": "Botanica", "cover": "assets/covers/botanica.webp", "mini": "assets/covers/botanica-mini.webp", "source": "31-verona.webp" },
-  { "template": "Noir",     "cover": "assets/covers/noir.webp",     "mini": "assets/covers/noir-mini.webp",     "source": "33-amalfi.webp" },
-  { "template": null,       "note": "32-camelia.webp is uploaded but not assigned to a template yet" },
-  { "illustrated": "assets/covers/illustrated/*.webp are the vector-drawn covers kept as an alternative" }
+  {
+    "id": "felicidad",
+    "name": "Felicidad",
+    "category": "classic",
+    "theme": "palazzo",
+    "cover": "assets/covers/01-felicidad.webp",
+    "mini": "assets/covers/01-felicidad-mini.webp"
+  },
+  {
+    "id": "anillos",
+    "name": "Anillos",
+    "category": "minimal",
+    "theme": "blush",
+    "cover": "assets/covers/02-anillos.webp",
+    "mini": "assets/covers/02-anillos-mini.webp"
+  },
+  {
+    "id": "viaje",
+    "name": "Viaje",
+    "category": "destinos",
+    "theme": "amalfi",
+    "cover": "assets/covers/03-viaje.webp",
+    "mini": "assets/covers/03-viaje-mini.webp"
+  },
+  {
+    "id": "nuit",
+    "name": "Nuit",
+    "category": "classic",
+    "theme": "azul",
+    "cover": "assets/covers/04-nuit.webp",
+    "mini": "assets/covers/04-nuit-mini.webp"
+  },
+  {
+    "id": "jardin",
+    "name": "Jardín",
+    "category": "italia",
+    "theme": "botanica",
+    "cover": "assets/covers/05-jardin.webp",
+    "mini": "assets/covers/05-jardin-mini.webp"
+  },
+  {
+    "id": "oliva",
+    "name": "Oliva",
+    "category": "italia",
+    "theme": "heritage",
+    "cover": "assets/covers/06-oliva.webp",
+    "mini": "assets/covers/06-oliva-mini.webp"
+  },
+  {
+    "id": "azur",
+    "name": "Azur",
+    "category": "papel",
+    "theme": "linea",
+    "cover": "assets/covers/07-azur.webp",
+    "mini": "assets/covers/07-azur-mini.webp"
+  },
+  {
+    "id": "sepia",
+    "name": "Sepia",
+    "category": "papel",
+    "theme": "champagne",
+    "cover": "assets/covers/08-sepia.webp",
+    "mini": "assets/covers/08-sepia-mini.webp"
+  },
+  {
+    "id": "burdeos",
+    "name": "Burdeos",
+    "category": "oldmoney",
+    "theme": "burdeos",
+    "cover": "assets/covers/09-burdeos.webp",
+    "mini": "assets/covers/09-burdeos-mini.webp"
+  },
+  {
+    "id": "rosal",
+    "name": "Rosal",
+    "category": "oldmoney",
+    "theme": "heritage",
+    "cover": "assets/covers/10-rosal.webp",
+    "mini": "assets/covers/10-rosal-mini.webp"
+  },
+  {
+    "id": "belair",
+    "name": "Bel Air",
+    "category": "papel",
+    "theme": "palazzo",
+    "cover": "assets/covers/11-belair.webp",
+    "mini": "assets/covers/11-belair-mini.webp"
+  },
+  {
+    "id": "cisnes",
+    "name": "Cisnes",
+    "category": "destinos",
+    "theme": "azul",
+    "cover": "assets/covers/12-cisnes.webp",
+    "mini": "assets/covers/12-cisnes-mini.webp"
+  },
+  {
+    "id": "rubi",
+    "name": "Rubí",
+    "category": "papel",
+    "theme": "burdeos",
+    "cover": "assets/covers/13-rubi.webp",
+    "mini": "assets/covers/13-rubi-mini.webp"
+  },
+  {
+    "id": "mutuo",
+    "name": "Mutuo",
+    "category": "oldmoney",
+    "theme": "mono",
+    "cover": "assets/covers/14-mutuo.webp",
+    "mini": "assets/covers/14-mutuo-mini.webp"
+  },
+  {
+    "id": "salon",
+    "name": "Salón",
+    "category": "papel",
+    "theme": "palazzo",
+    "cover": "assets/covers/15-salon.webp",
+    "mini": "assets/covers/15-salon-mini.webp"
+  },
+  {
+    "id": "colores",
+    "name": "Colores",
+    "category": "destinos",
+    "theme": "azul",
+    "cover": "assets/covers/16-colores.webp",
+    "mini": "assets/covers/16-colores-mini.webp"
+  },
+  {
+    "id": "lettera",
+    "name": "Lettera",
+    "category": "minimal",
+    "theme": "linea",
+    "cover": "assets/covers/17-lettera.webp",
+    "mini": "assets/covers/17-lettera-mini.webp"
+  },
+  {
+    "id": "corazon",
+    "name": "Corazón",
+    "category": "classic",
+    "theme": "botanica",
+    "cover": "assets/covers/18-corazon.webp",
+    "mini": "assets/covers/18-corazon-mini.webp"
+  },
+  {
+    "id": "qos",
+    "name": "Qos",
+    "category": "minimal",
+    "theme": "champagne",
+    "cover": "assets/covers/19-qos.webp",
+    "mini": "assets/covers/19-qos-mini.webp"
+  },
+  {
+    "id": "sienna",
+    "name": "Sienna",
+    "category": "minimal",
+    "theme": "mono",
+    "cover": "assets/covers/20-sienna.webp",
+    "mini": "assets/covers/20-sienna-mini.webp"
+  },
+  {
+    "id": "editorial",
+    "name": "Editorial",
+    "category": "minimal",
+    "theme": "linea",
+    "cover": "assets/covers/21-editorial.webp",
+    "mini": "assets/covers/21-editorial-mini.webp"
+  },
+  {
+    "id": "alibi",
+    "name": "Alibi",
+    "category": "oldmoney",
+    "theme": "champagne",
+    "cover": "assets/covers/22-alibi.webp",
+    "mini": "assets/covers/22-alibi-mini.webp"
+  },
+  {
+    "id": "como",
+    "name": "Como",
+    "category": "destinos",
+    "theme": "azul",
+    "cover": "assets/covers/23-como.webp",
+    "mini": "assets/covers/23-como-mini.webp"
+  },
+  {
+    "id": "provence",
+    "name": "Provence",
+    "category": "destinos",
+    "theme": "lavanda",
+    "cover": "assets/covers/24-provence.webp",
+    "mini": "assets/covers/24-provence-mini.webp"
+  },
+  {
+    "id": "maison",
+    "name": "Maison",
+    "category": "oldmoney",
+    "theme": "champagne",
+    "cover": "assets/covers/25-maison.webp",
+    "mini": "assets/covers/25-maison-mini.webp"
+  },
+  {
+    "id": "noir",
+    "name": "Noir",
+    "category": "destinos",
+    "theme": "mono",
+    "cover": "assets/covers/26-noir.webp",
+    "mini": "assets/covers/26-noir-mini.webp"
+  },
+  {
+    "id": "riviera",
+    "name": "Riviera",
+    "category": "italia",
+    "theme": "amalfi",
+    "cover": "assets/covers/27-riviera.webp",
+    "mini": "assets/covers/27-riviera-mini.webp"
+  },
+  {
+    "id": "luna",
+    "name": "Luna",
+    "category": "minimal",
+    "theme": "blush",
+    "cover": "assets/covers/28-luna.webp",
+    "mini": "assets/covers/28-luna-mini.webp"
+  },
+  {
+    "id": "roma",
+    "name": "Roma",
+    "category": "oldmoney",
+    "theme": "burdeos",
+    "cover": "assets/covers/29-roma.webp",
+    "mini": "assets/covers/29-roma-mini.webp"
+  },
+  {
+    "id": "ivory",
+    "name": "Ivory",
+    "category": "classic",
+    "theme": "palazzo",
+    "cover": "assets/covers/30-ivory.webp",
+    "mini": "assets/covers/30-ivory-mini.webp"
+  },
+  {
+    "id": "verona",
+    "name": "Verona",
+    "category": "italia",
+    "theme": "botanica",
+    "cover": "assets/covers/31-verona.webp",
+    "mini": "assets/covers/31-verona-mini.webp"
+  },
+  {
+    "id": "camelia",
+    "name": "Camelia",
+    "category": "italia",
+    "theme": "amalfi",
+    "cover": "assets/covers/32-camelia.webp",
+    "mini": "assets/covers/32-camelia-mini.webp"
+  },
+  {
+    "id": "amalfi",
+    "name": "Amalfi",
+    "category": "oldmoney",
+    "theme": "noir",
+    "cover": "assets/covers/33-amalfi.webp",
+    "mini": "assets/covers/33-amalfi-mini.webp"
+  }
 ]

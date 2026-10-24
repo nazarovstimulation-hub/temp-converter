@@ -42,6 +42,11 @@ const CFG = {
 const MOCK_PAYMENTS = !CFG.stripeKey;
 const LANGS = ['es', 'en', 'it', 'pt', 'fr', 'de', 'ru'];
 const RESERVED_SLUGS = new Set(['api', 'i', 'admin', 'editor', 'index', 'assets', 'login', 'pay', 'static', 'www', 'app', 'help', 'about', 'pricing', 'terms', 'privacy']);
+// Template ids (kept in sync with site/assets/templates.js by scripts/build-templates.mjs)
+const TEMPLATES = ['felicidad', 'anillos', 'viaje', 'nuit', 'jardin', 'oliva', 'azur', 'sepia', 'burdeos', 'rosal', 'belair', 'cisnes', 'rubi', 'mutuo', 'salon', 'colores', 'lettera', 'corazon', 'qos', 'sienna', 'editorial', 'alibi', 'como', 'provence', 'maison', 'noir', 'riviera', 'luna', 'roma', 'ivory', 'verona', 'camelia', 'amalfi'];
+const LEGACY_TEMPLATES = { palazzo: 'ivory', linea: 'luna', heritage: 'roma', botanica: 'verona' };
+const DEFAULT_TEMPLATE = 'ivory';
+function pickTemplate(v) { return TEMPLATES.includes(v) ? v : (LEGACY_TEMPLATES[v] || DEFAULT_TEMPLATE); }
 
 // ---------- database ----------
 fs.mkdirSync(path.dirname(CFG.dbPath), { recursive: true });
@@ -139,7 +144,7 @@ function sanitizeData(input) {
   const d = (input && typeof input === 'object') ? input : {};
   const prog = Array.isArray(d.program) ? d.program.slice(0, 30).map(p => ({ t: clampStr(p && p.t, 10), n: clampStr(p && p.n, 120) })) : [];
   return {
-    template: ['palazzo', 'linea', 'heritage', 'amalfi', 'botanica', 'noir'].includes(d.template) ? d.template : 'palazzo',
+    template: pickTemplate(d.template),
     name1: clampStr(d.name1, 60), name2: clampStr(d.name2, 60),
     greeting: clampStr(d.greeting, 600),
     date: /^\d{4}-\d{2}-\d{2}$/.test(d.date || '') ? d.date : '', time: /^\d{2}:\d{2}$/.test(d.time || '') ? d.time : '',

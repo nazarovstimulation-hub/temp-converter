@@ -35,5 +35,15 @@ for (const lang of LANGS) for (const k of Object.keys(D.es)) {
   const a = (D.es[k].match(/\{[a-z]+\}/g) || []).sort().join(','), b = ((D[lang][k] || '').match(/\{[a-z]+\}/g) || []).sort().join(',');
   if (D[lang][k] != null && a !== b) { console.log(`placeholder mismatch ${lang}: ${k}`); missing++; }
 }
+// template catalogue: every template has a caption in every language, and the server-side id lists match
+const T = require(path.join(site, 'assets/templates.js'));
+for (const t of T.list) for (const lang of LANGS) if (!D[lang][`tpl.${t.id}.desc`]) { console.log(`missing caption ${lang}: ${t.id}`); missing++; }
+for (const t of T.list) for (const f of [t.cover, t.mini]) if (!fs.existsSync(path.join(site, f))) { console.log(`missing cover file: ${f}`); missing++; }
+for (const f of ['../cloudflare/src/worker.js', 'server.js']) {
+  const src = fs.readFileSync(path.resolve(__dirname, f), 'utf8');
+  const m = src.match(/const TEMPLATES = \[([^\]]*)\];/);
+  const ids = m ? [...m[1].matchAll(/'([a-z]+)'/g)].map(x => x[1]) : [];
+  if (ids.join() !== T.ids.join()) { console.log(`template ids out of sync in ${f} (run scripts/build-templates.mjs)`); missing++; }
+}
 if (missing) { console.error(`${missing} i18n problem(s)`); process.exit(1); }
 console.log(`i18n ok: ${used.size} keys used, ${LANGS.length} languages, ${Object.keys(D.es).length} keys each.`);

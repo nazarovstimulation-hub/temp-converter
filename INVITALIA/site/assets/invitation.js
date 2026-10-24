@@ -15,7 +15,10 @@
     var t = global.I18N ? global.I18N.t : function (k) { return k; };
     var fmtDate = global.I18N ? global.I18N.fmtDate : function (v) { return v; };
     d = d || {};
-    el.className = el.className.replace(/\bt-[a-z]+\b/g, '').trim() + ' t-' + (d.template || 'palazzo');
+    var T = global.INVITALIA_TEMPLATES, tpl = T ? T.get(d.template) : null;
+    el.className = el.className.replace(/\bt-[a-z]+\b/g, '').trim() + ' t-' + (tpl ? tpl.theme : (d.template || 'palazzo'));
+    // Cover photo of the template; the guest page lives at /i/:slug so the path must be absolute there.
+    var coverSrc = tpl ? ((location.protocol === 'file:' ? '' : '/') + tpl.cover) : '';
     var chips = '';
     if (d.mapUrl) chips += '<a class="chip" href="' + esc(d.mapUrl) + '" target="_blank" rel="noopener">' + ICONS.map + esc(t('g.directions')) + '</a>';
     if (d.music) chips += '<button type="button" class="chip" data-music title="' + esc(d.track || '') + '">' + ICONS.music + esc(d.track ? d.track.split(' — ')[0].split(' - ')[0] : t('g.music')) + '</button>';
@@ -24,6 +27,7 @@
     var closed = d.rsvpDeadline && new Date(d.rsvpDeadline + 'T23:59:59') < new Date();
     el.innerHTML =
       '<div class="frame"></div>' +
+      (coverSrc ? '<img class="cover" src="' + esc(coverSrc) + '" alt="" width="1024" height="1536">' : '') +
       '<div class="mono">' + esc(initial(d.name1)) + (d.name1 && d.name2 ? ' &amp; ' : '') + esc(initial(d.name2)) + '</div>' +
       '<div class="names">' + esc(d.name1 || '…') + '<small>&amp;</small>' + esc(d.name2 || '…') + '</div>' +
       (d.greeting ? '<p class="greet">' + esc(d.greeting) + '</p>' : '') +

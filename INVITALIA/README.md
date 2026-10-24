@@ -13,8 +13,11 @@ INVITALIA/
 │   └── assets/
 │       ├── i18n.js            diccionarios de los 7 idiomas + motor de traducción
 │       ├── invitation.js/.css renderizado compartido de la invitación (editor y página del invitado)
+│       ├── templates.js       catálogo de las 33 plantillas (id, nombre, categoría, tema, foto)
+│       ├── covers/            fotos de portada 01–33 (1024×1536) y miniaturas -mini (320×480)
 │       ├── config.js          URL de la API (vacía = mismo origen)
 │       └── logo-*.jpg         logotipo: completo, símbolo, texto
+├── scripts/build-templates.mjs regenera galería, muestras del editor, textos i18n y listas del servidor a partir de templates.js
 ├── server/                    backend Node.js sin dependencias (Node ≥ 22.13)
 │   ├── server.js              API + sitio estático + SQLite + Stripe Checkout
 │   ├── test.js                prueba de extremo a extremo de la API
@@ -36,6 +39,10 @@ node test-i18n.js           # cobertura de traducciones
 ```
 
 Sin `STRIPE_SECRET_KEY` el servidor funciona en **modo de prueba**: «Pagar y publicar» publica al instante.
+
+## Plantillas
+
+Cada foto de `site/assets/covers/` es una plantilla. Para añadir una: copia `NN-nombre.webp` (1024×1536) y `NN-nombre-mini.webp` (320×480) a `covers/`, añade la entrada en `site/assets/templates.js`, escribe el texto en los 7 idiomas en `scripts/build-templates.mjs` y ejecuta `node scripts/build-templates.mjs`.
 
 ## Qué hace el backend
 

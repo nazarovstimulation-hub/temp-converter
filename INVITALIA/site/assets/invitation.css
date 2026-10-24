@@ -4,6 +4,7 @@
 .inv > *{position:relative; z-index:1}
 .inv .frame{position:absolute; inset:42px 12px 12px; border:1px solid var(--i-line); border-radius:26px; pointer-events:none; z-index:0}
 .inv .frame::after{content:""; position:absolute; inset:5px; border:1px solid var(--i-line); border-radius:22px; opacity:.6}
+.inv .cover{display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-radius:18px; box-shadow:0 12px 30px rgba(0,0,0,.14); margin:0 0 10px}
 .inv .mono{font-family:'Cinzel','Trajan Pro',serif; color:var(--i-acc); font-size:12px; letter-spacing:.34em; margin-top:6px}
 .inv .names{font-family:var(--i-names); font-style:var(--i-names-style); font-size:var(--i-names-size); line-height:1.05; margin:14px 0 4px; text-transform:var(--i-names-tt); letter-spacing:var(--i-names-ls); text-wrap:balance}
 .inv .names small{display:block; font-family:'Cormorant Garamond',Georgia,serif; font-size:18px; font-style:italic; letter-spacing:.3em; color:var(--i-acc); margin:6px 0}
@@ -47,6 +48,13 @@
 .t-botanica{--i-bg:#F2F4EC; --i-fg:#2F3A24; --i-mute:#5E6B4A; --i-acc:#6B7A4A; --i-line:#CBD3B9}
 .t-botanica::before{content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 15% 8%, rgba(107,122,74,.25), transparent 40%), radial-gradient(ellipse at 90% 95%, rgba(107,122,74,.25), transparent 40%); z-index:0}
 .t-noir{--i-bg:#15151A; --i-fg:#F0E6CF; --i-mute:#A89468; --i-acc:#C9AE6E; --i-line:rgba(201,174,110,.4); --i-card:#F6F0E2}
+.t-burdeos{--i-bg:#4A1420; --i-fg:#F6E9DC; --i-mute:#D9B8A2; --i-acc:#D4A96A; --i-line:rgba(212,169,106,.4); --i-card:#F8EFE6}
+.t-azul{--i-bg:#F3F6F8; --i-fg:#23313D; --i-mute:#5F7384; --i-acc:#5C86A6; --i-line:#CBD8E2}
+.t-mono{--i-bg:#F4F2EE; --i-fg:#1C1B19; --i-mute:#6A6762; --i-acc:#1C1B19; --i-line:#D6D2CA; --i-names:'Cormorant Garamond',Georgia,serif; --i-names-style:normal; --i-names-tt:uppercase; --i-names-ls:.08em; --i-names-size:28px}
+.t-mono .cover{filter:grayscale(1)}
+.t-lavanda{--i-bg:#F6F2F8; --i-fg:#3A2F45; --i-mute:#746483; --i-acc:#8E6FA8; --i-line:#DCCFE6}
+.t-blush{--i-bg:#FDF6F4; --i-fg:#4A3A3A; --i-mute:#9A8282; --i-acc:#C98B8B; --i-line:#EED8D3}
+.t-champagne{--i-bg:#F5EFE4; --i-fg:#3F3328; --i-mute:#7E6E5B; --i-acc:#9C7B4F; --i-line:#DCCDB4}
 
 /* Guest page: the invitation fills the screen */
 .inv.full{min-height:100vh; min-height:100dvh; padding-top:40px; padding-bottom:32px}

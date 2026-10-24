@@ -8,7 +8,11 @@
 
 const LANGS = ['es', 'en', 'it', 'pt', 'fr', 'de', 'ru'];
 const RESERVED_SLUGS = new Set(['api', 'i', 'admin', 'editor', 'index', 'assets', 'login', 'pay', 'static', 'www', 'app', 'help', 'about', 'pricing', 'terms', 'privacy']);
-const TEMPLATES = ['palazzo', 'linea', 'heritage', 'amalfi', 'botanica', 'noir'];
+// Template ids (kept in sync with site/assets/templates.js by scripts/build-templates.mjs)
+const TEMPLATES = ['felicidad', 'anillos', 'viaje', 'nuit', 'jardin', 'oliva', 'azur', 'sepia', 'burdeos', 'rosal', 'belair', 'cisnes', 'rubi', 'mutuo', 'salon', 'colores', 'lettera', 'corazon', 'qos', 'sienna', 'editorial', 'alibi', 'como', 'provence', 'maison', 'noir', 'riviera', 'luna', 'roma', 'ivory', 'verona', 'camelia', 'amalfi'];
+const LEGACY_TEMPLATES = { palazzo: 'ivory', linea: 'luna', heritage: 'roma', botanica: 'verona' };
+const DEFAULT_TEMPLATE = 'ivory';
+function pickTemplate(v) { return TEMPLATES.includes(v) ? v : (LEGACY_TEMPLATES[v] || DEFAULT_TEMPLATE); }
 const PRODUCT_NAME = { es: 'Invitación de boda digital Invitalia', en: 'Invitalia digital wedding invitation', it: 'Invito di nozze digitale Invitalia', pt: 'Convite de casamento digital Invitalia', fr: 'Faire-part de mariage numérique Invitalia', de: 'Digitale Hochzeitseinladung Invitalia', ru: 'Электронное свадебное приглашение Invitalia' };
 const CSV_HEAD = { es: ['Invitado', 'Respuesta', 'Acompañantes', 'Menú', 'Comentario', 'Fecha'], en: ['Guest', 'Answer', 'Plus ones', 'Menu', 'Comment', 'Date'], it: ['Ospite', 'Risposta', 'Accompagnatori', 'Menù', 'Commento', 'Data'], pt: ['Convidado', 'Resposta', 'Acompanhantes', 'Menu', 'Comentário', 'Data'], fr: ['Invité', 'Réponse', 'Accompagnants', 'Menu', 'Commentaire', 'Date'], de: ['Gast', 'Antwort', 'Begleitung', 'Menü', 'Kommentar', 'Datum'], ru: ['Гость', 'Ответ', 'Спутники', 'Меню', 'Комментарий', 'Дата'] };
 const CSV_ANSWER = { es: { yes: 'Asistirá', no: 'No asistirá' }, en: { yes: 'Attending', no: 'Not attending' }, it: { yes: 'Parteciperà', no: 'Non parteciperà' }, pt: { yes: 'Vai', no: 'Não vai' }, fr: { yes: 'Présent', no: 'Absent' }, de: { yes: 'Kommt', no: 'Kommt nicht' }, ru: { yes: 'Придёт', no: 'Не сможет' } };
@@ -51,7 +55,7 @@ function sanitizeData(input) {
   const d = (input && typeof input === 'object') ? input : {};
   const prog = Array.isArray(d.program) ? d.program.slice(0, 30).map(p => ({ t: clampStr(p && p.t, 10), n: clampStr(p && p.n, 120) })) : [];
   return {
-    template: TEMPLATES.includes(d.template) ? d.template : 'palazzo',
+    template: pickTemplate(d.template),
     name1: clampStr(d.name1, 60), name2: clampStr(d.name2, 60), greeting: clampStr(d.greeting, 600),
     date: /^\d{4}-\d{2}-\d{2}$/.test(d.date || '') ? d.date : '', time: /^\d{2}:\d{2}$/.test(d.time || '') ? d.time : '',
     venue: clampStr(d.venue, 120), address: clampStr(d.address, 200), mapUrl: /^https?:\/\//i.test(d.mapUrl || '') ? clampStr(d.mapUrl, 500) : '',

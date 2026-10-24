@@ -70,8 +70,12 @@ details.sec summary .eyebrow{font-family:var(--display); font-size:10.5px; lette
 .toggle input::after{content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.25); transition:left .2s}
 .toggle input:checked{background:var(--gold-deep)}
 .toggle input:checked::after{left:20px}
+.filters{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px}
+.filters button{border:1px solid var(--line); background:#fff; border-radius:999px; padding:5px 11px; font:400 12.5px var(--body); color:var(--muted); cursor:pointer}
+.filters button[aria-pressed="true"]{border-color:var(--gold); color:var(--gold-deep)}
 .swatches{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
 .sw{position:relative; cursor:pointer}
+.sw[hidden]{display:none}
 .sw input{position:absolute; opacity:0; inset:0; margin:0}
 .sw .box{aspect-ratio:3/4; border-radius:10px; display:block; overflow:hidden; border:2px solid transparent; padding:0; background:var(--ivory)}
 .sw .box img{display:block; width:100%; height:100%; object-fit:cover}
@@ -152,13 +156,51 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
     <details class="sec" open>
       <summary><span data-i18n="ed.sec.template">Plantilla</span><span class="eyebrow" id="tpl-name">Palazzo</span></summary>
       <div class="sec-body">
+        <div class="filters" id="tpl-filters" role="group">
+          <button type="button" data-f="all" aria-pressed="true" data-i18n="tpl.filter.all">Todas</button>
+          <button type="button" data-f="classic" aria-pressed="false" data-i18n="tpl.filter.classic">Clásica</button>
+          <button type="button" data-f="minimal" aria-pressed="false" data-i18n="tpl.filter.minimal">Minimalista</button>
+          <button type="button" data-f="oldmoney" aria-pressed="false" data-i18n="tpl.filter.oldmoney">Old money</button>
+          <button type="button" data-f="italia" aria-pressed="false" data-i18n="tpl.filter.italia">Estilo italiano</button>
+          <button type="button" data-f="papel" aria-pressed="false" data-i18n="tpl.filter.papel">Papelería</button>
+          <button type="button" data-f="destinos" aria-pressed="false" data-i18n="tpl.filter.destinos">Destinos</button>
+        </div>
         <div class="swatches" id="swatches">
-          <label class="sw"><input type="radio" name="template" value="palazzo" checked><span class="box"><img src="assets/covers/palazzo-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Palazzo</small></label>
-          <label class="sw"><input type="radio" name="template" value="linea"None><span class="box"><img src="assets/covers/linea-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Linea</small></label>
-          <label class="sw"><input type="radio" name="template" value="heritage"None><span class="box"><img src="assets/covers/heritage-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Heritage</small></label>
-          <label class="sw"><input type="radio" name="template" value="amalfi"None><span class="box"><img src="assets/covers/amalfi-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Amalfi</small></label>
-          <label class="sw"><input type="radio" name="template" value="botanica"None><span class="box"><img src="assets/covers/botanica-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Botanica</small></label>
-          <label class="sw"><input type="radio" name="template" value="noir"None><span class="box"><img src="assets/covers/noir-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Noir</small></label>
+          <!-- templates:start -->
+          <label class="sw" data-cat="classic"><input type="radio" name="template" value="felicidad"><span class="box"><img src="assets/covers/01-felicidad-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Felicidad</small></label>
+          <label class="sw" data-cat="minimal"><input type="radio" name="template" value="anillos"><span class="box"><img src="assets/covers/02-anillos-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Anillos</small></label>
+          <label class="sw" data-cat="destinos"><input type="radio" name="template" value="viaje"><span class="box"><img src="assets/covers/03-viaje-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Viaje</small></label>
+          <label class="sw" data-cat="classic"><input type="radio" name="template" value="nuit"><span class="box"><img src="assets/covers/04-nuit-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Nuit</small></label>
+          <label class="sw" data-cat="italia"><input type="radio" name="template" value="jardin"><span class="box"><img src="assets/covers/05-jardin-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Jardín</small></label>
+          <label class="sw" data-cat="italia"><input type="radio" name="template" value="oliva"><span class="box"><img src="assets/covers/06-oliva-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Oliva</small></label>
+          <label class="sw" data-cat="papel"><input type="radio" name="template" value="azur"><span class="box"><img src="assets/covers/07-azur-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Azur</small></label>
+          <label class="sw" data-cat="papel"><input type="radio" name="template" value="sepia"><span class="box"><img src="assets/covers/08-sepia-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Sepia</small></label>
+          <label class="sw" data-cat="oldmoney"><input type="radio" name="template" value="burdeos"><span class="box"><img src="assets/covers/09-burdeos-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Burdeos</small></label>
+          <label class="sw" data-cat="oldmoney"><input type="radio" name="template" value="rosal"><span class="box"><img src="assets/covers/10-rosal-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Rosal</small></label>
+          <label class="sw" data-cat="papel"><input type="radio" name="template" value="belair"><span class="box"><img src="assets/covers/11-belair-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Bel Air</small></label>
+          <label class="sw" data-cat="destinos"><input type="radio" name="template" value="cisnes"><span class="box"><img src="assets/covers/12-cisnes-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Cisnes</small></label>
+          <label class="sw" data-cat="papel"><input type="radio" name="template" value="rubi"><span class="box"><img src="assets/covers/13-rubi-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Rubí</small></label>
+          <label class="sw" data-cat="oldmoney"><input type="radio" name="template" value="mutuo"><span class="box"><img src="assets/covers/14-mutuo-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Mutuo</small></label>
+          <label class="sw" data-cat="papel"><input type="radio" name="template" value="salon"><span class="box"><img src="assets/covers/15-salon-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Salón</small></label>
+          <label class="sw" data-cat="destinos"><input type="radio" name="template" value="colores"><span class="box"><img src="assets/covers/16-colores-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Colores</small></label>
+          <label class="sw" data-cat="minimal"><input type="radio" name="template" value="lettera"><span class="box"><img src="assets/covers/17-lettera-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Lettera</small></label>
+          <label class="sw" data-cat="classic"><input type="radio" name="template" value="corazon"><span class="box"><img src="assets/covers/18-corazon-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Corazón</small></label>
+          <label class="sw" data-cat="minimal"><input type="radio" name="template" value="qos"><span class="box"><img src="assets/covers/19-qos-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Qos</small></label>
+          <label class="sw" data-cat="minimal"><input type="radio" name="template" value="sienna"><span class="box"><img src="assets/covers/20-sienna-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Sienna</small></label>
+          <label class="sw" data-cat="minimal"><input type="radio" name="template" value="editorial"><span class="box"><img src="assets/covers/21-editorial-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Editorial</small></label>
+          <label class="sw" data-cat="oldmoney"><input type="radio" name="template" value="alibi"><span class="box"><img src="assets/covers/22-alibi-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Alibi</small></label>
+          <label class="sw" data-cat="destinos"><input type="radio" name="template" value="como"><span class="box"><img src="assets/covers/23-como-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Como</small></label>
+          <label class="sw" data-cat="destinos"><input type="radio" name="template" value="provence"><span class="box"><img src="assets/covers/24-provence-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Provence</small></label>
+          <label class="sw" data-cat="oldmoney"><input type="radio" name="template" value="maison"><span class="box"><img src="assets/covers/25-maison-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Maison</small></label>
+          <label class="sw" data-cat="destinos"><input type="radio" name="template" value="noir"><span class="box"><img src="assets/covers/26-noir-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Noir</small></label>
+          <label class="sw" data-cat="italia"><input type="radio" name="template" value="riviera"><span class="box"><img src="assets/covers/27-riviera-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Riviera</small></label>
+          <label class="sw" data-cat="minimal"><input type="radio" name="template" value="luna"><span class="box"><img src="assets/covers/28-luna-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Luna</small></label>
+          <label class="sw" data-cat="oldmoney"><input type="radio" name="template" value="roma"><span class="box"><img src="assets/covers/29-roma-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Roma</small></label>
+          <label class="sw" data-cat="classic"><input type="radio" name="template" value="ivory" checked><span class="box"><img src="assets/covers/30-ivory-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Ivory</small></label>
+          <label class="sw" data-cat="italia"><input type="radio" name="template" value="verona"><span class="box"><img src="assets/covers/31-verona-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Verona</small></label>
+          <label class="sw" data-cat="italia"><input type="radio" name="template" value="camelia"><span class="box"><img src="assets/covers/32-camelia-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Camelia</small></label>
+          <label class="sw" data-cat="oldmoney"><input type="radio" name="template" value="amalfi"><span class="box"><img src="assets/covers/33-amalfi-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Amalfi</small></label>
+          <!-- templates:end -->
         </div>
       </div>
     </details>
@@ -291,12 +333,13 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
 
 <script src="assets/config.js"></script>
 <script src="assets/i18n.js"></script>
+<script src="assets/templates.js"></script>
 <script src="assets/invitation.js"></script>
 <script>
 (function(){
   var API = (window.INVITALIA && window.INVITALIA.api) || '';
   var KEY = 'invitalia-draft-v2';
-  var TPL = {palazzo:'Palazzo', linea:'Linea', heritage:'Heritage', amalfi:'Amalfi', botanica:'Botanica', noir:'Noir'};
+  var TPL = {}; INVITALIA_TEMPLATES.list.forEach(function(x){ TPL[x.id] = x.name; });
   var t = I18N.t;
   var $ = function(id){ return document.getElementById(id); };
 
@@ -304,7 +347,7 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
   function freshDefaults(lang){
     var saved = I18N.lang; I18N.set && (I18N.set(lang || I18N.lang));
     var d = {
-      template:'palazzo', name1:'Lucía', name2:'Mateo', greeting:t('ed.def.greeting'),
+      template:INVITALIA_TEMPLATES.default, name1:'Lucía', name2:'Mateo', greeting:t('ed.def.greeting'),
       date:'2027-09-12', time:'17:00', venue:'Villa del Balbianello', address:'Via Comoedia 5, Lenno, Lago di Como', mapUrl:'https://maps.google.com/?q=Villa+del+Balbianello',
       program:[{t:'17:00', n:t('ed.def.prog1')},{t:'18:30', n:t('ed.def.prog2')},{t:'20:00', n:t('ed.def.prog3')}],
       dress:t('ed.def.dress'), rsvpQuestion:t('ed.def.q'), rsvpDeadline:'2027-08-01', askPlusOne:true, askMenu:true, menuOptions:t('ed.def.menu'), askComment:true,
@@ -315,6 +358,9 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
   }
   var store = loadLocal();                       // { data, id, editToken, tests:[], published, publishedAt, updatedAt }
   var state = store.data;
+  // ?template=<id> comes from the gallery on the landing page; old drafts may carry a template id from the first version.
+  var wantedTpl = new URLSearchParams(location.search).get('template');
+  state.template = INVITALIA_TEMPLATES.resolve(wantedTpl || state.template);
   var remote = null;                             // ownerView from server
   var online = false, health = null;
   var saveTimer = null, cloudTimer = null;
@@ -371,6 +417,7 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
   I18N.langs.forEach(function(l){ var o = document.createElement('option'); o.value = l; o.textContent = I18N.names[l]; langSel.appendChild(o); });
   function fillForm(){
     form.querySelectorAll('[data-bind]').forEach(function(el){ var k = el.dataset.bind; if (el.type === 'checkbox') el.checked = !!state[k]; else el.value = state[k] == null ? '' : state[k]; });
+    state.template = INVITALIA_TEMPLATES.resolve(state.template);
     form.querySelectorAll('input[name=template]').forEach(function(r){ r.checked = r.value === state.template; });
   }
   form.querySelectorAll('[data-bind]').forEach(function(el){
@@ -383,6 +430,11 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
     if (k === 'slug') el.addEventListener('blur', function(){ el.value = state.slug; });
   });
   form.querySelectorAll('input[name=template]').forEach(function(r){ r.addEventListener('change', function(){ if (r.checked) { state.template = r.value; render(); save(); } }); });
+  var tplFilters = document.querySelectorAll('#tpl-filters button');
+  tplFilters.forEach(function(f){ f.addEventListener('click', function(){
+    tplFilters.forEach(function(x){ x.setAttribute('aria-pressed','false'); }); f.setAttribute('aria-pressed','true');
+    var k = f.dataset.f; document.querySelectorAll('#swatches .sw').forEach(function(s){ s.hidden = !(k === 'all' || s.dataset.cat === k); });
+  }); });
   function cleanSlug(s){ return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9-]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').slice(0, 48); }
 
   var prog = $('prog');
