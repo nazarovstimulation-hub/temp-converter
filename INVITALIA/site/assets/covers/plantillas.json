@@ -144,12 +144,12 @@
     "mini": "assets/covers/18-corazon-mini.webp"
   },
   {
-    "id": "qos",
-    "name": "Qos",
+    "id": "promesa",
+    "name": "Promesa",
     "category": "minimal",
     "theme": "champagne",
-    "cover": "assets/covers/19-qos.webp",
-    "mini": "assets/covers/19-qos-mini.webp"
+    "cover": "assets/covers/19-promesa.webp",
+    "mini": "assets/covers/19-promesa-mini.webp"
   },
   {
     "id": "sienna",

@@ -27,7 +27,7 @@
     { id: 'colores',   file: '16-colores',   name: 'Colores',   cat: 'destinos', theme: 'azul' },
     { id: 'lettera',   file: '17-lettera',   name: 'Lettera',   cat: 'minimal',  theme: 'linea' },
     { id: 'corazon',   file: '18-corazon',   name: 'Corazón',   cat: 'classic',  theme: 'botanica' },
-    { id: 'qos',       file: '19-qos',       name: 'Qos',       cat: 'minimal',  theme: 'champagne' },
+    { id: 'promesa',   file: '19-promesa',   name: 'Promesa',   cat: 'minimal',  theme: 'champagne' },
     { id: 'sienna',    file: '20-sienna',    name: 'Sienna',    cat: 'minimal',  theme: 'mono' },
     { id: 'editorial', file: '21-editorial', name: 'Editorial', cat: 'minimal',  theme: 'linea' },
     { id: 'alibi',     file: '22-alibi',     name: 'Alibi',     cat: 'oldmoney', theme: 'champagne' },

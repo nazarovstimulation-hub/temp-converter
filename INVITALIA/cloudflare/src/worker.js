@@ -9,7 +9,7 @@
 const LANGS = ['es', 'en', 'it', 'pt', 'fr', 'de', 'ru'];
 const RESERVED_SLUGS = new Set(['api', 'i', 'admin', 'editor', 'index', 'assets', 'login', 'pay', 'static', 'www', 'app', 'help', 'about', 'pricing', 'terms', 'privacy']);
 // Template ids (kept in sync with site/assets/templates.js by scripts/build-templates.mjs)
-const TEMPLATES = ['felicidad', 'anillos', 'viaje', 'nuit', 'jardin', 'oliva', 'azur', 'sepia', 'burdeos', 'rosal', 'belair', 'cisnes', 'rubi', 'mutuo', 'salon', 'colores', 'lettera', 'corazon', 'qos', 'sienna', 'editorial', 'alibi', 'como', 'provence', 'maison', 'noir', 'riviera', 'luna', 'roma', 'ivory', 'verona', 'camelia', 'amalfi'];
+const TEMPLATES = ['felicidad', 'anillos', 'viaje', 'nuit', 'jardin', 'oliva', 'azur', 'sepia', 'burdeos', 'rosal', 'belair', 'cisnes', 'rubi', 'mutuo', 'salon', 'colores', 'lettera', 'corazon', 'promesa', 'sienna', 'editorial', 'alibi', 'como', 'provence', 'maison', 'noir', 'riviera', 'luna', 'roma', 'ivory', 'verona', 'camelia', 'amalfi'];
 const LEGACY_TEMPLATES = { palazzo: 'ivory', linea: 'luna', heritage: 'roma', botanica: 'verona' };
 const DEFAULT_TEMPLATE = 'ivory';
 function pickTemplate(v) { return TEMPLATES.includes(v) ? v : (LEGACY_TEMPLATES[v] || DEFAULT_TEMPLATE); }
