@@ -6,7 +6,7 @@
 <title>Editor de invitación · Invitalia.co</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap">
 <link rel="stylesheet" href="assets/invitation.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <style>
@@ -84,8 +84,20 @@ details.sec summary .eyebrow{font-family:var(--display); font-size:10.5px; lette
 .sw input:checked + .box{border-color:var(--gold-deep); box-shadow:0 0 0 3px var(--gold-soft)}
 .sw input:focus-visible + .box{outline:2px solid var(--gold-deep)}
 .sw small{display:block; font-size:12px; color:var(--muted); margin-top:5px; text-align:center}
-.prog{display:grid; gap:8px}
+.prog{display:grid; gap:10px}
 .prog .row{display:grid; grid-template-columns:92px 1fr 34px; gap:8px; align-items:center}
+.prog .row .desc{grid-column:1 / -1}
+.list{display:grid; gap:10px}
+.list .row{display:grid; gap:6px; padding:10px; border:1px solid var(--line); border-radius:12px; background:#fff; position:relative}
+.list .row input,.list .row textarea{border:1px solid var(--line); border-radius:10px; padding:9px 10px; background:var(--paper); font-weight:300; width:100%; font-family:inherit; font-size:14px}
+.list .row textarea{min-height:56px; resize:vertical}
+.list .row .del{position:absolute; top:6px; right:6px; width:26px; height:26px; border:0; background:transparent; color:var(--muted); font-size:18px; cursor:pointer; border-radius:50%}
+.list .row .del:hover{background:var(--cream)}
+.colors{display:flex; flex-wrap:wrap; gap:10px}
+.colors label{position:relative; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); overflow:hidden; cursor:pointer; box-shadow:inset 0 0 0 3px #fff}
+.colors label input[type=color]{position:absolute; inset:-8px; width:60px; height:60px; border:0; padding:0; cursor:pointer; background:none}
+.colors label .x{position:absolute; top:-4px; right:-4px; width:18px; height:18px; border-radius:50%; border:1px solid var(--line); background:#fff; font-size:11px; line-height:16px; text-align:center; color:var(--muted); cursor:pointer; display:none}
+.colors label:hover .x{display:block}
 .prog input{border:1px solid var(--line); border-radius:10px; padding:9px 10px; background:#fff; font-weight:300; width:100%}
 .prog .del{border:1px solid var(--line); background:#fff; border-radius:10px; height:38px; cursor:pointer; color:var(--muted); font-size:18px; line-height:1}
 .slug{display:flex; align-items:center; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff}
@@ -196,10 +208,11 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
           <label class="sw" data-cat="italia"><input type="radio" name="template" value="riviera"><span class="box"><img src="assets/covers/27-riviera-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Riviera</small></label>
           <label class="sw" data-cat="minimal"><input type="radio" name="template" value="luna"><span class="box"><img src="assets/covers/28-luna-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Luna</small></label>
           <label class="sw" data-cat="oldmoney"><input type="radio" name="template" value="roma"><span class="box"><img src="assets/covers/29-roma-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Roma</small></label>
-          <label class="sw" data-cat="classic"><input type="radio" name="template" value="ivory" checked><span class="box"><img src="assets/covers/30-ivory-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Ivory</small></label>
+          <label class="sw" data-cat="classic"><input type="radio" name="template" value="ivory"><span class="box"><img src="assets/covers/30-ivory-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Ivory</small></label>
           <label class="sw" data-cat="italia"><input type="radio" name="template" value="verona"><span class="box"><img src="assets/covers/31-verona-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Verona</small></label>
           <label class="sw" data-cat="italia"><input type="radio" name="template" value="camelia"><span class="box"><img src="assets/covers/32-camelia-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Camelia</small></label>
           <label class="sw" data-cat="oldmoney"><input type="radio" name="template" value="amalfi"><span class="box"><img src="assets/covers/33-amalfi-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Amalfi</small></label>
+          <label class="sw" data-cat="classic"><input type="radio" name="template" value="intercambio" checked><span class="box"><img src="assets/covers/34-intercambio-mini.webp" alt="" width="320" height="480" loading="lazy"></span><small>Intercambio de anillos</small></label>
           <!-- templates:end -->
         </div>
       </div>
@@ -225,7 +238,17 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
         </div>
         <div class="field"><label for="f-venue" data-i18n="ed.f.venue">Lugar</label><input type="text" id="f-venue" data-bind="venue" maxlength="120"></div>
         <div class="field"><label for="f-addr" data-i18n="ed.f.address">Dirección</label><input type="text" id="f-addr" data-bind="address" maxlength="200"></div>
+        <div class="field"><label for="f-venue-text" data-i18n="ed.f.venueText">Descripción del lugar</label><textarea id="f-venue-text" data-bind="venueText" maxlength="300"></textarea></div>
         <div class="field"><label for="f-map" data-i18n="ed.f.map">Enlace del mapa</label><input type="url" id="f-map" data-bind="mapUrl" placeholder="https://maps.google.com/…"><p class="hint" data-i18n="ed.f.map.hint"></p></div>
+        <div class="field"><label for="f-tz" data-i18n="ed.f.tz">Zona horaria</label><select id="f-tz" data-bind="tz"></select><p class="hint" data-i18n="ed.f.tz.hint"></p></div>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span data-i18n="ed.sec.story">Nuestra historia</span><span class="eyebrow" data-i18n="ed.sec.story.sub">Tres momentos</span></summary>
+      <div class="sec-body">
+        <div class="list" id="ed-story"></div>
+        <button type="button" class="btn btn-ghost btn-xs" id="ed-story-add" data-i18n="ed.story.add">+ Añadir momento</button>
       </div>
     </details>
 
@@ -234,7 +257,24 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
       <div class="sec-body">
         <div class="prog" id="prog"></div>
         <button type="button" class="btn btn-ghost btn-xs" id="prog-add" data-i18n="ed.prog.add">+ Añadir punto</button>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span data-i18n="ed.sec.colors">Colores de la boda</span><span class="eyebrow" data-i18n="ed.sec.colors.sub">Paleta y dress code</span></summary>
+      <div class="sec-body">
+        <div class="colors" id="colors"></div>
+        <button type="button" class="btn btn-ghost btn-xs" id="color-add" data-i18n="ed.colors.add">+ Añadir color</button>
+        <p class="hint" data-i18n="ed.colors.hint"></p>
         <div class="field"><label for="f-dress" data-i18n="ed.f.dress">Dress code</label><input type="text" id="f-dress" data-bind="dress" maxlength="200"></div>
+      </div>
+    </details>
+
+    <details class="sec">
+      <summary><span data-i18n="ed.sec.faq">Preguntas frecuentes</span><span class="eyebrow" id="faq-count"></span></summary>
+      <div class="sec-body">
+        <div class="list" id="ed-faq"></div>
+        <button type="button" class="btn btn-ghost btn-xs" id="ed-faq-add" data-i18n="ed.faq.add">+ Añadir pregunta</button>
       </div>
     </details>
 
@@ -344,12 +384,21 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
   var $ = function(id){ return document.getElementById(id); };
 
   // ---------- state ----------
+  function browserTz(){ try { return Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch(e){ return ''; } }
+  function normalize(d){ // older drafts/imports may lack the newer fields
+    ['program','story','faq','palette'].forEach(function(k){ if (!Array.isArray(d[k])) d[k] = []; });
+    if (typeof d.venueText !== 'string') d.venueText = ''; if (typeof d.tz !== 'string') d.tz = browserTz();
+    return d;
+  }
   function freshDefaults(lang){
     var saved = I18N.lang; I18N.set && (I18N.set(lang || I18N.lang));
     var d = {
       template:INVITALIA_TEMPLATES.default, name1:'Lucía', name2:'Mateo', greeting:t('ed.def.greeting'),
-      date:'2027-09-12', time:'17:00', venue:'Villa del Balbianello', address:'Via Comoedia 5, Lenno, Lago di Como', mapUrl:'https://maps.google.com/?q=Villa+del+Balbianello',
-      program:[{t:'17:00', n:t('ed.def.prog1')},{t:'18:30', n:t('ed.def.prog2')},{t:'20:00', n:t('ed.def.prog3')}],
+      date:'2027-09-12', time:'17:00', tz:browserTz(), venue:'Villa del Balbianello', address:'Via Comoedia 5, Lenno, Lago di Como', venueText:t('ed.def.venueText'), mapUrl:'https://maps.google.com/?q=Villa+del+Balbianello',
+      program:[{t:'17:00', n:t('ed.def.prog1'), d:t('ed.def.prog1d')},{t:'18:30', n:t('ed.def.prog2'), d:t('ed.def.prog2d')},{t:'20:00', n:t('ed.def.prog3'), d:t('ed.def.prog3d')}],
+      story:[{label:t('ed.def.story1l'), title:t('ed.def.story1t'), text:t('ed.def.story1x')},{label:t('ed.def.story2l'), title:t('ed.def.story2t'), text:t('ed.def.story2x')},{label:t('ed.def.story3l'), title:t('ed.def.story3t'), text:t('ed.def.story3x')}],
+      faq:[{q:t('ed.def.faq1q'), a:t('ed.def.faq1a')},{q:t('ed.def.faq2q'), a:t('ed.def.faq2a')},{q:t('ed.def.faq3q'), a:t('ed.def.faq3a')},{q:t('ed.def.faq4q'), a:t('ed.def.faq4a')}],
+      palette:['#b78087','#d5b5ad','#e4d7c2','#a6aa93','#6f7865'],
       dress:t('ed.def.dress'), rsvpQuestion:t('ed.def.q'), rsvpDeadline:'2027-08-01', askPlusOne:true, askMenu:true, menuOptions:t('ed.def.menu'), askComment:true,
       music:true, track:'Ludovico Einaudi — Experience', slug:'lucia-mateo', lang: lang || I18N.lang
     };
@@ -357,7 +406,7 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
     return d;
   }
   var store = loadLocal();                       // { data, id, editToken, tests:[], published, publishedAt, updatedAt }
-  var state = store.data;
+  var state = normalize(store.data);
   // ?template=<id> comes from the gallery on the landing page; old drafts may carry a template id from the first version.
   var wantedTpl = new URLSearchParams(location.search).get('template');
   state.template = INVITALIA_TEMPLATES.resolve(wantedTpl || state.template);
@@ -415,8 +464,17 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
   var form = $('form');
   var langSel = $('f-lang');
   I18N.langs.forEach(function(l){ var o = document.createElement('option'); o.value = l; o.textContent = I18N.names[l]; langSel.appendChild(o); });
+  var tzSel = $('f-tz');
+  function fillTz(){
+    var zones = []; try { zones = Intl.supportedValuesOf('timeZone'); } catch(e){ zones = ['Europe/Madrid','Europe/Lisbon','Europe/Paris','Europe/Rome','Europe/Berlin','Europe/London','Europe/Moscow','America/New_York','America/Mexico_City','America/Bogota','America/Buenos_Aires','America/Sao_Paulo','UTC']; }
+    if (state.tz && zones.indexOf(state.tz) < 0) zones = [state.tz].concat(zones);
+    tzSel.innerHTML = ''; zones.forEach(function(z){ var o = document.createElement('option'); o.value = z; o.textContent = z.replace(/_/g, ' '); tzSel.appendChild(o); });
+  }
+  fillTz();
   function fillForm(){
+    normalize(state); if (state.tz && !tzSel.querySelector('option[value="' + state.tz + '"]')) fillTz();
     form.querySelectorAll('[data-bind]').forEach(function(el){ var k = el.dataset.bind; if (el.type === 'checkbox') el.checked = !!state[k]; else el.value = state[k] == null ? '' : state[k]; });
+    renderStory(); renderFaq(); renderColors();
     state.template = INVITALIA_TEMPLATES.resolve(state.template);
     form.querySelectorAll('input[name=template]').forEach(function(r){ r.checked = r.value === state.template; });
   }
@@ -442,16 +500,49 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
     prog.innerHTML = '';
     state.program.forEach(function(row, i){
       var d = document.createElement('div'); d.className = 'row';
-      d.innerHTML = '<input type="time" aria-label="' + INVITATION.esc(t('ed.prog.time')) + '"><input type="text" maxlength="120" placeholder="' + INVITATION.esc(t('ed.prog.what')) + '" aria-label="' + INVITATION.esc(t('ed.prog.what')) + '"><button type="button" class="del" aria-label="' + INVITATION.esc(t('ed.prog.del')) + '">×</button>';
-      var ins = d.querySelectorAll('input'); ins[0].value = row.t || ''; ins[1].value = row.n || '';
+      d.innerHTML = '<input type="time" aria-label="' + INVITATION.esc(t('ed.prog.time')) + '"><input type="text" maxlength="120" placeholder="' + INVITATION.esc(t('ed.prog.what')) + '" aria-label="' + INVITATION.esc(t('ed.prog.what')) + '"><button type="button" class="del" aria-label="' + INVITATION.esc(t('ed.prog.del')) + '">×</button><input type="text" class="desc" maxlength="200" placeholder="' + INVITATION.esc(t('ed.prog.desc')) + '" aria-label="' + INVITATION.esc(t('ed.prog.desc')) + '">';
+      var ins = d.querySelectorAll('input'); ins[0].value = row.t || ''; ins[1].value = row.n || ''; ins[2].value = row.d || '';
       ins[0].addEventListener('input', function(){ row.t = ins[0].value; render(); save(); });
       ins[1].addEventListener('input', function(){ row.n = ins[1].value; render(); save(); });
+      ins[2].addEventListener('input', function(){ row.d = ins[2].value; render(); save(); });
       d.querySelector('.del').addEventListener('click', function(){ state.program.splice(i, 1); renderProg(); render(); save(); });
       prog.appendChild(d);
     });
     $('prog-count').textContent = I18N.n('ed.prog.count', state.program.length);
   }
-  $('prog-add').addEventListener('click', function(){ state.program.push({t:'', n:''}); renderProg(); render(); save(); var last = prog.lastChild && prog.lastChild.querySelector('input[type=text]'); if (last) last.focus(); });
+  $('prog-add').addEventListener('click', function(){ state.program.push({t:'', n:'', d:''}); renderProg(); render(); save(); var last = prog.lastChild && prog.lastChild.querySelector('input[type=text]'); if (last) last.focus(); });
+
+  // Generic editable lists: story (label/title/text) and FAQ (q/a)
+  function renderList(boxId, items, fields, max){
+    var box = $(boxId); box.innerHTML = '';
+    items.forEach(function(row, i){
+      var d = document.createElement('div'); d.className = 'row';
+      d.innerHTML = fields.map(function(f){ var tag = f.multi ? 'textarea' : 'input type="text"'; return '<' + tag + ' maxlength="' + f.max + '" placeholder="' + INVITATION.esc(t(f.ph)) + '" aria-label="' + INVITATION.esc(t(f.ph)) + '"' + (f.multi ? '></textarea>' : '>'); }).join('') + '<button type="button" class="del" aria-label="' + INVITATION.esc(t('ed.del')) + '">×</button>';
+      var ins = d.querySelectorAll('input,textarea');
+      fields.forEach(function(f, j){ ins[j].value = row[f.k] || ''; ins[j].addEventListener('input', function(){ row[f.k] = ins[j].value; render(); save(); }); });
+      d.querySelector('.del').addEventListener('click', function(){ items.splice(i, 1); renderList(boxId, items, fields, max); render(); save(); });
+      box.appendChild(d);
+    });
+    var add = $(boxId + '-add'); if (add) add.hidden = items.length >= max;
+  }
+  var STORY_F = [{k:'label', ph:'ed.story.label', max:40},{k:'title', ph:'ed.story.title', max:80},{k:'text', ph:'ed.story.text', max:300, multi:true}];
+  var FAQ_F = [{k:'q', ph:'ed.faq.q', max:120},{k:'a', ph:'ed.faq.a', max:400, multi:true}];
+  function renderStory(){ renderList('ed-story', state.story, STORY_F, 6); }
+  function renderFaq(){ renderList('ed-faq', state.faq, FAQ_F, 10); $('faq-count').textContent = state.faq.length ? String(state.faq.length) : ''; }
+  $('ed-story-add').addEventListener('click', function(){ state.story.push({label:'', title:'', text:''}); renderStory(); render(); save(); var r = $('ed-story').lastChild; if (r) r.querySelector('input').focus(); });
+  $('ed-faq-add').addEventListener('click', function(){ state.faq.push({q:'', a:''}); renderFaq(); render(); save(); var r = $('ed-faq').lastChild; if (r) r.querySelector('input').focus(); });
+  function renderColors(){
+    var box = $('colors'); box.innerHTML = '';
+    state.palette.forEach(function(c, i){
+      var l = document.createElement('label'); l.style.background = c;
+      l.innerHTML = '<input type="color" value="' + INVITATION.esc(c) + '" aria-label="' + INVITATION.esc(t('ed.sec.colors')) + '"><span class="x" role="button" aria-label="' + INVITATION.esc(t('ed.del')) + '">×</span>';
+      var inp = l.querySelector('input'); inp.addEventListener('input', function(){ state.palette[i] = inp.value; l.style.background = inp.value; render(); save(); });
+      l.querySelector('.x').addEventListener('click', function(e){ e.preventDefault(); state.palette.splice(i, 1); renderColors(); render(); save(); });
+      box.appendChild(l);
+    });
+    $('color-add').hidden = state.palette.length >= 6;
+  }
+  $('color-add').addEventListener('click', function(){ state.palette.push('#c9a66b'); renderColors(); render(); save(); });
 
   // ---------- responses ----------
   var serverResponses = [], serverCounts = null;
@@ -538,7 +629,7 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
     try {
       var s = JSON.parse(ioJson.value); if (!s || typeof s !== 'object') throw new Error();
       var d = s.data && typeof s.data === 'object' ? s.data : s;
-      state = Object.assign(freshDefaults(d.lang || I18N.lang), d); if (!Array.isArray(state.program)) state.program = [];
+      state = normalize(Object.assign(freshDefaults(d.lang || I18N.lang), d));
       store.id = s.id || null; store.editToken = s.editToken || null; store.tests = Array.isArray(s.tests) ? s.tests : []; remote = null;
       fillForm(); renderProg(); renderResp(); render(); save(true); io.hidden = true; toast(t('toast.loaded'));
       if (online && store.id) api('GET', '/api/invitations/' + encodeURIComponent(store.id)).then(function(j){ applyRemote(j.invitation); loadResponses(); }).catch(function(){});
@@ -595,7 +686,7 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
       if (store.id && store.editToken) {
         p = api('GET', '/api/invitations/' + encodeURIComponent(store.id)).then(function(j){
           var inv = j.invitation; var localNewer = store.updatedAt && inv.updatedAt && new Date(store.updatedAt) > new Date(inv.updatedAt) && !(urlId && urlTok);
-          if (!localNewer) { state = Object.assign(freshDefaults(inv.lang), inv.data, { lang: inv.lang }); fillForm(); renderProg(); render(); }
+          if (!localNewer) { state = normalize(Object.assign(freshDefaults(inv.lang), inv.data, { lang: inv.lang })); fillForm(); renderProg(); render(); }
           applyRemote(inv); return loadResponses();
         }).catch(function(e){ if (e.status === 401 || e.status === 404) { store.id = null; store.editToken = null; persistLocal(); } });
       }
@@ -611,7 +702,7 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
       });
     }).catch(function(){ online = false; setStatus('ed.status.offline'); updateLinks(); });
   }
-  document.addEventListener('i18n:applied', function(){ renderProg(); renderResp(); render(); updatePublishButton(); if (lastStatus) setStatus(lastStatus.key, lastStatus.vars, lastStatus.cls); if (!modal.hidden) openPublish(); });
+  document.addEventListener('i18n:applied', function(){ renderProg(); renderStory(); renderFaq(); renderColors(); renderResp(); render(); updatePublishButton(); if (lastStatus) setStatus(lastStatus.key, lastStatus.vars, lastStatus.cls); if (!modal.hidden) openPublish(); });
   boot();
 })();
 </script>

@@ -12,9 +12,9 @@ INVITALIA/
 │   ├── 404.html
 │   └── assets/
 │       ├── i18n.js            diccionarios de los 7 idiomas + motor de traducción
-│       ├── invitation.js/.css renderizado compartido de la invitación (editor y página del invitado)
-│       ├── templates.js       catálogo de las 33 plantillas (id, nombre, categoría, tema, foto)
-│       ├── covers/            fotos de portada 01–33 (1024×1536) y miniaturas -mini (320×480)
+│       ├── invitation.js/.css renderizado compartido de la invitación: portada, cuenta atrás, historia, programa, lugar y colores, preguntas y RSVP
+│       ├── templates.js       catálogo de las 34 plantillas (id, nombre, categoría, tema, foto)
+│       ├── covers/            fotos de portada 01–34 (1024×1536) y miniaturas -mini (320×480)
 │       ├── config.js          URL de la API (vacía = mismo origen)
 │       └── logo-*.jpg         logotipo: completo, símbolo, texto
 ├── scripts/build-templates.mjs regenera galería, muestras del editor, textos i18n y listas del servidor a partir de templates.js

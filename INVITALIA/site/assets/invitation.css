@@ -1,64 +1,135 @@
-/* Shared invitation rendering (editor preview + guest page). Templates set the --i-* tokens. */
-.inv{--i-bg:#FBF6EC; --i-fg:#3A2E1C; --i-mute:#7B6B52; --i-acc:#B8924A; --i-line:#E7D4AE; --i-card:#FFFFFF; --i-names:'Cormorant Garamond',Georgia,serif; --i-names-style:italic; --i-names-size:38px; --i-names-tt:none; --i-names-ls:0;
-  min-height:100%; background:var(--i-bg); color:var(--i-fg); padding:52px 22px 26px; display:flex; flex-direction:column; align-items:center; text-align:center; position:relative; font-family:'Jost',system-ui,sans-serif; font-weight:300; line-height:1.5}
-.inv > *{position:relative; z-index:1}
-.inv .frame{position:absolute; inset:42px 12px 12px; border:1px solid var(--i-line); border-radius:26px; pointer-events:none; z-index:0}
-.inv .frame::after{content:""; position:absolute; inset:5px; border:1px solid var(--i-line); border-radius:22px; opacity:.6}
-.inv .cover{display:block; width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; border-radius:18px; box-shadow:0 12px 30px rgba(0,0,0,.14); margin:0 0 10px}
-.inv .mono{font-family:'Cinzel','Trajan Pro',serif; color:var(--i-acc); font-size:12px; letter-spacing:.34em; margin-top:6px}
-.inv .names{font-family:var(--i-names); font-style:var(--i-names-style); font-size:var(--i-names-size); line-height:1.05; margin:14px 0 4px; text-transform:var(--i-names-tt); letter-spacing:var(--i-names-ls); text-wrap:balance}
-.inv .names small{display:block; font-family:'Cormorant Garamond',Georgia,serif; font-size:18px; font-style:italic; letter-spacing:.3em; color:var(--i-acc); margin:6px 0}
-.inv .greet{font-family:'Cormorant Garamond',Georgia,serif; font-size:17px; color:var(--i-mute); margin:10px 0 0; max-width:30ch; line-height:1.4; font-style:italic}
-.inv .date{font-family:'Cinzel','Trajan Pro',serif; font-size:13px; letter-spacing:.2em; color:var(--i-mute); margin-top:16px}
-.inv .time{font-size:13px; color:var(--i-mute); margin-top:2px}
-.inv .place{font-size:14px; margin-top:12px; font-weight:400}
-.inv .addr{font-size:12.5px; color:var(--i-mute); margin-top:2px}
-.inv .chips{display:flex; gap:8px; margin:16px 0 0; flex-wrap:wrap; justify-content:center}
-.inv .chip{font-size:11px; letter-spacing:.06em; padding:6px 10px; border-radius:999px; border:1px solid var(--i-line); color:var(--i-acc); background:var(--i-card); display:inline-flex; align-items:center; gap:6px; text-decoration:none; cursor:pointer; font-family:inherit}
+/* Shared invitation rendering (editor preview + guest page + landing demo).
+   Layout follows the «Intercambio de anillos» watercolour design: hero with cover art, countdown, story,
+   programme, venue + colour palette, FAQ and RSVP. Templates only set the --i-* tokens (one .t-<theme> class). */
+.inv{--i-bg:#faf7f1; --i-fg:#453c37; --i-mute:#766b63; --i-acc:#97646a; --i-line:#ded4c7; --i-soft:#eee9df; --i-alt:#f0e5e1; --i-rsvp:#e9eadd; --i-card:rgba(255,255,255,.55); --i-btn-fg:#fff; --i-art:#634e42; --i-art-veil:rgba(250,247,241,.55);
+  --i-serif:'Cormorant Garamond',Georgia,'Times New Roman',serif; --i-script:'Great Vibes','Cormorant Garamond',cursive; --i-sans:'Jost',Arial,system-ui,sans-serif;
+  container-type:inline-size; position:relative; min-height:100%; background:var(--i-bg); color:var(--i-fg); font:16px/1.7 var(--i-serif); -webkit-font-smoothing:antialiased}
+.inv *{box-sizing:border-box}
+.inv a{color:inherit}
+/* neutralise host-page styles (landing / editor globals) */
+.inv section{padding:0; margin:0; background:none}
+.inv footer{display:block; border:0; margin:0; flex-wrap:nowrap; justify-content:center}
+.inv details{background:none; border-radius:0; border-top:0; border-left:0; border-right:0}
+.inv .brand{display:inline-block; gap:0}
+.inv .eyebrow{display:block; font:400 10px var(--i-sans); letter-spacing:3px; text-transform:uppercase; color:var(--i-acc); margin:0}
+.inv .eyebrow::before{content:none}
+.inv h2{font:italic 400 44px/1.1 var(--i-serif); margin:18px 0 26px; text-wrap:balance}
+.inv h3{font:400 22px/1.3 var(--i-serif); margin:0}
+.inv .lead{max-width:610px; margin:0 auto 28px; color:var(--i-mute)}
+.inv .rule{width:60px; height:1px; background:var(--i-acc); margin:18px auto}
+.inv .button{display:inline-block; border:0; background:var(--i-acc); color:var(--i-btn-fg); text-decoration:none; padding:14px 28px; font:400 11px var(--i-sans); letter-spacing:1.8px; text-transform:uppercase; cursor:pointer; border-radius:2px}
+.inv .button[disabled]{opacity:.6; cursor:default}
+.inv .note{font:400 11px/1.6 var(--i-sans); color:var(--i-mute)}
+
+/* top bar */
+.inv .i-top{height:64px; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:0 5%; border-bottom:1px solid var(--i-line)}
+.inv .i-top .brand{font:400 20px var(--i-serif); letter-spacing:4px; text-decoration:none; line-height:1}
+.inv .i-top .brand small{display:block; font:400 8px var(--i-sans); letter-spacing:3px; text-align:center; margin-top:4px; color:var(--i-mute)}
+.inv .i-top nav{display:flex; gap:24px; font:400 10.5px var(--i-sans); letter-spacing:1.5px; text-transform:uppercase}
+.inv .i-top nav a{text-decoration:none}
+
+/* hero */
+.inv .i-hero{display:grid; grid-template-columns:1fr 1fr; min-height:720px}
+.inv .i-intro{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:70px 45px; background:radial-gradient(ellipse at 20% 60%, color-mix(in srgb, var(--i-alt) 70%, transparent), transparent 60%)}
+.inv .i-intro h1{font:italic 400 64px/1.02 var(--i-serif); margin:28px 0; text-wrap:balance}
+.inv .i-intro h1 span{display:block; font-size:24px; color:var(--i-acc); margin:14px 0}
+.inv .i-intro p{max-width:340px; color:var(--i-mute); margin:0}
+.inv .i-date{font-size:22px; letter-spacing:5px; margin:24px 0}
+.inv .i-art{position:relative; min-height:720px; background:var(--i-soft) center 58%/cover no-repeat; isolation:isolate}
+.inv .i-art::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, var(--i-art-veil) 0%, transparent 45%, transparent 80%, var(--i-art-veil) 100%); z-index:0}
+.inv .i-art .art-title{position:absolute; top:22%; left:0; width:100%; text-align:center; font:400 54px/1.15 var(--i-script); color:var(--i-art); padding:0 20px; z-index:1}
+.inv .i-art .art-title span{display:block; line-height:1.05}
+.inv .i-art .art-title small{display:block; font:400 10px var(--i-sans); letter-spacing:4px; text-transform:uppercase; margin-bottom:18px}
+.inv .i-art .art-foot{position:absolute; bottom:26px; left:0; width:100%; text-align:center; font:400 10px var(--i-sans); letter-spacing:4px; text-transform:uppercase; color:var(--i-art); z-index:1}
+.inv .chips{display:flex; gap:8px; margin:0 0 18px; flex-wrap:wrap; justify-content:center}
+.inv .chip{font:400 11px var(--i-sans); letter-spacing:.06em; padding:7px 12px; border-radius:999px; border:1px solid var(--i-line); color:var(--i-acc); background:var(--i-card); display:inline-flex; align-items:center; gap:6px; text-decoration:none; cursor:pointer}
 .inv .chip svg{width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:1.8}
-.inv .sched{margin-top:22px; width:100%; display:grid; gap:8px; font-size:12.5px; color:var(--i-mute); text-align:left; padding:0 6px}
-.inv .sched div{display:flex; justify-content:space-between; gap:12px; border-bottom:1px dashed var(--i-line); padding-bottom:6px}
-.inv .sched b{font-weight:500; color:var(--i-fg); font-variant-numeric:tabular-nums}
-.inv .dress{margin-top:18px; font-size:12.5px; color:var(--i-mute)}
-.inv .dress b{display:block; font-family:'Cinzel','Trajan Pro',serif; font-size:10.5px; letter-spacing:.26em; color:var(--i-acc); margin-bottom:4px; font-weight:500}
-.inv .rsvp{margin-top:auto; padding-top:22px; width:100%; text-align:left}
-.inv .rsvp .box{background:var(--i-card); border:1px solid var(--i-line); border-radius:18px; padding:14px; color:#2B241A}
-.inv .rsvp .q{font-size:13.5px; margin:0 0 4px; font-weight:400}
-.inv .rsvp .dl{font-size:12px; color:#6F6356; margin:0 0 10px}
-.inv .rsvp .opts{display:grid; grid-template-columns:1fr 1fr; gap:8px}
-.inv .rsvp button.o{border:1px solid #E3D6BF; background:#fff; border-radius:12px; padding:10px 6px; font:500 13px 'Jost',system-ui,sans-serif; cursor:pointer; color:#2B241A}
-.inv .rsvp button.o[aria-pressed="true"]{background:var(--i-acc); border-color:var(--i-acc); color:#fff}
-.inv .rsvp .more{display:grid; gap:8px; margin-top:10px}
-.inv .rsvp .more[hidden]{display:none}
-.inv .rsvp input,.inv .rsvp select,.inv .rsvp textarea{width:100%; border:1px solid #E3D6BF; border-radius:10px; padding:9px 10px; font-size:13px; background:#fff; font-family:inherit; color:#2B241A; box-sizing:border-box}
-.inv .rsvp textarea{min-height:56px; resize:vertical}
-.inv .rsvp .send{margin-top:10px; width:100%; border:0; border-radius:12px; padding:11px; background:var(--i-acc); color:#fff; font:500 13px 'Jost',system-ui,sans-serif; cursor:pointer}
-.inv .rsvp .send[disabled]{opacity:.6; cursor:default}
-.inv .rsvp .done{font-size:12.5px; color:#2F5F2F; margin:10px 0 0}
-.inv .rsvp .err{font-size:12.5px; color:#8C3A2B; margin:8px 0 0}
-.inv .foot{margin-top:22px; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--i-mute); opacity:.8}
 
-.t-palazzo{--i-bg:#FBF6EC; --i-fg:#3A2E1C; --i-mute:#7B6B52; --i-acc:#B8924A; --i-line:#DCC79A}
-.t-linea{--i-bg:#FFFFFF; --i-fg:#2B2B2B; --i-mute:#8B8B8B; --i-acc:#2B2B2B; --i-line:#E6E6E6; --i-names:'Jost',system-ui,sans-serif; --i-names-style:normal; --i-names-size:24px; --i-names-tt:uppercase; --i-names-ls:.12em}
-.t-linea .frame{display:none}
-.t-linea .names small{font-family:'Jost',system-ui,sans-serif; font-style:normal; font-size:12px; letter-spacing:.3em}
-.t-heritage{--i-bg:#1F3A2E; --i-fg:#F2E9D4; --i-mute:#C7B27E; --i-acc:#C7B27E; --i-line:rgba(231,220,194,.35); --i-card:#F6F0E2}
-.t-amalfi{--i-bg:linear-gradient(180deg,#F8EFD9 0%, #F3E2BE 100%); --i-fg:#5E3A22; --i-mute:#8A6A4A; --i-acc:#B4532E; --i-line:#E2C9A0}
-.t-amalfi::after{content:""; position:absolute; left:0; right:0; bottom:0; height:30px; background:repeating-linear-gradient(90deg,#B4532E 0 22px,#F8EFD9 22px 44px); opacity:.85; z-index:0}
-.t-botanica{--i-bg:#F2F4EC; --i-fg:#2F3A24; --i-mute:#5E6B4A; --i-acc:#6B7A4A; --i-line:#CBD3B9}
-.t-botanica::before{content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 15% 8%, rgba(107,122,74,.25), transparent 40%), radial-gradient(ellipse at 90% 95%, rgba(107,122,74,.25), transparent 40%); z-index:0}
-.t-noir{--i-bg:#15151A; --i-fg:#F0E6CF; --i-mute:#A89468; --i-acc:#C9AE6E; --i-line:rgba(201,174,110,.4); --i-card:#F6F0E2}
-.t-burdeos{--i-bg:#4A1420; --i-fg:#F6E9DC; --i-mute:#D9B8A2; --i-acc:#D4A96A; --i-line:rgba(212,169,106,.4); --i-card:#F8EFE6}
-.t-azul{--i-bg:#F3F6F8; --i-fg:#23313D; --i-mute:#5F7384; --i-acc:#5C86A6; --i-line:#CBD8E2}
-.t-mono{--i-bg:#F4F2EE; --i-fg:#1C1B19; --i-mute:#6A6762; --i-acc:#1C1B19; --i-line:#D6D2CA; --i-names:'Cormorant Garamond',Georgia,serif; --i-names-style:normal; --i-names-tt:uppercase; --i-names-ls:.08em; --i-names-size:28px}
-.t-mono .cover{filter:grayscale(1)}
-.t-lavanda{--i-bg:#F6F2F8; --i-fg:#3A2F45; --i-mute:#746483; --i-acc:#8E6FA8; --i-line:#DCCFE6}
-.t-blush{--i-bg:#FDF6F4; --i-fg:#4A3A3A; --i-mute:#9A8282; --i-acc:#C98B8B; --i-line:#EED8D3}
-.t-champagne{--i-bg:#F5EFE4; --i-fg:#3F3328; --i-mute:#7E6E5B; --i-acc:#9C7B4F; --i-line:#DCCDB4}
+/* sections */
+.inv .i-sec{padding:90px 8%; text-align:center}
+.inv .count{display:flex; justify-content:center; gap:44px; margin-top:36px}
+.inv .count b{font:400 44px/1 var(--i-serif); display:block; font-variant-numeric:tabular-nums}
+.inv .count span{font:400 9px var(--i-sans); letter-spacing:2px; text-transform:uppercase; color:var(--i-mute)}
+.inv .i-story{background:var(--i-soft)}
+.inv .story-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:50px; margin-top:48px}
+.inv .story-grid p{font-size:14px; color:var(--i-mute); margin:8px 0 0}
+.inv .year{display:block; font:400 11px var(--i-sans); letter-spacing:3px; text-transform:uppercase; color:var(--i-acc); margin-bottom:10px}
+.inv .timeline{max-width:650px; margin:44px auto 0; text-align:left}
+.inv .event{display:grid; grid-template-columns:95px 1fr; gap:28px; padding:22px 0; border-bottom:1px solid var(--i-line)}
+.inv .event time{font-size:24px; color:var(--i-acc); font-variant-numeric:tabular-nums}
+.inv .event p{font-size:14px; margin:6px 0 0; color:var(--i-mute)}
+.inv .i-details{display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--i-line); border-bottom:1px solid var(--i-line)}
+.inv .i-details > div{padding:70px 10%; text-align:center}
+.inv .i-details > div + div{border-left:1px solid var(--i-line); background:var(--i-alt)}
+.inv .i-details p{margin:0 0 12px}
+.inv .i-details .addr{color:var(--i-mute); font-size:15px}
+.inv .swatches{display:flex; justify-content:center; gap:12px; margin:28px 0}
+.inv .swatches i{width:38px; height:38px; border-radius:50%; box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.inv .dress{font-size:15px; color:var(--i-mute)}
+.inv .faq{max-width:700px; margin:auto}
+.inv details{border-bottom:1px solid var(--i-line); text-align:left; padding:18px 0}
+.inv summary{cursor:pointer; font-size:20px; list-style:none; display:flex; justify-content:space-between; gap:12px}
+.inv summary::-webkit-details-marker{display:none}
+.inv summary::after{content:"+"; color:var(--i-acc); font-size:22px; line-height:1}
+.inv details[open] summary::after{content:"–"}
+.inv details p{font-size:14px; color:var(--i-mute); margin:10px 0 0}
 
-/* Guest page: the invitation fills the screen */
-.inv.full{min-height:100vh; min-height:100dvh; padding-top:40px; padding-bottom:32px}
-.inv.full .frame{inset:14px 12px 12px}
-.inv.full .names{font-size:calc(var(--i-names-size) * 1.15)}
-.inv.full > *{max-width:520px; width:100%}
-.inv.full .greet{max-width:38ch}
+/* rsvp */
+.inv .i-rsvp{background:var(--i-rsvp)}
+.inv form.rsvp{max-width:510px; margin:32px auto 0; text-align:left}
+.inv .rsvp label{display:block; font:400 12px/1.8 var(--i-sans); margin:16px 0 5px}
+.inv .rsvp input,.inv .rsvp select,.inv .rsvp textarea{display:block; width:100%; padding:13px; border:1px solid var(--i-line); border-radius:0; background:var(--i-card); color:var(--i-fg); font:16px var(--i-serif)}
+.inv .rsvp textarea{min-height:72px; resize:vertical}
+.inv .rsvp .button{width:100%; margin-top:24px}
+.inv .rsvp .note{margin-top:10px}
+.inv .rsvp .done{padding:16px; border:1px solid var(--i-acc); margin-top:20px; font-size:15px}
+.inv .rsvp .err{color:#8C3A2B; font:400 13px var(--i-sans); margin-top:12px}
+.inv .rsvp [hidden]{display:none}
+.inv .i-foot{text-align:center; padding:44px 20px; font-size:22px; letter-spacing:4px}
+.inv .i-foot p{font:400 10px var(--i-sans); letter-spacing:1px; color:var(--i-mute); margin:6px 0 0}
+
+/* narrow container (phone preview or small screens) */
+@container (max-width:720px){
+  .inv .i-top{height:56px; padding:0 18px}
+  .inv .i-top .brand{font-size:16px}
+  .inv .i-top nav{display:none}
+  .inv .i-hero{display:flex; flex-direction:column-reverse; min-height:0}
+  .inv .i-art{min-height:0; aspect-ratio:3/4; background-position:center 65%}
+  .inv .i-art .art-title{font-size:44px; top:16%}
+  .inv .i-intro{padding:52px 22px}
+  .inv .i-intro h1{font-size:50px}
+  .inv .i-date{font-size:18px}
+  .inv .i-sec{padding:60px 22px}
+  .inv h2{font-size:36px}
+  .inv .story-grid{grid-template-columns:1fr; gap:22px}
+  .inv .count{gap:22px}
+  .inv .count b{font-size:32px}
+  .inv .i-details{grid-template-columns:1fr}
+  .inv .i-details > div{padding:48px 22px}
+  .inv .i-details > div + div{border-left:0}
+  .inv .event{grid-template-columns:62px 1fr; gap:18px}
+  .inv .event time{font-size:19px}
+  .inv h3{font-size:20px}
+}
+
+/* ---------- themes ---------- */
+.t-acuarela{--i-bg:#faf7f1; --i-fg:#453c37; --i-mute:#766b63; --i-acc:#97646a; --i-line:#ded4c7; --i-soft:#eee9df; --i-alt:#f0e5e1; --i-rsvp:#e9eadd; --i-art:#634e42}
+.t-palazzo{--i-bg:#FBF6EC; --i-fg:#3A2E1C; --i-mute:#7B6B52; --i-acc:#B8924A; --i-line:#E3D6BF; --i-soft:#F3EADA; --i-alt:#F6EEDF; --i-rsvp:#EEE6D4; --i-art:#3A2E1C}
+.t-linea{--i-bg:#FFFFFF; --i-fg:#2B2B2B; --i-mute:#7D7D7D; --i-acc:#2B2B2B; --i-line:#E6E6E6; --i-soft:#F5F5F3; --i-alt:#F0F0EE; --i-rsvp:#F3F3F0; --i-art:#2B2B2B; --i-art-veil:rgba(255,255,255,.6)}
+.t-heritage{--i-bg:#1F3A2E; --i-fg:#F2E9D4; --i-mute:#C7B27E; --i-acc:#C7B27E; --i-line:rgba(231,220,194,.28); --i-soft:#24433A; --i-alt:#2A4A40; --i-rsvp:#24433A; --i-card:rgba(255,255,255,.08); --i-btn-fg:#1F3A2E; --i-art:#F6F0E2; --i-art-veil:rgba(31,58,46,.55)}
+.t-amalfi{--i-bg:#F8EFD9; --i-fg:#5E3A22; --i-mute:#8A6A4A; --i-acc:#B4532E; --i-line:#E2C9A0; --i-soft:#F3E2BE; --i-alt:#F6E7CB; --i-rsvp:#EFE1C4; --i-art:#5E3A22; --i-art-veil:rgba(248,239,217,.55)}
+.t-botanica{--i-bg:#F2F4EC; --i-fg:#2F3A24; --i-mute:#5E6B4A; --i-acc:#6B7A4A; --i-line:#CBD3B9; --i-soft:#E8ECDD; --i-alt:#EDF0E4; --i-rsvp:#E6EADA; --i-art:#F6F8F1; --i-art-veil:rgba(47,58,36,.45)}
+.t-noir{--i-bg:#15151A; --i-fg:#F0E6CF; --i-mute:#A89468; --i-acc:#C9AE6E; --i-line:rgba(201,174,110,.28); --i-soft:#1C1C22; --i-alt:#202027; --i-rsvp:#1C1C22; --i-card:rgba(255,255,255,.07); --i-btn-fg:#15151A; --i-art:#F6F0E2; --i-art-veil:rgba(21,21,26,.6)}
+.t-burdeos{--i-bg:#4A1420; --i-fg:#F6E9DC; --i-mute:#D9B8A2; --i-acc:#D4A96A; --i-line:rgba(212,169,106,.3); --i-soft:#541A27; --i-alt:#5C1F2D; --i-rsvp:#541A27; --i-card:rgba(255,255,255,.08); --i-btn-fg:#4A1420; --i-art:#F8EFE6; --i-art-veil:rgba(74,20,32,.55)}
+.t-azul{--i-bg:#F3F6F8; --i-fg:#23313D; --i-mute:#5F7384; --i-acc:#5C86A6; --i-line:#CBD8E2; --i-soft:#E7EDF2; --i-alt:#EAF0F4; --i-rsvp:#E4EBF0; --i-art:#FFFFFF; --i-art-veil:rgba(35,49,61,.45)}
+.t-mono{--i-bg:#F4F2EE; --i-fg:#1C1B19; --i-mute:#6A6762; --i-acc:#1C1B19; --i-line:#D6D2CA; --i-soft:#ECE9E3; --i-alt:#E9E6E0; --i-rsvp:#ECE9E3; --i-art:#FFFFFF; --i-art-veil:rgba(28,27,25,.5)}
+.t-mono .i-art{filter:grayscale(1)}
+.t-lavanda{--i-bg:#F6F2F8; --i-fg:#3A2F45; --i-mute:#746483; --i-acc:#8E6FA8; --i-line:#DCCFE6; --i-soft:#EEE7F2; --i-alt:#F0E9F3; --i-rsvp:#ECE4F0; --i-art:#FFFFFF; --i-art-veil:rgba(58,47,69,.45)}
+.t-blush{--i-bg:#FDF6F4; --i-fg:#4A3A3A; --i-mute:#9A8282; --i-acc:#C98B8B; --i-line:#EED8D3; --i-soft:#F6E9E5; --i-alt:#F8ECE8; --i-rsvp:#F3E6E1; --i-art:#5A4040; --i-art-veil:rgba(253,246,244,.5)}
+.t-champagne{--i-bg:#F5EFE4; --i-fg:#3F3328; --i-mute:#7E6E5B; --i-acc:#9C7B4F; --i-line:#DCCDB4; --i-soft:#EDE4D4; --i-alt:#F0E8D9; --i-rsvp:#EBE2D0; --i-art:#3F3328; --i-art-veil:rgba(245,239,228,.5)}
+
+/* guest page fills the viewport; the language switcher sits over the top bar's right end */
+.inv.full{min-height:100vh; min-height:100dvh}
+.inv.full .i-top{padding-right:150px}
+/* inside the phone mock (landing + editor) the top bar clears the fake notch */
+.phone .inv .i-top{height:auto; padding-top:42px; padding-bottom:10px}

@@ -9,9 +9,9 @@
 const LANGS = ['es', 'en', 'it', 'pt', 'fr', 'de', 'ru'];
 const RESERVED_SLUGS = new Set(['api', 'i', 'admin', 'editor', 'index', 'assets', 'login', 'pay', 'static', 'www', 'app', 'help', 'about', 'pricing', 'terms', 'privacy']);
 // Template ids (kept in sync with site/assets/templates.js by scripts/build-templates.mjs)
-const TEMPLATES = ['felicidad', 'anillos', 'viaje', 'nuit', 'jardin', 'oliva', 'azur', 'sepia', 'burdeos', 'rosal', 'belair', 'cisnes', 'rubi', 'mutuo', 'salon', 'colores', 'lettera', 'corazon', 'promesa', 'sienna', 'editorial', 'alibi', 'como', 'provence', 'maison', 'noir', 'riviera', 'luna', 'roma', 'ivory', 'verona', 'camelia', 'amalfi'];
+const TEMPLATES = ['felicidad', 'anillos', 'viaje', 'nuit', 'jardin', 'oliva', 'azur', 'sepia', 'burdeos', 'rosal', 'belair', 'cisnes', 'rubi', 'mutuo', 'salon', 'colores', 'lettera', 'corazon', 'promesa', 'sienna', 'editorial', 'alibi', 'como', 'provence', 'maison', 'noir', 'riviera', 'luna', 'roma', 'ivory', 'verona', 'camelia', 'amalfi', 'intercambio'];
 const LEGACY_TEMPLATES = { palazzo: 'ivory', linea: 'luna', heritage: 'roma', botanica: 'verona' };
-const DEFAULT_TEMPLATE = 'ivory';
+const DEFAULT_TEMPLATE = 'intercambio';
 function pickTemplate(v) { return TEMPLATES.includes(v) ? v : (LEGACY_TEMPLATES[v] || DEFAULT_TEMPLATE); }
 const PRODUCT_NAME = { es: 'Invitación de boda digital Invitalia', en: 'Invitalia digital wedding invitation', it: 'Invito di nozze digitale Invitalia', pt: 'Convite de casamento digital Invitalia', fr: 'Faire-part de mariage numérique Invitalia', de: 'Digitale Hochzeitseinladung Invitalia', ru: 'Электронное свадебное приглашение Invitalia' };
 const CSV_HEAD = { es: ['Invitado', 'Respuesta', 'Acompañantes', 'Menú', 'Comentario', 'Fecha'], en: ['Guest', 'Answer', 'Plus ones', 'Menu', 'Comment', 'Date'], it: ['Ospite', 'Risposta', 'Accompagnatori', 'Menù', 'Commento', 'Data'], pt: ['Convidado', 'Resposta', 'Acompanhantes', 'Menu', 'Comentário', 'Data'], fr: ['Invité', 'Réponse', 'Accompagnants', 'Menu', 'Commentaire', 'Date'], de: ['Gast', 'Antwort', 'Begleitung', 'Menü', 'Kommentar', 'Datum'], ru: ['Гость', 'Ответ', 'Спутники', 'Меню', 'Комментарий', 'Дата'] };
@@ -53,13 +53,17 @@ function cfg(env) {
 }
 function sanitizeData(input) {
   const d = (input && typeof input === 'object') ? input : {};
-  const prog = Array.isArray(d.program) ? d.program.slice(0, 30).map(p => ({ t: clampStr(p && p.t, 10), n: clampStr(p && p.n, 120) })) : [];
+  const prog = Array.isArray(d.program) ? d.program.slice(0, 30).map(p => ({ t: clampStr(p && p.t, 10), n: clampStr(p && p.n, 120), d: clampStr(p && p.d, 200) })) : [];
+  const story = Array.isArray(d.story) ? d.story.slice(0, 6).map(s => ({ label: clampStr(s && s.label, 40), title: clampStr(s && s.title, 80), text: clampStr(s && s.text, 300) })) : [];
+  const faq = Array.isArray(d.faq) ? d.faq.slice(0, 10).map(f => ({ q: clampStr(f && f.q, 120), a: clampStr(f && f.a, 400) })) : [];
+  const palette = Array.isArray(d.palette) ? d.palette.slice(0, 6).filter(c => /^#[0-9a-fA-F]{6}$/.test(c || '')).map(c => c.toLowerCase()) : [];
   return {
     template: pickTemplate(d.template),
     name1: clampStr(d.name1, 60), name2: clampStr(d.name2, 60), greeting: clampStr(d.greeting, 600),
     date: /^\d{4}-\d{2}-\d{2}$/.test(d.date || '') ? d.date : '', time: /^\d{2}:\d{2}$/.test(d.time || '') ? d.time : '',
-    venue: clampStr(d.venue, 120), address: clampStr(d.address, 200), mapUrl: /^https?:\/\//i.test(d.mapUrl || '') ? clampStr(d.mapUrl, 500) : '',
-    program: prog, dress: clampStr(d.dress, 200),
+    tz: /^[A-Za-z_]+(?:\/[A-Za-z0-9_+-]+){0,2}$/.test(d.tz || '') ? d.tz.slice(0, 50) : '',
+    venue: clampStr(d.venue, 120), address: clampStr(d.address, 200), venueText: clampStr(d.venueText, 300), mapUrl: /^https?:\/\//i.test(d.mapUrl || '') ? clampStr(d.mapUrl, 500) : '',
+    program: prog, story, faq, palette, dress: clampStr(d.dress, 200),
     rsvpQuestion: clampStr(d.rsvpQuestion, 160), rsvpDeadline: /^\d{4}-\d{2}-\d{2}$/.test(d.rsvpDeadline || '') ? d.rsvpDeadline : '',
     askPlusOne: !!d.askPlusOne, askMenu: !!d.askMenu, menuOptions: clampStr(d.menuOptions, 300), askComment: !!d.askComment,
     music: !!d.music, track: clampStr(d.track, 120), slug: slugify(d.slug),

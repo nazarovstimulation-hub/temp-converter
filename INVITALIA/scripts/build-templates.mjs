@@ -60,6 +60,7 @@ const DESC = {
     verona: 'Estilo italiano: velo al viento, colinas y cipreses. Verde de campo y marfil.',
     camelia: 'Estilo italiano: manos bajo el arco, flores blancas y la costa de Amalfi.',
     amalfi: 'Old money: terciopelo dorado, sombra cálida y un gesto íntimo. Oro y noche.',
+    intercambio: 'Acuarela: el anillo en su dedo entre rosas pintadas. Rosa empolvado, salvia y papel.',
   },
   en: {
     felicidad: 'Classic: a stroll between cypresses, pale stone and afternoon light. Ivory and gold.',
@@ -95,6 +96,7 @@ const DESC = {
     verona: 'Italian style: a veil in the wind, hills and cypresses. Field green and ivory.',
     camelia: 'Italian style: hands under the arch, white flowers and the Amalfi coast.',
     amalfi: 'Old money: golden velvet, warm shadow and an intimate gesture. Gold and night.',
+    intercambio: 'Watercolour: the ring on her finger among painted roses. Dusty pink, sage and paper.',
   },
   it: {
     felicidad: 'Classico: passeggiata tra i cipressi, pietra chiara e luce del pomeriggio. Avorio e oro.',
@@ -130,6 +132,7 @@ const DESC = {
     verona: 'Stile italiano: velo al vento, colline e cipressi. Verde campagna e avorio.',
     camelia: 'Stile italiano: mani sotto l’arco, fiori bianchi e la costiera amalfitana.',
     amalfi: 'Old money: velluto dorato, ombra calda e un gesto intimo. Oro e notte.',
+    intercambio: 'Acquerello: l’anello al dito tra rose dipinte. Rosa cipria, salvia e carta.',
   },
   pt: {
     felicidad: 'Clássico: passeio entre ciprestes, pedra clara e luz da tarde. Marfim e ouro.',
@@ -165,6 +168,7 @@ const DESC = {
     verona: 'Estilo italiano: véu ao vento, colinas e ciprestes. Verde do campo e marfim.',
     camelia: 'Estilo italiano: mãos sob o arco, flores brancas e a costa de Amalfi.',
     amalfi: 'Old money: veludo dourado, sombra quente e um gesto íntimo. Ouro e noite.',
+    intercambio: 'Aguarela: o anel no dedo entre rosas pintadas. Rosa-velho, salva e papel.',
   },
   fr: {
     felicidad: 'Classique : promenade entre les cyprès, pierre claire et lumière d’après-midi. Ivoire et or.',
@@ -200,6 +204,7 @@ const DESC = {
     verona: 'Style italien : voile au vent, collines et cyprès. Vert des champs et ivoire.',
     camelia: 'Style italien : mains sous l’arche, fleurs blanches et la côte amalfitaine.',
     amalfi: 'Old money : velours doré, ombre chaude et un geste intime. Or et nuit.',
+    intercambio: 'Aquarelle : la bague au doigt parmi des roses peintes. Vieux rose, sauge et papier.',
   },
   de: {
     felicidad: 'Klassisch: Spaziergang zwischen Zypressen, heller Stein und Nachmittagslicht. Elfenbein und Gold.',
@@ -235,6 +240,7 @@ const DESC = {
     verona: 'Italienischer Stil: Schleier im Wind, Hügel und Zypressen. Feldgrün und Elfenbein.',
     camelia: 'Italienischer Stil: Hände unter dem Bogen, weiße Blüten und die Amalfiküste.',
     amalfi: 'Old money: goldener Samt, warmer Schatten und eine intime Geste. Gold und Nacht.',
+    intercambio: 'Aquarell: der Ring am Finger zwischen gemalten Rosen. Altrosa, Salbei und Papier.',
   },
   ru: {
     felicidad: 'Классика: прогулка среди кипарисов, светлый камень и вечерний свет. Слоновая кость и золото.',
@@ -270,6 +276,7 @@ const DESC = {
     verona: 'Итальянский стиль: фата на ветру, холмы и кипарисы. Полевая зелень и слоновая кость.',
     camelia: 'Итальянский стиль: руки под аркой, белые цветы и побережье Амальфи.',
     amalfi: 'Old money: золотой бархат, тёплая тень и нежный жест. Золото и ночь.',
+    intercambio: 'Акварель: кольцо на пальце среди нарисованных роз. Пыльная роза, шалфей и бумага.',
   },
 };
 

@@ -41,12 +41,13 @@
     { id: 'ivory',     file: '30-ivory',     name: 'Ivory',     cat: 'classic',  theme: 'palazzo' },
     { id: 'verona',    file: '31-verona',    name: 'Verona',    cat: 'italia',   theme: 'botanica' },
     { id: 'camelia',   file: '32-camelia',   name: 'Camelia',   cat: 'italia',   theme: 'amalfi' },
-    { id: 'amalfi',    file: '33-amalfi',    name: 'Amalfi',    cat: 'oldmoney', theme: 'noir' }
+    { id: 'amalfi',    file: '33-amalfi',    name: 'Amalfi',    cat: 'oldmoney', theme: 'noir' },
+    { id: 'intercambio', file: '34-intercambio', name: 'Intercambio de anillos', cat: 'classic', theme: 'acuarela' }
   ];
   var CATS = ['classic', 'minimal', 'oldmoney', 'italia', 'papel', 'destinos'];
   // Template ids from the first version of the site map to the same photo under its new name.
   var LEGACY = { palazzo: 'ivory', linea: 'luna', heritage: 'roma', botanica: 'verona' };
-  var DEFAULT = 'ivory';
+  var DEFAULT = 'intercambio';
   var byId = {};
   LIST.forEach(function (x) { x.cover = 'assets/covers/' + x.file + '.webp'; x.mini = 'assets/covers/' + x.file + '-mini.webp'; byId[x.id] = x; });
   function resolve(id) { id = LEGACY[id] || id; return byId[id] ? id : DEFAULT; }

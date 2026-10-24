@@ -262,5 +262,13 @@
     "theme": "noir",
     "cover": "assets/covers/33-amalfi.webp",
     "mini": "assets/covers/33-amalfi-mini.webp"
+  },
+  {
+    "id": "intercambio",
+    "name": "Intercambio de anillos",
+    "category": "classic",
+    "theme": "acuarela",
+    "cover": "assets/covers/34-intercambio.webp",
+    "mini": "assets/covers/34-intercambio-mini.webp"
   }
 ]
