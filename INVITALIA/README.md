@@ -67,8 +67,12 @@ El `editToken` se guarda solo como hash; el editor lo conserva en el navegador y
 
 ## Despliegue
 
-**Opción A, todo en un servidor (recomendada):** Render / Railway / Fly / cualquier VPS con Node 22.
-`render.yaml` ya describe el servicio con disco persistente para SQLite. Pon `BASE_URL=https://invitalia.co`.
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nazarovstimulation-hub/temp-converter)
+
+**Opción A, todo en un servidor (recomendada):** Render con el Blueprint `render.yaml` de la raíz del repositorio
+(servicio Docker + disco persistente para SQLite, `BASE_URL=https://invitalia.co`). Guía paso a paso, con el dominio
+de Wix y Stripe, en **[DEPLOY.md](DEPLOY.md)**. Comprobación tras el despliegue: `node server/check-deploy.js invitalia.co`.
+También sirve Railway, Fly o cualquier VPS con Node 22 usando `server/Dockerfile`.
 
 **Opción B, sitio en GitHub Pages + API aparte:** el workflow `.github/workflows/pages.yml` publica `site/`.
 En `site/assets/config.js` escribe la URL del servidor en `window.INVITALIA.api` y añade el dominio del sitio a `CORS_ORIGINS` del servidor.
