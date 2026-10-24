@@ -1,0 +1,32 @@
+[
+  {
+    "template": "Palazzo",
+    "cover": "assets/covers/palazzo.webp",
+    "source": "11-belair.webp"
+  },
+  {
+    "template": "Linea",
+    "cover": "assets/covers/linea.webp",
+    "source": "21-editorial.webp"
+  },
+  {
+    "template": "Heritage",
+    "cover": "assets/covers/heritage.webp",
+    "source": "06-oliva.webp"
+  },
+  {
+    "template": "Amalfi",
+    "cover": "assets/covers/amalfi.webp",
+    "source": "27-riviera.webp"
+  },
+  {
+    "template": "Botanica",
+    "cover": "assets/covers/botanica.webp",
+    "source": "05-jardin.webp"
+  },
+  {
+    "template": "Noir",
+    "cover": "assets/covers/noir.webp",
+    "source": "14-mutuo.webp"
+  }
+]
