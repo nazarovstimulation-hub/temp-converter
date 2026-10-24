@@ -5,10 +5,10 @@
  * <title>, meta description y pie de página).
  */
 window.BRAND = {
-  name: "FotoFiesta",            // ← nombre de tu marca
+  name: "Fiestalia",            // ← nombre de tu marca
   tagline: "El álbum de tu evento, hecho por tus invitados",
-  domain: "fotofiesta.es",       // ← tu dominio
-  email: "hola@fotofiesta.es",   // ← correo de contacto
+  domain: "fiestalia.com",       // ← tu dominio
+  email: "hola@fiestalia.com",   // ← correo de contacto
   whatsapp: "+34 600 000 000",   // ← teléfono / WhatsApp
   city: "Madrid, España",
   freePhotos: 50,                // fotos gratis por álbum
