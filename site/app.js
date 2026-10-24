@@ -1,6 +1,11 @@
 /* Lógica de la landing: marca, calculador de planes, mockups animados, menú. */
 (function () {
   const B = window.BRAND || {};
+
+  /* ── Tema de color: ?theme=oro|noche|rosa o BRAND.theme ─ */
+  const themeParam = new URLSearchParams(location.search).get("theme");
+  const theme = themeParam || B.theme;
+  if (theme && theme !== "fiesta") document.documentElement.setAttribute("data-theme", theme);
   const fmtInt = (n) => new Intl.NumberFormat("es-ES").format(n);
   const fmtEur = (n) => n === 0 ? "0" : new Intl.NumberFormat("es-ES", { maximumFractionDigits: 0 }).format(n);
 
