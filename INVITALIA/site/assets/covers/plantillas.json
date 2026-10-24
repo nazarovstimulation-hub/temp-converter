@@ -1,32 +1,10 @@
 [
-  {
-    "template": "Palazzo",
-    "cover": "assets/covers/palazzo.webp",
-    "source": "11-belair.webp"
-  },
-  {
-    "template": "Linea",
-    "cover": "assets/covers/linea.webp",
-    "source": "21-editorial.webp"
-  },
-  {
-    "template": "Heritage",
-    "cover": "assets/covers/heritage.webp",
-    "source": "06-oliva.webp"
-  },
-  {
-    "template": "Amalfi",
-    "cover": "assets/covers/amalfi.webp",
-    "source": "27-riviera.webp"
-  },
-  {
-    "template": "Botanica",
-    "cover": "assets/covers/botanica.webp",
-    "source": "05-jardin.webp"
-  },
-  {
-    "template": "Noir",
-    "cover": "assets/covers/noir.webp",
-    "source": "14-mutuo.webp"
-  }
+  { "template": "Palazzo",  "cover": "assets/covers/palazzo.webp",  "mini": "assets/covers/palazzo-mini.webp",  "source": "30-ivory.webp" },
+  { "template": "Linea",    "cover": "assets/covers/linea.webp",    "mini": "assets/covers/linea-mini.webp",    "source": "28-luna.webp" },
+  { "template": "Heritage", "cover": "assets/covers/heritage.webp", "mini": "assets/covers/heritage-mini.webp", "source": "29-roma.webp" },
+  { "template": "Amalfi",   "cover": "assets/covers/amalfi.webp",   "mini": "assets/covers/amalfi-mini.webp",   "source": "27-riviera.webp" },
+  { "template": "Botanica", "cover": "assets/covers/botanica.webp", "mini": "assets/covers/botanica-mini.webp", "source": "31-verona.webp" },
+  { "template": "Noir",     "cover": "assets/covers/noir.webp",     "mini": "assets/covers/noir-mini.webp",     "source": "33-amalfi.webp" },
+  { "template": null,       "note": "32-camelia.webp is uploaded but not assigned to a template yet" },
+  { "illustrated": "assets/covers/illustrated/*.webp are the vector-drawn covers kept as an alternative" }
 ]
