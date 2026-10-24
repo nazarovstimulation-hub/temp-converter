@@ -73,7 +73,8 @@ details.sec summary .eyebrow{font-family:var(--display); font-size:10.5px; lette
 .swatches{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
 .sw{position:relative; cursor:pointer}
 .sw input{position:absolute; opacity:0; inset:0; margin:0}
-.sw .box{aspect-ratio:3/4; border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; border:2px solid transparent; padding:8px; text-align:center}
+.sw .box{aspect-ratio:3/4; border-radius:10px; display:block; overflow:hidden; border:2px solid transparent; padding:0; background:var(--ivory)}
+.sw .box img{display:block; width:100%; height:100%; object-fit:cover}
 .sw .box i{font-family:var(--script); font-style:italic; font-size:18px; line-height:1}
 .sw .box em{font-family:var(--display); font-style:normal; font-size:8px; letter-spacing:.2em}
 .sw input:checked + .box{border-color:var(--gold-deep); box-shadow:0 0 0 3px var(--gold-soft)}
@@ -152,12 +153,12 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
       <summary><span data-i18n="ed.sec.template">Plantilla</span><span class="eyebrow" id="tpl-name">Palazzo</span></summary>
       <div class="sec-body">
         <div class="swatches" id="swatches">
-          <label class="sw"><input type="radio" name="template" value="palazzo" checked><span class="box" style="background:#FBF6EC;color:#3A2E1C;outline:1px solid #C9A86A;outline-offset:-6px"><i>L &amp; M</i><em>24 · 06</em></span><small>Palazzo</small></label>
-          <label class="sw"><input type="radio" name="template" value="linea"><span class="box" style="background:#fff;color:#2B2B2B"><i style="font-family:var(--body);font-style:normal;font-size:11px;letter-spacing:.14em">ANA · DIEGO</i><em style="color:#999">03 · 10</em></span><small>Linea</small></label>
-          <label class="sw"><input type="radio" name="template" value="heritage"><span class="box" style="background:#1F3A2E;color:#F2E9D4"><i>E &amp; A</i><em style="color:#C7B27E">15 · 05</em></span><small>Heritage</small></label>
-          <label class="sw"><input type="radio" name="template" value="amalfi"><span class="box" style="background:linear-gradient(#F8EFD9,#F3E2BE);color:#5E3A22"><i>C &amp; M</i><em style="color:#B4532E">19 · 09</em></span><small>Amalfi</small></label>
-          <label class="sw"><input type="radio" name="template" value="botanica"><span class="box" style="background:#F2F4EC;color:#2F3A24"><i>P &amp; I</i><em style="color:#6B7A4A">08 · 08</em></span><small>Botanica</small></label>
-          <label class="sw"><input type="radio" name="template" value="noir"><span class="box" style="background:#15151A;color:#F0E6CF"><i>S &amp; M</i><em style="color:#A89468">31 · 12</em></span><small>Noir</small></label>
+          <label class="sw"><input type="radio" name="template" value="palazzo" checked><span class="box"><img src="assets/covers/palazzo.webp" alt="" width="900" height="1200" loading="lazy"></span><small>Palazzo</small></label>
+          <label class="sw"><input type="radio" name="template" value="linea"None><span class="box"><img src="assets/covers/linea.webp" alt="" width="900" height="1200" loading="lazy"></span><small>Linea</small></label>
+          <label class="sw"><input type="radio" name="template" value="heritage"None><span class="box"><img src="assets/covers/heritage.webp" alt="" width="900" height="1200" loading="lazy"></span><small>Heritage</small></label>
+          <label class="sw"><input type="radio" name="template" value="amalfi"None><span class="box"><img src="assets/covers/amalfi.webp" alt="" width="900" height="1200" loading="lazy"></span><small>Amalfi</small></label>
+          <label class="sw"><input type="radio" name="template" value="botanica"None><span class="box"><img src="assets/covers/botanica.webp" alt="" width="900" height="1200" loading="lazy"></span><small>Botanica</small></label>
+          <label class="sw"><input type="radio" name="template" value="noir"None><span class="box"><img src="assets/covers/noir.webp" alt="" width="900" height="1200" loading="lazy"></span><small>Noir</small></label>
         </div>
       </div>
     </details>
