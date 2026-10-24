@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Invitalia Logo Concepts</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Marcellus&family=Bodoni+Moda:wght@500&family=Italiana&family=Fraunces:opsz,wght@9..144,500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500&family=Josefin+Sans:wght@600&family=Outfit:wght@600&family=Cinzel:wght@600&display=swap">
+<style>
+*{box-sizing:border-box} body{margin:0} img,svg{max-width:100%}
+/* Layout: a quiet stone-grey gallery; every concept brings its own colour on its own tile. */
+:root{
+  --bg:#ECEBE6; --fg:#1C1B19; --muted:#5E5B55; --line:#D3D0C8; --card:#F7F6F2; --mono-bg:#FFFFFF; --accent:#8A3B2E;
+  --display:'Marcellus','Times New Roman',serif; --body:'Manrope',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#15161A; --fg:#ECE9E1; --muted:#A39F96; --line:#2C2E34; --card:#1E2026; --mono-bg:#101114; --accent:#D9A08E; color-scheme:dark }
+}
+:root[data-theme="dark"]{ --bg:#15161A; --fg:#ECE9E1; --muted:#A39F96; --line:#2C2E34; --card:#1E2026; --mono-bg:#101114; --accent:#D9A08E; color-scheme:dark }
+body{ background:var(--bg); color:var(--fg); font-family:var(--body); font-size:16px; line-height:1.55;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); padding-block:0 64px }
+.wrap{ max-width:1080px; margin:0 auto }
+header{ padding-block:56px 32px; border-bottom:1px solid var(--line); display:grid; gap:14px }
+.eyebrow{ font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted) }
+h1{ font-family:var(--display); font-weight:400; font-size:clamp(34px,6vw,60px); line-height:1.05; margin:0; text-wrap:balance }
+h1 small{ font-size:.42em; color:var(--muted); letter-spacing:.08em }
+.lead{ max-width:62ch; color:var(--muted); margin:0 }
+.brief{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px }
+.brief span{ font-size:13px; padding:4px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted) }
+.grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,480px),1fr)); gap:28px; padding-block:36px }
+.concept{ background:var(--card); border:1px solid var(--line); border-radius:20px; overflow:hidden; display:grid; grid-template-rows:auto 1fr; min-width:0 }
+.tile{ aspect-ratio:16/9; display:grid; place-items:center; max-width:100%; position:relative }
+.tile svg{ width:min(46%,210px); height:auto }
+.tile .num{ position:absolute; top:14px; left:16px; font-family:var(--display); font-size:13px; letter-spacing:.14em; opacity:.6 }
+.body{ padding:22px 24px 24px; display:grid; gap:16px; min-width:0 }
+.lockup{ display:flex; align-items:center; gap:12px; min-width:0; padding:12px 16px; border-radius:12px }
+.lockup svg{ width:40px; height:40px; flex:none }
+.word{ font-size:clamp(22px,3vw,30px); line-height:1; white-space:nowrap; min-width:0 }
+.word b{ font-weight:inherit }
+.word small{ font-size:.5em; opacity:.6; margin-left:.15em }
+h2{ margin:0; font-family:var(--display); font-weight:400; font-size:24px; line-height:1.15 }
+h2 span{ display:block; font-family:var(--body); font-size:14px; color:var(--muted); margin-top:4px }
+p{ margin:0 }
+.why{ padding-left:14px; border-left:2px solid var(--accent); color:var(--muted) }
+.meta{ display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:start }
+@media (max-width:520px){ .meta{ grid-template-columns:1fr } }
+.label{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-bottom:8px }
+.pal{ display:flex; gap:8px; flex-wrap:wrap; padding-bottom:18px }
+.pal i{ display:block; width:56px; height:36px; border-radius:8px; border:1px solid var(--line); position:relative }
+.pal i::after{ content:attr(data-hex); position:absolute; top:100%; left:0; font-style:normal; font-size:10.5px; color:var(--muted); margin-top:4px; font-variant-numeric:tabular-nums }
+.mono{ display:flex; align-items:flex-end; gap:16px; background:var(--mono-bg); border:1px solid var(--line); border-radius:12px; padding:12px 14px; color:var(--fg) }
+.mono svg{ display:block }
+.font{ font-size:14px; color:var(--muted) }
+.font b{ color:var(--fg); font-weight:600 }
+.use{ font-size:14px; color:var(--muted) }
+footer{ border-top:1px solid var(--line); padding-top:28px; color:var(--muted); font-size:14px; display:grid; gap:10px; max-width:70ch }
+code{ font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:13px; background:var(--card); border:1px solid var(--line); border-radius:6px; padding:1px 6px }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Invitalia.co · брендинг · 10 концептов</div>
+  <h1>Десять знаков для Invitalia <small>.co</small></h1>
+  <p class="lead">Онлайн-платформа электронных свадебных приглашений: готовые шаблоны, RSVP-анкета, карта проезда, музыка и QR-код в каждом приглашении, ответы гостей в личном кабинете. Каждый концепт ниже построен на одном запоминающемся значке, который читается и в 16 пикселей, и на афише.</p>
+  <div class="brief"><span>Классика</span><span>Минимализм</span><span>Old money</span><span>Итальянский стиль</span><span>RSVP</span><span>Карта</span><span>QR-код</span></div>
+</header>
+<section class="grid">
+<article class="concept" id="c01">
+  <div class="tile" style="background:#F2E7DA"><span class="num" style="color:#6E1A2B">01 / 10</span><svg viewBox="0 0 240 240" aria-hidden="true"><circle cx="120" cy="118" r="72" fill="#6E1A2B"/>
+<circle cx="192.0" cy="118.0" r="11" fill="#6E1A2B"/>
+<circle cx="184.9" cy="149.2" r="11" fill="#6E1A2B"/>
+<circle cx="164.9" cy="174.3" r="11" fill="#6E1A2B"/>
+<circle cx="136.0" cy="188.2" r="11" fill="#6E1A2B"/>
+<circle cx="104.0" cy="188.2" r="11" fill="#6E1A2B"/>
+<circle cx="75.1" cy="174.3" r="11" fill="#6E1A2B"/>
+<circle cx="55.1" cy="149.2" r="11" fill="#6E1A2B"/>
+<circle cx="48.0" cy="118.0" r="11" fill="#6E1A2B"/>
+<circle cx="55.1" cy="86.8" r="11" fill="#6E1A2B"/>
+<circle cx="75.1" cy="61.7" r="11" fill="#6E1A2B"/>
+<circle cx="104.0" cy="47.8" r="11" fill="#6E1A2B"/>
+<circle cx="136.0" cy="47.8" r="11" fill="#6E1A2B"/>
+<circle cx="164.9" cy="61.7" r="11" fill="#6E1A2B"/>
+<circle cx="184.9" cy="86.8" r="11" fill="#6E1A2B"/>
+<path d="M140,180 C160,200 178,212 196,226 C184,206 180,180 182,160 Z" fill="#6E1A2B"/>
+<circle cx="120" cy="118" r="54" fill="none" stroke="#F2E7DA" stroke-width="3"/>
+<rect x="112" y="88" width="16" height="60" fill="#F2E7DA"/>
+<rect x="98" y="82" width="44" height="8" fill="#F2E7DA"/>
+<rect x="98" y="146" width="44" height="8" fill="#F2E7DA"/></svg></div>
+  <div class="body">
+    <div class="lockup" style="color:#6E1A2B;background:#F2E7DA"><svg viewBox="0 0 240 240" aria-hidden="true"><circle cx="120" cy="118" r="72" fill="#6E1A2B"/>
+<circle cx="192.0" cy="118.0" r="11" fill="#6E1A2B"/>
+<circle cx="184.9" cy="149.2" r="11" fill="#6E1A2B"/>
+<circle cx="164.9" cy="174.3" r="11" fill="#6E1A2B"/>
+<circle cx="136.0" cy="188.2" r="11" fill="#6E1A2B"/>
+<circle cx="104.0" cy="188.2" r="11" fill="#6E1A2B"/>
+<circle cx="75.1" cy="174.3" r="11" fill="#6E1A2B"/>
+<circle cx="55.1" cy="149.2" r="11" fill="#6E1A2B"/>
+<circle cx="48.0" cy="118.0" r="11" fill="#6E1A2B"/>
+<circle cx="55.1" cy="86.8" r="11" fill="#6E1A2B"/>
+<circle cx="75.1" cy="61.7" r="11" fill="#6E1A2B"/>
+<circle cx="104.0" cy="47.8" r="11" fill="#6E1A2B"/>
+<circle cx="136.0" cy="47.8" r="11" fill="#6E1A2B"/>
+<circle cx="164.9" cy="61.7" r="11" fill="#6E1A2B"/>
+<circle cx="184.9" cy="86.8" r="11" fill="#6E1A2B"/>
+<path d="M140,180 C160,200 178,212 196,226 C184,206 180,180 182,160 Z" fill="#6E1A2B"/>
+<circle cx="120" cy="118" r="54" fill="none" stroke="#F2E7DA" stroke-width="3"/>
+<rect x="112" y="88" width="16" height="60" fill="#F2E7DA"/>
+<rect x="98" y="82" width="44" height="8" fill="#F2E7DA"/>
+<rect x="98" y="146" width="44" height="8" fill="#F2E7DA"/></svg><div class="word" style="font-family:'Cormorant Garamond', Georgia, serif;font-style:italic;font-weight:500;letter-spacing:.02em"><b>Invitalia</b><small>.co</small></div></div>
+    <h2>Sigillo<span>Сургучная печать-уведомление</span></h2>
+    <p>Классическая сургучная печать с монограммой I, но у неё хвостик пузыря сообщения. Один силуэт говорит сразу всё: торжественное приглашение, которое приходит в мессенджер.</p>
+    <p class="why">Печать все знают, пузырь все знают. Их сочетание никто не ждёт, поэтому значок запоминается с первого взгляда. Отлично читается в размере фавиконки.</p>
+    <div class="meta">
+      <div><div class="label">Палитра</div><div class="pal"><i style="background:#6E1A2B" data-hex="#6E1A2B"></i><i style="background:#C9A063" data-hex="#C9A063"></i><i style="background:#F2E7DA" data-hex="#F2E7DA"></i></div></div>
+      <div><div class="label">Монохром · 48 / 32 / 16 px</div>
+        <div class="mono"><svg width="48" height="48" viewBox="0 0 240 240" aria-hidden="true"><circle cx="120" cy="118" r="72" fill="currentColor"/>
+<circle cx="192.0" cy="118.0" r="11" fill="currentColor"/>
+<circle cx="184.9" cy="149.2" r="11" fill="currentColor"/>
+<circle cx="164.9" cy="174.3" r="11" fill="currentColor"/>
+<circle cx="136.0" cy="188.2" r="11" fill="currentColor"/>
+<circle cx="104.0" cy="188.2" r="11" fill="currentColor"/>
+<circle cx="75.1" cy="174.3" r="11" fill="currentColor"/>
+<circle cx="55.1" cy="149.2" r="11" fill="currentColor"/>
+<circle cx="48.0" cy="118.0" r="11" fill="currentColor"/>
+<circle cx="55.1" cy="86.8" r="11" fill="currentColor"/>
+<circle cx="75.1" cy="61.7" r="11" fill="currentColor"/>
+<circle cx="104.0" cy="47.8" r="11" fill="currentColor"/>
+<circle cx="136.0" cy="47.8" r="11" fill="currentColor"/>
+<circle cx="164.9" cy="61.7" r="11" fill="currentColor"/>
+<circle cx="184.9" cy="86.8" r="11" fill="currentColor"/>
+<path d="M140,180 C160,200 178,212 196,226 C184,206 180,180 182,160 Z" fill="currentColor"/>
+<circle cx="120" cy="118" r="54" fill="none" stroke="var(--mono-bg)" stroke-width="3"/>
+<rect x="112" y="88" width="16" height="60" fill="var(--mono-bg)"/>
+<rect x="98" y="82" width="44" height="8" fill="var(--mono-bg)"/>
+<rect x="98" y="146" width="44" height="8" fill="var(--mono-bg)"/></svg><svg width="32" height="32" viewBox="0 0 240 240" aria-hidden="true"><circle cx="120" cy="118" r="72" fill="currentColor"/>
+<circle cx="192.0" cy="118.0" r="11" fill="currentColor"/>
+<circle cx="184.9" cy="149.2" r="11" fill="currentColor"/>
+<circle cx="164.9" cy="174.3" r="11" fill="currentColor"/>
+<circle cx="136.0" cy="188.2" r="11" fill="currentColor"/>
+<circle cx="104.0" cy="188.2" r="11" fill="currentColor"/>
+<circle cx="75.1" cy="174.3" r="11" fill="currentColor"/>
+<circle cx="55.1" cy="149.2" r="11" fill="currentColor"/>
+<circle cx="48.0" cy="118.0" r="11" fill="currentColor"/>
+<circle cx="55.1" cy="86.8" r="11" fill="currentColor"/>
+<circle cx="75.1" cy="61.7" r="11" fill="currentColor"/>
+<circle cx="104.0" cy="47.8" r="11" fill="currentColor"/>
+<circle cx="136.0" cy="47.8" r="11" fill="currentColor"/>
+<circle cx="164.9" cy="61.7" r="11" fill="currentColor"/>
+<circle cx="184.9" cy="86.8" r="11" fill="currentColor"/>
+<path d="M140,180 C160,200 178,212 196,226 C184,206 180,180 182,160 Z" fill="currentColor"/>
+<circle cx="120" cy="118" r="54" fill="none" stroke="var(--mono-bg)" stroke-width="3"/>
+<rect x="112" y="88" width="16" height="60" fill="var(--mono-bg)"/>
+<rect x="98" y="82" width="44" height="8" fill="var(--mono-bg)"/>
+<rect x="98" y="146" width="44" height="8" fill="var(--mono-bg)"/></svg><svg width="16" height="16" viewBox="0 0 240 240" aria-hidden="true"><circle cx="120" cy="118" r="72" fill="currentColor"/>
+<circle cx="192.0" cy="118.0" r="11" fill="currentColor"/>
+<circle cx="184.9" cy="149.2" r="11" fill="currentColor"/>
+<circle cx="164.9" cy="174.3" r="11" fill="currentColor"/>
+<circle cx="136.0" cy="188.2" r="11" fill="currentColor"/>
+<circle cx="104.0" cy="188.2" r="11" fill="currentColor"/>
+<circle cx="75.1" cy="174.3" r="11" fill="currentColor"/>
+<circle cx="55.1" cy="149.2" r="11" fill="currentColor"/>
+<circle cx="48.0" cy="118.0" r="11" fill="currentColor"/>
+<circle cx="55.1" cy="86.8" r="11" fill="currentColor"/>
+<circle cx="75.1" cy="61.7" r="11" fill="currentColor"/>
+<circle cx="104.0" cy="47.8" r="11" fill="currentColor"/>
+<circle cx="136.0" cy="47.8" r="11" fill="currentColor"/>
+<circle cx="164.9" cy="61.7" r="11" fill="currentColor"/>
+<circle cx="184.9" cy="86.8" r="11" fill="currentColor"/>
+<path d="M140,180 C160,200 178,212 196,226 C184,206 180,180 182,160 Z" fill="currentColor"/>
+<circle cx="120" cy="118" r="54" fill="none" stroke="var(--mono-bg)" stroke-width="3"/>
+<rect x="112" y="88" width="16" height="60" fill="var(--mono-bg)"/>
+<rect x="98" y="82" width="44" height="8" fill="var(--mono-bg)"/>
+<rect x="98" y="146" width="44" height="8" fill="var(--mono-bg)"/></svg></div></div>
+    </div>
+    <p class="font">Шрифт логотипа: <b>Cormorant Garamond Italic</b></p>
+    <p class="use">Где работает лучше всего: Фавиконка, стикер «запечатано» в редакторе, анимация: печать ставится при публикации ссылки.</p>
+  </div>
+</article>
+<article class="concept" id="c02">
+  <div class="tile" style="background:#EFE9DC"><span class="num" style="color:#2E4A3B">02 / 10</span><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M120,36 C40,70 30,150 104,218 L120,212 C90,150 60,60 120,36 Z" fill="#2E4A3B"/>
+<path d="M120,36 C200,70 210,150 136,218 L120,212 C150,150 180,60 120,36 Z" fill="#2E4A3B"/>
+<rect x="106" y="214" width="9" height="16" fill="#2E4A3B"/>
+<rect x="125" y="214" width="9" height="16" fill="#2E4A3B"/>
+<line x1="52" y1="231" x2="188" y2="231" stroke="#2E4A3B" stroke-width="4" stroke-linecap="round"/></svg></div>
+  <div class="body">
+    <div class="lockup" style="color:#2E4A3B;background:#EFE9DC"><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M120,36 C40,70 30,150 104,218 L120,212 C90,150 60,60 120,36 Z" fill="#2E4A3B"/>
+<path d="M120,36 C200,70 210,150 136,218 L120,212 C150,150 180,60 120,36 Z" fill="#2E4A3B"/>
+<rect x="106" y="214" width="9" height="16" fill="#2E4A3B"/>
+<rect x="125" y="214" width="9" height="16" fill="#2E4A3B"/>
+<line x1="52" y1="231" x2="188" y2="231" stroke="#2E4A3B" stroke-width="4" stroke-linecap="round"/></svg><div class="word" style="font-family:'Marcellus', 'Times New Roman', serif;font-weight:400;letter-spacing:.14em;text-transform:uppercase"><b>Invitalia</b><small>.co</small></div></div>
+    <h2>Cipressi<span>Два кипариса и сердце между ними</span></h2>
+    <p>Два тосканских кипариса склоняются друг к другу. Промежуток между ними образует сердце, а кроны сходятся как пара на церемонии.</p>
+    <p class="why">Негативное пространство работает как секрет, который хочется показать другим. Прямая отсылка к итальянскому стилю без клише «пицца и Колизей».</p>
+    <div class="meta">
+      <div><div class="label">Палитра</div><div class="pal"><i style="background:#2E4A3B" data-hex="#2E4A3B"></i><i style="background:#D9A441" data-hex="#D9A441"></i><i style="background:#EFE9DC" data-hex="#EFE9DC"></i></div></div>
+      <div><div class="label">Монохром · 48 / 32 / 16 px</div>
+        <div class="mono"><svg width="48" height="48" viewBox="0 0 240 240" aria-hidden="true"><path d="M120,36 C40,70 30,150 104,218 L120,212 C90,150 60,60 120,36 Z" fill="currentColor"/>
+<path d="M120,36 C200,70 210,150 136,218 L120,212 C150,150 180,60 120,36 Z" fill="currentColor"/>
+<rect x="106" y="214" width="9" height="16" fill="currentColor"/>
+<rect x="125" y="214" width="9" height="16" fill="currentColor"/>
+<line x1="52" y1="231" x2="188" y2="231" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg><svg width="32" height="32" viewBox="0 0 240 240" aria-hidden="true"><path d="M120,36 C40,70 30,150 104,218 L120,212 C90,150 60,60 120,36 Z" fill="currentColor"/>
+<path d="M120,36 C200,70 210,150 136,218 L120,212 C150,150 180,60 120,36 Z" fill="currentColor"/>
+<rect x="106" y="214" width="9" height="16" fill="currentColor"/>
+<rect x="125" y="214" width="9" height="16" fill="currentColor"/>
+<line x1="52" y1="231" x2="188" y2="231" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg><svg width="16" height="16" viewBox="0 0 240 240" aria-hidden="true"><path d="M120,36 C40,70 30,150 104,218 L120,212 C90,150 60,60 120,36 Z" fill="currentColor"/>
+<path d="M120,36 C200,70 210,150 136,218 L120,212 C150,150 180,60 120,36 Z" fill="currentColor"/>
+<rect x="106" y="214" width="9" height="16" fill="currentColor"/>
+<rect x="125" y="214" width="9" height="16" fill="currentColor"/>
+<line x1="52" y1="231" x2="188" y2="231" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <p class="font">Шрифт логотипа: <b>Marcellus</b></p>
+    <p class="use">Где работает лучше всего: Главный знак, крупные носители, водяной знак на обложке приглашения.</p>
+  </div>
+</article>
+<article class="concept" id="c03">
+  <div class="tile" style="background:#F5EDE4"><span class="num" style="color:#B4532E">03 / 10</span><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M52,208 V112 A68,68 0 0 1 188,112 V208 Z" fill="none" stroke="#B4532E" stroke-width="10" stroke-linejoin="round"/>
+<path d="M52,122 L120,180 L188,122" fill="none" stroke="#B4532E" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M109,34 L131,34 L128,56 L112,56 Z" fill="#2F3E46"/></svg></div>
+  <div class="body">
+    <div class="lockup" style="color:#B4532E;background:#F5EDE4"><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M52,208 V112 A68,68 0 0 1 188,112 V208 Z" fill="none" stroke="#B4532E" stroke-width="10" stroke-linejoin="round"/>
+<path d="M52,122 L120,180 L188,122" fill="none" stroke="#B4532E" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M109,34 L131,34 L128,56 L112,56 Z" fill="#2F3E46"/></svg><div class="word" style="font-family:'Bodoni Moda', 'Didot', Georgia, serif;font-weight:500;letter-spacing:.08em;text-transform:uppercase"><b>Invitalia</b><small>.co</small></div></div>
+    <h2>Arco<span>Арка-конверт</span></h2>
+    <p>Конверт, верх которого превращён в романскую арку с замковым камнем. Клапан конверта стал порталом, через который гости входят на свадьбу.</p>
+    <p class="why">Один контур, две ясные формы. Арка в итальянской архитектуре и свадебная арка на церемонии совпадают по смыслу, это делает знак «своим».</p>
+    <div class="meta">
+      <div><div class="label">Палитра</div><div class="pal"><i style="background:#B4532E" data-hex="#B4532E"></i><i style="background:#2F3E46" data-hex="#2F3E46"></i><i style="background:#F5EDE4" data-hex="#F5EDE4"></i></div></div>
+      <div><div class="label">Монохром · 48 / 32 / 16 px</div>
+        <div class="mono"><svg width="48" height="48" viewBox="0 0 240 240" aria-hidden="true"><path d="M52,208 V112 A68,68 0 0 1 188,112 V208 Z" fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round"/>
+<path d="M52,122 L120,180 L188,122" fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M109,34 L131,34 L128,56 L112,56 Z" fill="currentColor"/></svg><svg width="32" height="32" viewBox="0 0 240 240" aria-hidden="true"><path d="M52,208 V112 A68,68 0 0 1 188,112 V208 Z" fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round"/>
+<path d="M52,122 L120,180 L188,122" fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M109,34 L131,34 L128,56 L112,56 Z" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 240 240" aria-hidden="true"><path d="M52,208 V112 A68,68 0 0 1 188,112 V208 Z" fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round"/>
+<path d="M52,122 L120,180 L188,122" fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M109,34 L131,34 L128,56 L112,56 Z" fill="currentColor"/></svg></div></div>
+    </div>
+    <p class="font">Шрифт логотипа: <b>Bodoni Moda</b></p>
+    <p class="use">Где работает лучше всего: Иконка приложения, рамка-шаблон для QR-кода, строгие old-money шаблоны.</p>
+  </div>
+</article>
+<article class="concept" id="c04">
+  <div class="tile" style="background:#1E1F2B"><span class="num" style="color:#E8DCC6">04 / 10</span><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M90,96 L120,44 L150,96 Z" fill="#E8DCC6"/>
+<rect x="94" y="92" width="52" height="7" fill="#E8DCC6"/>
+<rect x="100" y="96" width="40" height="110" fill="#E8DCC6"/>
+<rect x="86" y="204" width="68" height="12" fill="#E8DCC6"/>
+<path d="M110,152 V120 A10,10 0 0 1 130,120 V152 Z" fill="#1E1F2B"/>
+<path d="M113,139 C113,124 127,124 127,139 L130,142 L110,142 Z" fill="#E8DCC6"/>
+<circle cx="120" cy="145" r="2.6" fill="#E8DCC6"/>
+<circle cx="154" cy="58" r="12" fill="#C96F5A" stroke="#1E1F2B" stroke-width="4"/></svg></div>
+  <div class="body">
+    <div class="lockup" style="color:#E8DCC6;background:#1E1F2B"><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M90,96 L120,44 L150,96 Z" fill="#E8DCC6"/>
+<rect x="94" y="92" width="52" height="7" fill="#E8DCC6"/>
+<rect x="100" y="96" width="40" height="110" fill="#E8DCC6"/>
+<rect x="86" y="204" width="68" height="12" fill="#E8DCC6"/>
+<path d="M110,152 V120 A10,10 0 0 1 130,120 V152 Z" fill="#1E1F2B"/>
+<path d="M113,139 C113,124 127,124 127,139 L130,142 L110,142 Z" fill="#E8DCC6"/>
+<circle cx="120" cy="145" r="2.6" fill="#E8DCC6"/>
+<circle cx="154" cy="58" r="12" fill="#C96F5A" stroke="#1E1F2B" stroke-width="4"/></svg><div class="word" style="font-family:'Italiana', 'Didot', serif;font-weight:400;letter-spacing:.2em;text-transform:uppercase"><b>Invitalia</b><small>.co</small></div></div>
+    <h2>Campanile<span>Колокольня-уведомление в форме буквы I</span></h2>
+    <p>Силуэт итальянской кампанилы повторяет букву I. В звоннице висит колокол, а у шпиля горит красная точка, как бейдж нового уведомления на иконке приложения.</p>
+    <p class="why">Колокол созывает гостей уже тысячу лет, бейдж делает это сегодня. Знак соединяет оба смысла в одном силуэте и сразу выдаёт итальянское происхождение.</p>
+    <div class="meta">
+      <div><div class="label">Палитра</div><div class="pal"><i style="background:#E8DCC6" data-hex="#E8DCC6"></i><i style="background:#C96F5A" data-hex="#C96F5A"></i><i style="background:#1E1F2B" data-hex="#1E1F2B"></i></div></div>
+      <div><div class="label">Монохром · 48 / 32 / 16 px</div>
+        <div class="mono"><svg width="48" height="48" viewBox="0 0 240 240" aria-hidden="true"><path d="M90,96 L120,44 L150,96 Z" fill="currentColor"/>
+<rect x="94" y="92" width="52" height="7" fill="currentColor"/>
+<rect x="100" y="96" width="40" height="110" fill="currentColor"/>
+<rect x="86" y="204" width="68" height="12" fill="currentColor"/>
+<path d="M110,152 V120 A10,10 0 0 1 130,120 V152 Z" fill="var(--mono-bg)"/>
+<path d="M113,139 C113,124 127,124 127,139 L130,142 L110,142 Z" fill="currentColor"/>
+<circle cx="120" cy="145" r="2.6" fill="currentColor"/>
+<circle cx="154" cy="58" r="12" fill="currentColor" stroke="var(--mono-bg)" stroke-width="4"/></svg><svg width="32" height="32" viewBox="0 0 240 240" aria-hidden="true"><path d="M90,96 L120,44 L150,96 Z" fill="currentColor"/>
+<rect x="94" y="92" width="52" height="7" fill="currentColor"/>
+<rect x="100" y="96" width="40" height="110" fill="currentColor"/>
+<rect x="86" y="204" width="68" height="12" fill="currentColor"/>
+<path d="M110,152 V120 A10,10 0 0 1 130,120 V152 Z" fill="var(--mono-bg)"/>
+<path d="M113,139 C113,124 127,124 127,139 L130,142 L110,142 Z" fill="currentColor"/>
+<circle cx="120" cy="145" r="2.6" fill="currentColor"/>
+<circle cx="154" cy="58" r="12" fill="currentColor" stroke="var(--mono-bg)" stroke-width="4"/></svg><svg width="16" height="16" viewBox="0 0 240 240" aria-hidden="true"><path d="M90,96 L120,44 L150,96 Z" fill="currentColor"/>
+<rect x="94" y="92" width="52" height="7" fill="currentColor"/>
+<rect x="100" y="96" width="40" height="110" fill="currentColor"/>
+<rect x="86" y="204" width="68" height="12" fill="currentColor"/>
+<path d="M110,152 V120 A10,10 0 0 1 130,120 V152 Z" fill="var(--mono-bg)"/>
+<path d="M113,139 C113,124 127,124 127,139 L130,142 L110,142 Z" fill="currentColor"/>
+<circle cx="120" cy="145" r="2.6" fill="currentColor"/>
+<circle cx="154" cy="58" r="12" fill="currentColor" stroke="var(--mono-bg)" stroke-width="4"/></svg></div></div>
+    </div>
+    <p class="font">Шрифт логотипа: <b>Italiana</b></p>
+    <p class="use">Где работает лучше всего: Иконка приложения и push-уведомления, тёмные премиальные шаблоны, тиснение.</p>
+  </div>
+</article>
+<article class="concept" id="c05">
+  <div class="tile" style="background:#FBF7F0"><span class="num" style="color:#2B2B2E">05 / 10</span><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M145.4,81.6 A60,60 0 1 1 94.6,81.6" fill="none" stroke="#2B2B2E" stroke-width="16" stroke-linecap="round"/>
+<path d="M100,62 L118,80 L154,36" fill="none" stroke="#C59A45" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="body">
+    <div class="lockup" style="color:#2B2B2E;background:#FBF7F0"><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M145.4,81.6 A60,60 0 1 1 94.6,81.6" fill="none" stroke="#2B2B2E" stroke-width="16" stroke-linecap="round"/>
+<path d="M100,62 L118,80 L154,36" fill="none" stroke="#C59A45" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="word" style="font-family:'Fraunces', Georgia, serif;font-weight:500;letter-spacing:.01em"><b>Invitalia</b><small>.co</small></div></div>
+    <h2>Anello Sì<span>Кольцо с галочкой вместо камня</span></h2>
+    <p>Обручальное кольцо, в котором камень заменён на галочку подтверждения. «Да» у алтаря и «да» в RSVP-анкете становятся одним жестом.</p>
+    <p class="why">Это единственный значок, который напрямую говорит о главной функции сервиса: сбор ответов гостей. Галочка узнаваема даже в 16 пикселей.</p>
+    <div class="meta">
+      <div><div class="label">Палитра</div><div class="pal"><i style="background:#2B2B2E" data-hex="#2B2B2E"></i><i style="background:#C59A45" data-hex="#C59A45"></i><i style="background:#FBF7F0" data-hex="#FBF7F0"></i></div></div>
+      <div><div class="label">Монохром · 48 / 32 / 16 px</div>
+        <div class="mono"><svg width="48" height="48" viewBox="0 0 240 240" aria-hidden="true"><path d="M145.4,81.6 A60,60 0 1 1 94.6,81.6" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"/>
+<path d="M100,62 L118,80 L154,36" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg><svg width="32" height="32" viewBox="0 0 240 240" aria-hidden="true"><path d="M145.4,81.6 A60,60 0 1 1 94.6,81.6" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"/>
+<path d="M100,62 L118,80 L154,36" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg><svg width="16" height="16" viewBox="0 0 240 240" aria-hidden="true"><path d="M145.4,81.6 A60,60 0 1 1 94.6,81.6" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"/>
+<path d="M100,62 L118,80 L154,36" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+    <p class="font">Шрифт логотипа: <b>Fraunces</b></p>
+    <p class="use">Где работает лучше всего: Фавиконка, иконка личного кабинета, статус «гость подтвердил» в таблице ответов.</p>
+  </div>
+</article>
+<article class="concept" id="c06">
+  <div class="tile" style="background:#FFFFFF"><span class="num" style="color:#C8324A">06 / 10</span><svg viewBox="0 0 240 240" aria-hidden="true"><rect x="129" y="58" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="21" y="76" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="93" y="76" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="129" y="76" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="21" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="75" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="93" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="147" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="165" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="183" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="201" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="39" y="112" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="75" y="112" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="165" y="112" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="57" y="130" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="75" y="130" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="93" y="130" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="111" y="130" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="75" y="148" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="93" y="148" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="129" y="148" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="147" y="148" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="111" y="166" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="129" y="166" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="42" y="43" width="45" height="45" rx="4" fill="none" stroke="#C8324A" stroke-width="6"/>
+<rect x="57" y="58" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="150" y="43" width="45" height="45" rx="4" fill="none" stroke="#C8324A" stroke-width="6"/>
+<rect x="165" y="58" width="15" height="15" rx="2" fill="#C8324A"/></svg></div>
+  <div class="body">
+    <div class="lockup" style="color:#C8324A;background:#FFFFFF"><svg viewBox="0 0 240 240" aria-hidden="true"><rect x="129" y="58" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="21" y="76" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="93" y="76" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="129" y="76" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="21" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="75" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="93" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="147" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="165" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="183" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="201" y="94" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="39" y="112" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="75" y="112" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="165" y="112" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="57" y="130" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="75" y="130" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="93" y="130" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="111" y="130" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="75" y="148" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="93" y="148" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="129" y="148" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="147" y="148" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="111" y="166" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="129" y="166" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="42" y="43" width="45" height="45" rx="4" fill="none" stroke="#C8324A" stroke-width="6"/>
+<rect x="57" y="58" width="15" height="15" rx="2" fill="#C8324A"/>
+<rect x="150" y="43" width="45" height="45" rx="4" fill="none" stroke="#C8324A" stroke-width="6"/>
+<rect x="165" y="58" width="15" height="15" rx="2" fill="#C8324A"/></svg><div class="word" style="font-family:'Manrope', system-ui, sans-serif;font-weight:700;letter-spacing:.18em;text-transform:uppercase"><b>Invitalia</b><small>.co</small></div></div>
+    <h2>Cuore QR<span>Сердце из модулей QR-кода</span></h2>
+    <p>Сердце собрано из квадратов QR-кода с двумя поисковыми метками в верхних долях. Знак выглядит как настоящий код, который хочется отсканировать.</p>
+    <p class="why">QR-код встроен в каждое приглашение, поэтому знак честно отражает продукт. Пиксельное сердце выделяется среди каллиграфических свадебных логотипов.</p>
+    <div class="meta">
+      <div><div class="label">Палитра</div><div class="pal"><i style="background:#C8324A" data-hex="#C8324A"></i><i style="background:#FFFFFF" data-hex="#FFFFFF"></i></div></div>
+      <div><div class="label">Монохром · 48 / 32 / 16 px</div>
+        <div class="mono"><svg width="48" height="48" viewBox="0 0 240 240" aria-hidden="true"><rect x="129" y="58" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="21" y="76" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="76" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="129" y="76" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="21" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="147" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="165" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="183" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="201" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="39" y="112" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="112" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="165" y="112" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="57" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="111" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="129" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="147" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="111" y="166" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="129" y="166" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="42" y="43" width="45" height="45" rx="4" fill="none" stroke="currentColor" stroke-width="6"/>
+<rect x="57" y="58" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="150" y="43" width="45" height="45" rx="4" fill="none" stroke="currentColor" stroke-width="6"/>
+<rect x="165" y="58" width="15" height="15" rx="2" fill="currentColor"/></svg><svg width="32" height="32" viewBox="0 0 240 240" aria-hidden="true"><rect x="129" y="58" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="21" y="76" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="76" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="129" y="76" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="21" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="147" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="165" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="183" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="201" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="39" y="112" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="112" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="165" y="112" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="57" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="111" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="129" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="147" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="111" y="166" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="129" y="166" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="42" y="43" width="45" height="45" rx="4" fill="none" stroke="currentColor" stroke-width="6"/>
+<rect x="57" y="58" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="150" y="43" width="45" height="45" rx="4" fill="none" stroke="currentColor" stroke-width="6"/>
+<rect x="165" y="58" width="15" height="15" rx="2" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 240 240" aria-hidden="true"><rect x="129" y="58" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="21" y="76" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="76" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="129" y="76" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="21" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="147" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="165" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="183" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="201" y="94" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="39" y="112" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="112" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="165" y="112" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="57" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="111" y="130" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="75" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="93" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="129" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="147" y="148" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="111" y="166" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="129" y="166" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="42" y="43" width="45" height="45" rx="4" fill="none" stroke="currentColor" stroke-width="6"/>
+<rect x="57" y="58" width="15" height="15" rx="2" fill="currentColor"/>
+<rect x="150" y="43" width="45" height="45" rx="4" fill="none" stroke="currentColor" stroke-width="6"/>
+<rect x="165" y="58" width="15" height="15" rx="2" fill="currentColor"/></svg></div></div>
+    </div>
+    <p class="font">Шрифт логотипа: <b>Manrope</b></p>
+    <p class="use">Где работает лучше всего: Цифровые носители, рамка вокруг реального QR-кода, минималистичные шаблоны.</p>
+  </div>
+</article>
+<article class="concept" id="c07">
+  <div class="tile" style="background:#F3F1EA"><span class="num" style="color:#5B6B3A">07 / 10</span><svg viewBox="0 0 240 240" aria-hidden="true"><circle cx="54" cy="186" r="13" fill="#5B6B3A"/>
+<path d="M100,186 A46,46 0 0 0 54,140" fill="none" stroke="#5B6B3A" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(100.2,166.9) rotate(-70.5)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(73.1,139.8) rotate(-115.5)"/>
+<path d="M136,186 A82,82 0 0 0 54,104" fill="none" stroke="#5B6B3A" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(137.1,163.7) rotate(-63.0)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(114.8,125.2) rotate(-93.0)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(76.3,102.9) rotate(-123.0)"/>
+<path d="M172,186 A118,118 0 0 0 54,68" fill="none" stroke="#5B6B3A" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(173.7,162.2) rotate(-59.3)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(155.4,118.2) rotate(-81.8)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(121.8,84.6) rotate(-104.3)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(77.8,66.3) rotate(-126.8)"/></svg></div>
+  <div class="body">
+    <div class="lockup" style="color:#5B6B3A;background:#F3F1EA"><svg viewBox="0 0 240 240" aria-hidden="true"><circle cx="54" cy="186" r="13" fill="#5B6B3A"/>
+<path d="M100,186 A46,46 0 0 0 54,140" fill="none" stroke="#5B6B3A" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(100.2,166.9) rotate(-70.5)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(73.1,139.8) rotate(-115.5)"/>
+<path d="M136,186 A82,82 0 0 0 54,104" fill="none" stroke="#5B6B3A" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(137.1,163.7) rotate(-63.0)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(114.8,125.2) rotate(-93.0)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(76.3,102.9) rotate(-123.0)"/>
+<path d="M172,186 A118,118 0 0 0 54,68" fill="none" stroke="#5B6B3A" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(173.7,162.2) rotate(-59.3)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(155.4,118.2) rotate(-81.8)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(121.8,84.6) rotate(-104.3)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="#3C4A2A" transform="translate(77.8,66.3) rotate(-126.8)"/></svg><div class="word" style="font-family:'Playfair Display', Georgia, serif;font-weight:500;letter-spacing:.06em"><b>Invitalia</b><small>.co</small></div></div>
+    <h2>Ramo Segnale<span>Оливковая ветвь в форме сигнала</span></h2>
+    <p>Три дуги сигнала Wi-Fi выложены ветками оливы с листьями, в центре вместо точки олива. Средиземноморье, которое транслируется онлайн.</p>
+    <p class="why">Знакомая пиктограмма сигнала переосмыслена через итальянский мотив. Смысл «приглашение, которое долетает до каждого гостя» считывается мгновенно.</p>
+    <div class="meta">
+      <div><div class="label">Палитра</div><div class="pal"><i style="background:#5B6B3A" data-hex="#5B6B3A"></i><i style="background:#3C4A2A" data-hex="#3C4A2A"></i><i style="background:#F3F1EA" data-hex="#F3F1EA"></i></div></div>
+      <div><div class="label">Монохром · 48 / 32 / 16 px</div>
+        <div class="mono"><svg width="48" height="48" viewBox="0 0 240 240" aria-hidden="true"><circle cx="54" cy="186" r="13" fill="currentColor"/>
+<path d="M100,186 A46,46 0 0 0 54,140" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(100.2,166.9) rotate(-70.5)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(73.1,139.8) rotate(-115.5)"/>
+<path d="M136,186 A82,82 0 0 0 54,104" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(137.1,163.7) rotate(-63.0)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(114.8,125.2) rotate(-93.0)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(76.3,102.9) rotate(-123.0)"/>
+<path d="M172,186 A118,118 0 0 0 54,68" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(173.7,162.2) rotate(-59.3)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(155.4,118.2) rotate(-81.8)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(121.8,84.6) rotate(-104.3)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(77.8,66.3) rotate(-126.8)"/></svg><svg width="32" height="32" viewBox="0 0 240 240" aria-hidden="true"><circle cx="54" cy="186" r="13" fill="currentColor"/>
+<path d="M100,186 A46,46 0 0 0 54,140" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(100.2,166.9) rotate(-70.5)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(73.1,139.8) rotate(-115.5)"/>
+<path d="M136,186 A82,82 0 0 0 54,104" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(137.1,163.7) rotate(-63.0)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(114.8,125.2) rotate(-93.0)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(76.3,102.9) rotate(-123.0)"/>
+<path d="M172,186 A118,118 0 0 0 54,68" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(173.7,162.2) rotate(-59.3)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(155.4,118.2) rotate(-81.8)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(121.8,84.6) rotate(-104.3)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(77.8,66.3) rotate(-126.8)"/></svg><svg width="16" height="16" viewBox="0 0 240 240" aria-hidden="true"><circle cx="54" cy="186" r="13" fill="currentColor"/>
+<path d="M100,186 A46,46 0 0 0 54,140" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(100.2,166.9) rotate(-70.5)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(73.1,139.8) rotate(-115.5)"/>
+<path d="M136,186 A82,82 0 0 0 54,104" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(137.1,163.7) rotate(-63.0)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(114.8,125.2) rotate(-93.0)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(76.3,102.9) rotate(-123.0)"/>
+<path d="M172,186 A118,118 0 0 0 54,68" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(173.7,162.2) rotate(-59.3)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(155.4,118.2) rotate(-81.8)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(121.8,84.6) rotate(-104.3)"/>
+<path d="M0,0 C6,-6.5 17,-6.5 25,0 C17,6.5 6,6.5 0,0 Z" fill="currentColor" transform="translate(77.8,66.3) rotate(-126.8)"/></svg></div></div>
+    </div>
+    <p class="font">Шрифт логотипа: <b>Playfair Display</b></p>
+    <p class="use">Где работает лучше всего: Экран отправки и рассылки, итальянские и рустикальные шаблоны, сувенирная печать.</p>
+  </div>
+</article>
+<article class="concept" id="c08">
+  <div class="tile" style="background:#141A24"><span class="num" style="color:#E4C98A">08 / 10</span><svg viewBox="0 0 240 240" aria-hidden="true"><g transform="translate(84,228) rotate(12)"><path d="M-17,-172 L-11,-80 Q0,-62 11,-80 L17,-172 Z" fill="none" stroke="#E4C98A" stroke-width="7" stroke-linejoin="round"/><path d="M-14.2,-128 L-11.4,-80 Q0,-63 11.4,-80 L14.2,-128 Z" fill="#8B6A2E"/><line x1="0" y1="-62" x2="0" y2="-16" stroke="#E4C98A" stroke-width="7"/><line x1="-22" y1="-12" x2="22" y2="-12" stroke="#E4C98A" stroke-width="7" stroke-linecap="round"/></g>
+<g transform="translate(156,228) rotate(-12)"><path d="M-17,-172 L-11,-80 Q0,-62 11,-80 L17,-172 Z" fill="none" stroke="#E4C98A" stroke-width="7" stroke-linejoin="round"/><path d="M-14.2,-128 L-11.4,-80 Q0,-63 11.4,-80 L14.2,-128 Z" fill="#8B6A2E"/><line x1="0" y1="-62" x2="0" y2="-16" stroke="#E4C98A" stroke-width="7"/><line x1="-22" y1="-12" x2="22" y2="-12" stroke="#E4C98A" stroke-width="7" stroke-linecap="round"/></g>
+<circle cx="102" cy="40" r="4" fill="#E4C98A"/>
+<circle cx="120" cy="36" r="5.5" fill="#E4C98A"/>
+<circle cx="138" cy="40" r="4" fill="#E4C98A"/></svg></div>
+  <div class="body">
+    <div class="lockup" style="color:#E4C98A;background:#141A24"><svg viewBox="0 0 240 240" aria-hidden="true"><g transform="translate(84,228) rotate(12)"><path d="M-17,-172 L-11,-80 Q0,-62 11,-80 L17,-172 Z" fill="none" stroke="#E4C98A" stroke-width="7" stroke-linejoin="round"/><path d="M-14.2,-128 L-11.4,-80 Q0,-63 11.4,-80 L14.2,-128 Z" fill="#8B6A2E"/><line x1="0" y1="-62" x2="0" y2="-16" stroke="#E4C98A" stroke-width="7"/><line x1="-22" y1="-12" x2="22" y2="-12" stroke="#E4C98A" stroke-width="7" stroke-linecap="round"/></g>
+<g transform="translate(156,228) rotate(-12)"><path d="M-17,-172 L-11,-80 Q0,-62 11,-80 L17,-172 Z" fill="none" stroke="#E4C98A" stroke-width="7" stroke-linejoin="round"/><path d="M-14.2,-128 L-11.4,-80 Q0,-63 11.4,-80 L14.2,-128 Z" fill="#8B6A2E"/><line x1="0" y1="-62" x2="0" y2="-16" stroke="#E4C98A" stroke-width="7"/><line x1="-22" y1="-12" x2="22" y2="-12" stroke="#E4C98A" stroke-width="7" stroke-linecap="round"/></g>
+<circle cx="102" cy="40" r="4" fill="#E4C98A"/>
+<circle cx="120" cy="36" r="5.5" fill="#E4C98A"/>
+<circle cx="138" cy="40" r="4" fill="#E4C98A"/></svg><div class="word" style="font-family:'Josefin Sans', 'Futura', sans-serif;font-weight:600;letter-spacing:.22em;text-transform:uppercase"><b>Invitalia</b><small>.co</small></div></div>
+    <h2>Brindisi<span>Два бокала образуют V, пузырьки печатают ответ</span></h2>
+    <p>Два фужера с просекко, сходящиеся в букву V. Над ними три пузырька выстроены как индикатор «собеседник печатает» в мессенджере.</p>
+    <p class="why">Тост понятен всем культурам, а три точки превращают его в живой диалог с гостями. Тёмная ар-деко подача хорошо смотрится в премиальных шаблонах.</p>
+    <div class="meta">
+      <div><div class="label">Палитра</div><div class="pal"><i style="background:#E4C98A" data-hex="#E4C98A"></i><i style="background:#8B6A2E" data-hex="#8B6A2E"></i><i style="background:#141A24" data-hex="#141A24"></i></div></div>
+      <div><div class="label">Монохром · 48 / 32 / 16 px</div>
+        <div class="mono"><svg width="48" height="48" viewBox="0 0 240 240" aria-hidden="true"><g transform="translate(84,228) rotate(12)"><path d="M-17,-172 L-11,-80 Q0,-62 11,-80 L17,-172 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/><path d="M-14.2,-128 L-11.4,-80 Q0,-63 11.4,-80 L14.2,-128 Z" fill="currentColor"/><line x1="0" y1="-62" x2="0" y2="-16" stroke="currentColor" stroke-width="7"/><line x1="-22" y1="-12" x2="22" y2="-12" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></g>
+<g transform="translate(156,228) rotate(-12)"><path d="M-17,-172 L-11,-80 Q0,-62 11,-80 L17,-172 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/><path d="M-14.2,-128 L-11.4,-80 Q0,-63 11.4,-80 L14.2,-128 Z" fill="currentColor"/><line x1="0" y1="-62" x2="0" y2="-16" stroke="currentColor" stroke-width="7"/><line x1="-22" y1="-12" x2="22" y2="-12" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></g>
+<circle cx="102" cy="40" r="4" fill="currentColor"/>
+<circle cx="120" cy="36" r="5.5" fill="currentColor"/>
+<circle cx="138" cy="40" r="4" fill="currentColor"/></svg><svg width="32" height="32" viewBox="0 0 240 240" aria-hidden="true"><g transform="translate(84,228) rotate(12)"><path d="M-17,-172 L-11,-80 Q0,-62 11,-80 L17,-172 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/><path d="M-14.2,-128 L-11.4,-80 Q0,-63 11.4,-80 L14.2,-128 Z" fill="currentColor"/><line x1="0" y1="-62" x2="0" y2="-16" stroke="currentColor" stroke-width="7"/><line x1="-22" y1="-12" x2="22" y2="-12" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></g>
+<g transform="translate(156,228) rotate(-12)"><path d="M-17,-172 L-11,-80 Q0,-62 11,-80 L17,-172 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/><path d="M-14.2,-128 L-11.4,-80 Q0,-63 11.4,-80 L14.2,-128 Z" fill="currentColor"/><line x1="0" y1="-62" x2="0" y2="-16" stroke="currentColor" stroke-width="7"/><line x1="-22" y1="-12" x2="22" y2="-12" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></g>
+<circle cx="102" cy="40" r="4" fill="currentColor"/>
+<circle cx="120" cy="36" r="5.5" fill="currentColor"/>
+<circle cx="138" cy="40" r="4" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 240 240" aria-hidden="true"><g transform="translate(84,228) rotate(12)"><path d="M-17,-172 L-11,-80 Q0,-62 11,-80 L17,-172 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/><path d="M-14.2,-128 L-11.4,-80 Q0,-63 11.4,-80 L14.2,-128 Z" fill="currentColor"/><line x1="0" y1="-62" x2="0" y2="-16" stroke="currentColor" stroke-width="7"/><line x1="-22" y1="-12" x2="22" y2="-12" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></g>
+<g transform="translate(156,228) rotate(-12)"><path d="M-17,-172 L-11,-80 Q0,-62 11,-80 L17,-172 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/><path d="M-14.2,-128 L-11.4,-80 Q0,-63 11.4,-80 L14.2,-128 Z" fill="currentColor"/><line x1="0" y1="-62" x2="0" y2="-16" stroke="currentColor" stroke-width="7"/><line x1="-22" y1="-12" x2="22" y2="-12" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></g>
+<circle cx="102" cy="40" r="4" fill="currentColor"/>
+<circle cx="120" cy="36" r="5.5" fill="currentColor"/>
+<circle cx="138" cy="40" r="4" fill="currentColor"/></svg></div></div>
+    </div>
+    <p class="font">Шрифт логотипа: <b>Josefin Sans</b></p>
+    <p class="use">Где работает лучше всего: Шаблоны «вечерняя свадьба», сторис, лендинг с анимацией пузырьков.</p>
+  </div>
+</article>
+<article class="concept" id="c09">
+  <div class="tile" style="background:#EEF1F4"><span class="num" style="color:#1F4E79">09 / 10</span><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M120,226 C120,226 46,150 46,98 A74,74 0 1 1 194,98 C194,150 120,226 120,226 Z" fill="#1F4E79"/>
+<rect x="80" y="74" width="80" height="54" rx="6" fill="#EEF1F4"/>
+<path d="M86,82 L120,110 L154,82" fill="none" stroke="#1F4E79" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+  <div class="body">
+    <div class="lockup" style="color:#1F4E79;background:#EEF1F4"><svg viewBox="0 0 240 240" aria-hidden="true"><path d="M120,226 C120,226 46,150 46,98 A74,74 0 1 1 194,98 C194,150 120,226 120,226 Z" fill="#1F4E79"/>
+<rect x="80" y="74" width="80" height="54" rx="6" fill="#EEF1F4"/>
+<path d="M86,82 L120,110 L154,82" fill="none" stroke="#1F4E79" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg><div class="word" style="font-family:'Outfit', system-ui, sans-serif;font-weight:600;letter-spacing:.1em;text-transform:uppercase"><b>Invitalia</b><small>.co</small></div></div>
+    <h2>Pin Invito<span>Геометка с конвертом внутри</span></h2>
+    <p>Маркер карты, внутри которого конверт. Приглашение само ведёт гостя к месту события: интерактивная карта проезда стала частью знака.</p>
+    <p class="why">Самый «продуктовый» вариант: сразу понятно, что это цифровой сервис, а не типография. Жирный силуэт отлично масштабируется.</p>
+    <div class="meta">
+      <div><div class="label">Палитра</div><div class="pal"><i style="background:#1F4E79" data-hex="#1F4E79"></i><i style="background:#EEF1F4" data-hex="#EEF1F4"></i></div></div>
+      <div><div class="label">Монохром · 48 / 32 / 16 px</div>
+        <div class="mono"><svg width="48" height="48" viewBox="0 0 240 240" aria-hidden="true"><path d="M120,226 C120,226 46,150 46,98 A74,74 0 1 1 194,98 C194,150 120,226 120,226 Z" fill="currentColor"/>
+<rect x="80" y="74" width="80" height="54" rx="6" fill="var(--mono-bg)"/>
+<path d="M86,82 L120,110 L154,82" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg><svg width="32" height="32" viewBox="0 0 240 240" aria-hidden="true"><path d="M120,226 C120,226 46,150 46,98 A74,74 0 1 1 194,98 C194,150 120,226 120,226 Z" fill="currentColor"/>
+<rect x="80" y="74" width="80" height="54" rx="6" fill="var(--mono-bg)"/>
+<path d="M86,82 L120,110 L154,82" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg><svg width="16" height="16" viewBox="0 0 240 240" aria-hidden="true"><path d="M120,226 C120,226 46,150 46,98 A74,74 0 1 1 194,98 C194,150 120,226 120,226 Z" fill="currentColor"/>
+<rect x="80" y="74" width="80" height="54" rx="6" fill="var(--mono-bg)"/>
+<path d="M86,82 L120,110 L154,82" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg></div></div>
+    </div>
+    <p class="font">Шрифт логотипа: <b>Outfit</b></p>
+    <p class="use">Где работает лучше всего: Иконка приложения, кнопка «Как добраться», карты и навигация в приглашении.</p>
+  </div>
+</article>
+<article class="concept" id="c10">
+  <div class="tile" style="background:#F7EFDF"><span class="num" style="color:#1F3F8F">10 / 10</span><svg viewBox="0 0 240 240" aria-hidden="true"><rect x="36" y="36" width="168" height="168" rx="6" fill="#F7EFDF" stroke="#1F3F8F" stroke-width="5"/>
+<path d="M38,38 h40 a40,40 0 0 1 -40,40 z" fill="#D9A441"/>
+<path d="M202,38 v40 a40,40 0 0 1 -40,-40 z" fill="#D9A441"/>
+<path d="M202,202 h-40 a40,40 0 0 1 40,-40 z" fill="#D9A441"/>
+<path d="M38,202 v-40 a40,40 0 0 1 40,40 z" fill="#D9A441"/>
+<rect x="60" y="60" width="120" height="120" fill="none" stroke="#1F3F8F" stroke-width="2.5"/>
+<rect x="112" y="86" width="16" height="68" fill="#1F3F8F"/>
+<rect x="96" y="78" width="48" height="10" fill="#1F3F8F"/>
+<rect x="96" y="152" width="48" height="10" fill="#1F3F8F"/>
+<circle cx="86" cy="120" r="5" fill="#1F3F8F"/>
+<circle cx="154" cy="120" r="5" fill="#1F3F8F"/></svg></div>
+  <div class="body">
+    <div class="lockup" style="color:#1F3F8F;background:#F7EFDF"><svg viewBox="0 0 240 240" aria-hidden="true"><rect x="36" y="36" width="168" height="168" rx="6" fill="#F7EFDF" stroke="#1F3F8F" stroke-width="5"/>
+<path d="M38,38 h40 a40,40 0 0 1 -40,40 z" fill="#D9A441"/>
+<path d="M202,38 v40 a40,40 0 0 1 -40,-40 z" fill="#D9A441"/>
+<path d="M202,202 h-40 a40,40 0 0 1 40,-40 z" fill="#D9A441"/>
+<path d="M38,202 v-40 a40,40 0 0 1 40,40 z" fill="#D9A441"/>
+<rect x="60" y="60" width="120" height="120" fill="none" stroke="#1F3F8F" stroke-width="2.5"/>
+<rect x="112" y="86" width="16" height="68" fill="#1F3F8F"/>
+<rect x="96" y="78" width="48" height="10" fill="#1F3F8F"/>
+<rect x="96" y="152" width="48" height="10" fill="#1F3F8F"/>
+<circle cx="86" cy="120" r="5" fill="#1F3F8F"/>
+<circle cx="154" cy="120" r="5" fill="#1F3F8F"/></svg><div class="word" style="font-family:'Cinzel', 'Trajan Pro', serif;font-weight:600;letter-spacing:.16em"><b>Invitalia</b><small>.co</small></div></div>
+    <h2>Maiolica<span>Плитка майолики с монограммой I</span></h2>
+    <p>Квадратная плитка амальфитанской майолики: кобальт, охра, угловые четверти круга. В центре строгая антиква I. При повторе плитки складываются в узор.</p>
+    <p class="why">Единственный знак с паттерном внутри: из него вырастает вся айдентика, фоны и упаковка. Узнаваемая цитата итальянского юга, которой нет у конкурентов.</p>
+    <div class="meta">
+      <div><div class="label">Палитра</div><div class="pal"><i style="background:#1F3F8F" data-hex="#1F3F8F"></i><i style="background:#D9A441" data-hex="#D9A441"></i><i style="background:#F7EFDF" data-hex="#F7EFDF"></i></div></div>
+      <div><div class="label">Монохром · 48 / 32 / 16 px</div>
+        <div class="mono"><svg width="48" height="48" viewBox="0 0 240 240" aria-hidden="true"><rect x="36" y="36" width="168" height="168" rx="6" fill="var(--mono-bg)" stroke="currentColor" stroke-width="5"/>
+<path d="M38,38 h40 a40,40 0 0 1 -40,40 z" fill="currentColor"/>
+<path d="M202,38 v40 a40,40 0 0 1 -40,-40 z" fill="currentColor"/>
+<path d="M202,202 h-40 a40,40 0 0 1 40,-40 z" fill="currentColor"/>
+<path d="M38,202 v-40 a40,40 0 0 1 40,40 z" fill="currentColor"/>
+<rect x="60" y="60" width="120" height="120" fill="none" stroke="currentColor" stroke-width="2.5"/>
+<rect x="112" y="86" width="16" height="68" fill="currentColor"/>
+<rect x="96" y="78" width="48" height="10" fill="currentColor"/>
+<rect x="96" y="152" width="48" height="10" fill="currentColor"/>
+<circle cx="86" cy="120" r="5" fill="currentColor"/>
+<circle cx="154" cy="120" r="5" fill="currentColor"/></svg><svg width="32" height="32" viewBox="0 0 240 240" aria-hidden="true"><rect x="36" y="36" width="168" height="168" rx="6" fill="var(--mono-bg)" stroke="currentColor" stroke-width="5"/>
+<path d="M38,38 h40 a40,40 0 0 1 -40,40 z" fill="currentColor"/>
+<path d="M202,38 v40 a40,40 0 0 1 -40,-40 z" fill="currentColor"/>
+<path d="M202,202 h-40 a40,40 0 0 1 40,-40 z" fill="currentColor"/>
+<path d="M38,202 v-40 a40,40 0 0 1 40,40 z" fill="currentColor"/>
+<rect x="60" y="60" width="120" height="120" fill="none" stroke="currentColor" stroke-width="2.5"/>
+<rect x="112" y="86" width="16" height="68" fill="currentColor"/>
+<rect x="96" y="78" width="48" height="10" fill="currentColor"/>
+<rect x="96" y="152" width="48" height="10" fill="currentColor"/>
+<circle cx="86" cy="120" r="5" fill="currentColor"/>
+<circle cx="154" cy="120" r="5" fill="currentColor"/></svg><svg width="16" height="16" viewBox="0 0 240 240" aria-hidden="true"><rect x="36" y="36" width="168" height="168" rx="6" fill="var(--mono-bg)" stroke="currentColor" stroke-width="5"/>
+<path d="M38,38 h40 a40,40 0 0 1 -40,40 z" fill="currentColor"/>
+<path d="M202,38 v40 a40,40 0 0 1 -40,-40 z" fill="currentColor"/>
+<path d="M202,202 h-40 a40,40 0 0 1 40,-40 z" fill="currentColor"/>
+<path d="M38,202 v-40 a40,40 0 0 1 40,40 z" fill="currentColor"/>
+<rect x="60" y="60" width="120" height="120" fill="none" stroke="currentColor" stroke-width="2.5"/>
+<rect x="112" y="86" width="16" height="68" fill="currentColor"/>
+<rect x="96" y="78" width="48" height="10" fill="currentColor"/>
+<rect x="96" y="152" width="48" height="10" fill="currentColor"/>
+<circle cx="86" cy="120" r="5" fill="currentColor"/>
+<circle cx="154" cy="120" r="5" fill="currentColor"/></svg></div></div>
+    </div>
+    <p class="font">Шрифт логотипа: <b>Cinzel</b></p>
+    <p class="use">Где работает лучше всего: Фоновые паттерны, обложки шаблонов, печатная продукция, сторис.</p>
+  </div>
+</article>
+</section>
+<footer>
+  <p>Все знаки нарисованы векторно (SVG) и лежат в репозитории в папке <code>INVITALIA/logos</code>: цветная версия на плашке и монохромная версия для каждого концепта. Монохромный ряд на карточках показывает, как значок держится без цвета и в размере фавиконки.</p>
+  <p>Шрифты надписей взяты из Google Fonts и подобраны под характер каждого знака; при переходе в продакшен надпись стоит перевести в кривые.</p>
+</footer>
+</div>
+</body>
+</html>

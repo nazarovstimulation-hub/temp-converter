@@ -1,0 +1,15 @@
+{
+  "name": "invitalia-server",
+  "version": "1.0.0",
+  "description": "INVITALIA.co backend: guest RSVP collection, Stripe payments and static site hosting. No dependencies.",
+  "private": true,
+  "main": "server.js",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "start": "node --no-warnings server.js",
+    "dev": "node --no-warnings --watch server.js",
+    "test": "node --no-warnings test.js && node --no-warnings test-i18n.js",
+    "check": "node check-deploy.js"
+  },
+  "license": "UNLICENSED"
+}

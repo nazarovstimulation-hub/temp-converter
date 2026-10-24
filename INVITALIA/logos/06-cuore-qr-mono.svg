@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+<rect x="129" y="58" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="21" y="76" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="93" y="76" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="129" y="76" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="21" y="94" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="75" y="94" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="93" y="94" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="147" y="94" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="165" y="94" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="183" y="94" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="201" y="94" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="39" y="112" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="75" y="112" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="165" y="112" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="57" y="130" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="75" y="130" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="93" y="130" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="111" y="130" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="75" y="148" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="93" y="148" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="129" y="148" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="147" y="148" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="111" y="166" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="129" y="166" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="42" y="43" width="45" height="45" rx="4" fill="none" stroke="#111111" stroke-width="6"/>
+<rect x="57" y="58" width="15" height="15" rx="2" fill="#111111"/>
+<rect x="150" y="43" width="45" height="45" rx="4" fill="none" stroke="#111111" stroke-width="6"/>
+<rect x="165" y="58" width="15" height="15" rx="2" fill="#111111"/>
+</svg>

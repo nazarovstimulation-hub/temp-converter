@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es" data-title-key="meta.guest">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Invitación · Invitalia.co</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/invitation.css">
+<style>
+:root{color-scheme:light; --paper:#FFFDF9; --ink:#2B241A; --muted:#6F6356; --line:#E3D6BF; --gold:#B8924A; --gold-deep:#8A6A2E}
+*{box-sizing:border-box}
+html,body{margin:0; min-height:100%}
+body{background:var(--paper); color:var(--ink); font-family:'Jost',system-ui,sans-serif; font-weight:300}
+.guest-wrap{max-width:560px; margin:0 auto; min-height:100vh; min-height:100dvh; box-shadow:0 0 80px rgba(60,45,20,.12); position:relative}
+.langbar{position:fixed; top:calc(10px + env(safe-area-inset-top,0px)); right:calc(10px + env(safe-area-inset-right,0px)); z-index:5}
+.langbar select{appearance:none; border:1px solid rgba(0,0,0,.12); background:rgba(255,255,255,.85); backdrop-filter:blur(8px); border-radius:999px; padding:7px 28px 7px 12px; font:400 12.5px 'Jost',system-ui,sans-serif; color:#2B241A; cursor:pointer; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 8l4 4 4-4' fill='none' stroke='%236F6356' stroke-width='1.6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 8px center; background-size:14px}
+.state{min-height:100vh; min-height:100dvh; display:grid; place-items:center; text-align:center; padding:32px 24px}
+.state img{width:min(220px,60%); margin:0 auto 18px; mix-blend-mode:multiply}
+.state p{color:var(--muted); max-width:36ch; margin:0 auto; line-height:1.5}
+.state a{color:var(--gold-deep)}
+.state[hidden]{display:none}
+#inv[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+<div class="guest-wrap">
+  <div class="langbar"><select data-lang-switch id="lang"></select></div>
+  <div class="state" id="state"><div><img src="/assets/logo-mark.jpg" alt="Invitalia" width="857" height="792"><p id="state-text" data-i18n="g.loading">Abriendo la invitación…</p></div></div>
+  <div class="inv full" id="inv" hidden></div>
+  <audio id="music" hidden preload="none"></audio>
+</div>
+<script src="/assets/config.js"></script>
+<script src="/assets/i18n.js"></script>
+<script src="/assets/invitation.js"></script>
+<script>
+(function(){
+  var API = (window.INVITALIA && window.INVITALIA.api) || '';
+  var qs = new URLSearchParams(location.search);
+  var m = location.pathname.match(/\/i\/([^/]+)\/?$/);
+  var slug = (m && decodeURIComponent(m[1])) || qs.get('slug') || qs.get('s') || '';
+  var preview = qs.get('preview') || '';
+  var stateEl = document.getElementById('state'), stateText = document.getElementById('state-text'), inv = document.getElementById('inv');
+  var data = null, invLang = null, forced = qs.get('lang');
+
+  function showState(key){ stateText.removeAttribute('data-i18n'); stateText.textContent = I18N.t(key); stateText.setAttribute('data-i18n', key); stateEl.hidden = false; inv.hidden = true; }
+  function draw(){
+    if (!data) return;
+    INVITATION.render(inv, data, {
+      footer: I18N.t('g.poweredBy'),
+      onSubmit: function(payload){
+        return fetch(API + '/api/i/' + encodeURIComponent(slug) + '/rsvp', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) })
+          .then(function(r){ return r.json().then(function(j){ if (!r.ok) { var e = new Error(j.error || r.status); e.code = j.error; throw e; } return j; }); });
+      },
+      onMusic: function(btn){ var a = document.getElementById('music'); if (!a.src) return; if (a.paused) { a.play().catch(function(){}); btn.setAttribute('aria-pressed','true'); } else { a.pause(); btn.setAttribute('aria-pressed','false'); } }
+    });
+    stateEl.hidden = true; inv.hidden = false;
+  }
+  document.addEventListener('i18n:applied', draw);
+
+  if (!slug) { showState('g.notFound'); return; }
+  fetch(API + '/api/i/' + encodeURIComponent(slug) + (preview ? '?preview=' + encodeURIComponent(preview) : ''))
+    .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, status: r.status, j: j }; }); })
+    .then(function(res){
+      if (!res.ok) { showState(res.j && res.j.error === 'not_published' ? 'g.notPublished' : 'g.notFound'); return; }
+      data = res.j.invitation.data; data.slug = res.j.invitation.slug; invLang = res.j.invitation.lang;
+      // Invitation language is the default unless the guest already chose a language or the link forces one.
+      var chosen = null; try { chosen = localStorage.getItem('invitalia-lang'); } catch(e){}
+      if (forced && I18N.langs.indexOf(forced) >= 0) I18N.set(forced); else if (!chosen && invLang && I18N.langs.indexOf(invLang) >= 0) I18N.set(invLang); else draw();
+    })
+    .catch(function(){ showState('g.notFound'); });
+})();
+</script>
+</body>
+</html>
