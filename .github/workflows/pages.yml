@@ -1,5 +1,6 @@
 # Publica la carpeta site/ en GitHub Pages en cada push a main.
-# Requisito: Settings → Pages → Build and deployment → Source: "GitHub Actions".
+# Activa Pages automáticamente la primera vez (enablement: true). Si fallara por permisos,
+# actívalo a mano: Settings → Pages → Build and deployment → Source: "GitHub Actions".
 name: Publicar sitio en GitHub Pages
 
 on:
@@ -30,6 +31,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Configurar Pages
         uses: actions/configure-pages@v5
+        with:
+          # Activa GitHub Pages (fuente: GitHub Actions) si aún no está activado
+          enablement: true
       - name: Subir carpeta site/
         uses: actions/upload-pages-artifact@v3
         with:

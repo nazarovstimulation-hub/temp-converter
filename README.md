@@ -28,7 +28,7 @@ cd site && python3 -m http.server 8000
 
 ## Publicar
 
-El sitio se publica solo en GitHub Pages con el workflow `.github/workflows/pages.yml`: cada push a `main` que toque `site/` despliega la carpeta `site/`. Configuración única en GitHub: Settings → Pages → Build and deployment → Source: **GitHub Actions**. También puede lanzarse a mano desde la pestaña Actions (Run workflow). La URL queda en `https://<usuario>.github.io/<repo>/` hasta que se conecte el dominio fiestalia.com (Settings → Pages → Custom domain).
+El sitio se publica solo en GitHub Pages con el workflow `.github/workflows/pages.yml`: cada push a `main` que toque `site/` despliega la carpeta `site/`. El workflow activa Pages automáticamente en el primer despliegue; si fallara por permisos, actívalo a mano en Settings → Pages → Build and deployment → Source: **GitHub Actions** y relanza el workflow. También puede lanzarse a mano desde la pestaña Actions (Run workflow). La URL queda en `https://<usuario>.github.io/<repo>/` hasta que se conecte el dominio fiestalia.com (Settings → Pages → Custom domain).
 
 ## Pendiente antes de lanzar
 
