@@ -63,7 +63,7 @@ cd INVITALIA/server
 node check-deploy.js invitalia.co
 ```
 
-(El script avisa de que los DNS no son los de Render: ignóralo, ahora el sitio está en Cloudflare; lo que importa es que la API, la portada y la ruta de invitados respondan.)
+El script comprueba los servidores de nombres, los registros DNS, el certificado, la API y la página del invitado.
 
 ## 3. Activar los pagos con Stripe
 
