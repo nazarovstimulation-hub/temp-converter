@@ -11,7 +11,8 @@ window.BRAND = {
   email: "hola@fiestalia.com",   // ← correo de contacto
   whatsapp: "+34 600 000 000",   // ← teléfono / WhatsApp
   city: "Madrid, España",
-  // Tema de color: "fiesta" (coral/violeta del logo), "oro" (marfil y oro),
+  // Tema de color: "fiesta" (coral/violeta del logo), "oro" (marfil y oro), "negro" (negro y oro),
+  // "esmeralda" (esmeralda y oro), "burdeos" (burdeos y champán), "medianoche" (azul noche y oro),
   // "noche" (fondo oscuro de gala) o "rosa" (rosa cuarzo nupcial).
   // Para previsualizar sin cambiar esto: index.html?theme=oro
   theme: "fiesta",

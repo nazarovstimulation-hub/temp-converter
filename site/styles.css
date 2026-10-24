@@ -463,3 +463,164 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* Los mockups de móvil y tarjeta QR son siempre blancos: texto fijo oscuro */
 .phone-screen, .qr-card, .pill-float { color: #241a2e; }
 .phone-title span, .qr-card small { color: #8a817d; }
+
+/* ───────────────────────────────────────────────
+   Temas lujo / VIP
+   ─────────────────────────────────────────────── */
+
+/* D · Negro y Oro — VIP clásico, gala, black tie */
+:root[data-theme="negro"] {
+  --brand: #c9a84c;          /* oro */
+  --brand-dark: #b4933a;
+  --brand-soft: #2a2416;
+  --brand-glow: rgba(201, 168, 76, .35);
+  --purple: #e6c877;         /* énfasis dorado claro */
+  --purple-dark: #000000;
+  --purple-soft: #1c1a14;
+  --accent: #e6c877;
+  --ink: #f5efe3;
+  --ink-2: #cfc6b5;
+  --ink-3: #8f877a;
+  --line: #2c2823;
+  --bg: #0e0c10;
+  --bg-2: #16131a;
+  --card: #1a171d;
+  --header-bg: rgba(14, 12, 16, .88);
+  --dark-text: #f5efe3;
+  --dark-muted: #a79f90;
+  --screen-bg: #0a090c;
+  --screen-line: #3a3326;
+  --ok: #c9a84c;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .5);
+  --shadow-lg: 0 30px 60px rgba(0, 0, 0, .7);
+}
+:root[data-theme="negro"] .btn-primary,
+:root[data-theme="negro"] .upload-btn { color: #14110a; }
+:root[data-theme="negro"] .btn-ghost { border-color: #4a4133; color: var(--ink); }
+:root[data-theme="negro"] .btn-light { background: var(--brand); color: #14110a; }
+:root[data-theme="negro"] .tag,
+:root[data-theme="negro"] .plan-badge { background: var(--brand); color: #14110a; }
+:root[data-theme="negro"] .eyebrow { letter-spacing: .16em; }
+:root[data-theme="negro"] .no { color: #d98c86; }
+:root[data-theme="negro"] .feature .icon,
+:root[data-theme="negro"] .step .icon { background: var(--bg-2); color: var(--brand); border: 1px solid #3a3326; }
+:root[data-theme="negro"] .plan.featured { border-color: var(--brand); }
+:root[data-theme="negro"] .plan.recommended { outline-color: var(--brand); }
+:root[data-theme="negro"] .avatar { color: #14110a; }
+:root[data-theme="negro"] .livewall { border-block: 1px solid #2c2823; }
+:root[data-theme="negro"] .cta { background: linear-gradient(135deg, #1a171d 0%, #4a3a12 50%, #c9a84c 100%); }
+:root[data-theme="negro"] .cta h2, :root[data-theme="negro"] .cta p { color: #f5efe3; }
+:root[data-theme="negro"] .hero { background: radial-gradient(900px 500px at 85% -10%, #2a2416, transparent 60%); }
+
+/* E · Esmeralda y Oro — hotel de lujo, elegancia clásica */
+:root[data-theme="esmeralda"] {
+  --brand: #146b4d;          /* esmeralda */
+  --brand-dark: #0f5339;
+  --brand-soft: #e3efe8;
+  --brand-glow: rgba(20, 107, 77, .28);
+  --purple: #0b3d2e;         /* esmeralda profundo para énfasis */
+  --purple-dark: #0b2a22;
+  --purple-soft: #f1ead8;
+  --accent: #c9a84c;         /* oro */
+  --ink: #10302a;
+  --ink-2: #4b5f58;
+  --ink-3: #85938d;
+  --line: #e4ddcc;
+  --bg: #f7f4ec;
+  --bg-2: #efe9da;
+  --card: #fffdf7;
+  --header-bg: rgba(247, 244, 236, .88);
+  --dark-text: #eef3ea;
+  --dark-muted: #a9bcb2;
+  --screen-bg: #061a14;
+  --screen-line: #2a5a48;
+  --shadow: 0 10px 30px rgba(16, 48, 42, .08);
+  --shadow-lg: 0 30px 60px rgba(16, 48, 42, .14);
+}
+:root[data-theme="esmeralda"] .eyebrow { color: var(--accent); letter-spacing: .14em; }
+:root[data-theme="esmeralda"] .eyebrow::before { background: var(--accent); }
+:root[data-theme="esmeralda"] .hero h1 em { color: var(--brand); }
+:root[data-theme="esmeralda"] .tag,
+:root[data-theme="esmeralda"] .plan-badge { background: var(--accent); color: #10302a; }
+:root[data-theme="esmeralda"] .livewall .eyebrow { color: var(--accent); }
+:root[data-theme="esmeralda"] .plan.featured { border-color: var(--accent); }
+:root[data-theme="esmeralda"] .plan.recommended { outline-color: var(--accent); }
+:root[data-theme="esmeralda"] .cta { background: linear-gradient(135deg, #0b2a22 0%, #146b4d 55%, #c9a84c 100%); }
+
+/* F · Burdeos y Champán — boda de lujo, cálido y señorial */
+:root[data-theme="burdeos"] {
+  --brand: #7a1232;          /* burdeos */
+  --brand-dark: #5e0c26;
+  --brand-soft: #f6e4e8;
+  --brand-glow: rgba(122, 18, 50, .28);
+  --purple: #4a0f24;
+  --purple-dark: #2c0a18;
+  --purple-soft: #f6ecdc;
+  --accent: #c89b7b;         /* oro rosa / champán */
+  --ink: #2c1220;
+  --ink-2: #5f4651;
+  --ink-3: #978189;
+  --line: #ead9cf;
+  --bg: #f9f3ea;
+  --bg-2: #f2e6d8;
+  --card: #fffbf5;
+  --header-bg: rgba(249, 243, 234, .88);
+  --dark-text: #f7ebe6;
+  --dark-muted: #cfb0ba;
+  --screen-bg: #1b0610;
+  --screen-line: #5a2436;
+  --shadow: 0 10px 30px rgba(44, 18, 32, .08);
+  --shadow-lg: 0 30px 60px rgba(44, 18, 32, .14);
+}
+:root[data-theme="burdeos"] .eyebrow { color: var(--accent); letter-spacing: .14em; }
+:root[data-theme="burdeos"] .eyebrow::before { background: var(--accent); }
+:root[data-theme="burdeos"] .hero h1 em { color: var(--brand); }
+:root[data-theme="burdeos"] .tag,
+:root[data-theme="burdeos"] .plan-badge { background: var(--accent); color: #2c1220; }
+:root[data-theme="burdeos"] .plan.featured { border-color: var(--accent); }
+:root[data-theme="burdeos"] .plan.recommended { outline-color: var(--accent); }
+:root[data-theme="burdeos"] .cta { background: linear-gradient(135deg, #2c0a18 0%, #7a1232 55%, #c89b7b 100%); }
+
+/* G · Medianoche y Oro — azul noche, oro champán, muy premium */
+:root[data-theme="medianoche"] {
+  --brand: #e0c07a;          /* oro champán */
+  --brand-dark: #cfae62;
+  --brand-soft: #1e2a52;
+  --brand-glow: rgba(224, 192, 122, .32);
+  --purple: #f0d898;
+  --purple-dark: #050a1c;
+  --purple-soft: #15214a;
+  --accent: #e0c07a;
+  --ink: #f4f1ea;
+  --ink-2: #c3c7d6;
+  --ink-3: #8a90a8;
+  --line: #243161;
+  --bg: #0b1430;
+  --bg-2: #101b40;
+  --card: #142048;
+  --header-bg: rgba(11, 20, 48, .88);
+  --dark-text: #f4f1ea;
+  --dark-muted: #9aa3c4;
+  --screen-bg: #060c22;
+  --screen-line: #2b3a74;
+  --ok: #7fd1a8;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .45);
+  --shadow-lg: 0 30px 60px rgba(0, 0, 0, .6);
+}
+:root[data-theme="medianoche"] .btn-primary,
+:root[data-theme="medianoche"] .upload-btn { color: #1a1508; }
+:root[data-theme="medianoche"] .btn-ghost { border-color: #3a4a8a; color: var(--ink); }
+:root[data-theme="medianoche"] .btn-light { background: var(--brand); color: #1a1508; }
+:root[data-theme="medianoche"] .tag,
+:root[data-theme="medianoche"] .plan-badge { background: var(--brand); color: #1a1508; }
+:root[data-theme="medianoche"] .eyebrow { letter-spacing: .16em; }
+:root[data-theme="medianoche"] .no { color: #f08c8c; }
+:root[data-theme="medianoche"] .feature .icon,
+:root[data-theme="medianoche"] .step .icon { background: var(--bg-2); color: var(--brand); border: 1px solid #2b3a74; }
+:root[data-theme="medianoche"] .plan.featured { border-color: var(--brand); }
+:root[data-theme="medianoche"] .plan.recommended { outline-color: var(--brand); }
+:root[data-theme="medianoche"] .avatar { color: #1a1508; }
+:root[data-theme="medianoche"] .livewall { border-block: 1px solid #243161; }
+:root[data-theme="medianoche"] .cta { background: linear-gradient(135deg, #142048 0%, #3a3a6a 50%, #e0c07a 100%); }
+:root[data-theme="medianoche"] .cta h2, :root[data-theme="medianoche"] .cta p { color: #f4f1ea; }
+:root[data-theme="medianoche"] .hero { background: radial-gradient(900px 500px at 85% -10%, #1e2a52, transparent 60%); }
