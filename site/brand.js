@@ -9,13 +9,13 @@ window.BRAND = {
   tagline: "El álbum de tu evento, hecho por tus invitados",
   domain: "fiestalia.com",       // ← tu dominio
   email: "hola@fiestalia.com",   // ← correo de contacto
-  whatsapp: "+34 600 000 000",   // ← teléfono / WhatsApp
+  whatsapp: "+34 634 11 85 79",   // teléfono / WhatsApp
   city: "Madrid, España",
   // Tema de color: "fiesta" (coral/violeta del logo), "oro" (marfil y oro), "negro" (negro y oro),
   // "esmeralda" (esmeralda y oro), "burdeos" (burdeos y champán), "medianoche" (azul noche y oro),
   // "noche" (fondo oscuro de gala) o "rosa" (rosa cuarzo nupcial).
   // Para previsualizar sin cambiar esto: index.html?theme=oro
-  theme: "burdeos",   // Rojo Cartier y Champán (tema elegido)
+  theme: "burdeos",   // Burdeos y Oro (tema elegido)
   freePhotos: 50,                // fotos gratis por álbum
   // Precios en euros, pago único (IVA incluido). Ajusta a tu estrategia.
   plans: [

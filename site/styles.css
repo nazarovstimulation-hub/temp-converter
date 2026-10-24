@@ -547,14 +547,14 @@ ul { margin: 0; padding: 0; list-style: none; }
 :root[data-theme="esmeralda"] .plan.recommended { outline-color: var(--accent); }
 :root[data-theme="esmeralda"] .cta { background: linear-gradient(135deg, #0b2a22 0%, #146b4d 55%, #c9a84c 100%); }
 
-/* F · Rojo Cartier y Champán — lujo clásico de joyería: carmín, champán y oro */
+/* F · Burdeos y Oro — burdeos profundo, champán y oro (tema por defecto) */
 :root[data-theme="burdeos"] {
-  --brand: #b20a2e;          /* rojo Cartier */
-  --brand-dark: #8e0824;
-  --brand-soft: #f8e3e6;
-  --brand-glow: rgba(178, 10, 46, .30);
-  --purple: #8e0824;         /* énfasis en carmín profundo */
-  --purple-dark: #3a0611;    /* fondo Live Wall: granate casi negro */
+  --brand: #7a1232;          /* burdeos profundo */
+  --brand-dark: #5e0c26;
+  --brand-soft: #f6e3e8;
+  --brand-glow: rgba(122, 18, 50, .30);
+  --purple: #5e0c26;         /* énfasis en burdeos */
+  --purple-dark: #3a0611;    /* fondo Live Wall */
   --purple-soft: #f6ecdc;
   --accent: #c9a84c;         /* oro */
   --ink: #2a1016;
@@ -583,10 +583,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 :root[data-theme="burdeos"] .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
 :root[data-theme="burdeos"] .livewall .eyebrow { color: var(--accent); }
 :root[data-theme="burdeos"] .btn-light { background: var(--accent); color: #2a1016; }
-:root[data-theme="burdeos"] .cta { background: linear-gradient(135deg, #3a0611 0%, #b20a2e 55%, #c9a84c 100%); }
+:root[data-theme="burdeos"] .cta { background: linear-gradient(135deg, #3a0611 0%, #7a1232 55%, #c9a84c 100%); }
 :root[data-theme="burdeos"] .hero {
   background:
-    radial-gradient(900px 500px at 85% -10%, #f8e3e6, transparent 60%),
+    radial-gradient(900px 500px at 85% -10%, #f6e3e8, transparent 60%),
     radial-gradient(700px 450px at -10% 110%, #f3e7d8, transparent 60%);
 }
 

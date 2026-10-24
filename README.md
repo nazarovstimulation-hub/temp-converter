@@ -17,7 +17,7 @@ docs/
 
 ## Personalizar la marca
 
-Edita `site/brand.js`: nombre, eslogan, dominio, correo, WhatsApp, ciudad, fotos gratis y la lista de planes (precio, fotos, GB, meses, Live Wall). Toda la página se actualiza sola. El tema de color se elige con `theme` en `site/brand.js` (por defecto `burdeos`: rojo Cartier y champán; también `fiesta`, `oro`, `noche`, `rosa`, `negro`, `esmeralda`, `medianoche`). Para previsualizar otro sin cambiar el archivo: `index.html?theme=oro`. Los tokens de cada tema están al final de `site/styles.css`.
+Edita `site/brand.js`: nombre, eslogan, dominio, correo, WhatsApp, ciudad, fotos gratis y la lista de planes (precio, fotos, GB, meses, Live Wall). Toda la página se actualiza sola. El tema de color se elige con `theme` en `site/brand.js` (por defecto `burdeos`: burdeos, champán y oro; también `fiesta`, `oro`, `noche`, `rosa`, `negro`, `esmeralda`, `medianoche`). Para previsualizar otro sin cambiar el archivo: `index.html?theme=oro`. Los tokens de cada tema están al final de `site/styles.css`.
 
 ## Ver en local
 
