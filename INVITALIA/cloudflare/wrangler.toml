@@ -7,6 +7,12 @@ main = "src/worker.js"
 compatibility_date = "2025-10-01"
 workers_dev = true
 
+# Custom domains (the zone invitalia.co must be active in this Cloudflare account; DNS records and certificates are created automatically)
+routes = [
+  { pattern = "invitalia.co", custom_domain = true },
+  { pattern = "www.invitalia.co", custom_domain = true }
+]
+
 [assets]
 directory = "../site"
 binding = "ASSETS"
@@ -27,8 +33,3 @@ CORS_ORIGINS = ""
 
 # Secrets (never in this file):  wrangler secret put STRIPE_SECRET_KEY / STRIPE_WEBHOOK_SECRET
 
-# Custom domains (the zone invitalia.co must be active in this Cloudflare account; DNS records and certificates are created automatically)
-routes = [
-  { pattern = "invitalia.co", custom_domain = true },
-  { pattern = "www.invitalia.co", custom_domain = true }
-]
