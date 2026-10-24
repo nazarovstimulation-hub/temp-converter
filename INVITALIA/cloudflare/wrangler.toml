@@ -1,0 +1,35 @@
+# INVITALIA.co on Cloudflare Workers (free plan): one Worker serves the API, the static site and the guest pages.
+# Deploy locally:  npm install && npm run db:create && npm run deploy
+# Or let GitHub Actions do it: see .github/workflows/cloudflare.yml
+
+name = "invitalia"
+main = "src/worker.js"
+compatibility_date = "2025-10-01"
+workers_dev = true
+
+[assets]
+directory = "../site"
+binding = "ASSETS"
+not_found_handling = "404-page"
+run_worker_first = ["/api/*", "/i/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "invitalia"
+database_id = "REPLACE_DATABASE_ID"   # filled in by `npm run db:create` or the GitHub workflow
+migrations_dir = "migrations"
+
+[vars]
+BASE_URL = "https://invitalia.co"
+PRICE_AMOUNT = "2900"
+PRICE_CURRENCY = "eur"
+CORS_ORIGINS = ""
+
+# Secrets (never in this file):  wrangler secret put STRIPE_SECRET_KEY / STRIPE_WEBHOOK_SECRET
+
+# Custom domain: add it in the dashboard (Workers & Pages → invitalia → Settings → Domains & Routes → Add → Custom domain)
+# once invitalia.co is in your Cloudflare account. Or uncomment after the zone exists:
+# routes = [
+#   { pattern = "invitalia.co", custom_domain = true },
+#   { pattern = "www.invitalia.co", custom_domain = true }
+# ]

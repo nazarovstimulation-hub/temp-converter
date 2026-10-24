@@ -10,7 +10,6 @@ INVITALIA/
 │   ├── editor.html            editor con vista previa, guardado en la nube, publicación y pago
 │   ├── guest.html             página pública de la invitación (RSVP de los invitados)
 │   ├── 404.html
-│   ├── CNAME                  dominio para GitHub Pages
 │   └── assets/
 │       ├── i18n.js            diccionarios de los 7 idiomas + motor de traducción
 │       ├── invitation.js/.css renderizado compartido de la invitación (editor y página del invitado)
@@ -21,8 +20,8 @@ INVITALIA/
 │   ├── test.js                prueba de extremo a extremo de la API
 │   ├── test-i18n.js           comprueba que todas las claves existen en los 7 idiomas
 │   ├── .env.example           variables de entorno
-│   └── Dockerfile
-├── render.yaml                despliegue en Render.com con disco persistente
+│   └── Dockerfile             alternativa autoalojada
+├── cloudflare/                Worker (API + sitio) para Cloudflare, base D1, wrangler.toml, pruebas
 └── logos/                     10 conceptos iniciales de logotipo (SVG)
 ```
 
@@ -65,29 +64,22 @@ El `editToken` se guarda solo como hash; el editor lo conserva en el navegador y
 3. Precio: `PRICE_AMOUNT` en céntimos (2900 = 29 €) y `PRICE_CURRENCY`.
    Stripe muestra el checkout en el idioma del cliente (`locale` se envía desde el editor).
 
-## Despliegue
+## Despliegue (gratis, Cloudflare)
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nazarovstimulation-hub/temp-converter)
+La carpeta `cloudflare/` contiene la misma API portada a **Cloudflare Workers + D1**; el Worker también sirve el sitio.
+Plan gratuito, sin suspensión, HTTPS y dominio propio incluidos. El workflow `.github/workflows/cloudflare.yml` despliega
+en cada `git push` cuando el repositorio tiene los secretos `CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`.
 
-**Opción A, todo en un servidor (recomendada):** Render con el Blueprint `render.yaml` de la raíz del repositorio
-(servicio Docker + disco persistente para SQLite, `BASE_URL=https://invitalia.co`). Guía paso a paso, con el dominio
-de Wix y Stripe, en **[DEPLOY.md](DEPLOY.md)**. Comprobación tras el despliegue: `node server/check-deploy.js invitalia.co`.
-También sirve Railway, Fly o cualquier VPS con Node 22 usando `server/Dockerfile`.
+Guía paso a paso (token, base D1, dominio de Wix → Cloudflare, Stripe): **[DEPLOY.md](DEPLOY.md)**.
 
-**Opción B, sitio en GitHub Pages + API aparte:** el workflow `.github/workflows/pages.yml` publica `site/`.
-En `site/assets/config.js` escribe la URL del servidor en `window.INVITALIA.api` y añade el dominio del sitio a `CORS_ORIGINS` del servidor.
-Las URLs bonitas `/i/slug` solo funcionan en el servidor; en Pages se usa `guest.html?slug=…`.
-
-**Dominio en Wix:** Domains → invitalia.co → Manage DNS Records. Para Render añade el CNAME que te indique Render;
-para GitHub Pages:
-
+```bash
+cd INVITALIA/cloudflare
+npm install
+npm test                 # pruebas del Worker con D1 simulada
+npx wrangler dev         # Worker + D1 locales en http://localhost:8787
 ```
-A      @     185.199.108.153
-A      @     185.199.109.153
-A      @     185.199.110.153
-A      @     185.199.111.153
-CNAME  www   nazarovstimulation-hub.github.io
-```
+
+La carpeta `server/` (Node.js + SQLite) sigue siendo útil para desarrollo local y como alternativa en cualquier VPS o Docker.
 
 ## Idiomas
 

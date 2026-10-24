@@ -1,3 +1,6 @@
 INVITALIA/server/data/
 INVITALIA/server/.env
 node_modules/
+INVITALIA/cloudflare/.wrangler/
+INVITALIA/cloudflare/.dev.vars
+INVITALIA/cloudflare/dist/

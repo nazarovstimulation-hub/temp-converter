@@ -1,0 +1,62 @@
+name: Deploy INVITALIA to Cloudflare
+
+# Deploys the Worker (API + site) to Cloudflare on every push that touches INVITALIA.
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   CLOUDFLARE_API_TOKEN   token with permissions: Workers Scripts:Edit, D1:Edit, Account Settings:Read
+#   CLOUDFLARE_ACCOUNT_ID  from the Cloudflare dashboard (Workers & Pages → right sidebar)
+# Optional secrets, applied to the Worker when present:
+#   STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET
+
+on:
+  push:
+    branches: [main, claude/invitalia-logo-concepts-jukw3p]
+    paths: ["INVITALIA/**", ".github/workflows/cloudflare.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: cloudflare
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Server and i18n tests
+        run: cd INVITALIA/server && node --no-warnings test.js && node --no-warnings test-i18n.js
+      - name: Worker tests
+        run: cd INVITALIA/cloudflare && node --no-warnings test-worker.mjs
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/claude/invitalia-logo-concepts-jukw3p' }}
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    defaults:
+      run: { working-directory: INVITALIA/cloudflare }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Check secrets
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID to the repository secrets (see INVITALIA/DEPLOY.md)."; exit 1; fi
+      - run: npm install --no-audit --no-fund
+      - name: Create D1 database if needed and apply migrations
+        run: node scripts/db-setup.mjs
+      - name: Deploy Worker
+        run: npx wrangler deploy
+      - name: Apply Stripe secrets (if configured)
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
+        run: |
+          if [ -n "$STRIPE_SECRET_KEY" ]; then echo "$STRIPE_SECRET_KEY" | npx wrangler secret put STRIPE_SECRET_KEY; fi
+          if [ -n "$STRIPE_WEBHOOK_SECRET" ]; then echo "$STRIPE_WEBHOOK_SECRET" | npx wrangler secret put STRIPE_WEBHOOK_SECRET; fi
+      - name: Done
+        run: echo "Deployed. Open the Worker URL printed by wrangler above (…workers.dev), or https://invitalia.co once the custom domain is attached."

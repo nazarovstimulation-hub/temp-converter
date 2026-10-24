@@ -1,0 +1,19 @@
+{
+  "name": "invitalia-cloudflare",
+  "version": "1.0.0",
+  "private": true,
+  "description": "INVITALIA.co on Cloudflare Workers + D1 (free plan).",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:create": "node scripts/db-setup.mjs",
+    "db:migrate": "wrangler d1 migrations apply invitalia --remote",
+    "secrets": "echo 'Run: wrangler secret put STRIPE_SECRET_KEY  and  wrangler secret put STRIPE_WEBHOOK_SECRET'",
+    "test": "node --no-warnings test-worker.mjs",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.40.0"
+  }
+}
