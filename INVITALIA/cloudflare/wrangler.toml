@@ -27,9 +27,8 @@ CORS_ORIGINS = ""
 
 # Secrets (never in this file):  wrangler secret put STRIPE_SECRET_KEY / STRIPE_WEBHOOK_SECRET
 
-# Custom domain: add it in the dashboard (Workers & Pages → invitalia → Settings → Domains & Routes → Add → Custom domain)
-# once invitalia.co is in your Cloudflare account. Or uncomment after the zone exists:
-# routes = [
-#   { pattern = "invitalia.co", custom_domain = true },
-#   { pattern = "www.invitalia.co", custom_domain = true }
-# ]
+# Custom domains (the zone invitalia.co must be active in this Cloudflare account; DNS records and certificates are created automatically)
+routes = [
+  { pattern = "invitalia.co", custom_domain = true },
+  { pattern = "www.invitalia.co", custom_domain = true }
+]
