@@ -232,3 +232,17 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
 
 .page-head { padding: 56px 0 10px; }
 .page-head h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+
+/* Logo Invitalia */
+.logo-img { height: 40px; width: auto; display: block; }
+@media (max-width: 640px) { .logo-img { height: 34px; } }
+
+/* Tipos de evento */
+.tipos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.tipo { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: block; transition: transform .15s, box-shadow .15s; }
+.tipo:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--primary); }
+.tipo-ico { font-size: 1.8rem; display: block; margin-bottom: 12px; }
+.tipo h3 { font-size: 1.3rem; margin-bottom: 6px; }
+.tipo p { color: var(--muted); font-size: .92rem; margin: 0; }
+@media (max-width: 900px) { .tipos { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .tipos { grid-template-columns: 1fr; } }

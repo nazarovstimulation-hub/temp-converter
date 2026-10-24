@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{brand} · Invitaciones de boda digitales con confirmación de asistencia</title>
-  <meta name="description" content="Crea vuestra invitación de boda digital en 15 minutos: web de boda con confirmación de asistencia (RSVP), mapa, cuenta atrás, dress code y lista de regalos. Envíala por WhatsApp. Pago único, sin suscripciones.">
-  <meta property="og:title" content="Invitaciones de boda digitales con confirmación de asistencia">
-  <meta property="og:description" content="Web de boda lista en 15 minutos. RSVP, mapa, cuenta atrás, regalos. Envío por WhatsApp.">
+  <title>Invitalia · Invitaciones digitales para bodas, cumpleaños y eventos</title>
+  <meta name="description" content="Invitalia: crea tu invitación digital en 15 minutos para bodas, cumpleaños, eventos de empresa, comuniones y cualquier celebración. Confirmación de asistencia, mapa, cuenta atrás y regalos. Se envía por WhatsApp. Pago único.">
+  <link rel="canonical" href="https://invitalia.co/">
+  <link rel="icon" type="image/svg+xml" href="assets/img/mark.svg">
+  <meta property="og:title" content="Invitalia · Invitaciones digitales para cada celebración">
+  <meta property="og:url" content="https://invitalia.co/">
+  <meta property="og:site_name" content="Invitalia">
+  <meta property="og:description" content="Invitación digital lista en 15 minutos. Confirmaciones, mapa, cuenta atrás y regalos. Envío por WhatsApp.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,14 +22,12 @@
 
 <header class="nav">
   <div class="container">
-    <a class="logo" href="index.html">
-      <span class="logo-mark" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
-      </span>
-      <span data-brand="name">Enlace</span>
+    <a class="logo" href="index.html" aria-label="Invitalia">
+      <img class="logo-img" src="assets/img/logo.svg" alt="Invitalia" width="190" height="43">
     </a>
     <nav class="nav-links" aria-label="Principal">
       <a href="#como-funciona">Cómo funciona</a>
+      <a href="#eventos">Eventos</a>
       <a href="#funciones">Funciones</a>
       <a href="#plantillas">Plantillas</a>
       <a href="#precios">Precios</a>
@@ -47,9 +49,9 @@
     <div class="blob blob-b"></div>
     <div class="container">
       <div>
-        <span class="eyebrow">Web de boda + invitación digital</span>
-        <h1>Vuestra invitación de boda, <em>lista en 15 minutos</em></h1>
-        <p class="lead">Una web de boda elegante con confirmación de asistencia, mapa, cuenta atrás, dress code y lista de regalos. Se envía por WhatsApp y los invitados no descargan nada.</p>
+        <span class="eyebrow">Invitaciones digitales · bodas, cumpleaños y eventos</span>
+        <h1>Tu invitación digital, <em>lista en 15 minutos</em></h1>
+        <p class="lead">Bodas, cumpleaños, eventos de empresa, comuniones o cualquier fiesta: una invitación elegante con confirmación de asistencia, mapa, cuenta atrás y regalos. Se envía por WhatsApp y los invitados no descargan nada.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="crear.html">Crear mi invitación gratis</a>
           <a class="btn btn-outline" href="invitacion.html">Ver una invitación de ejemplo</a>
@@ -74,6 +76,7 @@
 
   <div class="trust">
     <div class="container">
+      <span>Para cualquier celebración</span>
       <span>Pensada para el móvil</span>
       <span>Envío por WhatsApp y QR</span>
       <span>Confirmaciones en tiempo real</span>
@@ -99,7 +102,7 @@
         <article class="step">
           <div class="step-num">02</div>
           <h3>Rellenad los datos</h3>
-          <p class="muted">Nombres, fecha, ceremonia, celebración, programa del día, dress code y regalos. La vista previa se actualiza al momento.</p>
+          <p class="muted">Nombres, fecha, lugar, programa, dress code y regalos. La vista previa se actualiza al momento, sea una boda, un cumpleaños o un evento de empresa.</p>
         </article>
         <article class="step">
           <div class="step-num">03</div>
@@ -110,22 +113,41 @@
     </div>
   </section>
 
+  <!-- TIPOS DE EVENTO -->
+  <section id="eventos" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Para cada ocasión</span>
+        <h2>Una invitación para cada celebración</h2>
+        <p class="lead">Elige el tipo de evento y la invitación adapta sus secciones, textos y formulario de confirmación.</p>
+      </div>
+      <div class="tipos">
+        <a class="tipo" href="crear.html?tipo=boda"><span class="tipo-ico">💍</span><h3>Bodas</h3><p>Ceremonia, banquete, dress code, autobús y lista de regalos.</p></a>
+        <a class="tipo" href="crear.html?tipo=cumple"><span class="tipo-ico">🎂</span><h3>Cumpleaños</h3><p>De los 1 a los 90. Con cuenta atrás, ubicación y confirmación en un clic.</p></a>
+        <a class="tipo" href="crear.html?tipo=empresa"><span class="tipo-ico">🏢</span><h3>Eventos de empresa</h3><p>Cenas de Navidad, team buildings, inauguraciones y presentaciones. Con registro de asistentes.</p></a>
+        <a class="tipo" href="crear.html?tipo=comunion"><span class="tipo-ico">🕊️</span><h3>Bautizos y comuniones</h3><p>Ceremonia, celebración y un espacio para los padrinos.</p></a>
+        <a class="tipo" href="crear.html?tipo=despedida"><span class="tipo-ico">🥂</span><h3>Despedidas y aniversarios</h3><p>Planes de fin de semana, bodas de plata, jubilaciones.</p></a>
+        <a class="tipo" href="crear.html?tipo=fiesta"><span class="tipo-ico">🎉</span><h3>Fiestas y mucho más</h3><p>Graduaciones, baby showers, quinceañeras, inauguraciones de casa.</p></a>
+      </div>
+    </div>
+  </section>
+
   <!-- FUNCIONES -->
   <section id="funciones" class="bg-sand">
     <div class="container">
       <div class="section-head center">
         <span class="eyebrow">Todo incluido</span>
-        <h2>Lo que vuestros invitados necesitan saber, en un solo enlace</h2>
+        <h2>Todo lo que tus invitados necesitan saber, en un solo enlace</h2>
       </div>
       <div class="features">
-        <article class="feature"><div class="icon">✅</div><h3>Confirmación de asistencia</h3><p>Formulario RSVP con acompañantes, menú, alergias, autobús y alojamiento. Lo veis todo en tiempo real y lo descargáis en Excel.</p></article>
-        <article class="feature"><div class="icon">⏳</div><h3>Cuenta atrás</h3><p>Días, horas y minutos hasta el gran día. Y un botón para añadir la boda al calendario del móvil.</p></article>
-        <article class="feature"><div class="icon">📍</div><h3>Mapa y cómo llegar</h3><p>Ceremonia y celebración con enlace directo a Google Maps y Apple Maps. Indicaciones de parking y autobuses.</p></article>
-        <article class="feature"><div class="icon">🗓️</div><h3>Programa del día</h3><p>Ceremonia, cóctel, banquete, baile y recena en una línea de tiempo clara.</p></article>
+        <article class="feature"><div class="icon">✅</div><h3>Confirmación de asistencia</h3><p>Formulario RSVP con acompañantes, menú, alergias, autobús y alojamiento. Lo ves todo en tiempo real y lo descargas en Excel.</p></article>
+        <article class="feature"><div class="icon">⏳</div><h3>Cuenta atrás</h3><p>Días, horas y minutos hasta el gran día. Y un botón para añadir el evento al calendario del móvil.</p></article>
+        <article class="feature"><div class="icon">📍</div><h3>Mapa y cómo llegar</h3><p>Cada lugar con enlace directo a Google Maps y Apple Maps. Indicaciones de parking y autobuses.</p></article>
+        <article class="feature"><div class="icon">🗓️</div><h3>Programa del día</h3><p>Ceremonia, cóctel, cena, baile o ponencias: el horario del evento en una línea de tiempo clara.</p></article>
         <article class="feature"><div class="icon">👗</div><h3>Dress code</h3><p>Explicad el código de vestimenta con ejemplos y paleta de colores, para que nadie tenga dudas.</p></article>
-        <article class="feature"><div class="icon">🎁</div><h3>Lista de regalos y Bizum</h3><p>Número de cuenta, Bizum o enlace a vuestra lista de bodas. Con un texto bonito, sin incomodidades.</p></article>
-        <article class="feature"><div class="icon">📷</div><h3>Galería y álbum colaborativo</h3><p>Vuestras fotos de pareja antes de la boda y un álbum donde los invitados suben las suyas después.</p></article>
-        <article class="feature"><div class="icon">🎵</div><h3>Música</h3><p>Vuestra canción sonando al abrir la invitación. Opcional, el invitado decide.</p></article>
+        <article class="feature"><div class="icon">🎁</div><h3>Lista de regalos y Bizum</h3><p>Número de cuenta, Bizum o enlace a la lista de regalos. Con un texto bonito, sin incomodidades.</p></article>
+        <article class="feature"><div class="icon">📷</div><h3>Galería y álbum colaborativo</h3><p>Tus fotos antes del evento y un álbum donde los invitados suben las suyas después.</p></article>
+        <article class="feature"><div class="icon">🎵</div><h3>Música</h3><p>Tu canción sonando al abrir la invitación. Opcional, el invitado decide.</p></article>
         <article class="feature"><div class="icon">🔒</div><h3>Acceso privado</h3><p>Protegedla con contraseña y enviad enlaces personalizados con el nombre de cada invitado.</p></article>
       </div>
     </div>
@@ -174,8 +196,8 @@
       <div class="demo-band">
         <div>
           <span class="eyebrow" style="color:#e9b9a3">Invitación de ejemplo</span>
-          <h2>Abridla como la verían vuestros invitados</h2>
-          <p>Lucía y Pablo se casan en Sevilla. Probad la cuenta atrás, el mapa, el formulario de confirmación y la lista de regalos. Todo funciona.</p>
+          <h2>Ábrela como la verían tus invitados</h2>
+          <p>Lucía y Pablo se casan en Sevilla. Prueba la cuenta atrás, el mapa, el formulario de confirmación y la lista de regalos. Todo funciona. También puedes ver un <a href="invitacion.html?tipo=cumple&plantilla=boho&n1=Carmen&intro=%C2%A1Cumplo%2040!&cel_lugar=Terraza%20El%20Mirador&cel_dir=Calle%20Mayor%2012%2C%20Madrid&ciudad=Madrid&fecha=2027-03-20&cel_hora=21:00" style="color:#fff;text-decoration:underline">ejemplo de cumpleaños</a> o un <a href="invitacion.html?tipo=empresa&plantilla=minimal&n1=Cena%20de%20Navidad&n2=Grupo%20Alvar&intro=Est%C3%A1s%20invitado&cel_lugar=Hotel%20Palace&cel_dir=Plaza%20de%20las%20Cortes%207%2C%20Madrid&ciudad=Madrid&fecha=2026-12-18&cel_hora=20:30" style="color:#fff;text-decoration:underline">evento de empresa</a>.</p>
           <a class="btn btn-light" href="invitacion.html">Abrir la invitación de ejemplo</a>
         </div>
         <ul class="demo-list">
@@ -196,12 +218,12 @@
       <div class="section-head center">
         <span class="eyebrow">Precios</span>
         <h2>Pago único. Sin sorpresas.</h2>
-        <p class="lead">Diseñad y previsualizad gratis. Pagáis solo cuando queráis publicar y enviar. IVA incluido.</p>
+        <p class="lead">Diseña y previsualiza gratis. Pagas solo cuando quieras publicar y enviar. IVA incluido.</p>
       </div>
       <div class="pricing">
         <article class="plan">
           <h3>Esencial</h3>
-          <p class="muted">Para una boda íntima</p>
+          <p class="muted">Para una celebración íntima</p>
           <div class="price">39 €<small> / pago único</small></div>
           <ul>
             <li>1 plantilla a elegir</li>
@@ -218,7 +240,7 @@
         <article class="plan featured">
           <span class="badge">La más elegida</span>
           <h3>Completa</h3>
-          <p class="muted">Todo lo que necesita una boda</p>
+          <p class="muted">Todo lo que necesita un gran evento</p>
           <div class="price">69 €<small> / pago único</small></div>
           <ul>
             <li>Todas las plantillas y colores</li>
@@ -234,15 +256,15 @@
         </article>
         <article class="plan">
           <h3>Premium</h3>
-          <p class="muted">Con diseño a medida</p>
+          <p class="muted">A medida y para empresas</p>
           <div class="price">119 €<small> / pago único</small></div>
           <ul>
             <li>Todo lo del plan Completa</li>
             <li>Diseño personalizado por nuestro equipo</li>
             <li>Enlaces personalizados por invitado</li>
-            <li>Dominio propio (vuestros-nombres.es)</li>
+            <li>Enlace propio (tu-evento.invitalia.co o tu dominio)</li>
             <li>Save the date + recordatorios por WhatsApp</li>
-            <li>Soporte prioritario hasta el día de la boda</li>
+            <li>Soporte prioritario hasta el día del evento</li>
             <li>Activa 24 meses</li>
           </ul>
           <a class="btn btn-outline" href="crear.html?plan=premium">Hablar con nosotros</a>
@@ -255,8 +277,8 @@
   <section>
     <div class="container">
       <div class="section-head center">
-        <span class="eyebrow">Parejas que ya la enviaron</span>
-        <h2>Lo que dicen los novios</h2>
+        <span class="eyebrow">Ya la han enviado</span>
+        <h2>Lo que dicen nuestros clientes</h2>
       </div>
       <div class="quotes">
         <article class="quote">
@@ -271,8 +293,8 @@
         </article>
         <article class="quote">
           <div class="stars">★★★★★</div>
-          <p>“Queríamos algo bonito pero sin gastar 300 € en un diseñador. Esta fue la solución.”</p>
-          <footer>Lucía y Pablo · Sevilla</footer>
+          <p>“Para la cena de Navidad de la empresa necesitábamos registrar 180 asistentes con menú y alergias. Lo tuvimos en una hora.”</p>
+          <footer>Raquel, RR. HH. · Madrid</footer>
         </article>
       </div>
       <p class="muted" style="text-align:center;font-size:.8rem;margin-top:20px">Testimonios de ejemplo: sustituir por reseñas reales antes de publicar.</p>
@@ -288,28 +310,32 @@
       </div>
       <div class="faq">
         <details open>
+          <summary>¿Sirve para algo más que bodas?</summary>
+          <p>Sí. Invitalia funciona para cumpleaños, eventos de empresa, bautizos, comuniones, despedidas, aniversarios, graduaciones y cualquier celebración. Al elegir el tipo de evento, la invitación adapta sus secciones y el formulario de confirmación.</p>
+        </details>
+        <details>
           <summary>¿Los invitados tienen que descargar alguna app?</summary>
           <p>No. La invitación es un enlace que se abre en el navegador del móvil, la tablet o el ordenador. Funciona en iPhone y Android sin instalar nada.</p>
         </details>
         <details>
           <summary>¿Cómo la envío?</summary>
-          <p>Copiáis el enlace y lo compartís por WhatsApp, Telegram, email o redes sociales. También os damos un código QR para imprimirlo en una tarjeta física o un save the date.</p>
+          <p>Copias el enlace y lo compartes por WhatsApp, Telegram, email o redes sociales. También te damos un código QR para imprimirlo en una tarjeta física o un save the date.</p>
         </details>
         <details>
           <summary>¿Puedo cambiar algo después de enviarla?</summary>
-          <p>Sí, cuantas veces queráis. Cambiáis la hora, el lugar o el texto y la invitación se actualiza al instante en el móvil de todos, sin reenviar nada.</p>
+          <p>Sí, cuantas veces quieras. Cambias la hora, el lugar o el texto y la invitación se actualiza al instante en el móvil de todos, sin reenviar nada.</p>
         </details>
         <details>
           <summary>¿Cómo funciona la confirmación de asistencia?</summary>
-          <p>El invitado rellena un formulario corto: cuántas personas van, qué menú prefieren, alergias y si necesitan autobús o alojamiento. Vosotros lo veis en vuestro panel y lo descargáis en Excel para el catering y el seating.</p>
+          <p>El invitado rellena un formulario corto: cuántas personas van, qué menú prefieren, alergias y si necesitan autobús o alojamiento. Tú lo ves en tu panel y lo descargas en Excel para el catering y el seating.</p>
         </details>
         <details>
           <summary>¿Cuánto tiempo está activa?</summary>
-          <p>Según el plan: 6, 12 o 24 meses desde la publicación. Después podéis descargar una copia en PDF como recuerdo.</p>
+          <p>Según el plan: 6, 12 o 24 meses desde la publicación. Después puedes descargar una copia en PDF como recuerdo.</p>
         </details>
         <details>
           <summary>¿Y si no me gusta el resultado?</summary>
-          <p>Diseñáis y previsualizáis gratis. Solo pagáis cuando decidís publicar. Y si en los primeros 14 días no estáis contentos, os devolvemos el dinero.</p>
+          <p>Diseñas y previsualizas gratis. Solo pagas cuando decides publicar. Y si en los primeros 14 días no estás contento, te devolvemos el dinero.</p>
         </details>
       </div>
     </div>
@@ -319,8 +345,8 @@
   <section class="cta-final">
     <div class="container">
       <span class="eyebrow">Empezad hoy</span>
-      <h2>La invitación que vuestros invitados abrirán diez veces antes de la boda</h2>
-      <p class="lead" style="margin:18px auto 28px;max-width:560px">Gratis hasta que decidáis publicar. Lista en 15 minutos.</p>
+      <h2>La invitación que tus invitados abrirán diez veces antes del gran día</h2>
+      <p class="lead" style="margin:18px auto 28px;max-width:560px">Gratis hasta que decidas publicar. Lista en 15 minutos.</p>
       <a class="btn btn-primary" href="crear.html">Crear mi invitación</a>
     </div>
   </section>
@@ -330,13 +356,14 @@
 <footer class="footer">
   <div class="container">
     <div>
-      <div class="logo" style="font-size:1.4rem;margin-bottom:10px"><span data-brand="name">Enlace</span></div>
-      <p data-brand="tagline">Invitaciones de boda digitales</p>
+      <img src="assets/img/logo.svg" alt="Invitalia" width="160" height="37" style="margin-bottom:12px">
+      <p data-brand="tagline">Invitaciones digitales para cada celebración</p>
       <p>Hecho con cariño en España.</p>
     </div>
     <div>
       <h4>Producto</h4>
       <a href="#plantillas">Plantillas</a>
+      <a href="#eventos">Tipos de evento</a>
       <a href="#funciones">Funciones</a>
       <a href="#precios">Precios</a>
       <a href="invitacion.html">Invitación de ejemplo</a>
@@ -344,7 +371,7 @@
     <div>
       <h4>Ayuda</h4>
       <a href="#faq">Preguntas frecuentes</a>
-      <a data-brand="email" href="#">hola@enlace.es</a>
+      <a data-brand="email" href="#">hola@invitalia.co</a>
       <a data-brand="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
       <a data-brand="instagram" href="#" target="_blank" rel="noopener">@instagram</a>
     </div>
@@ -357,7 +384,7 @@
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© <span data-brand="year"></span> <span data-brand="name">Enlace</span>. Todos los derechos reservados.</span>
+    <span>© <span data-brand="year"></span> <span data-brand="name">Invitalia</span> · invitalia.co. Todos los derechos reservados.</span>
     <span>Precios con IVA incluido.</span>
   </div>
 </footer>

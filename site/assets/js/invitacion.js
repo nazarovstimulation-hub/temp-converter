@@ -3,6 +3,18 @@
   var q = new URLSearchParams(location.search);
   var get = function (k, d) { var v = q.get(k); return v !== null && v !== "" ? v : d; };
 
+  var tipo = get("tipo", "boda");
+  var T = {
+    boda:      { intro: "¡Nos casamos!", historia: "Nuestra historia", cel: "Celebración", galeria: "Nosotros", msg: "Un mensaje para los novios (opcional)", firma: "Con todo nuestro cariño," },
+    cumple:    { intro: "¡Cumplo años!", historia: "Unas palabras", cel: "Dónde lo celebramos", galeria: "Momentos", msg: "Un mensaje para quien cumple (opcional)", firma: "Te espero," },
+    empresa:   { intro: "Estás invitado", historia: "Sobre el evento", cel: "Lugar del evento", galeria: "Galería", msg: "Comentarios para la organización (opcional)", firma: "Te esperamos," },
+    comunion:  { intro: "Mi primera comunión", historia: "Unas palabras", cel: "Celebración", galeria: "Momentos", msg: "Un mensaje para la familia (opcional)", firma: "Con cariño," },
+    despedida: { intro: "¡Nos vamos de fiesta!", historia: "El plan", cel: "Dónde nos vemos", galeria: "Momentos", msg: "Un mensaje (opcional)", firma: "¡Nos vemos!" },
+    fiesta:    { intro: "¡Estás invitado!", historia: "De qué va", cel: "Dónde", galeria: "Momentos", msg: "Un mensaje para el anfitrión (opcional)", firma: "Te espero," }
+  };
+  var tx = T[tipo] || T.boda;
+  if (!T[tipo]) tipo = "boda";
+
   var data = {
     tpl: get("plantilla", "botanica"),
     n1: get("n1", "Lucía"),
@@ -10,8 +22,15 @@
     fecha: get("fecha", "2027-06-12"),
     hora: get("hora", "13:00"),
     ciudad: get("ciudad", "Sevilla"),
-    intro: get("intro", "¡Nos casamos!"),
-    historia: get("historia", "Nos conocimos en una feria de abril, bailando sevillanas sin saber bailar. Ocho años, dos gatos y un viaje a Lisboa después, queremos celebrarlo con la gente que más queremos: vosotros."),
+    intro: get("intro", tx.intro),
+    historia: get("historia", {
+      boda: "Nos conocimos en una feria de abril, bailando sevillanas sin saber bailar. Ocho años, dos gatos y un viaje a Lisboa después, queremos celebrarlo con la gente que más queremos: vosotros.",
+      cumple: "Un año más y, como siempre, lo mejor es celebrarlo con la gente que quiero. Habrá cena, tarta y mucha música. Ven con ganas de bailar.",
+      empresa: "Un año más, cerramos el ejercicio como mejor sabemos: juntos. Os esperamos para brindar por lo conseguido y por lo que viene. Confirma tu asistencia cuanto antes.",
+      comunion: "Este año hago mi primera comunión y me hace mucha ilusión que estéis conmigo en un día tan especial.",
+      despedida: "Antes de la boda toca despedirse como se merece. Confirma cuanto antes para reservar.",
+      fiesta: "Queremos celebrarlo con vosotros. Traed buen humor, del resto nos encargamos nosotros."
+    }[tipo]),
     cerLugar: get("cer_lugar", "Iglesia de Santa Ana"),
     cerDir: get("cer_dir", "Calle Vázquez de Leca, 1, Triana, Sevilla"),
     celLugar: get("cel_lugar", "Hacienda La Alquería"),
@@ -27,8 +46,21 @@
     embed: q.get("embed") === "1"
   };
 
-  document.documentElement.setAttribute("data-tpl", data.tpl);
+  var html = document.documentElement;
+  html.setAttribute("data-tpl", data.tpl);
+  html.setAttribute("data-tipo", tipo);
   if (data.embed) document.body.classList.add("embed");
+
+  // Secciones opcionales: campos vacíos en la URL (presentes pero sin valor) ocultan la sección
+  var isBoda = tipo === "boda" || tipo === "comunion";
+  if (q.has("n2") && q.get("n2") === "") html.classList.add("sin-n2");
+  if (!isBoda && q.get("n2") === null) html.classList.add("sin-n2");
+  if (q.has("dress") && q.get("dress") === "") html.classList.add("sin-dress");
+  if (q.has("regalo_txt") && q.get("regalo_txt") === "") html.classList.add("sin-regalos");
+  if (q.has("bus") && q.get("bus") === "") html.classList.add("sin-bus");
+  if (!isBoda && q.get("dress") === null) html.classList.add("sin-dress");
+  if (!isBoda && q.get("bus") === null) html.classList.add("sin-bus");
+  if (tipo === "empresa" && q.get("regalo_txt") === null) html.classList.add("sin-regalos");
 
   var set = function (sel, val) { document.querySelectorAll(sel).forEach(function (el) { el.textContent = val; }); };
 
@@ -39,7 +71,12 @@
   var fechaLarga = isNaN(d) ? data.fecha : fmtLong.format(d);
   fechaLarga = fechaLarga.charAt(0).toUpperCase() + fechaLarga.slice(1);
 
-  document.title = data.n1 + " & " + data.n2 + " · " + (isNaN(d) ? data.fecha : fmtShort.format(d));
+  var sinN2 = html.classList.contains("sin-n2");
+  document.title = (sinN2 ? data.n1 : data.n1 + " & " + data.n2) + " · " + (isNaN(d) ? data.fecha : fmtShort.format(d));
+  set("[data-historia-titulo]", tx.historia); set("[data-cel-titulo]", tx.cel); set("[data-galeria-titulo]", tx.galeria);
+  set("[data-msg-label]", tx.msg);
+  var firma = document.querySelector("[data-firma]");
+  if (firma) firma.innerHTML = tx.firma + " <span data-n1></span>" + (sinN2 ? "" : " y <span data-n2></span>");
   set("[data-n1]", data.n1); set("[data-n2]", data.n2);
   set("[data-intro]", data.intro);
   set("[data-fecha-larga]", fechaLarga);
@@ -64,13 +101,15 @@
   if (!isNaN(d)) {
     var cel = new Date(data.fecha + "T" + data.celHora + ":00");
     if (isNaN(cel)) cel = addMin(d, 120);
-    var prog = [
-      [d, "Ceremonia", data.cerLugar],
-      [cel, "Cóctel de bienvenida", data.celLugar],
-      [addMin(cel, 120), "Banquete", "Menú con opción vegetariana"],
-      [addMin(cel, 300), "Primer baile y barra libre", "¡Hasta que el cuerpo aguante!"],
-      [addMin(cel, 540), "Recena", "Para reponer fuerzas"]
-    ];
+    var progs = {
+      boda: [[d, "Ceremonia", data.cerLugar], [cel, "Cóctel de bienvenida", data.celLugar], [addMin(cel, 120), "Banquete", "Menú con opción vegetariana"], [addMin(cel, 300), "Primer baile y barra libre", "¡Hasta que el cuerpo aguante!"], [addMin(cel, 540), "Recena", "Para reponer fuerzas"]],
+      comunion: [[d, "Ceremonia", data.cerLugar], [cel, "Comida familiar", data.celLugar], [addMin(cel, 180), "Tarta y juegos", "Para los más pequeños"], [addMin(cel, 300), "Despedida", "Gracias por venir"]],
+      cumple: [[cel, "Bienvenida y cóctel", data.celLugar], [addMin(cel, 90), "Cena", "Con opción vegetariana"], [addMin(cel, 210), "Tarta y brindis", "¡Felicidades!"], [addMin(cel, 240), "Música y baile", "Hasta que cierren"]],
+      empresa: [[cel, "Recepción y acreditación", data.celLugar], [addMin(cel, 30), "Bienvenida", "Palabras de la dirección"], [addMin(cel, 60), "Cena", "Menú con opciones vegetarianas y sin gluten"], [addMin(cel, 180), "Entrega de reconocimientos", ""], [addMin(cel, 210), "Copas y música", "Hasta las 02:00"]],
+      despedida: [[cel, "Punto de encuentro", data.celLugar], [addMin(cel, 60), "Actividad sorpresa", "Ropa cómoda"], [addMin(cel, 240), "Cena", ""], [addMin(cel, 360), "Fiesta", "Hasta el amanecer"]],
+      fiesta: [[cel, "Llegada", data.celLugar], [addMin(cel, 60), "Comida y bebida", ""], [addMin(cel, 180), "Música", ""], [addMin(cel, 300), "Fin de fiesta", "Gracias por venir"]]
+    };
+    var prog = progs[tipo] || progs.boda;
     var ul = document.querySelector("[data-programa]");
     if (ul) {
       ul.innerHTML = "";
@@ -83,6 +122,9 @@
       });
     }
   }
+
+  // Para eventos sin ceremonia, la cuenta atrás y el calendario usan la hora de la celebración
+  if (!isBoda) { var dc = new Date(data.fecha + "T" + data.celHora + ":00"); if (!isNaN(dc)) d = dc; }
 
   // Cuenta atrás
   var cd = document.querySelector("[data-countdown]");
@@ -104,8 +146,8 @@
     var stamp = function (x) { return x.getFullYear() + pad(x.getMonth() + 1) + pad(x.getDate()) + "T" + pad(x.getHours()) + pad(x.getMinutes()) + "00"; };
     var body = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//invitacion//ES", "BEGIN:VEVENT",
       "DTSTART:" + stamp(d), "DTEND:" + stamp(addMin(d, 600)),
-      "SUMMARY:Boda de " + data.n1 + " y " + data.n2,
-      "LOCATION:" + data.cerLugar + ", " + data.cerDir, "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+      "SUMMARY:" + (tipo === "boda" ? "Boda de " + data.n1 + " y " + data.n2 : data.n1 + (sinN2 ? "" : " · " + data.n2)),
+      "LOCATION:" + (isBoda ? data.cerLugar + ", " + data.cerDir : data.celLugar + ", " + data.celDir), "END:VEVENT", "END:VCALENDAR"].join("\r\n");
     ics.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(body);
     ics.download = "boda-" + data.n1.toLowerCase() + "-" + data.n2.toLowerCase() + ".ics";
   }

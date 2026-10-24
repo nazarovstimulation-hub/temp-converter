@@ -112,3 +112,13 @@ section { padding: 56px 0; }
 /* Modo incrustado (vista previa en el móvil del landing) */
 body.embed .cover { min-height: 100vh; }
 body.embed .music { display: none; }
+
+/* Marca discreta en la portada */
+.powered { position: absolute; top: 22px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; letter-spacing: .12em; text-transform: lowercase; color: var(--soft); text-decoration: none; z-index: 2; }
+.powered img { border-radius: 6px; }
+
+/* Secciones según tipo de evento */
+[data-tipo]:not([data-tipo="boda"]):not([data-tipo="comunion"]) .solo-boda { display: none !important; }
+[data-tipo="empresa"] .sec-regalos, [data-tipo="empresa"] .sec-galeria, [data-tipo="empresa"] .sec-dress .palette { display: none !important; }
+html.sin-dress .sec-dress, html.sin-regalos .sec-regalos, html.sin-bus .sec-bus { display: none !important; }
+html.sin-n2 .names .amp, html.sin-n2 .names [data-n2] { display: none; }

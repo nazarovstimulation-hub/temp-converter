@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lucía &amp; Pablo · ¡Nos casamos!</title>
   <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="assets/img/mark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
@@ -15,12 +16,13 @@
 
 <!-- PORTADA -->
 <section class="cover">
+  <a class="powered" href="index.html" aria-label="Invitalia"><img src="assets/img/mark.svg" alt="" width="22" height="22"> invitalia.co</a>
   <div class="ornament"></div>
   <svg class="leaf a" width="260" height="260" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M50 5c20 20 25 45 10 70C45 55 40 30 50 5zm-5 80C30 70 15 55 5 35c20 5 35 20 40 50z"/></svg>
   <svg class="leaf b" width="260" height="260" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M50 5c20 20 25 45 10 70C45 55 40 30 50 5zm-5 80C30 70 15 55 5 35c20 5 35 20 40 50z"/></svg>
   <div class="wrap">
     <p class="intro" data-intro>¡Nos casamos!</p>
-    <h1 class="names"><span data-n1>Lucía</span><span class="amp">&amp;</span><span data-n2>Pablo</span></h1>
+    <h1 class="names"><span data-n1>Lucía</span><span class="amp" data-amp>&amp;</span><span data-n2>Pablo</span></h1>
     <p class="date" data-fecha-larga>Sábado, 12 de junio de 2027</p>
     <p class="place" data-ciudad>Sevilla</p>
   </div>
@@ -46,7 +48,7 @@
 <!-- HISTORIA -->
 <section class="story">
   <div class="wrap">
-    <span class="label">Nuestra historia</span>
+    <span class="label" data-historia-titulo>Nuestra historia</span>
     <p data-historia></p>
   </div>
 </section>
@@ -55,7 +57,7 @@
 <section>
   <div class="wrap venues">
     <span class="label">Dónde y cuándo</span>
-    <article class="card venue">
+    <article class="card venue solo-boda">
       <h3>Ceremonia</h3>
       <div class="time" data-cer-hora>13:00</div>
       <b data-cer-lugar>Iglesia de Santa Ana</b>
@@ -63,7 +65,7 @@
       <a class="btn btn-fill btn-block" data-map-cer href="#" target="_blank" rel="noopener">📍 Cómo llegar</a>
     </article>
     <article class="card venue">
-      <h3>Celebración</h3>
+      <h3 data-cel-titulo>Celebración</h3>
       <div class="time" data-cel-hora>15:00</div>
       <b data-cel-lugar>Hacienda La Alquería</b>
       <p class="addr" data-cel-dir>Carretera de Utrera km 4, Alcalá de Guadaíra</p>
@@ -87,7 +89,7 @@
 </section>
 
 <!-- DRESS CODE -->
-<section>
+<section class="sec-dress">
   <div class="wrap center">
     <span class="label">Dress code</span>
     <div class="palette" aria-hidden="true">
@@ -98,7 +100,7 @@
 </section>
 
 <!-- TRANSPORTE -->
-<section>
+<section class="sec-bus">
   <div class="wrap">
     <span class="label">Transporte y alojamiento</span>
     <div class="card">
@@ -109,7 +111,7 @@
 </section>
 
 <!-- REGALOS -->
-<section>
+<section class="sec-regalos">
   <div class="wrap">
     <span class="label">Regalos</span>
     <div class="card">
@@ -123,9 +125,9 @@
 </section>
 
 <!-- GALERÍA -->
-<section>
+<section class="sec-galeria">
   <div class="wrap">
-    <span class="label">Nosotros</span>
+    <span class="label" data-galeria-titulo>Nosotros</span>
     <div class="gallery" aria-label="Galería de fotos (marcadores de posición)">
       <div>📷</div><div>📷</div><div>📷</div><div>📷</div><div>📷</div>
     </div>
@@ -163,14 +165,14 @@
         <label for="alergias">Alergias o intolerancias</label>
         <input id="alergias" name="alergias" placeholder="Gluten, frutos secos…">
       </div>
-      <div class="field">
+      <div class="field sec-bus">
         <label>¿Usarás el autobús?</label>
         <div class="choice">
           <label><input type="radio" name="bus" value="si"><span>Sí, ida y vuelta</span></label>
           <label><input type="radio" name="bus" value="no" checked><span>No, voy por mi cuenta</span></label>
         </div>
       </div>
-      <div class="field">
+      <div class="field sec-hotel">
         <label>¿Necesitas alojamiento?</label>
         <div class="choice">
           <label><input type="radio" name="hotel" value="si"><span>Sí</span></label>
@@ -178,7 +180,7 @@
         </div>
       </div>
       <div class="field">
-        <label for="mensaje">Un mensaje para los novios (opcional)</label>
+        <label for="mensaje" data-msg-label>Un mensaje para los novios (opcional)</label>
         <textarea id="mensaje" name="mensaje" rows="3" placeholder="¡Qué ganas!"></textarea>
       </div>
       <button class="btn btn-fill btn-block" type="submit">Confirmar asistencia</button>
@@ -187,15 +189,15 @@
     <div class="thanks card">
       <h3>¡Gracias, <span data-thanks-name></span>!</h3>
       <p class="soft" data-thanks-msg></p>
-      <a class="btn btn-ghost" data-wa href="#" target="_blank" rel="noopener">💬 Escribir a los novios</a>
+      <a class="btn btn-ghost" data-wa href="#" target="_blank" rel="noopener">💬 Escribir al anfitrión</a>
     </div>
   </div>
 </section>
 
 <footer class="foot">
   <div class="wrap">
-    <p>Con todo nuestro cariño, <span data-n1>Lucía</span> y <span data-n2>Pablo</span></p>
-    <p>Invitación creada con <a href="index.html" data-brand-name>Enlace</a></p>
+    <p data-firma>Con todo nuestro cariño, <span data-n1>Lucía</span> y <span data-n2>Pablo</span></p>
+    <p>Invitación creada con <a href="https://invitalia.co" data-brand-name>Invitalia</a> · invitalia.co</p>
   </div>
 </footer>
 

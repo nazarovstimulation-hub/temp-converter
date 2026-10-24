@@ -1,11 +1,11 @@
-# Temp Converter + sitio de invitaciones de boda
+# Invitalia (invitalia.co) + temp converter
 
 Este repositorio contiene dos cosas:
 
 1. **`temp_converter.py`** — utilidad Python para convertir temperaturas (ver abajo).
-2. **`site/`** — sitio estático en español de invitaciones de boda digitales (landing + constructor + invitación de ejemplo).
+2. **`site/`** — sitio estático en español de **Invitalia**, invitaciones digitales para bodas, cumpleaños, eventos de empresa y cualquier celebración (landing + constructor + invitación de ejemplo).
 
-## Sitio de invitaciones (`site/`)
+## Sitio Invitalia (`site/`)
 
 | Página | Qué es |
 |---|---|
@@ -20,7 +20,9 @@ cd site && python3 -m http.server 8080
 # abrir http://localhost:8080
 ```
 
-**Cambiar la marca:** edita `site/assets/js/brand.js` (nombre, email, WhatsApp, Instagram, colores). Todo el sitio lo lee de ahí.
+**Marca:** nombre, dominio, email, WhatsApp e Instagram están en `site/assets/js/brand.js`. Logo y favicon en `site/assets/img/logo.svg` y `site/assets/img/mark.svg`.
+
+**Tipos de evento:** `?tipo=boda|cumple|empresa|comunion|despedida|fiesta` en `crear.html` e `invitacion.html`. Cada tipo cambia textos, programa del día y qué secciones se muestran (ceremonia, dress code, autobús, regalos).
 
 **Plantillas:** `botanica`, `clasica`, `minimal`, `mediterranea`, `boho`, `nocturna` — se eligen con `?plantilla=...` en `invitacion.html`.
 

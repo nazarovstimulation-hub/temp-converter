@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" width="72" height="72" role="img" aria-label="Invitalia">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d917a"/>
+      <stop offset="1" stop-color="#5b6e53"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="72" height="72" rx="20" fill="url(#g)"/>
+  <path d="M16 30 L36 44 L56 30 L56 54 Q56 58 52 58 L20 58 Q16 58 16 54 Z" fill="#faf7f2"/>
+  <path d="M16 30 L36 16 L56 30 L36 44 Z" fill="#efe7db"/>
+  <path d="M36 16 L56 30 L36 44 L16 30 Z" fill="none" stroke="#5b6e53" stroke-width="1.2" opacity=".35"/>
+  <circle cx="57" cy="15" r="4.5" fill="#e08a67"/>
+  <path d="M57 4 L58.6 10.4 L65 12 L58.6 13.6 L57 20 L55.4 13.6 L49 12 L55.4 10.4 Z" fill="#faf7f2" opacity=".9"/>
+</svg>

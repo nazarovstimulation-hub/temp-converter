@@ -1,15 +1,16 @@
 /*
- * Configuración de marca.
+ * Configuración de marca — Invitalia (invitalia.co)
  * Cambia aquí el nombre, contacto y colores: todo el sitio lo lee de este archivo.
  * (Настройки бренда: имя, контакты и цвета меняются только здесь.)
  */
 window.BRAND = {
-  name: "Enlace",                 // ← nombre de la marca (placeholder, cámbialo)
-  tagline: "Invitaciones de boda digitales",
-  domain: "enlace.es",            // dominio para los enlaces de ejemplo
-  email: "hola@enlace.es",
-  whatsapp: "34600000000",        // solo dígitos, con prefijo de país
-  instagram: "enlace.bodas",
+  name: "Invitalia",
+  tagline: "Invitaciones digitales para cada celebración",
+  domain: "invitalia.co",
+  url: "https://invitalia.co",
+  email: "hola@invitalia.co",
+  whatsapp: "34600000000",        // solo dígitos, con prefijo de país — cambiar por el real
+  instagram: "invitalia.co",
   city: "Madrid",
   year: new Date().getFullYear(),
   colors: {
@@ -37,9 +38,6 @@ window.BRAND = {
       else if (key === "instagram") { el.textContent = "@" + b.instagram; if (el.tagName === "A") el.href = "https://instagram.com/" + b.instagram; }
       else if (key === "whatsapp") { if (el.tagName === "A") el.href = "https://wa.me/" + b.whatsapp; }
       else if (key === "year") el.textContent = b.year;
-    });
-    document.querySelectorAll("[data-brand-title]").forEach(function (el) {
-      document.title = document.title.replace("{brand}", b.name);
     });
     if (document.title.indexOf("{brand}") !== -1) document.title = document.title.replace("{brand}", b.name);
   }
