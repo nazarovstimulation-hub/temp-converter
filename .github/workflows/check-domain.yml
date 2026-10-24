@@ -3,6 +3,8 @@ name: Check INVITALIA domain
 # Manual diagnostics: DNS, HTTPS and API health for invitalia.co, run from GitHub's network.
 on:
   workflow_dispatch:
+  push:
+    paths: [".github/workflows/check-domain.yml"]
 
 jobs:
   check:
