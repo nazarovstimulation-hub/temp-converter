@@ -1,0 +1,56 @@
+/* Shared invitation rendering (editor preview + guest page). Templates set the --i-* tokens. */
+.inv{--i-bg:#FBF6EC; --i-fg:#3A2E1C; --i-mute:#7B6B52; --i-acc:#B8924A; --i-line:#E7D4AE; --i-card:#FFFFFF; --i-names:'Cormorant Garamond',Georgia,serif; --i-names-style:italic; --i-names-size:38px; --i-names-tt:none; --i-names-ls:0;
+  min-height:100%; background:var(--i-bg); color:var(--i-fg); padding:52px 22px 26px; display:flex; flex-direction:column; align-items:center; text-align:center; position:relative; font-family:'Jost',system-ui,sans-serif; font-weight:300; line-height:1.5}
+.inv > *{position:relative; z-index:1}
+.inv .frame{position:absolute; inset:42px 12px 12px; border:1px solid var(--i-line); border-radius:26px; pointer-events:none; z-index:0}
+.inv .frame::after{content:""; position:absolute; inset:5px; border:1px solid var(--i-line); border-radius:22px; opacity:.6}
+.inv .mono{font-family:'Cinzel','Trajan Pro',serif; color:var(--i-acc); font-size:12px; letter-spacing:.34em; margin-top:6px}
+.inv .names{font-family:var(--i-names); font-style:var(--i-names-style); font-size:var(--i-names-size); line-height:1.05; margin:14px 0 4px; text-transform:var(--i-names-tt); letter-spacing:var(--i-names-ls); text-wrap:balance}
+.inv .names small{display:block; font-family:'Cormorant Garamond',Georgia,serif; font-size:18px; font-style:italic; letter-spacing:.3em; color:var(--i-acc); margin:6px 0}
+.inv .greet{font-family:'Cormorant Garamond',Georgia,serif; font-size:17px; color:var(--i-mute); margin:10px 0 0; max-width:30ch; line-height:1.4; font-style:italic}
+.inv .date{font-family:'Cinzel','Trajan Pro',serif; font-size:13px; letter-spacing:.2em; color:var(--i-mute); margin-top:16px}
+.inv .time{font-size:13px; color:var(--i-mute); margin-top:2px}
+.inv .place{font-size:14px; margin-top:12px; font-weight:400}
+.inv .addr{font-size:12.5px; color:var(--i-mute); margin-top:2px}
+.inv .chips{display:flex; gap:8px; margin:16px 0 0; flex-wrap:wrap; justify-content:center}
+.inv .chip{font-size:11px; letter-spacing:.06em; padding:6px 10px; border-radius:999px; border:1px solid var(--i-line); color:var(--i-acc); background:var(--i-card); display:inline-flex; align-items:center; gap:6px; text-decoration:none; cursor:pointer; font-family:inherit}
+.inv .chip svg{width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:1.8}
+.inv .sched{margin-top:22px; width:100%; display:grid; gap:8px; font-size:12.5px; color:var(--i-mute); text-align:left; padding:0 6px}
+.inv .sched div{display:flex; justify-content:space-between; gap:12px; border-bottom:1px dashed var(--i-line); padding-bottom:6px}
+.inv .sched b{font-weight:500; color:var(--i-fg); font-variant-numeric:tabular-nums}
+.inv .dress{margin-top:18px; font-size:12.5px; color:var(--i-mute)}
+.inv .dress b{display:block; font-family:'Cinzel','Trajan Pro',serif; font-size:10.5px; letter-spacing:.26em; color:var(--i-acc); margin-bottom:4px; font-weight:500}
+.inv .rsvp{margin-top:auto; padding-top:22px; width:100%; text-align:left}
+.inv .rsvp .box{background:var(--i-card); border:1px solid var(--i-line); border-radius:18px; padding:14px; color:#2B241A}
+.inv .rsvp .q{font-size:13.5px; margin:0 0 4px; font-weight:400}
+.inv .rsvp .dl{font-size:12px; color:#6F6356; margin:0 0 10px}
+.inv .rsvp .opts{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+.inv .rsvp button.o{border:1px solid #E3D6BF; background:#fff; border-radius:12px; padding:10px 6px; font:500 13px 'Jost',system-ui,sans-serif; cursor:pointer; color:#2B241A}
+.inv .rsvp button.o[aria-pressed="true"]{background:var(--i-acc); border-color:var(--i-acc); color:#fff}
+.inv .rsvp .more{display:grid; gap:8px; margin-top:10px}
+.inv .rsvp .more[hidden]{display:none}
+.inv .rsvp input,.inv .rsvp select,.inv .rsvp textarea{width:100%; border:1px solid #E3D6BF; border-radius:10px; padding:9px 10px; font-size:13px; background:#fff; font-family:inherit; color:#2B241A; box-sizing:border-box}
+.inv .rsvp textarea{min-height:56px; resize:vertical}
+.inv .rsvp .send{margin-top:10px; width:100%; border:0; border-radius:12px; padding:11px; background:var(--i-acc); color:#fff; font:500 13px 'Jost',system-ui,sans-serif; cursor:pointer}
+.inv .rsvp .send[disabled]{opacity:.6; cursor:default}
+.inv .rsvp .done{font-size:12.5px; color:#2F5F2F; margin:10px 0 0}
+.inv .rsvp .err{font-size:12.5px; color:#8C3A2B; margin:8px 0 0}
+.inv .foot{margin-top:22px; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--i-mute); opacity:.8}
+
+.t-palazzo{--i-bg:#FBF6EC; --i-fg:#3A2E1C; --i-mute:#7B6B52; --i-acc:#B8924A; --i-line:#DCC79A}
+.t-linea{--i-bg:#FFFFFF; --i-fg:#2B2B2B; --i-mute:#8B8B8B; --i-acc:#2B2B2B; --i-line:#E6E6E6; --i-names:'Jost',system-ui,sans-serif; --i-names-style:normal; --i-names-size:24px; --i-names-tt:uppercase; --i-names-ls:.12em}
+.t-linea .frame{display:none}
+.t-linea .names small{font-family:'Jost',system-ui,sans-serif; font-style:normal; font-size:12px; letter-spacing:.3em}
+.t-heritage{--i-bg:#1F3A2E; --i-fg:#F2E9D4; --i-mute:#C7B27E; --i-acc:#C7B27E; --i-line:rgba(231,220,194,.35); --i-card:#F6F0E2}
+.t-amalfi{--i-bg:linear-gradient(180deg,#F8EFD9 0%, #F3E2BE 100%); --i-fg:#5E3A22; --i-mute:#8A6A4A; --i-acc:#B4532E; --i-line:#E2C9A0}
+.t-amalfi::after{content:""; position:absolute; left:0; right:0; bottom:0; height:30px; background:repeating-linear-gradient(90deg,#B4532E 0 22px,#F8EFD9 22px 44px); opacity:.85; z-index:0}
+.t-botanica{--i-bg:#F2F4EC; --i-fg:#2F3A24; --i-mute:#5E6B4A; --i-acc:#6B7A4A; --i-line:#CBD3B9}
+.t-botanica::before{content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 15% 8%, rgba(107,122,74,.25), transparent 40%), radial-gradient(ellipse at 90% 95%, rgba(107,122,74,.25), transparent 40%); z-index:0}
+.t-noir{--i-bg:#15151A; --i-fg:#F0E6CF; --i-mute:#A89468; --i-acc:#C9AE6E; --i-line:rgba(201,174,110,.4); --i-card:#F6F0E2}
+
+/* Guest page: the invitation fills the screen */
+.inv.full{min-height:100vh; min-height:100dvh; padding-top:40px; padding-bottom:32px}
+.inv.full .frame{inset:14px 12px 12px}
+.inv.full .names{font-size:calc(var(--i-names-size) * 1.15)}
+.inv.full > *{max-width:520px; width:100%}
+.inv.full .greet{max-width:38ch}

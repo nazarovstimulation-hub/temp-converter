@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="ru">
+<html lang="es" data-title-key="meta.editor">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Редактор приглашения · Invitalia.co</title>
-<meta name="description" content="Редактор электронного свадебного приглашения Invitalia.co: шаблон, пара, дата, программа, RSVP-анкета, музыка и ссылка.">
+<title>Editor de invitación · Invitalia.co</title>
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/invitation.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <style>
 /* Layout: form panel on the left, live phone preview on the right; same ivory-and-gold tokens as the main site. */
@@ -23,11 +24,9 @@ img{max-width:100%; display:block}
 .logo-img{mix-blend-mode:multiply}
 button{font-family:var(--body)}
 input,select,textarea{font-family:var(--body); font-size:15px; color:var(--ink)}
-
-/* top bar */
 .top{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:rgba(255,253,249,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
 body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:30; background:var(--paper)}
-.top .row{display:flex; align-items:center; gap:18px; min-height:64px; flex-wrap:wrap}
+.top .row{display:flex; align-items:center; gap:18px; min-height:64px; flex-wrap:wrap; padding-block:6px}
 .brand{display:flex; align-items:center; gap:10px; text-decoration:none}
 .brand img{height:40px; width:auto}
 .brand span{font-family:var(--display); font-size:17px; letter-spacing:.14em; color:var(--gold-deep)}
@@ -35,8 +34,8 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .title{display:grid; line-height:1.2}
 .title b{font-weight:500; font-size:15px}
 .title span{font-size:12.5px; color:var(--muted)}
-.title span.saved{color:var(--ok)}
-.actions{margin-left:auto; display:flex; gap:8px; flex-wrap:wrap}
+.title span.saved{color:var(--ok)} .title span.err{color:var(--no)}
+.actions{margin-left:auto; display:flex; gap:8px; flex-wrap:wrap; align-items:center}
 .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; white-space:nowrap; padding:10px 18px; border-radius:999px; border:1px solid var(--gold); font:500 14px/1 var(--body); letter-spacing:.03em; text-decoration:none; cursor:pointer; background:#fff; color:var(--gold-deep); transition:background .2s, transform .15s}
 .btn:hover{transform:translateY(-1px); background:var(--ivory)}
 .btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold-deep); outline-offset:2px}
@@ -44,10 +43,10 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .btn-gold:hover{background:linear-gradient(135deg,#C29B55,#966F2F)}
 .btn-ghost{border-color:var(--line); color:var(--muted)}
 .btn-xs{padding:7px 12px; font-size:13px}
-@media (max-width:640px){ .brand span{display:none} .title{display:none} }
-
-/* workspace */
-.work{flex:1; display:grid; grid-template-columns:minmax(360px,520px) 1fr; gap:0; min-height:0}
+.btn[disabled]{opacity:.55; cursor:default; transform:none}
+.lang{appearance:none; border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 26px 7px 12px; font:400 13px var(--body); color:var(--muted); cursor:pointer; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 8l4 4 4-4' fill='none' stroke='%236F6356' stroke-width='1.6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 8px center; background-size:14px}
+@media (max-width:720px){ .brand span{display:none} .title{display:none} }
+.work{flex:1; display:grid; grid-template-columns:minmax(360px,520px) 1fr; min-height:0}
 @media (max-width:980px){ .work{grid-template-columns:1fr} }
 .panel{border-right:1px solid var(--line); padding:22px max(16px, env(safe-area-inset-left, 0px)) 60px; display:grid; gap:12px; align-content:start; background:#fff}
 @media (max-width:980px){ .panel{border-right:0; border-bottom:1px solid var(--line); padding-right:max(16px, env(safe-area-inset-right, 0px))} }
@@ -56,7 +55,7 @@ details.sec summary{list-style:none; cursor:pointer; padding:14px 18px; display:
 details.sec summary::-webkit-details-marker{display:none}
 details.sec summary::after{content:"+"; font-family:var(--script); font-size:24px; color:var(--gold); line-height:1}
 details.sec[open] summary::after{content:"–"}
-details.sec summary .eyebrow{font-family:var(--display); font-size:10.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold-deep); font-weight:500}
+details.sec summary .eyebrow{font-family:var(--display); font-size:10.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; text-align:right}
 .sec-body{padding:4px 18px 18px; display:grid; gap:14px}
 .field{display:grid; gap:6px; min-width:0}
 .field label,.field .lbl{font-size:12.5px; letter-spacing:.04em; color:var(--muted)}
@@ -67,7 +66,7 @@ details.sec summary .eyebrow{font-family:var(--display); font-size:10.5px; lette
 .hint{font-size:12.5px; color:var(--muted); margin:0}
 .toggle{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:#fff}
 .toggle span{font-size:14px}
-.toggle input{width:40px; height:22px; appearance:none; border-radius:999px; background:var(--line); position:relative; cursor:pointer; margin:0; transition:background .2s}
+.toggle input{width:40px; height:22px; appearance:none; border-radius:999px; background:var(--line); position:relative; cursor:pointer; margin:0; transition:background .2s; flex:none}
 .toggle input::after{content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.25); transition:left .2s}
 .toggle input:checked{background:var(--gold-deep)}
 .toggle input:checked::after{left:20px}
@@ -88,13 +87,14 @@ details.sec summary .eyebrow{font-family:var(--display); font-size:10.5px; lette
 .slug span{padding:10px 0 10px 12px; color:var(--muted); font-size:14px; white-space:nowrap}
 .slug input{border:0; padding:10px 12px 10px 2px; flex:1; min-width:0; font-weight:400}
 .resp{display:grid; gap:8px}
-.resp .r{display:flex; justify-content:space-between; gap:10px; padding:8px 12px; border:1px solid var(--line); border-radius:10px; background:#fff; font-size:13.5px}
+.resp .r{display:flex; justify-content:space-between; gap:10px; padding:8px 12px; border:1px solid var(--line); border-radius:10px; background:#fff; font-size:13.5px; align-items:flex-start}
 .resp .r b{font-weight:500}
-.pill{display:inline-block; padding:2px 9px; border-radius:999px; font-size:12px; font-weight:500}
-.pill.ok{background:#EAF3EA; color:#2F5F2F} .pill.no{background:#F7E6E2; color:#8C3A2B}
+.resp .r .meta{font-size:12px; color:var(--muted); display:block}
+.pill{display:inline-block; padding:2px 9px; border-radius:999px; font-size:12px; font-weight:500; white-space:nowrap}
+.pill.ok{background:#EAF3EA; color:#2F5F2F} .pill.no{background:#F7E6E2; color:#8C3A2B} .pill.test{background:#F3EBDB; color:#7A5E2C; margin-left:6px}
 .empty{font-size:13.5px; color:var(--muted); padding:10px 12px; border:1px dashed var(--line); border-radius:10px}
-
-/* preview */
+.counts{display:flex; gap:8px; flex-wrap:wrap; font-size:13px; color:var(--muted)}
+.counts b{color:var(--ink); font-weight:500}
 .stage{position:relative; display:grid; grid-template-rows:auto 1fr; padding:22px max(16px, env(safe-area-inset-right, 0px)) 40px max(16px, env(safe-area-inset-left, 0px)); background:var(--ivory); min-width:0}
 .stage::before{content:""; position:absolute; inset:14% 18%; background:radial-gradient(closest-side, var(--cream), transparent 72%); pointer-events:none}
 .stage-bar{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; position:relative; z-index:1}
@@ -109,56 +109,6 @@ details.sec summary .eyebrow{font-family:var(--display); font-size:10.5px; lette
 .phone.tablet .screen{border-radius:18px}
 .screen::before{content:""; position:sticky; top:10px; display:block; width:90px; height:26px; margin:0 auto -26px; border-radius:20px; background:#1b1713; z-index:3}
 .phone.tablet .screen::before{display:none}
-
-/* the invitation itself */
-.inv{--i-bg:#FBF6EC; --i-fg:#3A2E1C; --i-mute:#7B6B52; --i-acc:#B8924A; --i-line:#E7D4AE; --i-card:#FFFFFF; --i-names:var(--script); --i-names-style:italic; --i-names-size:38px; --i-names-tt:none; --i-names-ls:0;
-  min-height:100%; background:var(--i-bg); color:var(--i-fg); padding:52px 22px 26px; display:flex; flex-direction:column; align-items:center; text-align:center; position:relative}
-.inv > *{position:relative; z-index:1}
-.inv .frame{position:absolute; inset:42px 12px 12px; border:1px solid var(--i-line); border-radius:26px; pointer-events:none; z-index:0}
-.inv .frame::after{content:""; position:absolute; inset:5px; border:1px solid var(--i-line); border-radius:22px; opacity:.6}
-.inv .mono{font-family:var(--display); color:var(--i-acc); font-size:12px; letter-spacing:.34em; margin-top:6px}
-.inv .names{font-family:var(--i-names); font-style:var(--i-names-style); font-size:var(--i-names-size); line-height:1.05; margin:14px 0 4px; text-transform:var(--i-names-tt); letter-spacing:var(--i-names-ls); text-wrap:balance}
-.inv .names small{display:block; font-family:var(--script); font-size:18px; font-style:italic; letter-spacing:.3em; color:var(--i-acc); margin:6px 0}
-.inv .greet{font-family:var(--script); font-size:17px; color:var(--i-mute); margin:10px 0 0; max-width:30ch; line-height:1.4; font-style:italic}
-.inv .date{font-family:var(--display); font-size:13px; letter-spacing:.2em; color:var(--i-mute); margin-top:16px}
-.inv .time{font-size:13px; color:var(--i-mute); margin-top:2px}
-.inv .place{font-size:14px; margin-top:12px; font-weight:400}
-.inv .addr{font-size:12.5px; color:var(--i-mute); margin-top:2px}
-.inv .chips{display:flex; gap:8px; margin:16px 0 0; flex-wrap:wrap; justify-content:center}
-.inv .chip{font-size:11px; letter-spacing:.06em; padding:6px 10px; border-radius:999px; border:1px solid var(--i-line); color:var(--i-acc); background:var(--i-card); display:inline-flex; align-items:center; gap:6px; text-decoration:none}
-.inv .chip svg{width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:1.8}
-.inv .sched{margin-top:22px; width:100%; display:grid; gap:8px; font-size:12.5px; color:var(--i-mute); text-align:left; padding:0 6px}
-.inv .sched div{display:flex; justify-content:space-between; gap:12px; border-bottom:1px dashed var(--i-line); padding-bottom:6px}
-.inv .sched b{font-weight:500; color:var(--i-fg); font-variant-numeric:tabular-nums}
-.inv .dress{margin-top:18px; font-size:12.5px; color:var(--i-mute)}
-.inv .dress b{display:block; font-family:var(--display); font-size:10.5px; letter-spacing:.26em; color:var(--i-acc); margin-bottom:4px; font-weight:500}
-.inv .rsvp{margin-top:auto; padding-top:22px; width:100%; text-align:left}
-.inv .rsvp .box{background:var(--i-card); border:1px solid var(--i-line); border-radius:18px; padding:14px; color:#2B241A}
-.inv .rsvp .q{font-size:13.5px; margin:0 0 4px; font-weight:400}
-.inv .rsvp .dl{font-size:12px; color:#6F6356; margin:0 0 10px}
-.inv .rsvp .opts{display:grid; grid-template-columns:1fr 1fr; gap:8px}
-.inv .rsvp button.o{border:1px solid #E3D6BF; background:#fff; border-radius:12px; padding:10px 6px; font:500 13px var(--body); cursor:pointer; color:#2B241A}
-.inv .rsvp button.o[aria-pressed="true"]{background:var(--i-acc); border-color:var(--i-acc); color:#fff}
-.inv .rsvp .more{display:grid; gap:8px; margin-top:10px}
-.inv .rsvp .more[hidden]{display:none}
-.inv .rsvp input,.inv .rsvp select,.inv .rsvp textarea{width:100%; border:1px solid #E3D6BF; border-radius:10px; padding:9px 10px; font-size:13px; background:#fff}
-.inv .rsvp textarea{min-height:56px; resize:vertical}
-.inv .rsvp .send{margin-top:10px; width:100%; border:0; border-radius:12px; padding:11px; background:var(--i-acc); color:#fff; font:500 13px var(--body); cursor:pointer}
-.inv .rsvp .done{font-size:12.5px; color:#2F5F2F; margin:10px 0 0}
-.inv .foot{margin-top:22px; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--i-mute); opacity:.8}
-
-.t-palazzo{--i-bg:#FBF6EC; --i-fg:#3A2E1C; --i-mute:#7B6B52; --i-acc:#B8924A; --i-line:#DCC79A}
-.t-linea{--i-bg:#FFFFFF; --i-fg:#2B2B2B; --i-mute:#8B8B8B; --i-acc:#2B2B2B; --i-line:#E6E6E6; --i-names:var(--body); --i-names-style:normal; --i-names-size:24px; --i-names-tt:uppercase; --i-names-ls:.12em}
-.t-linea .frame{display:none}
-.t-linea .names small{font-family:var(--body); font-style:normal; font-size:12px; letter-spacing:.3em}
-.t-heritage{--i-bg:#1F3A2E; --i-fg:#F2E9D4; --i-mute:#C7B27E; --i-acc:#C7B27E; --i-line:rgba(231,220,194,.35); --i-card:#F6F0E2}
-.t-amalfi{--i-bg:linear-gradient(180deg,#F8EFD9 0%, #F3E2BE 100%); --i-fg:#5E3A22; --i-mute:#8A6A4A; --i-acc:#B4532E; --i-line:#E2C9A0}
-.t-amalfi::after{content:""; position:absolute; left:0; right:0; bottom:0; height:30px; background:repeating-linear-gradient(90deg,#B4532E 0 22px,#F8EFD9 22px 44px); opacity:.85; z-index:0}
-.t-botanica{--i-bg:#F2F4EC; --i-fg:#2F3A24; --i-mute:#5E6B4A; --i-acc:#6B7A4A; --i-line:#CBD3B9}
-.t-botanica::before{content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 15% 8%, rgba(107,122,74,.25), transparent 40%), radial-gradient(ellipse at 90% 95%, rgba(107,122,74,.25), transparent 40%); z-index:0}
-.t-noir{--i-bg:#15151A; --i-fg:#F0E6CF; --i-mute:#A89468; --i-acc:#C9AE6E; --i-line:rgba(201,174,110,.4); --i-card:#F6F0E2}
-
-/* modal */
 .modal{position:fixed; inset:0; background:rgba(43,36,26,.45); display:grid; place-items:center; padding:16px; z-index:50}
 .modal[hidden]{display:none}
 .dlg{background:var(--paper); border-radius:22px; width:min(560px,100%); padding:28px; display:grid; gap:16px; box-shadow:0 40px 90px rgba(0,0,0,.35); max-height:90vh; overflow:auto}
@@ -169,12 +119,12 @@ details.sec summary .eyebrow{font-family:var(--display); font-size:10.5px; lette
 .qr{display:grid; grid-template-columns:148px 1fr; gap:18px; align-items:center}
 @media (max-width:480px){ .qr{grid-template-columns:1fr} }
 .qr .code{width:148px; height:148px; background:#fff; border:1px solid var(--line); border-radius:12px; display:grid; place-items:center; padding:8px}
-.qr .code svg,.qr .code img{width:100%; height:100%}
+.qr .code svg{width:100%; height:100%}
 .dlg ul{margin:0; padding-left:18px; color:var(--muted); font-size:14px; display:grid; gap:4px}
 .dlg .sum{font-family:var(--script); font-size:40px; line-height:1; font-weight:500}
 .dlg .sum small{font-family:var(--body); font-size:13px; color:var(--muted); margin-left:8px; font-weight:300}
 .dlg .row{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-.toast{position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); background:var(--ink); color:#fff; padding:10px 16px; border-radius:999px; font-size:14px; z-index:60; opacity:0; pointer-events:none; transition:opacity .25s}
+.toast{position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); background:var(--ink); color:#fff; padding:10px 16px; border-radius:999px; font-size:14px; z-index:60; opacity:0; pointer-events:none; transition:opacity .25s; max-width:90vw; text-align:center}
 .toast.show{opacity:1}
 textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monospace; font-size:12px; border:1px solid var(--line); border-radius:12px; padding:10px; background:#fff}
 @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
@@ -185,12 +135,13 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
 <header class="top">
   <div class="row">
     <a class="brand" href="index.html"><img class="logo-img" src="assets/logo-mark.jpg" alt="Invitalia" width="44" height="40"><span>INVITALIA<small>.co</small></span></a>
-    <div class="title"><b>Редактор приглашения</b><span id="status">Черновик не сохранён</span></div>
+    <div class="title"><b data-i18n="ed.title">Editor de invitación</b><span id="status">Borrador sin guardar</span></div>
     <div class="actions">
-      <button type="button" class="btn btn-ghost btn-xs" id="btn-import">Импорт</button>
-      <button type="button" class="btn btn-ghost btn-xs" id="btn-export">Экспорт</button>
-      <button type="button" class="btn btn-xs" id="btn-save">Сохранить</button>
-      <button type="button" class="btn btn-gold btn-xs" id="btn-publish">Опубликовать</button>
+      <select class="lang" data-lang-switch id="ui-lang"></select>
+      <button type="button" class="btn btn-ghost btn-xs" id="btn-import" data-i18n="ed.import">Importar</button>
+      <button type="button" class="btn btn-ghost btn-xs" id="btn-export" data-i18n="ed.export">Exportar</button>
+      <button type="button" class="btn btn-xs" id="btn-save" data-i18n="ed.save">Guardar</button>
+      <button type="button" class="btn btn-gold btn-xs" id="btn-publish" data-i18n="ed.publish">Publicar</button>
     </div>
   </div>
 </header>
@@ -198,97 +149,112 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
 <main class="work">
   <form class="panel" id="form" autocomplete="off">
     <details class="sec" open>
-      <summary><span>Шаблон</span><span class="eyebrow" id="tpl-name">Palazzo</span></summary>
+      <summary><span data-i18n="ed.sec.template">Plantilla</span><span class="eyebrow" id="tpl-name">Palazzo</span></summary>
       <div class="sec-body">
         <div class="swatches" id="swatches">
-          <label class="sw"><input type="radio" name="template" value="palazzo" checked><span class="box" style="background:#FBF6EC;color:#3A2E1C;outline:1px solid #C9A86A;outline-offset:-6px"><i>А &amp; М</i><em>24 · 06</em></span><small>Palazzo</small></label>
-          <label class="sw"><input type="radio" name="template" value="linea"><span class="box" style="background:#fff;color:#2B2B2B;border-color:#eee"><i style="font-family:var(--body);font-style:normal;font-size:11px;letter-spacing:.14em">АННА · ДМИТРИЙ</i><em style="color:#999">03 · 10</em></span><small>Linea</small></label>
-          <label class="sw"><input type="radio" name="template" value="heritage"><span class="box" style="background:#1F3A2E;color:#F2E9D4"><i>Е &amp; А</i><em style="color:#C7B27E">15 · 05</em></span><small>Heritage</small></label>
+          <label class="sw"><input type="radio" name="template" value="palazzo" checked><span class="box" style="background:#FBF6EC;color:#3A2E1C;outline:1px solid #C9A86A;outline-offset:-6px"><i>L &amp; M</i><em>24 · 06</em></span><small>Palazzo</small></label>
+          <label class="sw"><input type="radio" name="template" value="linea"><span class="box" style="background:#fff;color:#2B2B2B"><i style="font-family:var(--body);font-style:normal;font-size:11px;letter-spacing:.14em">ANA · DIEGO</i><em style="color:#999">03 · 10</em></span><small>Linea</small></label>
+          <label class="sw"><input type="radio" name="template" value="heritage"><span class="box" style="background:#1F3A2E;color:#F2E9D4"><i>E &amp; A</i><em style="color:#C7B27E">15 · 05</em></span><small>Heritage</small></label>
           <label class="sw"><input type="radio" name="template" value="amalfi"><span class="box" style="background:linear-gradient(#F8EFD9,#F3E2BE);color:#5E3A22"><i>C &amp; M</i><em style="color:#B4532E">19 · 09</em></span><small>Amalfi</small></label>
-          <label class="sw"><input type="radio" name="template" value="botanica"><span class="box" style="background:#F2F4EC;color:#2F3A24"><i>П &amp; И</i><em style="color:#6B7A4A">08 · 08</em></span><small>Botanica</small></label>
-          <label class="sw"><input type="radio" name="template" value="noir"><span class="box" style="background:#15151A;color:#F0E6CF"><i>С &amp; М</i><em style="color:#A89468">31 · 12</em></span><small>Noir</small></label>
+          <label class="sw"><input type="radio" name="template" value="botanica"><span class="box" style="background:#F2F4EC;color:#2F3A24"><i>P &amp; I</i><em style="color:#6B7A4A">08 · 08</em></span><small>Botanica</small></label>
+          <label class="sw"><input type="radio" name="template" value="noir"><span class="box" style="background:#15151A;color:#F0E6CF"><i>S &amp; M</i><em style="color:#A89468">31 · 12</em></span><small>Noir</small></label>
         </div>
       </div>
     </details>
 
     <details class="sec" open>
-      <summary><span>Пара</span><span class="eyebrow">Имена</span></summary>
+      <summary><span data-i18n="ed.sec.couple">Pareja</span><span class="eyebrow" data-i18n="ed.sec.couple.sub">Nombres</span></summary>
       <div class="sec-body">
         <div class="two">
-          <div class="field"><label for="f-name1">Первое имя</label><input type="text" id="f-name1" data-bind="name1" placeholder="Алессандро"></div>
-          <div class="field"><label for="f-name2">Второе имя</label><input type="text" id="f-name2" data-bind="name2" placeholder="Мария"></div>
+          <div class="field"><label for="f-name1" data-i18n="ed.f.name1">Primer nombre</label><input type="text" id="f-name1" data-bind="name1" maxlength="60"></div>
+          <div class="field"><label for="f-name2" data-i18n="ed.f.name2">Segundo nombre</label><input type="text" id="f-name2" data-bind="name2" maxlength="60"></div>
         </div>
-        <div class="field"><label for="f-greet">Приветствие</label><textarea id="f-greet" data-bind="greeting" placeholder="Мы будем счастливы разделить этот день с вами"></textarea></div>
+        <div class="field"><label for="f-greet" data-i18n="ed.f.greeting">Saludo</label><textarea id="f-greet" data-bind="greeting" maxlength="600"></textarea></div>
       </div>
     </details>
 
     <details class="sec" open>
-      <summary><span>Дата и место</span><span class="eyebrow">Когда и где</span></summary>
+      <summary><span data-i18n="ed.sec.when">Fecha y lugar</span><span class="eyebrow" data-i18n="ed.sec.when.sub">Cuándo y dónde</span></summary>
       <div class="sec-body">
         <div class="two">
-          <div class="field"><label for="f-date">Дата</label><input type="date" id="f-date" data-bind="date"></div>
-          <div class="field"><label for="f-time">Начало</label><input type="time" id="f-time" data-bind="time"></div>
+          <div class="field"><label for="f-date" data-i18n="ed.f.date">Fecha</label><input type="date" id="f-date" data-bind="date"></div>
+          <div class="field"><label for="f-time" data-i18n="ed.f.time">Hora de inicio</label><input type="time" id="f-time" data-bind="time"></div>
         </div>
-        <div class="field"><label for="f-venue">Место</label><input type="text" id="f-venue" data-bind="venue" placeholder="Вилла Бальбьянелло"></div>
-        <div class="field"><label for="f-addr">Адрес</label><input type="text" id="f-addr" data-bind="address" placeholder="Via Comoedia 5, Lenno, озеро Комо"></div>
-        <div class="field"><label for="f-map">Ссылка на карту</label><input type="url" id="f-map" data-bind="mapUrl" placeholder="https://maps.google.com/…"><p class="hint">Кнопка «Как добраться» откроет эту ссылку в навигаторе гостя.</p></div>
+        <div class="field"><label for="f-venue" data-i18n="ed.f.venue">Lugar</label><input type="text" id="f-venue" data-bind="venue" maxlength="120"></div>
+        <div class="field"><label for="f-addr" data-i18n="ed.f.address">Dirección</label><input type="text" id="f-addr" data-bind="address" maxlength="200"></div>
+        <div class="field"><label for="f-map" data-i18n="ed.f.map">Enlace del mapa</label><input type="url" id="f-map" data-bind="mapUrl" placeholder="https://maps.google.com/…"><p class="hint" data-i18n="ed.f.map.hint"></p></div>
       </div>
     </details>
 
     <details class="sec">
-      <summary><span>Программа дня</span><span class="eyebrow" id="prog-count">3 пункта</span></summary>
+      <summary><span data-i18n="ed.sec.program">Programa del día</span><span class="eyebrow" id="prog-count"></span></summary>
       <div class="sec-body">
         <div class="prog" id="prog"></div>
-        <button type="button" class="btn btn-ghost btn-xs" id="prog-add">+ Добавить пункт</button>
-        <div class="field"><label for="f-dress">Дресс-код</label><input type="text" id="f-dress" data-bind="dress" placeholder="Элегантный вечерний, пастельные оттенки"></div>
+        <button type="button" class="btn btn-ghost btn-xs" id="prog-add" data-i18n="ed.prog.add">+ Añadir punto</button>
+        <div class="field"><label for="f-dress" data-i18n="ed.f.dress">Dress code</label><input type="text" id="f-dress" data-bind="dress" maxlength="200"></div>
       </div>
     </details>
 
     <details class="sec">
-      <summary><span>RSVP-анкета</span><span class="eyebrow">Ответы гостей</span></summary>
+      <summary><span data-i18n="ed.sec.rsvp">Formulario RSVP</span><span class="eyebrow" data-i18n="ed.sec.rsvp.sub">Respuestas</span></summary>
       <div class="sec-body">
-        <div class="field"><label for="f-q">Вопрос</label><input type="text" id="f-q" data-bind="rsvpQuestion" placeholder="Вы придёте?"></div>
-        <div class="field"><label for="f-deadline">Ответить до</label><input type="date" id="f-deadline" data-bind="rsvpDeadline"></div>
-        <label class="toggle"><span>Спросить о спутнике</span><input type="checkbox" data-bind="askPlusOne"></label>
-        <label class="toggle"><span>Выбор меню</span><input type="checkbox" data-bind="askMenu"></label>
-        <div class="field" id="menu-field"><label for="f-menu">Варианты меню через запятую</label><input type="text" id="f-menu" data-bind="menuOptions" placeholder="Мясо, Рыба, Вегетарианское"></div>
-        <label class="toggle"><span>Поле для пожеланий</span><input type="checkbox" data-bind="askComment"></label>
+        <div class="field"><label for="f-q" data-i18n="ed.f.q">Pregunta</label><input type="text" id="f-q" data-bind="rsvpQuestion" maxlength="160"></div>
+        <div class="field"><label for="f-deadline" data-i18n="ed.f.deadline">Responder antes del</label><input type="date" id="f-deadline" data-bind="rsvpDeadline"></div>
+        <label class="toggle"><span data-i18n="ed.t.plusone">Preguntar por acompañantes</span><input type="checkbox" data-bind="askPlusOne"></label>
+        <label class="toggle"><span data-i18n="ed.t.menu">Elección de menú</span><input type="checkbox" data-bind="askMenu"></label>
+        <div class="field" id="menu-field"><label for="f-menu" data-i18n="ed.f.menu">Opciones de menú separadas por comas</label><input type="text" id="f-menu" data-bind="menuOptions" maxlength="300"></div>
+        <label class="toggle"><span data-i18n="ed.t.comment">Campo para comentarios</span><input type="checkbox" data-bind="askComment"></label>
       </div>
     </details>
 
     <details class="sec">
-      <summary><span>Музыка</span><span class="eyebrow">Сопровождение</span></summary>
+      <summary><span data-i18n="ed.sec.music">Música</span><span class="eyebrow" data-i18n="ed.sec.music.sub">Ambiente</span></summary>
       <div class="sec-body">
-        <label class="toggle"><span>Включить музыку при открытии</span><input type="checkbox" data-bind="music"></label>
-        <div class="field"><label for="f-track">Название композиции</label><input type="text" id="f-track" data-bind="track" placeholder="Ludovico Einaudi — Experience"></div>
-        <p class="hint">Файл мелодии загружается при публикации. В черновике показывается только название.</p>
+        <label class="toggle"><span data-i18n="ed.t.music">Reproducir música al abrir</span><input type="checkbox" data-bind="music"></label>
+        <div class="field"><label for="f-track" data-i18n="ed.f.track">Nombre de la canción</label><input type="text" id="f-track" data-bind="track" maxlength="120" placeholder="Ludovico Einaudi — Experience"></div>
+        <p class="hint" data-i18n="ed.music.hint"></p>
       </div>
     </details>
 
     <details class="sec">
-      <summary><span>Ссылка</span><span class="eyebrow">Адрес приглашения</span></summary>
+      <summary><span data-i18n="ed.sec.lang">Idioma de la invitación</span><span class="eyebrow" data-i18n="ed.sec.lang.sub">Por defecto para los invitados</span></summary>
       <div class="sec-body">
-        <div class="field"><span class="lbl">Короткая ссылка</span><div class="slug"><span>invitalia.co/</span><input type="text" id="f-slug" data-bind="slug" placeholder="alessandro-maria" aria-label="Короткая ссылка"></div></div>
-        <p class="hint">Только латиница, цифры и дефис. Ссылка и QR-код станут активны после публикации.</p>
+        <div class="field"><select id="f-lang" data-bind="lang" aria-label="Idioma"></select></div>
+        <p class="hint" data-i18n="ed.lang.hint"></p>
       </div>
     </details>
 
     <details class="sec">
-      <summary><span>Ответы гостей</span><span class="eyebrow" id="resp-count">0 ответов</span></summary>
+      <summary><span data-i18n="ed.sec.link">Enlace</span><span class="eyebrow" data-i18n="ed.sec.link.sub">Dirección de la invitación</span></summary>
       <div class="sec-body">
-        <p class="hint">Ответы, отправленные из предпросмотра справа, сохраняются вместе с черновиком. После публикации сюда будут приходить настоящие ответы гостей.</p>
+        <div class="field"><span class="lbl" data-i18n="ed.f.slug">Enlace corto</span><div class="slug"><span id="slug-prefix">invitalia.co/i/</span><input type="text" id="f-slug" data-bind="slug" maxlength="48" placeholder="lucia-mateo" aria-label="slug"></div></div>
+        <p class="hint" data-i18n="ed.slug.hint"></p>
+        <div class="actions" style="margin-left:0"><a class="btn btn-ghost btn-xs" id="open-guest" href="#" target="_blank" rel="noopener" data-i18n="ed.openGuest">Ver como invitado</a></div>
+      </div>
+    </details>
+
+    <details class="sec" id="sec-resp">
+      <summary><span data-i18n="ed.sec.responses">Respuestas de los invitados</span><span class="eyebrow" id="resp-count"></span></summary>
+      <div class="sec-body">
+        <p class="hint" data-i18n="ed.resp.hint"></p>
+        <div class="counts" id="counts" hidden></div>
         <div class="resp" id="resp"></div>
-        <div class="actions" style="margin-left:0"><button type="button" class="btn btn-ghost btn-xs" id="resp-csv">Скопировать как CSV</button><button type="button" class="btn btn-ghost btn-xs" id="resp-clear">Очистить</button></div>
+        <div class="actions" style="margin-left:0">
+          <button type="button" class="btn btn-ghost btn-xs" id="resp-refresh" data-i18n="ed.resp.refresh" hidden>Actualizar</button>
+          <a class="btn btn-ghost btn-xs" id="resp-excel" href="#" data-i18n="ed.resp.excel" hidden>Descargar Excel (CSV)</a>
+          <button type="button" class="btn btn-ghost btn-xs" id="resp-csv" data-i18n="ed.resp.csv">Copiar como CSV</button>
+          <button type="button" class="btn btn-ghost btn-xs" id="resp-clear" data-i18n="ed.resp.clear">Borrar pruebas</button>
+        </div>
       </div>
     </details>
 
-    <p class="hint">Черновик сохраняется в этом браузере автоматически. Кнопка «Экспорт» выгружает все данные в файл JSON, который можно положить в папку INVITALIA и позже загрузить через «Импорт».</p>
+    <p class="hint" data-i18n="ed.footnote"></p>
   </form>
 
-  <section class="stage" aria-label="Предпросмотр">
+  <section class="stage" aria-label="Preview">
     <div class="stage-bar">
-      <span class="lbl">Так увидят гости</span>
-      <div class="seg" role="group" aria-label="Устройство"><button type="button" aria-pressed="true" data-dev="phone">Телефон</button><button type="button" aria-pressed="false" data-dev="tablet">Планшет</button></div>
+      <span class="lbl" data-i18n="ed.preview.label">Así lo verán los invitados</span>
+      <div class="seg" role="group"><button type="button" aria-pressed="true" data-dev="phone" data-i18n="ed.dev.phone">Móvil</button><button type="button" aria-pressed="false" data-dev="tablet" data-i18n="ed.dev.tablet">Tableta</button></div>
     </div>
     <div class="stage-inner">
       <div class="phone" id="phone"><div class="screen"><div class="inv t-palazzo" id="inv"></div></div></div>
@@ -298,257 +264,302 @@ textarea.json{width:100%; min-height:160px; font-family:ui-monospace,Menlo,monos
 
 <div class="modal" id="modal" hidden>
   <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
-    <h2 id="dlg-title">Публикация приглашения</h2>
-    <p>Проверьте ссылку. После оплаты она станет активной, а QR-код можно будет скачать для печатных карточек.</p>
-    <div class="link"><code id="pub-link">https://invitalia.co/</code><button type="button" class="btn btn-ghost btn-xs" id="copy-link">Копировать</button></div>
+    <h2 id="dlg-title" data-i18n="pub.title">Publicar la invitación</h2>
+    <p data-i18n="pub.lead"></p>
+    <div class="link"><code id="pub-link"></code><button type="button" class="btn btn-ghost btn-xs" id="copy-link" data-i18n="pub.copy">Copiar</button></div>
     <div class="qr"><div class="code" id="qr"></div>
-      <ul><li>RSVP-анкета, карта проезда, музыка</li><li>Ответы в личном кабинете и выгрузка в Excel</li><li>Правки после публикации без доплат</li><li>Доступ гостям до свадьбы и 6 месяцев после</li></ul></div>
-    <div class="sum">2 990 ₽<small>разово, за одно приглашение</small></div>
-    <div class="row"><button type="button" class="btn btn-ghost" id="pub-cancel">Вернуться</button><button type="button" class="btn btn-gold" id="pub-ok">Оплатить и опубликовать</button></div>
+      <ul><li data-i18n="pub.f1"></li><li data-i18n="pub.f2"></li><li data-i18n="pub.f3"></li><li data-i18n="pub.f4"></li></ul></div>
+    <div class="sum"><span id="pub-price">29 €</span><small data-i18n="pub.unit"></small></div>
+    <p class="hint" data-i18n="pub.stripe" id="pub-stripe"></p>
+    <div class="row"><button type="button" class="btn btn-ghost" id="pub-cancel" data-i18n="pub.back">Volver</button><button type="button" class="btn btn-gold" id="pub-ok"></button></div>
     <p class="hint" id="pub-note"></p>
   </div>
 </div>
 
 <div class="modal" id="io" hidden>
   <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="io-title">
-    <h2 id="io-title">Экспорт данных</h2>
+    <h2 id="io-title"></h2>
     <p id="io-text"></p>
-    <textarea class="json" id="io-json" aria-label="JSON черновика"></textarea>
+    <textarea class="json" id="io-json" aria-label="JSON"></textarea>
     <input type="file" id="io-file" accept="application/json" hidden>
-    <div class="row"><button type="button" class="btn btn-ghost" id="io-close">Закрыть</button><button type="button" class="btn" id="io-copy">Копировать JSON</button><button type="button" class="btn" id="io-pick">Выбрать файл…</button><button type="button" class="btn btn-gold" id="io-apply">Загрузить в редактор</button><a class="btn btn-gold" id="io-download" download="invitalia-draft.json">Скачать файл</a></div>
+    <div class="row"><button type="button" class="btn btn-ghost" id="io-close" data-i18n="io.close"></button><button type="button" class="btn" id="io-copy" data-i18n="io.copy"></button><button type="button" class="btn" id="io-pick" data-i18n="io.pick"></button><button type="button" class="btn btn-gold" id="io-apply" data-i18n="io.apply"></button><a class="btn btn-gold" id="io-download" download="invitalia-draft.json" data-i18n="io.download"></a></div>
   </div>
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="assets/config.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/invitation.js"></script>
 <script>
 (function(){
-  var KEY = 'invitalia-draft-v1';
+  var API = (window.INVITALIA && window.INVITALIA.api) || '';
+  var KEY = 'invitalia-draft-v2';
   var TPL = {palazzo:'Palazzo', linea:'Linea', heritage:'Heritage', amalfi:'Amalfi', botanica:'Botanica', noir:'Noir'};
-  var defaults = {
-    template:'palazzo', name1:'Алессандро', name2:'Мария',
-    greeting:'Мы будем счастливы разделить этот день с вами',
-    date:'2026-09-12', time:'15:00', venue:'Вилла Бальбьянелло', address:'Via Comoedia 5, Lenno, озеро Комо', mapUrl:'https://maps.google.com/?q=Villa+del+Balbianello',
-    program:[{t:'15:00', n:'Церемония'},{t:'16:30', n:'Аперитив в саду'},{t:'18:00', n:'Ужин и танцы'}],
-    dress:'Элегантный вечерний, пастельные оттенки',
-    rsvpQuestion:'Вы придёте?', rsvpDeadline:'2026-08-01', askPlusOne:true, askMenu:true, menuOptions:'Мясо, Рыба, Вегетарианское', askComment:true,
-    music:true, track:'Ludovico Einaudi — Experience', slug:'alessandro-maria',
-    responses:[], published:false, updatedAt:null
-  };
-  var state = load();
-  var saveTimer = null;
+  var t = I18N.t;
+  var $ = function(id){ return document.getElementById(id); };
 
-  function load(){
-    try { var raw = localStorage.getItem(KEY); if (raw) { var s = JSON.parse(raw); return Object.assign({}, defaults, s); } } catch(e){}
-    return JSON.parse(JSON.stringify(defaults));
+  // ---------- state ----------
+  function freshDefaults(lang){
+    var saved = I18N.lang; I18N.set && (I18N.set(lang || I18N.lang));
+    var d = {
+      template:'palazzo', name1:'Lucía', name2:'Mateo', greeting:t('ed.def.greeting'),
+      date:'2027-09-12', time:'17:00', venue:'Villa del Balbianello', address:'Via Comoedia 5, Lenno, Lago di Como', mapUrl:'https://maps.google.com/?q=Villa+del+Balbianello',
+      program:[{t:'17:00', n:t('ed.def.prog1')},{t:'18:30', n:t('ed.def.prog2')},{t:'20:00', n:t('ed.def.prog3')}],
+      dress:t('ed.def.dress'), rsvpQuestion:t('ed.def.q'), rsvpDeadline:'2027-08-01', askPlusOne:true, askMenu:true, menuOptions:t('ed.def.menu'), askComment:true,
+      music:true, track:'Ludovico Einaudi — Experience', slug:'lucia-mateo', lang: lang || I18N.lang
+    };
+    if (saved !== I18N.lang) I18N.set(saved);
+    return d;
+  }
+  var store = loadLocal();                       // { data, id, editToken, tests:[], published, publishedAt, updatedAt }
+  var state = store.data;
+  var remote = null;                             // ownerView from server
+  var online = false, health = null;
+  var saveTimer = null, cloudTimer = null;
+
+  function loadLocal(){
+    try { var raw = localStorage.getItem(KEY); if (raw) { var s = JSON.parse(raw); if (s && s.data) { s.tests = s.tests || []; return s; } } } catch(e){}
+    return { data: freshDefaults(I18N.lang), id:null, editToken:null, tests:[], published:false };
+  }
+  function persistLocal(){
+    store.data = state; store.updatedAt = new Date().toISOString();
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e){}
+  }
+  var lastStatus = null;
+  function setStatus(key, vars, cls){ lastStatus = { key: key, vars: vars, cls: cls }; var s = $('status'); s.textContent = t(key, vars); s.className = cls || ''; }
+
+  // ---------- API ----------
+  function api(method, path, body, opts){
+    opts = opts || {};
+    var h = { 'Content-Type':'application/json' };
+    if (store.editToken && !opts.noAuth) h.Authorization = 'Bearer ' + store.editToken;
+    return fetch(API + path, { method: method, headers: h, body: body ? JSON.stringify(body) : undefined })
+      .then(function(r){ return r.text().then(function(txt){ var j = {}; try { j = JSON.parse(txt); } catch(e){} if (!r.ok) { var e2 = new Error(j.error || ('HTTP ' + r.status)); e2.code = j.error; e2.status = r.status; throw e2; } return j; }); });
+  }
+  function payload(){ var d = Object.assign({}, state); delete d.lang; return { data: d, lang: state.lang }; }
+  function applyRemote(inv){
+    remote = inv; store.id = inv.id; store.published = inv.status === 'published'; store.publishedAt = inv.publishedAt;
+    if (inv.slug && inv.slug !== state.slug) { state.slug = inv.slug; var el = document.querySelector('[data-bind=slug]'); if (el) el.value = inv.slug; }
+    persistLocal(); updateLinks(); updatePublishButton();
+  }
+  function cloudSave(){
+    if (!online) return Promise.resolve();
+    clearTimeout(cloudTimer);
+    setStatus('ed.status.saving');
+    var p = store.id && store.editToken ? api('PUT', '/api/invitations/' + encodeURIComponent(store.id), payload()) : api('POST', '/api/invitations', payload());
+    return p.then(function(j){
+      if (j.editToken) store.editToken = j.editToken;
+      applyRemote(j.invitation);
+      setStatus('ed.status.savedCloud', { time: I18N.fmtTime(new Date()) }, 'saved');
+    }).catch(function(e){
+      if (e.status === 401 || e.status === 404) { store.id = null; store.editToken = null; persistLocal(); }
+      setStatus('ed.status.error', null, 'err');
+    });
   }
   function save(now){
-    clearTimeout(saveTimer);
-    var doIt = function(){
-      state.updatedAt = new Date().toISOString();
-      try { localStorage.setItem(KEY, JSON.stringify(state)); setStatus('Сохранено ' + fmtTime(new Date()), true); }
-      catch(e){ setStatus('Не удалось сохранить в браузере', false); }
-    };
-    if (now) doIt(); else { setStatus('Сохраняю…', false); saveTimer = setTimeout(doIt, 600); }
+    persistLocal();
+    if (!online) { setStatus('ed.status.saved', { time: I18N.fmtTime(new Date()) }, 'saved'); return; }
+    clearTimeout(cloudTimer);
+    if (now) cloudSave(); else { setStatus('ed.status.saving'); cloudTimer = setTimeout(cloudSave, 900); }
   }
-  function setStatus(t, ok){ var s = document.getElementById('status'); s.textContent = t; s.className = ok ? 'saved' : ''; }
-  function fmtTime(d){ return d.toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'}); }
-  function fmtDate(v){ if(!v) return ''; var d = new Date(v + 'T00:00:00'); if (isNaN(d)) return v; return d.toLocaleDateString('ru-RU', {day:'numeric', month:'long', year:'numeric'}); }
-  function fmtDots(v){ if(!v) return ''; var p = v.split('-'); return p.length === 3 ? p[2] + ' · ' + p[1] + ' · ' + p[0] : v; }
-  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-  function initial(n){ n = (n || '').trim(); return n ? n[0].toUpperCase() : ''; }
-  function toast(t){ var el = document.getElementById('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(function(){ el.classList.remove('show'); }, 1800); }
-  function cleanSlug(s){ return (s || '').toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, ''); }
 
-  // ---- bind form ----
-  var form = document.getElementById('form');
+  // ---------- bindings ----------
+  var form = $('form');
+  var langSel = $('f-lang');
+  I18N.langs.forEach(function(l){ var o = document.createElement('option'); o.value = l; o.textContent = I18N.names[l]; langSel.appendChild(o); });
+  function fillForm(){
+    form.querySelectorAll('[data-bind]').forEach(function(el){ var k = el.dataset.bind; if (el.type === 'checkbox') el.checked = !!state[k]; else el.value = state[k] == null ? '' : state[k]; });
+    form.querySelectorAll('input[name=template]').forEach(function(r){ r.checked = r.value === state.template; });
+  }
   form.querySelectorAll('[data-bind]').forEach(function(el){
     var k = el.dataset.bind;
-    if (el.type === 'checkbox') el.checked = !!state[k]; else el.value = state[k] == null ? '' : state[k];
     el.addEventListener('input', function(){
       state[k] = el.type === 'checkbox' ? el.checked : el.value;
-      if (k === 'slug') { state.slug = cleanSlug(el.value); }
+      if (k === 'slug') state.slug = cleanSlug(el.value);
       render(); save();
     });
     if (k === 'slug') el.addEventListener('blur', function(){ el.value = state.slug; });
   });
-  form.querySelectorAll('input[name=template]').forEach(function(r){
-    r.checked = r.value === state.template;
-    r.addEventListener('change', function(){ if (r.checked) { state.template = r.value; render(); save(); } });
-  });
+  form.querySelectorAll('input[name=template]').forEach(function(r){ r.addEventListener('change', function(){ if (r.checked) { state.template = r.value; render(); save(); } }); });
+  function cleanSlug(s){ return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9-]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').slice(0, 48); }
 
-  // program rows
-  var prog = document.getElementById('prog');
+  var prog = $('prog');
   function renderProg(){
     prog.innerHTML = '';
     state.program.forEach(function(row, i){
       var d = document.createElement('div'); d.className = 'row';
-      d.innerHTML = '<input type="time" value="' + esc(row.t) + '" aria-label="Время"><input type="text" value="' + esc(row.n) + '" placeholder="Что происходит" aria-label="Название"><button type="button" class="del" aria-label="Удалить">×</button>';
-      var ins = d.querySelectorAll('input');
+      d.innerHTML = '<input type="time" aria-label="' + INVITATION.esc(t('ed.prog.time')) + '"><input type="text" maxlength="120" placeholder="' + INVITATION.esc(t('ed.prog.what')) + '" aria-label="' + INVITATION.esc(t('ed.prog.what')) + '"><button type="button" class="del" aria-label="' + INVITATION.esc(t('ed.prog.del')) + '">×</button>';
+      var ins = d.querySelectorAll('input'); ins[0].value = row.t || ''; ins[1].value = row.n || '';
       ins[0].addEventListener('input', function(){ row.t = ins[0].value; render(); save(); });
       ins[1].addEventListener('input', function(){ row.n = ins[1].value; render(); save(); });
       d.querySelector('.del').addEventListener('click', function(){ state.program.splice(i, 1); renderProg(); render(); save(); });
       prog.appendChild(d);
     });
-    var n = state.program.length;
-    document.getElementById('prog-count').textContent = n + ' ' + plural(n, ['пункт','пункта','пунктов']);
+    $('prog-count').textContent = I18N.n('ed.prog.count', state.program.length);
   }
-  function plural(n, f){ n = Math.abs(n) % 100; var n1 = n % 10; if (n > 10 && n < 20) return f[2]; if (n1 > 1 && n1 < 5) return f[1]; if (n1 === 1) return f[0]; return f[2]; }
-  document.getElementById('prog-add').addEventListener('click', function(){ state.program.push({t:'', n:''}); renderProg(); render(); save(); prog.lastChild.querySelector('input[type=text]').focus(); });
+  $('prog-add').addEventListener('click', function(){ state.program.push({t:'', n:''}); renderProg(); render(); save(); var last = prog.lastChild && prog.lastChild.querySelector('input[type=text]'); if (last) last.focus(); });
 
-  // responses
+  // ---------- responses ----------
+  var serverResponses = [], serverCounts = null;
   function renderResp(){
-    var box = document.getElementById('resp'); box.innerHTML = '';
-    var n = state.responses.length;
-    document.getElementById('resp-count').textContent = n + ' ' + plural(n, ['ответ','ответа','ответов']);
-    if (!n) { box.innerHTML = '<div class="empty">Пока нет ответов. Отправьте тестовый ответ из предпросмотра.</div>'; return; }
-    state.responses.slice().reverse().forEach(function(r){
+    var box = $('resp'); box.innerHTML = '';
+    var all = serverResponses.map(function(r){ return Object.assign({}, r, { test:false }); }).concat(store.tests.slice().reverse().map(function(r){ return Object.assign({}, r, { test:true }); }));
+    $('resp-count').textContent = I18N.n('ed.resp.count', all.length);
+    var c = $('counts');
+    if (serverCounts) { c.hidden = false; c.innerHTML = '<span><b>' + (serverCounts.yes || 0) + '</b> ' + INVITATION.esc(t('dash.yes')) + '</span><span><b>' + (serverCounts.no || 0) + '</b> ' + INVITATION.esc(t('dash.no')) + '</span>' + (serverCounts.extra ? '<span>+<b>' + serverCounts.extra + '</b></span>' : ''); } else c.hidden = true;
+    if (!all.length) { box.innerHTML = '<div class="empty">' + INVITATION.esc(t('ed.resp.empty')) + '</div>'; return; }
+    all.forEach(function(r){
       var d = document.createElement('div'); d.className = 'r';
-      d.innerHTML = '<span><b>' + esc(r.name || 'Гость') + '</b>' + (r.plusOne ? ' +' + esc(r.plusOne) : '') + (r.menu ? ' · ' + esc(r.menu) : '') + (r.comment ? ' · «' + esc(r.comment) + '»' : '') + '</span><span class="pill ' + (r.answer === 'yes' ? 'ok' : 'no') + '">' + (r.answer === 'yes' ? 'Придёт' : 'Не сможет') + '</span>';
+      var meta = [r.plusOne && r.plusOne !== '0' ? '+' + r.plusOne : '', r.menu || '', r.comment ? '«' + r.comment + '»' : '', r.createdAt ? I18N.fmtDateTime(r.createdAt) : (r.at || '')].filter(Boolean).join(' · ');
+      d.innerHTML = '<span><b>' + INVITATION.esc(r.name || '—') + '</b>' + (r.test ? '<span class="pill test">' + INVITATION.esc(t('ed.resp.test')) + '</span>' : '') + (meta ? '<span class="meta">' + INVITATION.esc(meta) + '</span>' : '') + '</span><span class="pill ' + (r.answer === 'yes' ? 'ok' : 'no') + '">' + INVITATION.esc(r.answer === 'yes' ? t('dash.pill.yes') : t('dash.pill.no')) + '</span>';
       box.appendChild(d);
     });
   }
-  document.getElementById('resp-clear').addEventListener('click', function(){ state.responses = []; renderResp(); save(); });
-  document.getElementById('resp-csv').addEventListener('click', function(){
-    var rows = [['Гость','Ответ','Спутник','Меню','Комментарий','Время']].concat(state.responses.map(function(r){ return [r.name, r.answer === 'yes' ? 'Придёт' : 'Не сможет', r.plusOne || '', r.menu || '', r.comment || '', r.at || '']; }));
-    var csv = rows.map(function(r){ return r.map(function(c){ return '"' + String(c == null ? '' : c).replace(/"/g, '""') + '"'; }).join(';'); }).join('\n');
-    copyText(csv, 'CSV скопирован');
+  function loadResponses(){
+    if (!online || !store.id || !store.editToken) return Promise.resolve();
+    return api('GET', '/api/invitations/' + encodeURIComponent(store.id) + '/responses').then(function(j){ serverResponses = j.responses || []; serverCounts = j.counts || null; renderResp(); }).catch(function(){});
+  }
+  $('resp-refresh').addEventListener('click', loadResponses);
+  $('resp-clear').addEventListener('click', function(){ store.tests = []; persistLocal(); renderResp(); });
+  $('resp-csv').addEventListener('click', function(){
+    var rows = [[t('dash.th.guest'), t('dash.th.answer'), t('dash.th.plus'), t('dash.th.menu'), t('g.comment'), t('dash.th.received')]]
+      .concat(serverResponses.concat(store.tests).map(function(r){ return [r.name, r.answer === 'yes' ? t('dash.pill.yes') : t('dash.pill.no'), r.plusOne || '', r.menu || '', r.comment || '', r.createdAt || r.at || '']; }));
+    copyText(rows.map(function(r){ return r.map(function(c){ return '"' + String(c == null ? '' : c).replace(/"/g, '""') + '"'; }).join(';'); }).join('\n'), 'toast.csv');
   });
-  function copyText(t, msg){
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function(){ toast(msg); }, function(){ toast('Скопируйте текст вручную'); });
-    else toast('Копирование недоступно в этом браузере');
+  function copyText(text, key){
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){ toast(t(key)); }, function(){ toast(t('toast.copyFail')); });
+    else toast(t('toast.copyFail'));
   }
+  function toast(msg){ var el = $('toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(function(){ el.classList.remove('show'); }, 2200); }
 
-  // ---- render invitation ----
-  var inv = document.getElementById('inv');
+  // ---------- render preview ----------
   function render(){
-    document.getElementById('tpl-name').textContent = TPL[state.template] || '';
-    document.getElementById('menu-field').hidden = !state.askMenu;
-    inv.className = 'inv t-' + state.template;
-    var chips = '';
-    if (state.mapUrl) chips += '<a class="chip" href="' + esc(state.mapUrl) + '" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Как добраться</a>';
-    if (state.music) chips += '<span class="chip" title="' + esc(state.track) + '"><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>' + esc(state.track ? state.track.split(' — ')[0] : 'Музыка') + '</span>';
-    var sched = state.program.filter(function(p){ return p.n || p.t; }).map(function(p){ return '<div><span>' + esc(p.n) + '</span><b>' + esc(p.t) + '</b></div>'; }).join('');
-    var menuOpts = (state.menuOptions || '').split(',').map(function(s){ return s.trim(); }).filter(Boolean);
-    inv.innerHTML =
-      '<div class="frame"></div>' +
-      '<div class="mono">' + esc(initial(state.name1)) + (state.name1 && state.name2 ? ' &amp; ' : '') + esc(initial(state.name2)) + '</div>' +
-      '<div class="names">' + esc(state.name1 || 'Имя') + '<small>&amp;</small>' + esc(state.name2 || 'Имя') + '</div>' +
-      (state.greeting ? '<p class="greet">' + esc(state.greeting) + '</p>' : '') +
-      '<div class="date">' + esc(fmtDots(state.date)) + '</div>' +
-      (state.time ? '<div class="time">' + esc(fmtDate(state.date)) + ', ' + esc(state.time) + '</div>' : '') +
-      (state.venue ? '<div class="place">' + esc(state.venue) + '</div>' : '') +
-      (state.address ? '<div class="addr">' + esc(state.address) + '</div>' : '') +
-      (chips ? '<div class="chips">' + chips + '</div>' : '') +
-      (sched ? '<div class="sched">' + sched + '</div>' : '') +
-      (state.dress ? '<div class="dress"><b>Дресс-код</b>' + esc(state.dress) + '</div>' : '') +
-      '<form class="rsvp" id="g-form"><div class="box">' +
-        '<p class="q">' + esc(state.rsvpQuestion || 'Вы придёте?') + '</p>' +
-        (state.rsvpDeadline ? '<p class="dl">Ответьте, пожалуйста, до ' + esc(fmtDate(state.rsvpDeadline)) + '</p>' : '') +
-        '<div class="opts"><button type="button" class="o" data-a="yes" aria-pressed="false">С радостью</button><button type="button" class="o" data-a="no" aria-pressed="false">Не смогу</button></div>' +
-        '<div class="more" hidden>' +
-          '<input type="text" id="g-name" placeholder="Ваше имя" aria-label="Ваше имя">' +
-          (state.askPlusOne ? '<select id="g-plus" aria-label="Спутник"><option value="">Приду один / одна</option><option value="1">Со спутником</option><option value="2">Нас будет трое</option></select>' : '') +
-          (state.askMenu && menuOpts.length ? '<select id="g-menu" aria-label="Меню"><option value="">Выберите меню</option>' + menuOpts.map(function(o){ return '<option>' + esc(o) + '</option>'; }).join('') + '</select>' : '') +
-          (state.askComment ? '<textarea id="g-comment" placeholder="Пожелания или аллергии" aria-label="Пожелания"></textarea>' : '') +
-          '<button type="submit" class="send">Отправить ответ</button>' +
-        '</div><p class="done" id="g-done" hidden></p>' +
-      '</div></form>' +
-      '<div class="foot">Invitalia.co' + (state.slug ? ' · ' + esc(state.slug) : '') + '</div>';
-    bindGuest();
-  }
-  function bindGuest(){
-    var f = document.getElementById('g-form'); var ans = '';
-    f.querySelectorAll('.o').forEach(function(b){ b.addEventListener('click', function(){
-      ans = b.dataset.a; f.querySelectorAll('.o').forEach(function(x){ x.setAttribute('aria-pressed', 'false'); }); b.setAttribute('aria-pressed', 'true');
-      f.querySelector('.more').hidden = false; f.querySelector('.more').hidden = false;
-      var p = f.querySelector('#g-plus'), m = f.querySelector('#g-menu');
-      if (p) p.hidden = ans === 'no'; if (m) m.hidden = ans === 'no';
-    }); });
-    f.addEventListener('submit', function(e){
-      e.preventDefault(); if (!ans) return;
-      var g = function(id){ var el = f.querySelector('#' + id); return el && !el.hidden ? el.value.trim() : ''; };
-      state.responses.push({name:g('g-name'), answer:ans, plusOne:ans === 'yes' ? g('g-plus') : '', menu:ans === 'yes' ? g('g-menu') : '', comment:g('g-comment'), at:new Date().toLocaleString('ru-RU')});
-      f.querySelector('.more').hidden = true; f.querySelector('.opts').hidden = true;
-      var d = f.querySelector('#g-done'); d.hidden = false; d.textContent = ans === 'yes' ? 'Спасибо! Ваш ответ отправлен паре.' : 'Жаль, что не получится. Ответ отправлен.';
-      renderResp(); save(true);
+    $('tpl-name').textContent = TPL[state.template] || '';
+    $('menu-field').hidden = !state.askMenu;
+    INVITATION.render($('inv'), state, {
+      onSubmit: function(p){ store.tests.push(Object.assign({}, p, { at: new Date().toISOString() })); persistLocal(); renderResp(); return Promise.resolve(); }
     });
+    updateLinks();
   }
+  function guestUrl(){
+    var slug = (remote && remote.slug) || state.slug || '';
+    if (online) return (API || location.origin) + '/i/' + encodeURIComponent(slug) + (store.editToken ? '?preview=' + encodeURIComponent(store.editToken) : '');
+    return 'guest.html?slug=' + encodeURIComponent(slug);
+  }
+  function publicUrl(){ return remote && remote.url ? remote.url : 'https://invitalia.co/i/' + (state.slug || 'draft'); }
+  function updateLinks(){
+    $('open-guest').href = guestUrl();
+    var base = remote && remote.url ? remote.url.replace(/\/i\/[^/]*$/, '/i/').replace(/^https?:\/\//, '') : 'invitalia.co/i/';
+    $('slug-prefix').textContent = base;
+    var xl = $('resp-excel');
+    if (online && store.id && store.editToken) { xl.hidden = false; xl.href = API + '/api/invitations/' + encodeURIComponent(store.id) + '/responses.csv?token=' + encodeURIComponent(store.editToken) + '&lang=' + I18N.lang; $('resp-refresh').hidden = false; }
+    else { xl.hidden = true; $('resp-refresh').hidden = true; }
+  }
+  function updatePublishButton(){ $('btn-publish').textContent = store.published ? t('ed.published') : t('ed.publish'); }
 
-  // device switch
   document.querySelectorAll('.seg button').forEach(function(b){ b.addEventListener('click', function(){
     document.querySelectorAll('.seg button').forEach(function(x){ x.setAttribute('aria-pressed', 'false'); }); b.setAttribute('aria-pressed', 'true');
-    document.getElementById('phone').classList.toggle('tablet', b.dataset.dev === 'tablet');
+    $('phone').classList.toggle('tablet', b.dataset.dev === 'tablet');
   }); });
+  $('btn-save').addEventListener('click', function(){ save(true); toast(t('toast.saved')); });
 
-  // save button
-  document.getElementById('btn-save').addEventListener('click', function(){ save(true); toast('Черновик сохранён'); });
-
-  // ---- export / import ----
-  var io = document.getElementById('io'), ioJson = document.getElementById('io-json'), ioMode = 'export';
+  // ---------- export / import ----------
+  var io = $('io'), ioJson = $('io-json');
   function openIO(mode){
-    ioMode = mode; io.hidden = false;
-    document.getElementById('io-title').textContent = mode === 'export' ? 'Экспорт данных' : 'Импорт данных';
-    document.getElementById('io-text').textContent = mode === 'export' ? 'Все данные приглашения в формате JSON. Скачайте файл или скопируйте текст и сохраните в папку INVITALIA.' : 'Вставьте JSON, сохранённый ранее, или выберите файл invitalia-draft.json.';
-    ioJson.value = mode === 'export' ? JSON.stringify(state, null, 2) : '';
-    ioJson.readOnly = mode === 'export';
-    document.getElementById('io-copy').hidden = mode !== 'export';
-    document.getElementById('io-download').hidden = mode !== 'export';
-    document.getElementById('io-pick').hidden = mode !== 'import';
-    document.getElementById('io-apply').hidden = mode !== 'import';
-    if (mode === 'export') {
-      var a = document.getElementById('io-download');
-      try { if (a._url) URL.revokeObjectURL(a._url); a._url = URL.createObjectURL(new Blob([ioJson.value], {type:'application/json'})); a.href = a._url; } catch(e){ a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(ioJson.value); }
-      a.download = 'invitalia-' + (state.slug || 'draft') + '.json';
-    }
+    io.hidden = false;
+    $('io-title').textContent = t(mode === 'export' ? 'io.exportTitle' : 'io.importTitle');
+    $('io-text').textContent = t(mode === 'export' ? 'io.exportText' : 'io.importText');
+    var dump = { data: state, id: store.id, editToken: store.editToken, tests: store.tests, published: store.published, exportedAt: new Date().toISOString(), responses: serverResponses };
+    ioJson.value = mode === 'export' ? JSON.stringify(dump, null, 2) : ''; ioJson.readOnly = mode === 'export';
+    $('io-copy').hidden = mode !== 'export'; $('io-download').hidden = mode !== 'export'; $('io-pick').hidden = mode !== 'import'; $('io-apply').hidden = mode !== 'import';
+    if (mode === 'export') { var a = $('io-download'); try { if (a._url) URL.revokeObjectURL(a._url); a._url = URL.createObjectURL(new Blob([ioJson.value], {type:'application/json'})); a.href = a._url; } catch(e){ a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(ioJson.value); } a.download = 'invitalia-' + (state.slug || 'draft') + '.json'; }
   }
-  document.getElementById('btn-export').addEventListener('click', function(){ openIO('export'); });
-  document.getElementById('btn-import').addEventListener('click', function(){ openIO('import'); });
-  document.getElementById('io-close').addEventListener('click', function(){ io.hidden = true; });
-  document.getElementById('io-copy').addEventListener('click', function(){ copyText(ioJson.value, 'JSON скопирован'); });
-  document.getElementById('io-pick').addEventListener('click', function(){ document.getElementById('io-file').click(); });
-  document.getElementById('io-file').addEventListener('change', function(e){
-    var f = e.target.files[0]; if (!f) return; var r = new FileReader();
-    r.onload = function(){ ioJson.value = r.result; }; r.readAsText(f); e.target.value = '';
-  });
-  document.getElementById('io-apply').addEventListener('click', function(){
+  $('btn-export').addEventListener('click', function(){ openIO('export'); });
+  $('btn-import').addEventListener('click', function(){ openIO('import'); });
+  $('io-close').addEventListener('click', function(){ io.hidden = true; });
+  $('io-copy').addEventListener('click', function(){ copyText(ioJson.value, 'toast.json'); });
+  $('io-pick').addEventListener('click', function(){ $('io-file').click(); });
+  $('io-file').addEventListener('change', function(e){ var f = e.target.files[0]; if (!f) return; var r = new FileReader(); r.onload = function(){ ioJson.value = r.result; }; r.readAsText(f); e.target.value = ''; });
+  $('io-apply').addEventListener('click', function(){
     try {
       var s = JSON.parse(ioJson.value); if (!s || typeof s !== 'object') throw new Error();
-      state = Object.assign({}, defaults, s); if (!Array.isArray(state.program)) state.program = []; if (!Array.isArray(state.responses)) state.responses = [];
-      form.querySelectorAll('[data-bind]').forEach(function(el){ var k = el.dataset.bind; if (el.type === 'checkbox') el.checked = !!state[k]; else el.value = state[k] == null ? '' : state[k]; });
-      form.querySelectorAll('input[name=template]').forEach(function(r){ r.checked = r.value === state.template; });
-      renderProg(); renderResp(); render(); save(true); io.hidden = true; toast('Данные загружены');
-    } catch(e){ toast('Не удалось прочитать JSON'); }
+      var d = s.data && typeof s.data === 'object' ? s.data : s;
+      state = Object.assign(freshDefaults(d.lang || I18N.lang), d); if (!Array.isArray(state.program)) state.program = [];
+      store.id = s.id || null; store.editToken = s.editToken || null; store.tests = Array.isArray(s.tests) ? s.tests : []; remote = null;
+      fillForm(); renderProg(); renderResp(); render(); save(true); io.hidden = true; toast(t('toast.loaded'));
+      if (online && store.id) api('GET', '/api/invitations/' + encodeURIComponent(store.id)).then(function(j){ applyRemote(j.invitation); loadResponses(); }).catch(function(){});
+    } catch(e){ toast(t('toast.badJson')); }
   });
 
-  // ---- publish ----
-  var modal = document.getElementById('modal');
-  function publishUrl(){ return 'https://invitalia.co/' + (state.slug || 'draft'); }
-  document.getElementById('btn-publish').addEventListener('click', function(){
+  // ---------- publish / payment ----------
+  var modal = $('modal');
+  function drawQr(url){ var q = $('qr'); q.innerHTML = ''; try { var code = qrcode(0, 'M'); code.addData(url); code.make(); q.innerHTML = code.createSvgTag({cellSize:4, margin:0, scalable:true}); } catch(e){ q.innerHTML = '<span class="hint">' + INVITATION.esc(t('pub.qrLater')) + '</span>'; } }
+  function openPublish(){
     var missing = [];
-    if (!state.name1 || !state.name2) missing.push('имена');
-    if (!state.date) missing.push('дату');
-    if (!state.slug) missing.push('ссылку');
-    if (missing.length) { toast('Заполните ' + missing.join(', ')); return; }
-    document.getElementById('pub-link').textContent = publishUrl();
-    var q = document.getElementById('qr'); q.innerHTML = '';
-    try { var code = qrcode(0, 'M'); code.addData(publishUrl()); code.make(); q.innerHTML = code.createSvgTag({cellSize:4, margin:0, scalable:true}); }
-    catch(e){ q.innerHTML = '<span class="hint">QR появится после публикации</span>'; }
-    document.getElementById('pub-note').textContent = state.published ? 'Приглашение уже опубликовано ' + (state.publishedAt || '') + '. Повторная оплата не нужна, изменения применяются сразу.' : 'Оплата в этой версии не подключена: кнопка отмечает приглашение опубликованным в черновике.';
-    document.getElementById('pub-ok').textContent = state.published ? 'Обновить публикацию' : 'Оплатить и опубликовать';
+    if (!state.name1 || !state.name2) missing.push(t('fill.names'));
+    if (!state.date) missing.push(t('fill.date'));
+    if (!state.slug) missing.push(t('fill.slug'));
+    if (missing.length) { toast(t('toast.fill', { fields: missing.join(', ') })); return; }
+    $('pub-link').textContent = publicUrl(); drawQr(publicUrl());
+    var price = health && health.price ? I18N.money(health.price.amount, health.price.currency) : t('price.pub.sum');
+    $('pub-price').textContent = price;
+    var ok = $('pub-ok'); ok.disabled = false;
+    if (!online) { $('pub-note').textContent = t('pub.noteOffline'); ok.textContent = t('pub.pay'); ok.disabled = true; $('pub-stripe').hidden = true; }
+    else if (store.published) { $('pub-note').textContent = t('pub.notePublished', { date: store.publishedAt ? I18N.fmtDateTime(store.publishedAt) : '' }); ok.textContent = t('pub.update'); $('pub-stripe').hidden = true; }
+    else { $('pub-note').textContent = health && health.payments === 'mock' ? t('pub.noteMock') : ''; ok.textContent = t('pub.pay'); $('pub-stripe').hidden = !(health && health.payments === 'stripe'); }
     modal.hidden = false;
-  });
-  document.getElementById('pub-cancel').addEventListener('click', function(){ modal.hidden = true; });
-  document.getElementById('copy-link').addEventListener('click', function(){ copyText(publishUrl(), 'Ссылка скопирована'); });
-  document.getElementById('pub-ok').addEventListener('click', function(){
-    state.published = true; state.publishedAt = new Date().toLocaleString('ru-RU'); save(true); modal.hidden = true; toast('Приглашение опубликовано');
+  }
+  $('btn-publish').addEventListener('click', openPublish);
+  $('pub-cancel').addEventListener('click', function(){ modal.hidden = true; });
+  $('copy-link').addEventListener('click', function(){ copyText(publicUrl(), 'toast.linkCopied'); });
+  $('pub-ok').addEventListener('click', function(){
+    if (!online) return;
+    var ok = $('pub-ok'); ok.disabled = true;
+    if (store.published) { cloudSave().then(function(){ modal.hidden = true; toast(t('toast.saved')); ok.disabled = false; }); return; }
+    cloudSave().then(function(){
+      if (!store.id) throw new Error('no id');
+      return api('POST', '/api/invitations/' + encodeURIComponent(store.id) + '/checkout', { lang: I18N.lang, successUrl: location.origin + location.pathname + '?id=' + encodeURIComponent(store.id) + '&session_id={CHECKOUT_SESSION_ID}', cancelUrl: location.origin + location.pathname + '?canceled=1' });
+    }).then(function(j){
+      if (j.mock || j.alreadyPublished) { applyRemote(j.invitation); modal.hidden = true; toast(t('toast.published')); render(); ok.disabled = false; return; }
+      $('pub-note').textContent = t('pub.redirect'); location.href = j.url;
+    }).catch(function(){ ok.disabled = false; toast(t('toast.serverError')); });
   });
   [modal, io].forEach(function(m){ m.addEventListener('click', function(e){ if (e.target === m) m.hidden = true; }); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') { modal.hidden = true; io.hidden = true; } });
 
-  // ---- boot ----
-  renderProg(); renderResp(); render();
-  if (state.updatedAt) setStatus('Сохранено ' + fmtTime(new Date(state.updatedAt)), true);
+  // ---------- boot ----------
+  var qs = new URLSearchParams(location.search);
+  function boot(){
+    fillForm(); renderProg(); renderResp(); render(); updatePublishButton();
+    if (store.updatedAt) setStatus('ed.status.saved', { time: I18N.fmtTime(new Date(store.updatedAt)) }, 'saved'); else setStatus('ed.status.unsaved');
+    fetch(API + '/api/health', { cache:'no-store' }).then(function(r){ return r.ok ? r.json() : null; }).then(function(h){
+      if (!h || !h.ok) throw new Error();
+      online = true; health = h;
+      var urlId = qs.get('id'), urlTok = qs.get('token');
+      if (urlId && urlTok) { store.id = urlId; store.editToken = urlTok; }
+      var p = Promise.resolve();
+      if (store.id && store.editToken) {
+        p = api('GET', '/api/invitations/' + encodeURIComponent(store.id)).then(function(j){
+          var inv = j.invitation; var localNewer = store.updatedAt && inv.updatedAt && new Date(store.updatedAt) > new Date(inv.updatedAt) && !(urlId && urlTok);
+          if (!localNewer) { state = Object.assign(freshDefaults(inv.lang), inv.data, { lang: inv.lang }); fillForm(); renderProg(); render(); }
+          applyRemote(inv); return loadResponses();
+        }).catch(function(e){ if (e.status === 401 || e.status === 404) { store.id = null; store.editToken = null; persistLocal(); } });
+      }
+      p.then(function(){
+        updateLinks();
+        var sid = qs.get('session_id');
+        if (sid && store.id) return api('POST', '/api/invitations/' + encodeURIComponent(store.id) + '/checkout/verify', { sessionId: sid }).then(function(j){ if (j.paid) { applyRemote(j.invitation); toast(t('toast.paymentOk')); } else toast(t('toast.paymentPending')); }).catch(function(){ toast(t('toast.paymentPending')); });
+        if (qs.get('paid') === '1' && store.id) return api('GET', '/api/invitations/' + encodeURIComponent(store.id)).then(function(j){ applyRemote(j.invitation); toast(t('toast.published')); }).catch(function(){});
+        if (qs.get('canceled') === '1') toast(t('toast.paymentCanceled'));
+      }).then(function(){
+        if (qs.toString()) history.replaceState(null, '', location.pathname);
+        if (!store.id) cloudSave(); else setStatus('ed.status.savedCloud', { time: I18N.fmtTime(new Date()) }, 'saved');
+      });
+    }).catch(function(){ online = false; setStatus('ed.status.offline'); updateLinks(); });
+  }
+  document.addEventListener('i18n:applied', function(){ renderProg(); renderResp(); render(); updatePublishButton(); if (lastStatus) setStatus(lastStatus.key, lastStatus.vars, lastStatus.cls); if (!modal.hidden) openPublish(); });
+  boot();
 })();
 </script>
 </body>
