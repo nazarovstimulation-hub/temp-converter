@@ -28,7 +28,7 @@ cd site && python3 -m http.server 8000
 
 ## Publicar
 
-Es un sitio estático: sirve la carpeta `site/` en GitHub Pages, Netlify, Vercel o cualquier hosting. Para GitHub Pages, configura la publicación desde la carpeta `/site` de la rama principal (o copia su contenido a `/docs`).
+El sitio se publica solo en GitHub Pages con el workflow `.github/workflows/pages.yml`: cada push a `main` que toque `site/` despliega la carpeta `site/`. Configuración única en GitHub: Settings → Pages → Build and deployment → Source: **GitHub Actions**. También puede lanzarse a mano desde la pestaña Actions (Run workflow). La URL queda en `https://<usuario>.github.io/<repo>/` hasta que se conecte el dominio fiestalia.com (Settings → Pages → Custom domain).
 
 ## Pendiente antes de lanzar
 
