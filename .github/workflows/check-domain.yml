@@ -1,0 +1,31 @@
+name: Check INVITALIA domain
+
+# Manual diagnostics: DNS, HTTPS and API health for invitalia.co, run from GitHub's network.
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: DNS
+        run: |
+          echo "== NS (system resolver)"; dig NS invitalia.co +short || true
+          echo "== NS via 1.1.1.1"; dig NS invitalia.co @1.1.1.1 +short || true
+          echo "== NS via 8.8.8.8"; dig NS invitalia.co @8.8.8.8 +short || true
+          echo "== NS at the .co registry"; dig NS invitalia.co @a.cctld.co +short || dig NS invitalia.co @ns1.cctld.co +short || true
+          echo "== A invitalia.co"; dig A invitalia.co +short || true
+          echo "== A www.invitalia.co"; dig A www.invitalia.co +short || true
+          echo "== A via Cloudflare NS directly"; dig A invitalia.co @lina.ns.cloudflare.com +short || true
+          echo "== SOA"; dig SOA invitalia.co +short || true
+      - name: HTTPS
+        run: |
+          echo "== invitalia.co"; curl -sS -o /dev/null -w 'HTTP %{http_code}\n' --max-time 20 https://invitalia.co/ || true
+          echo "== api/health"; curl -sS --max-time 20 https://invitalia.co/api/health || true; echo
+          echo "== www"; curl -sS -o /dev/null -w 'HTTP %{http_code}\n' --max-time 20 https://www.invitalia.co/ || true
+          echo "== workers.dev"; curl -sS --max-time 20 https://invitalia.nazarovstimulation.workers.dev/api/health || true; echo
+      - name: check-deploy.js
+        run: node INVITALIA/server/check-deploy.js invitalia.co || true
