@@ -547,39 +547,48 @@ ul { margin: 0; padding: 0; list-style: none; }
 :root[data-theme="esmeralda"] .plan.recommended { outline-color: var(--accent); }
 :root[data-theme="esmeralda"] .cta { background: linear-gradient(135deg, #0b2a22 0%, #146b4d 55%, #c9a84c 100%); }
 
-/* F · Burdeos y Champán — boda de lujo, cálido y señorial */
+/* F · Rojo Cartier y Champán — lujo clásico de joyería: carmín, champán y oro */
 :root[data-theme="burdeos"] {
-  --brand: #7a1232;          /* burdeos */
-  --brand-dark: #5e0c26;
-  --brand-soft: #f6e4e8;
-  --brand-glow: rgba(122, 18, 50, .28);
-  --purple: #4a0f24;
-  --purple-dark: #2c0a18;
+  --brand: #b20a2e;          /* rojo Cartier */
+  --brand-dark: #8e0824;
+  --brand-soft: #f8e3e6;
+  --brand-glow: rgba(178, 10, 46, .30);
+  --purple: #8e0824;         /* énfasis en carmín profundo */
+  --purple-dark: #3a0611;    /* fondo Live Wall: granate casi negro */
   --purple-soft: #f6ecdc;
-  --accent: #c89b7b;         /* oro rosa / champán */
-  --ink: #2c1220;
-  --ink-2: #5f4651;
-  --ink-3: #978189;
+  --accent: #c9a84c;         /* oro */
+  --ink: #2a1016;
+  --ink-2: #5e454b;
+  --ink-3: #978087;
   --line: #ead9cf;
-  --bg: #f9f3ea;
-  --bg-2: #f2e6d8;
-  --card: #fffbf5;
-  --header-bg: rgba(249, 243, 234, .88);
-  --dark-text: #f7ebe6;
-  --dark-muted: #cfb0ba;
-  --screen-bg: #1b0610;
-  --screen-line: #5a2436;
-  --shadow: 0 10px 30px rgba(44, 18, 32, .08);
-  --shadow-lg: 0 30px 60px rgba(44, 18, 32, .14);
+  --bg: #faf5ec;             /* champán */
+  --bg-2: #f3e7d8;
+  --card: #fffcf6;
+  --header-bg: rgba(250, 245, 236, .88);
+  --dark-text: #f9ebe4;
+  --dark-muted: #d3aeb2;
+  --screen-bg: #1f040a;
+  --screen-line: #6a1a28;
+  --shadow: 0 10px 30px rgba(42, 16, 22, .08);
+  --shadow-lg: 0 30px 60px rgba(42, 16, 22, .14);
 }
-:root[data-theme="burdeos"] .eyebrow { color: var(--accent); letter-spacing: .14em; }
+:root[data-theme="burdeos"] .eyebrow { color: var(--accent); letter-spacing: .16em; }
 :root[data-theme="burdeos"] .eyebrow::before { background: var(--accent); }
 :root[data-theme="burdeos"] .hero h1 em { color: var(--brand); }
 :root[data-theme="burdeos"] .tag,
-:root[data-theme="burdeos"] .plan-badge { background: var(--accent); color: #2c1220; }
+:root[data-theme="burdeos"] .plan-badge { background: var(--accent); color: #2a1016; }
 :root[data-theme="burdeos"] .plan.featured { border-color: var(--accent); }
 :root[data-theme="burdeos"] .plan.recommended { outline-color: var(--accent); }
-:root[data-theme="burdeos"] .cta { background: linear-gradient(135deg, #2c0a18 0%, #7a1232 55%, #c89b7b 100%); }
+:root[data-theme="burdeos"] .btn-ghost { border-color: #dcc9b4; }
+:root[data-theme="burdeos"] .btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+:root[data-theme="burdeos"] .livewall .eyebrow { color: var(--accent); }
+:root[data-theme="burdeos"] .btn-light { background: var(--accent); color: #2a1016; }
+:root[data-theme="burdeos"] .cta { background: linear-gradient(135deg, #3a0611 0%, #b20a2e 55%, #c9a84c 100%); }
+:root[data-theme="burdeos"] .hero {
+  background:
+    radial-gradient(900px 500px at 85% -10%, #f8e3e6, transparent 60%),
+    radial-gradient(700px 450px at -10% 110%, #f3e7d8, transparent 60%);
+}
 
 /* G · Medianoche y Oro — azul noche, oro champán, muy premium */
 :root[data-theme="medianoche"] {

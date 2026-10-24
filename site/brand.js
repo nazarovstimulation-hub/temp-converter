@@ -15,7 +15,7 @@ window.BRAND = {
   // "esmeralda" (esmeralda y oro), "burdeos" (burdeos y champán), "medianoche" (azul noche y oro),
   // "noche" (fondo oscuro de gala) o "rosa" (rosa cuarzo nupcial).
   // Para previsualizar sin cambiar esto: index.html?theme=oro
-  theme: "fiesta",
+  theme: "burdeos",   // Rojo Cartier y Champán (tema elegido)
   freePhotos: 50,                // fotos gratis por álbum
   // Precios en euros, pago único (IVA incluido). Ajusta a tu estrategia.
   plans: [
