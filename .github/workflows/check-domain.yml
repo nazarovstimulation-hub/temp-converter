@@ -31,3 +31,28 @@ jobs:
           echo "== workers.dev"; curl -sS --max-time 20 https://invitalia.nazarovstimulation.workers.dev/api/health || true; echo
       - name: check-deploy.js
         run: node INVITALIA/server/check-deploy.js invitalia.co || true
+      - name: Gallery (33 templates and their cover photos)
+        run: |
+          node -e '
+            const T = require("./INVITALIA/site/assets/templates.js");
+            (async () => {
+              const html = await (await fetch("https://invitalia.co/")).text();
+              const cards = (html.match(/<article class="tpl"/g) || []).length;
+              console.log(`gallery cards on invitalia.co: ${cards} (expected ${T.list.length})`);
+              for (const name of ["Promesa", "Felicidad", "Amalfi"]) console.log(`${html.includes(">" + name + "<") ? "ok" : "MISSING"}  card ${name}`);
+              let bad = 0;
+              for (const t of T.list) {
+                for (const f of [t.cover, t.mini]) {
+                  const r = await fetch("https://invitalia.co/" + f, { method: "HEAD" });
+                  const len = r.headers.get("content-length");
+                  if (r.status !== 200) bad++;
+                  console.log(`${r.status === 200 ? "ok " : "BAD"} ${r.status} ${f} ${len ? len + " bytes" : ""}`);
+                }
+              }
+              const ed = await (await fetch("https://invitalia.co/editor.html")).text();
+              console.log(`editor swatches: ${(ed.match(/class="sw"/g) || []).length}`);
+              const tj = await fetch("https://invitalia.co/assets/templates.js"); console.log(`templates.js: HTTP ${tj.status}`);
+              if (bad || cards !== T.list.length) { console.log(`PROBLEMS: ${bad} missing files`); process.exit(1); }
+              console.log("gallery ok");
+            })();
+          '
