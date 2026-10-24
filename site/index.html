@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Invitalia.co — электронные свадебные приглашения с RSVP-анкетой, картой проезда, музыкой и QR-кодом. Создание бесплатно, оплата при публикации.">
+<title>Invitalia.co</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: ivory paper, gold hairlines, one phone-shaped invitation mock in the hero; single light theme set by the logo. */
+:root{
+  --paper:#FFFDF9; --ivory:#FAF5EC; --cream:#F1E7D6; --ink:#2B241A; --muted:#6F6356; --line:#E3D6BF;
+  --gold:#B8924A; --gold-deep:#8A6A2E; --gold-soft:#E7D4AE; --olive:#6B7A4A; --ok:#4E7A4E; --no:#A24F3F;
+  --display:'Cinzel','Trajan Pro','Times New Roman',serif; --script:'Cormorant Garamond',Georgia,serif; --body:'Jost',system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{ margin:0; background:var(--paper); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.6; font-weight:300;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); padding-block:0 }
+img{max-width:100%; display:block}
+a{color:inherit}
+.wrap{max-width:1120px; margin:0 auto}
+.logo-img{mix-blend-mode:multiply}
+
+/* nav */
+.nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:rgba(255,253,249,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); margin:0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))) 0 calc(-1 * max(16px, env(safe-area-inset-right, 0px))); padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:30; background:var(--paper)}
+.nav .wrap{display:flex; align-items:center; justify-content:space-between; gap:20px; min-height:72px}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none}
+.brand img{height:44px; width:auto}
+.brand span{font-family:var(--display); font-size:19px; letter-spacing:.14em; color:var(--gold-deep)}
+.brand span small{font-size:.7em; letter-spacing:.05em}
+.menu{display:flex; gap:26px; list-style:none; margin:0; padding:0; font-size:15px}
+.menu a{text-decoration:none; color:var(--muted)}
+.menu a:hover{color:var(--ink)}
+@media (max-width:860px){ .menu{display:none} }
+@media (max-width:560px){ .brand span{display:none} .nav .btn-sm{padding:10px 14px} }
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; white-space:nowrap; padding:13px 24px; border-radius:999px; border:1px solid var(--gold); font:500 15px/1 var(--body); letter-spacing:.04em; text-decoration:none; cursor:pointer; transition:background .2s, color .2s, transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:2px solid var(--gold-deep); outline-offset:3px}
+.btn-gold{background:linear-gradient(135deg,#CBA660,#A5823E); color:#fff; border-color:transparent; box-shadow:0 8px 22px rgba(165,130,62,.25)}
+.btn-gold:hover{background:linear-gradient(135deg,#C29B55,#966F2F)}
+.btn-ghost{background:transparent; color:var(--gold-deep)}
+.btn-ghost:hover{background:var(--ivory)}
+.btn-sm{padding:10px 18px; font-size:14px}
+
+/* hero */
+.hero{display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; padding-block:56px 72px}
+@media (max-width:900px){ .hero{grid-template-columns:1fr; gap:40px} }
+.hero-logo{width:min(300px,70%); height:auto; margin-bottom:8px}
+.eyebrow{font-family:var(--display); font-size:12px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-deep); display:flex; align-items:center; gap:14px}
+.eyebrow::before{content:""; width:36px; height:1px; background:var(--gold)}
+h1{font-family:var(--script); font-weight:500; font-size:clamp(40px,6vw,66px); line-height:1.02; margin:18px 0 20px; text-wrap:balance; letter-spacing:-.01em}
+h1 em{font-style:italic; color:var(--gold-deep)}
+.lead{font-size:19px; color:var(--muted); max-width:56ch; margin:0 0 28px}
+.cta{display:flex; flex-wrap:wrap; gap:14px; align-items:center}
+.note{font-size:14px; color:var(--muted); margin-top:16px}
+.note b{color:var(--ink); font-weight:500}
+.trust{display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:34px; padding-top:22px; border-top:1px solid var(--line); font-size:14px; color:var(--muted)}
+.trust span{display:flex; align-items:center; gap:8px}
+.trust svg{width:16px; height:16px; stroke:var(--gold); fill:none; stroke-width:1.8}
+
+/* phone mock */
+.phone-wrap{display:grid; place-items:center; position:relative}
+.phone-wrap::before{content:""; position:absolute; inset:10% 8%; background:radial-gradient(closest-side, var(--cream), transparent 70%); z-index:0}
+.phone{position:relative; z-index:1; width:min(330px,100%); aspect-ratio:9/18.6; max-width:100%; border-radius:44px; background:#1b1713; padding:12px; box-shadow:0 40px 80px rgba(60,45,20,.25), inset 0 0 0 2px #3a322a}
+.screen{height:100%; border-radius:34px; overflow:hidden; background:var(--ivory); display:flex; flex-direction:column; position:relative}
+.screen::before{content:""; position:absolute; top:10px; left:50%; transform:translateX(-50%); width:90px; height:26px; border-radius:20px; background:#1b1713; z-index:3}
+.inv{flex:1; display:flex; flex-direction:column; align-items:center; text-align:center; padding:54px 22px 18px; background:linear-gradient(180deg,#FBF7EF 0%, #F4EBDB 100%); position:relative}
+.inv .frame{position:absolute; inset:46px 14px 14px; border:1px solid var(--gold-soft); border-radius:26px; pointer-events:none}
+.inv .frame::after{content:""; position:absolute; inset:5px; border:1px solid var(--gold-soft); border-radius:22px; opacity:.6}
+.inv .mono{font-family:var(--display); color:var(--gold-deep); font-size:12px; letter-spacing:.34em; margin-top:8px}
+.inv .names{font-family:var(--script); font-style:italic; font-size:34px; line-height:1.05; margin:16px 0 6px; color:var(--ink)}
+.inv .names small{display:block; font-size:18px; font-style:normal; letter-spacing:.3em; color:var(--gold); margin:6px 0}
+.inv .date{font-family:var(--display); font-size:13px; letter-spacing:.2em; color:var(--muted); margin-top:8px}
+.inv .place{font-size:13px; color:var(--muted); margin-top:4px}
+.chips{display:flex; gap:8px; margin:18px 0 0; flex-wrap:wrap; justify-content:center}
+.chip{font-size:11px; letter-spacing:.06em; padding:6px 10px; border-radius:999px; border:1px solid var(--gold-soft); color:var(--gold-deep); background:#fff; display:flex; align-items:center; gap:6px}
+.chip svg{width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:1.8}
+.sched{margin-top:22px; width:100%; display:grid; gap:8px; font-size:12.5px; color:var(--muted); text-align:left; padding:0 6px}
+.sched div{display:flex; justify-content:space-between; gap:12px; border-bottom:1px dashed var(--gold-soft); padding-bottom:6px}
+.sched b{font-weight:500; color:var(--ink); font-variant-numeric:tabular-nums}
+.rsvp{margin-top:auto; width:100%; background:#fff; border:1px solid var(--gold-soft); border-radius:18px; padding:14px; text-align:left; position:relative; z-index:2}
+.rsvp .q{font-size:13px; color:var(--muted); margin:0 0 10px}
+.rsvp .opts{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+.rsvp button{border:1px solid var(--line); background:#fff; border-radius:12px; padding:10px 6px; font:500 13px var(--body); cursor:pointer; color:var(--ink)}
+.rsvp button[aria-pressed="true"]{background:var(--gold-deep); border-color:var(--gold-deep); color:#fff}
+.rsvp .done{font-size:12px; color:var(--ok); margin:10px 0 0; min-height:1.4em}
+.rsvp .done:empty{display:none}
+
+/* sections */
+section{padding-block:72px}
+.sec-head{max-width:64ch; margin-bottom:40px}
+h2{font-family:var(--script); font-weight:500; font-size:clamp(32px,4.2vw,46px); line-height:1.08; margin:14px 0 14px; text-wrap:balance}
+.sec-head p{margin:0; color:var(--muted); font-size:18px}
+.band{background:var(--ivory); margin:0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))) 0 calc(-1 * max(16px, env(safe-area-inset-right, 0px))); padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
+
+/* templates */
+.filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px}
+.filters button{border:1px solid var(--line); background:#fff; border-radius:999px; padding:8px 16px; font:400 14px var(--body); color:var(--muted); cursor:pointer}
+.filters button[aria-pressed="true"]{border-color:var(--gold); color:var(--gold-deep); background:#fff}
+.tpl-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%,250px),1fr)); gap:22px}
+.tpl{display:grid; gap:12px; min-width:0}
+.tpl[hidden]{display:none}
+.card{aspect-ratio:3/4; max-width:100%; border-radius:14px; overflow:hidden; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:26px 20px; box-shadow:0 14px 34px rgba(60,45,20,.12); transition:transform .25s}
+.tpl:hover .card{transform:translateY(-4px)}
+.card .n{font-family:var(--script); font-style:italic; font-size:30px; line-height:1.05}
+.card .amp{font-family:var(--script); font-style:italic; font-size:20px; opacity:.7; margin:4px 0}
+.card .d{font-family:var(--display); font-size:11px; letter-spacing:.24em; margin-top:14px}
+.card .r{margin-top:auto; font-size:10px; letter-spacing:.2em; text-transform:uppercase; padding:7px 14px; border:1px solid currentColor; border-radius:999px}
+.tpl h3{font-size:16px; font-weight:500; margin:0}
+.tpl p{margin:0; font-size:14px; color:var(--muted)}
+.c-classic{background:#FBF6EC; color:#5E4A24; border:10px solid #FBF6EC; outline:1px solid #C9A86A; outline-offset:-16px}
+.c-classic .n{color:#3A2E1C}
+.c-minimal{background:#FFFFFF; color:#2B2B2B}
+.c-minimal .n{font-family:var(--body); font-style:normal; font-weight:300; letter-spacing:.08em; font-size:22px; text-transform:uppercase}
+.c-minimal .amp{display:none}
+.c-minimal .d{color:#8B8B8B}
+.c-oldmoney{background:#1F3A2E; color:#E7DCC2}
+.c-oldmoney .n{color:#F2E9D4}
+.c-oldmoney .d{color:#C7B27E}
+.c-oldmoney::before{content:""; position:absolute; inset:12px; border:1px solid rgba(231,220,194,.35); border-radius:8px}
+.c-italia{background:linear-gradient(180deg,#F8EFD9 0%, #F3E2BE 100%); color:#8A4A2E}
+.c-italia .n{color:#5E3A22}
+.c-italia::after{content:""; position:absolute; left:0; right:0; bottom:0; height:38px; background:repeating-linear-gradient(90deg,#B4532E 0 22px,#F8EFD9 22px 44px); opacity:.85}
+.c-italia .d{color:#6B7A4A}
+.c-botanica{background:#F2F4EC; color:#4C5A3A}
+.c-botanica::before{content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 15% 10%, rgba(107,122,74,.25), transparent 40%), radial-gradient(ellipse at 90% 90%, rgba(107,122,74,.25), transparent 40%)}
+.c-botanica .n{color:#2F3A24; position:relative}
+.c-noir{background:#15151A; color:#D6C7A4}
+.c-noir .n{color:#F0E6CF}
+.c-noir .d{color:#A89468}
+.card::before,.card::after{z-index:0}
+.card > *{position:relative; z-index:1}
+
+/* features */
+.feat-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,250px),1fr)); gap:22px}
+.feat{background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px 24px; display:grid; gap:12px; min-width:0}
+.feat .ic{width:52px; height:52px; border-radius:14px; background:var(--ivory); display:grid; place-items:center; color:var(--gold-deep)}
+.feat .ic svg{width:26px; height:26px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+.feat h3{margin:0; font-size:19px; font-weight:500}
+.feat p{margin:0; color:var(--muted); font-size:15.5px}
+
+/* dashboard */
+.dash{display:grid; grid-template-columns:1fr 1.3fr; gap:40px; align-items:center}
+@media (max-width:900px){ .dash{grid-template-columns:1fr} }
+.stats{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:0 0 24px}
+.stat{background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px}
+.stat b{display:block; font-family:var(--script); font-size:36px; line-height:1; font-weight:500; font-variant-numeric:tabular-nums}
+.stat span{font-size:13px; color:var(--muted); letter-spacing:.04em}
+.stat.ok b{color:var(--ok)} .stat.no b{color:var(--no)}
+.table{background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 20px 50px rgba(60,45,20,.1)}
+.table .bar{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--line); flex-wrap:wrap}
+.table .bar strong{font-weight:500; font-size:15px}
+.xls{display:inline-flex; align-items:center; gap:8px; font-size:13px; padding:8px 14px; border-radius:999px; background:#EAF3EA; color:#2F5F2F; border:1px solid #CFE3CF; cursor:pointer; font-family:var(--body)}
+.xls svg{width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2}
+.scroll{overflow-x:auto}
+table{width:100%; border-collapse:collapse; font-size:14px; min-width:520px}
+th,td{padding:12px 16px; text-align:left; border-bottom:1px solid var(--line); white-space:nowrap}
+th{font-weight:500; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:500}
+.pill.ok{background:#EAF3EA; color:#2F5F2F} .pill.no{background:#F7E6E2; color:#8C3A2B} .pill.wait{background:#F3EBDB; color:#7A5E2C}
+.dash-text p{color:var(--muted); font-size:17px}
+
+/* steps */
+.steps{display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,260px),1fr)); gap:22px; counter-reset:step}
+.step{position:relative; padding:28px 26px 26px; border-radius:18px; background:#fff; border:1px solid var(--line); counter-increment:step}
+.step::before{content:counter(step, decimal-leading-zero); font-family:var(--display); color:var(--gold); font-size:13px; letter-spacing:.2em}
+.step h3{margin:10px 0 8px; font-size:20px; font-weight:500}
+.step p{margin:0; color:var(--muted); font-size:15.5px}
+
+/* pricing */
+.price{display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:860px}
+@media (max-width:760px){ .price{grid-template-columns:1fr} }
+.plan{border-radius:22px; padding:34px 32px; border:1px solid var(--line); background:#fff; display:grid; gap:16px; align-content:start}
+.plan.hi{background:linear-gradient(160deg,#FFFDF9,#F6EDDC); border-color:var(--gold-soft); box-shadow:0 24px 60px rgba(165,130,62,.18)}
+.plan .tag{font-family:var(--display); font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold-deep)}
+.plan .sum{font-family:var(--script); font-size:52px; line-height:1; font-weight:500; font-variant-numeric:tabular-nums}
+.plan .sum small{display:block; font-family:var(--body); font-size:15px; color:var(--muted); font-weight:300; margin-top:8px}
+.price{align-items:start}
+.plan ul{margin:0; padding:0; list-style:none; display:grid; gap:10px; color:var(--muted); font-size:15.5px}
+.plan li{display:flex; gap:10px; align-items:flex-start}
+.plan li::before{content:""; flex:none; width:16px; height:16px; margin-top:5px; border-radius:50%; background:var(--gold-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%238A6A2E' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.plan .fine{font-size:13px; color:var(--muted)}
+
+/* faq */
+.faq{max-width:760px; display:grid; gap:10px}
+details{background:#fff; border:1px solid var(--line); border-radius:14px; padding:0 22px}
+summary{cursor:pointer; list-style:none; padding:18px 0; font-weight:500; font-size:17px; display:flex; justify-content:space-between; align-items:center; gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+"; font-family:var(--script); font-size:26px; color:var(--gold); line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 18px; color:var(--muted)}
+
+/* final cta */
+.final{text-align:center; padding-block:80px}
+.final img{width:min(360px,80%); margin:0 auto 10px}
+.final h2{margin-top:0}
+.final .lead{margin-inline:auto}
+.final .cta{justify-content:center}
+
+footer{border-top:1px solid var(--line); padding-block:36px 48px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; color:var(--muted); font-size:14px}
+footer .brand img{height:38px}
+footer nav{display:flex; flex-wrap:wrap; gap:18px}
+footer nav a{text-decoration:none}
+.copy{display:flex; align-items:center; gap:8px}
+.copy button{border:1px solid var(--line); background:#fff; border-radius:8px; padding:4px 10px; font:400 12px var(--body); cursor:pointer; color:var(--muted)}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important; scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img class="logo-img" src="assets/logo-mark.jpg" alt="Invitalia" width="48" height="44"><span>INVITALIA<small>.co</small></span></a>
+    <ul class="menu">
+      <li><a href="#templates">Шаблоны</a></li>
+      <li><a href="#features">Возможности</a></li>
+      <li><a href="#dashboard">Кабинет</a></li>
+      <li><a href="#how">Как это работает</a></li>
+      <li><a href="#pricing">Цены</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+    </ul>
+    <a class="btn btn-gold btn-sm" href="#pricing">Создать приглашение</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <div>
+      <img class="logo-img hero-logo" src="assets/logo-full.jpg" alt="Invitalia.co — Smart Invitations" width="1104" height="1120">
+      <div class="eyebrow">Электронные свадебные приглашения</div>
+      <h1>Приглашение, которое гости <em>откроют с телефона</em> и сразу ответят</h1>
+      <p class="lead">Выберите шаблон, впишите имена и дату, добавьте карту проезда, музыку и QR-код. Ответы гостей соберутся в личном кабинете сами.</p>
+      <div class="cta">
+        <a class="btn btn-gold" href="#pricing">Создать бесплатно</a>
+        <a class="btn btn-ghost" href="#templates">Смотреть шаблоны</a>
+      </div>
+      <p class="note"><b>Создание и редактирование бесплатны.</b> Платите один раз, когда приглашение готово и вы публикуете ссылку.</p>
+      <div class="trust">
+        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Готово за 15 минут</span>
+        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Без дизайнера и типографии</span>
+        <span><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>Открывается по ссылке и QR</span>
+      </div>
+    </div>
+
+    <div class="phone-wrap" aria-label="Пример приглашения">
+      <div class="phone"><div class="screen">
+        <div class="inv">
+          <div class="frame"></div>
+          <div class="mono">A &amp; M</div>
+          <div class="names">Алессандро<small>&amp;</small>Мария</div>
+          <div class="date">12 · 09 · 2026</div>
+          <div class="place">Вилла Бальбьянелло, озеро Комо</div>
+          <div class="chips">
+            <span class="chip"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Карта</span>
+            <span class="chip"><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>Музыка</span>
+            <span class="chip"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><path d="M14 14h3v3h-3zM19 19h1"/></svg>QR</span>
+          </div>
+          <div class="sched" aria-label="Программа дня">
+            <div><span>Церемония</span><b>15:00</b></div>
+            <div><span>Аперитив в саду</span><b>16:30</b></div>
+            <div><span>Ужин и танцы</span><b>18:00</b></div>
+          </div>
+          <form class="rsvp" id="rsvp-demo">
+            <p class="q">Вы придёте? Ответьте, пожалуйста, до 1 августа</p>
+            <div class="opts">
+              <button type="button" data-ans="yes" aria-pressed="false" id="rsvp-yes">С радостью</button>
+              <button type="button" data-ans="no" aria-pressed="false" id="rsvp-no">Не смогу</button>
+            </div>
+            <p class="done" id="rsvp-done" aria-live="polite"></p>
+          </form>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <section id="templates">
+    <div class="sec-head">
+      <div class="eyebrow">Готовые шаблоны</div>
+      <h2>Стиль вашей свадьбы уже нарисован</h2>
+      <p>Каждый шаблон адаптирован под телефон, планшет и компьютер. Цвета, шрифты и фотографии меняются в редакторе.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Фильтр шаблонов">
+      <button type="button" data-f="all" aria-pressed="true">Все</button>
+      <button type="button" data-f="classic" aria-pressed="false">Классика</button>
+      <button type="button" data-f="minimal" aria-pressed="false">Минимализм</button>
+      <button type="button" data-f="oldmoney" aria-pressed="false">Old money</button>
+      <button type="button" data-f="italia" aria-pressed="false">Итальянский стиль</button>
+      <button type="button" data-f="other" aria-pressed="false">Ещё</button>
+    </div>
+    <div class="tpl-grid" id="tpl-grid">
+      <article class="tpl" data-cat="classic">
+        <div class="card c-classic"><div class="n">Виктория</div><div class="amp">&amp;</div><div class="n">Николай</div><div class="d">24 · 06 · 2026</div><div class="r">RSVP</div></div>
+        <h3>Palazzo</h3><p>Классика: антиква, двойная рамка, слоновая кость и золото.</p>
+      </article>
+      <article class="tpl" data-cat="minimal">
+        <div class="card c-minimal"><div class="n">Анна</div><div class="n">Дмитрий</div><div class="d">03 · 10 · 2026</div><div class="r">RSVP</div></div>
+        <h3>Linea</h3><p>Минимализм: белое поле, тонкий гротеск, ничего лишнего.</p>
+      </article>
+      <article class="tpl" data-cat="oldmoney">
+        <div class="card c-oldmoney"><div class="n">Елизавета</div><div class="amp">&amp;</div><div class="n">Артём</div><div class="d">15 · 05 · 2026</div><div class="r">RSVP</div></div>
+        <h3>Heritage</h3><p>Old money: глубокий зелёный, кремовый курсив, тихая роскошь.</p>
+      </article>
+      <article class="tpl" data-cat="italia">
+        <div class="card c-italia"><div class="n">Chiara</div><div class="amp">&amp;</div><div class="n">Marco</div><div class="d">Amalfi · 19 · 09</div><div class="r">RSVP</div></div>
+        <h3>Amalfi</h3><p>Итальянский стиль: терракота, лимонный свет и полосы пляжных зонтов.</p>
+      </article>
+      <article class="tpl" data-cat="other">
+        <div class="card c-botanica"><div class="n">Полина</div><div class="amp">&amp;</div><div class="n">Илья</div><div class="d">08 · 08 · 2026</div><div class="r">RSVP</div></div>
+        <h3>Botanica</h3><p>Зелень и воздух для свадьбы в саду или на винодельне.</p>
+      </article>
+      <article class="tpl" data-cat="other">
+        <div class="card c-noir"><div class="n">Софья</div><div class="amp">&amp;</div><div class="n">Максим</div><div class="d">31 · 12 · 2026</div><div class="r">RSVP</div></div>
+        <h3>Noir</h3><p>Вечерняя свадьба: чёрный, шампань и мерцание золота.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="features" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Интерактив внутри приглашения</div>
+        <h2>Не открытка, а помощник для гостей</h2>
+        <p>Всё, что обычно рассылают отдельными сообщениями, уже встроено в приглашение.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9h8M8 13h5"/><path d="M14 17l1.5 1.5L18 16"/></svg></div>
+          <h3>RSVP-анкета</h3>
+          <p>Гость подтверждает присутствие, указывает спутника, предпочтения в еде и пожелания. Вопросы настраиваете вы.</p>
+        </div>
+        <div class="feat">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+          <h3>Интерактивная карта проезда</h3>
+          <p>Место церемонии и банкета на карте, маршрут открывается одним касанием в привычном навигаторе.</p>
+        </div>
+        <div class="feat">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></div>
+          <h3>Музыкальное сопровождение</h3>
+          <p>Ваша мелодия звучит при открытии приглашения и задаёт настроение ещё до праздника.</p>
+        </div>
+        <div class="feat">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><path d="M14 14h3v3h-3zM19 14h1M14 20h1M19 19h1v1"/></svg></div>
+          <h3>QR-код</h3>
+          <p>Готовый код для печатных карточек, рассадочных табличек и сторис. Сканируют и сразу попадают в приглашение.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard">
+    <div class="dash">
+      <div class="dash-text">
+        <div class="eyebrow">Личный кабинет</div>
+        <h2>Все ответы гостей собираются сами</h2>
+        <p>Больше не нужно считать подтверждения в переписках. Каждый ответ появляется в кабинете организатора с именем, временем и комментарием. Список выгружается в Excel для ресторана, рассадки и подрядчиков.</p>
+        <div class="stats">
+          <div class="stat"><b>86</b><span>приглашено</span></div>
+          <div class="stat ok"><b>61</b><span>придут</span></div>
+          <div class="stat no"><b>9</b><span>не смогут</span></div>
+          <div class="stat"><b>16</b><span>ждём ответа</span></div>
+        </div>
+        <a class="btn btn-ghost" href="#pricing">Открыть кабинет</a>
+      </div>
+      <div class="table" aria-label="Пример таблицы ответов">
+        <div class="bar"><strong>Ответы гостей · Алессандро и Мария</strong><button type="button" class="xls" id="xls-btn"><svg viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>Выгрузить в Excel</button></div>
+        <div class="scroll"><table>
+          <thead><tr><th>Гость</th><th>Ответ</th><th>Спутник</th><th>Меню</th><th>Получен</th></tr></thead>
+          <tbody>
+            <tr><td>Екатерина Соколова</td><td><span class="pill ok">Придёт</span></td><td>+1</td><td>Рыба</td><td>вчера, 21:14</td></tr>
+            <tr><td>Giulia Romano</td><td><span class="pill ok">Придёт</span></td><td>—</td><td>Вегетарианское</td><td>вчера, 18:02</td></tr>
+            <tr><td>Павел Орлов</td><td><span class="pill no">Не сможет</span></td><td>—</td><td>—</td><td>2 дня назад</td></tr>
+            <tr><td>Семья Лебедевых</td><td><span class="pill ok">Придут</span></td><td>+3</td><td>Мясо, детское</td><td>3 дня назад</td></tr>
+            <tr><td>Luca Bianchi</td><td><span class="pill wait">Ждём</span></td><td>—</td><td>—</td><td>напомнить</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Как это работает</div>
+        <h2>Три шага до готовой ссылки</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Выберите шаблон</h3><p>Откройте любой дизайн и начните редактировать сразу, без регистрации карты.</p></div>
+        <div class="step"><h3>Заполните детали</h3><p>Имена, дата, место, расписание дня, дресс-код, вопросы анкеты, музыка и фотографии.</p></div>
+        <div class="step"><h3>Опубликуйте ссылку</h3><p>Оплатите публикацию, получите короткую ссылку и QR-код. Отправляйте гостям и следите за ответами.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="sec-head">
+      <div class="eyebrow">Стоимость</div>
+      <h2>Платите один раз, и только за результат</h2>
+      <p>Собирайте и переделывайте приглашение сколько угодно. Оплата нужна в момент публикации готовой ссылки.</p>
+    </div>
+    <div class="price">
+      <div class="plan">
+        <div class="tag">Создание</div>
+        <div class="sum">0 ₽</div>
+        <ul>
+          <li>Все шаблоны и редактор без ограничений</li>
+          <li>Предпросмотр на телефоне и компьютере</li>
+          <li>Черновик хранится в личном кабинете</li>
+          <li>Можно вернуться и доделать в любой момент</li>
+        </ul>
+        <a class="btn btn-ghost" href="#templates">Начать бесплатно</a>
+      </div>
+      <div class="plan hi">
+        <div class="tag">Публикация</div>
+        <div class="sum">2 990 ₽<small>разово, за одно приглашение</small></div>
+        <ul>
+          <li>Короткая ссылка и QR-код</li>
+          <li>RSVP-анкета, карта, музыка</li>
+          <li>Личный кабинет с ответами и выгрузкой в Excel</li>
+          <li>Правки после публикации без доплат</li>
+          <li>Приглашение доступно гостям до самой свадьбы и 6 месяцев после</li>
+        </ul>
+        <a class="btn btn-gold" href="#templates">Создать приглашение</a>
+        <p class="fine">Цена указана для примера и настраивается перед запуском.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Частые вопросы</div>
+        <h2>Что ещё спрашивают пары</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Нужно ли гостям что-то устанавливать?</summary><p>Нет. Приглашение открывается по ссылке или QR-коду в любом браузере на телефоне и компьютере. Ответить на анкету можно без регистрации.</p></details>
+        <details><summary>Можно ли изменить приглашение после публикации?</summary><p>Да. Текст, время, фотографии и вопросы анкеты меняются в редакторе, ссылка остаётся прежней, гости увидят обновлённую версию.</p></details>
+        <details><summary>Как отправлять приглашение?</summary><p>Как удобно: ссылкой в мессенджерах и по почте, QR-кодом на печатных карточках, или персональными ссылками для каждого гостя, чтобы имена подставлялись автоматически.</p></details>
+        <details><summary>Что попадает в Excel?</summary><p>Имя гостя, ответ, количество спутников, выбор меню, комментарий и время ответа. Файл можно отправить ресторану или ведущему без правок.</p></details>
+        <details><summary>Можно ли сделать приглашение на двух языках?</summary><p>Да, в редакторе добавляется вторая версия текста. Гость переключает язык на самом приглашении.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <img class="logo-img" src="assets/logo-full.jpg" alt="Invitalia.co — Smart Invitations" width="1104" height="1120">
+    <h2>Начните с шаблона, остальное мы уже продумали</h2>
+    <p class="lead">Создание бесплатно. Оплата только при публикации готовой ссылки.</p>
+    <div class="cta"><a class="btn btn-gold" href="#templates">Создать приглашение</a></div>
+  </section>
+
+  <footer>
+    <a class="brand" href="#top"><img class="logo-img" src="assets/logo-wordmark.jpg" alt="Invitalia.co" width="1064" height="149" style="height:22px;width:auto"></a>
+    <nav><a href="#templates">Шаблоны</a><a href="#features">Возможности</a><a href="#pricing">Цены</a><a href="#faq">Вопросы</a></nav>
+    <div class="copy"><span id="mail">hello@invitalia.co</span><button type="button" id="copy-mail">Копировать</button></div>
+    <div>© 2026 Invitalia.co · Smart Invitations</div>
+  </footer>
+</main>
+
+<script>
+(function(){
+  // RSVP demo
+  var done = document.getElementById('rsvp-done');
+  document.querySelectorAll('#rsvp-demo button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#rsvp-demo button').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+      done.textContent = b.dataset.ans === 'yes' ? 'Спасибо! Ответ отправлен организаторам.' : 'Жаль! Ответ отправлен, пара получит уведомление.';
+    });
+  });
+  // template filter
+  var fs = document.querySelectorAll('#filters button');
+  fs.forEach(function(f){
+    f.addEventListener('click', function(){
+      fs.forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+      f.setAttribute('aria-pressed','true');
+      var k = f.dataset.f;
+      document.querySelectorAll('#tpl-grid .tpl').forEach(function(t){ t.hidden = !(k === 'all' || t.dataset.cat === k); });
+    });
+  });
+  // excel demo
+  var x = document.getElementById('xls-btn');
+  x.addEventListener('click', function(){
+    var old = x.lastChild.textContent;
+    x.lastChild.textContent = 'Файл готов (демо)';
+    setTimeout(function(){ x.lastChild.textContent = old; }, 1800);
+  });
+  // copy mail
+  var c = document.getElementById('copy-mail');
+  c.addEventListener('click', function(){
+    var t = document.getElementById('mail').textContent;
+    function fallback(){ var r = document.createRange(); r.selectNodeContents(document.getElementById('mail')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(function(){ c.textContent = 'Скопировано'; setTimeout(function(){ c.textContent = 'Копировать'; }, 1500); }, fallback);
+    } else { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
