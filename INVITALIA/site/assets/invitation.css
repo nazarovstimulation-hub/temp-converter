@@ -37,10 +37,10 @@
 .inv .i-date{font-size:22px; letter-spacing:5px; margin:24px 0}
 .inv .i-art{position:relative; min-height:720px; background:var(--i-soft) center 58%/cover no-repeat; isolation:isolate}
 .inv .i-art::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg, var(--i-art-veil) 0%, transparent 45%, transparent 80%, var(--i-art-veil) 100%); z-index:0}
-.inv .i-art .art-title{position:absolute; top:22%; left:0; width:100%; text-align:center; font:400 54px/1.15 var(--i-script); color:var(--i-art); padding:0 20px; z-index:1}
+.inv .i-art .art-title{position:absolute; top:22%; left:0; width:100%; text-align:center; font:400 54px/1.15 var(--i-script); color:var(--i-art); padding:0 20px; z-index:1; text-shadow:0 0 3px var(--i-art-veil), 0 2px 22px var(--i-art-veil), 0 0 40px var(--i-art-veil)}
 .inv .i-art .art-title span{display:block; line-height:1.05}
 .inv .i-art .art-title small{display:block; font:400 10px var(--i-sans); letter-spacing:4px; text-transform:uppercase; margin-bottom:18px}
-.inv .i-art .art-foot{position:absolute; bottom:26px; left:0; width:100%; text-align:center; font:400 10px var(--i-sans); letter-spacing:4px; text-transform:uppercase; color:var(--i-art); z-index:1}
+.inv .i-art .art-foot{position:absolute; bottom:26px; left:0; width:100%; text-align:center; font:400 10px var(--i-sans); letter-spacing:4px; text-transform:uppercase; color:var(--i-art); z-index:1; text-shadow:0 0 3px var(--i-art-veil), 0 1px 14px var(--i-art-veil)}
 .inv .chips{display:flex; gap:8px; margin:0 0 18px; flex-wrap:wrap; justify-content:center}
 .inv .chip{font:400 11px var(--i-sans); letter-spacing:.06em; padding:7px 12px; border-radius:999px; border:1px solid var(--i-line); color:var(--i-acc); background:var(--i-card); display:inline-flex; align-items:center; gap:6px; text-decoration:none; cursor:pointer}
 .inv .chip svg{width:12px; height:12px; stroke:currentColor; fill:none; stroke-width:1.8}
