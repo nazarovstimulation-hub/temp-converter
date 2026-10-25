@@ -33,6 +33,7 @@ async function api(method, p, body, token) {
 
 const created = await api('POST', '/api/invitations', { data, lang: 'es' });
 const { id, slug } = created.invitation, token = created.editToken;
+data.slug = slug; // keep the slug the server assigned, otherwise every update would be re-suffixed
 await api('POST', `/api/invitations/${id}/checkout`, {}, token);
 console.log(`test invitation ${base}/i/${slug} (id ${id})`);
 
