@@ -61,6 +61,10 @@ for (const t of T.list) {
   const ok = coverOk && themeOk && !missing.length;
   if (!ok) bad++;
   console.log(`${ok ? 'ok ' : 'BAD'} ${t.id.padEnd(12)} theme ${t.theme.padEnd(10)} cover ${coverOk ? 'ok' : 'MISSING'}${missing.length ? ' missing: ' + missing.join(',') : ''}`);
+  if (!ok) { // say what the page showed instead, so a failure can be told apart from an outage
+    const shown = await page.evaluate(() => ({ state: document.getElementById('state-text') && document.getElementById('state-text').textContent, invHidden: document.getElementById('inv').hidden, title: document.title, text: document.body.innerText.replace(/\s+/g, ' ').slice(0, 160) }));
+    const pub = await fetch(`${base}/api/i/${slug}`); console.log('    page showed:', JSON.stringify(shown), '| GET /api/i/' + slug, pub.status);
+  }
   if (shots) await page.screenshot({ path: path.join(shots, `${t.file}.png`), fullPage: true });
 }
 await browser.close();
