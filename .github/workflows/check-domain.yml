@@ -31,7 +31,13 @@ jobs:
           echo "== workers.dev"; curl -sS --max-time 20 https://invitalia.nazarovstimulation.workers.dev/api/health || true; echo
       - name: check-deploy.js
         run: node INVITALIA/server/check-deploy.js invitalia.co || true
-      - name: Gallery (33 templates and their cover photos)
+      - name: Guest page renders every template (Playwright)
+        run: |
+          cd INVITALIA/server
+          npm i --no-save --silent playwright@1.49.1
+          npx playwright install --with-deps chromium > /dev/null
+          node check-templates.mjs https://invitalia.co
+      - name: Gallery (templates and their cover photos)
         run: |
           node -e '
             const T = require("./INVITALIA/site/assets/templates.js");
