@@ -108,6 +108,53 @@ España
 Оговорка из устава: если какая-то из деятельностей носит профессиональный
 характер, общество выступает лишь посредником между специалистом и потребителем.
 
+## Резервирование названия (Registro Mercantil Central)
+
+| Поле | Значение |
+|---|---|
+| Документ | Certificación negativa de denominación № 26155927 |
+| Зарезервированное название | SYNTH MASHI, SOCIEDAD LIMITADA |
+| Дата выдачи | 07/09/2026 (Madrid) |
+| Заявка | Diario Informatizado 07/09/2026, asiento 26157173 |
+| Заявитель | María Shimina Shimina |
+| Срок резерва названия | 6 месяцев (до 07/03/2027), art. 412.1 RRM |
+| Срок действия для escritura | 3 месяца (до 07/12/2026), art. 414.1 RRM |
+| CSV | 12814001-INC-26155927-INR-54497449 |
+| Проверка | https://www.rmc.es/csv |
+
+## Хронология создания компании
+
+| Дата | Событие |
+|---|---|
+| 07/09/2026 | Резервирование названия в Registro Mercantil Central |
+| 18/09/2026 | Черновик DUE (borrador) распечатан в PAE |
+| 28/09/2026, 11:30 | Cita notarial по черновику DUE: подписание escritura de constitución (вероятная fecha de constitución, подтвердить по escritura) |
+| 01/10/2026 | Inicio de actividad по уставу (ст. 3); alta в RETA и в censo AEAT |
+| 14/10/2026 | Подписание итогового DUE в CIRCE |
+| *(неизвестно)* | Inscripción в Registro Mercantil de Madrid, hoja M-898556 |
+
+## Нотариус (из черновика DUE)
+
+| Поле | Значение |
+|---|---|
+| Notaria | Patricia del Río Fernández |
+| Дирекция | Plaza Santa Bárbara, 5, Planta 1, 28004 Madrid |
+| Телефон нотариальной конторы | 917 002 017 |
+
+## Налоговые и прочие данные (из черновика DUE)
+
+| Поле | Значение |
+|---|---|
+| IAE, actividad principal | 1*6122 — Com. may. cereales, plantas, abonos, animales |
+| IAE, otras | 1*665 — Com. men. por correo o catálogo |
+| IVA | Régimen general с 01/10/2026 |
+| Retenciones | Modelo 111 (trabajo) и 115-подобные по профессиональным — Sí с 01/10/2026 |
+| Mutua de IT | ASEPEYO |
+| Régimen администратора | RETA, grupo 0521 (societario), alta 01/10/2026 |
+
+Банковский счёт для домицилирования взносов, NSS и прочие персональные данные
+из черновика в репозиторий намеренно не внесены.
+
 ## Регистрационные данные CIRCE
 
 | Поле | Значение |

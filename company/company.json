@@ -73,6 +73,36 @@
     "hoja": "M-898556",
     "inscripcion": null
   },
+  "timeline": {
+    "name_reservation_rmc": "2026-09-07",
+    "due_draft_printed": "2026-09-18",
+    "notary_appointment": "2026-09-28T11:30",
+    "incorporation_date": null,
+    "incorporation_date_note": "Probably 2026-09-28 (notary appointment per DUE draft); confirm against the escritura",
+    "activity_start": "2026-10-01",
+    "due_signed": "2026-10-14",
+    "mercantile_registry_inscription": null
+  },
+  "name_reservation_certificate": {
+    "number": "26155927",
+    "issued": "2026-09-07",
+    "reserved_name": "SYNTH MASHI, SOCIEDAD LIMITADA",
+    "csv": "12814001-INC-26155927-INR-54497449",
+    "verify_url": "https://www.rmc.es/csv"
+  },
+  "notary": {
+    "name": "Patricia del Río Fernández",
+    "address": "Plaza Santa Bárbara, 5, Planta 1, 28004 Madrid",
+    "phone": "917 002 017"
+  },
+  "iae": {
+    "principal": {"code": "1*6122", "description": "Com. may. cereales, plantas, abonos, animales"},
+    "others": [
+      {"code": "1*665", "description": "Com. men. por correo o catálogo"}
+    ]
+  },
+  "vat_regime": "Régimen general",
+  "mutua_it": "ASEPEYO",
   "administrator": {
     "name": "María Shimina Shimina",
     "role": "Administradora única",
