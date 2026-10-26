@@ -86,7 +86,8 @@
     "incorporation_date_note": "Unknown exact date; the Registro Mercantil 1st inscription is dated 2026-09-29, so the escritura was signed on or shortly before that day. Confirm against the escritura.",
     "activity_start": "2026-10-01",
     "due_signed": "2026-10-14",
-    "mercantile_registry_inscription": "2026-09-29"
+    "mercantile_registry_inscription": "2026-09-29",
+    "nif_definitivo": "2026-09-29"
   },
   "name_reservation_certificate": {
     "number": "26155927",
@@ -252,5 +253,14 @@
     "type": "Administrador único",
     "valid_until": "2028-10-26",
     "note": "Installed in the administrator's macOS keychain; not stored in this repo"
+  },
+  "nif_definitivo_date": "2026-09-29",
+  "nif_card": {
+    "issued": "2026-10-26",
+    "csv": "VZDY5PA7NYX9JYUX",
+    "verify_url": "https://sede.agenciatributaria.gob.es",
+    "aeat_office": "Administración de la AEAT 28006 Alcobendas",
+    "fiscal_address_as_registered": "TRVA HUESCA, NUM 8 BIS, PUERTA 3, 28100 ALCOBENDAS (MADRID)",
+    "social_address_as_registered": "TRVA HUESCA, NUM 8, PLANTA 0, PUERTA 3, 28100 ALCOBENDAS (MADRID)"
   }
 }

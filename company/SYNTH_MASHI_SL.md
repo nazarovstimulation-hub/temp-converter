@@ -41,6 +41,8 @@ España
 | Domicilio fiscal | Travesía Huesca, 8, Piso 0, Puerta 3, 28100 Alcobendas, Madrid, España |
 | Domicilio de notificaciones | Travesía Huesca, 8, Piso 0, Puerta 3, 28100 Alcobendas, Madrid, España |
 | Referencia catastral | 6783701VK4868S0006GQ |
+| Адрес в реестре AEAT | Fiscal: Trva Huesca, núm. 8 **bis**, puerta 3; social: núm. 8, planta 0, puerta 3 (расхождение «bis» только в AEAT) |
+| Administración AEAT | 28006 Alcobendas |
 | Тип недвижимости | Inmueble en territorio común (fuera de País Vasco y Navarra) |
 
 ## Контакты (из DUE, стр. 2)
@@ -131,7 +133,7 @@ España
 | ~28/09/2026 | Cita notarial в черновике DUE **фиктивная** (так написал консультант PAE); реальная встреча назначалась позже, предположительно в notaría de Génova (Madrid) |
 | 01/10/2026 | Inicio de actividad по уставу (ст. 3); alta в RETA и в censo AEAT |
 | 14/10/2026 | Подписание итогового DUE в CIRCE |
-| 29/09/2026 | Inscripción 1ª в Registro Mercantil de Madrid, hoja M-898556 (из данных сертификата FNMT представителя). Escritura подписана в этот день или чуть раньше |
+| 29/09/2026 | NIF definitivo присвоен AEAT; Inscripción 1ª в Registro Mercantil de Madrid, hoja M-898556 (из данных сертификата FNMT представителя). Escritura подписана в этот день или чуть раньше |
 
 ## Нотариус (из черновика DUE, НЕ подтверждён)
 
@@ -171,7 +173,7 @@ notaría de Génova (Madrid). Какой нотариус подписал escri
 
 | Документ | Статус | Где взять |
 |---|---|---|
-| CIF de la empresa | Есть: B05675947 | Tarjeta NIF / comunicación AEAT |
+| CIF de la empresa | Есть: tarjeta NIF от 26/10/2026 (CSV VZDY5PA7NYX9JYUX), NIF definitivo с 29/09/2026 | Получена в Sede AEAT сертификатом представителя |
 | Escritura de constitución | Нет в репозитории | Copia simple у notaria Patricia del Río Fernández (Plaza Santa Bárbara 5, Madrid, 917 002 017) |
 | Impuesto de Sociedades | Ещё не существует | Первый Modelo 200 за 2026 год подаётся 1–25 июля 2027. Вместо него: certificado de situación censal (AEAT) + пояснение «empresa de nueva creación» |
 | DNI del representante legal | Не хранится в репозитории | Скан DNI María Shimina Shimina (обе стороны), действующий |
