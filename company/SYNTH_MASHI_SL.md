@@ -23,7 +23,7 @@ Política de Privacidad, условия и т.д.).
 | Número de personas trabajadoras | 1 |
 | NIF / CIF | B05675947 |
 | NIF-IVA (формат для VIES / счетов в ЕС) | ESB05675947 |
-| Registro Mercantil | Registro Mercantil de Madrid, hoja M-898556 |
+| Registro Mercantil | Registro Mercantil de Madrid (Reg. 28065), hoja M-898556, inscripción 1ª de 29/09/2026, IRUS 1000479645587 |
 
 ## Адреса
 
@@ -131,7 +131,7 @@ España
 | ~28/09/2026 | Cita notarial в черновике DUE **фиктивная** (так написал консультант PAE); реальная встреча назначалась позже, предположительно в notaría de Génova (Madrid) |
 | 01/10/2026 | Inicio de actividad по уставу (ст. 3); alta в RETA и в censo AEAT |
 | 14/10/2026 | Подписание итогового DUE в CIRCE |
-| *(неизвестно)* | Inscripción в Registro Mercantil de Madrid, hoja M-898556 |
+| 29/09/2026 | Inscripción 1ª в Registro Mercantil de Madrid, hoja M-898556 (из данных сертификата FNMT представителя). Escritura подписана в этот день или чуть раньше |
 
 ## Нотариус (из черновика DUE, НЕ подтверждён)
 
@@ -191,7 +191,7 @@ notaría de Génova (Madrid). Какой нотариус подписал escri
 
 ## Данные, которых нет в документе (дополнить при появлении)
 
-- Tomo, folio и inscripción в Registro Mercantil (известна только hoja M-898556)
+- Tomo и folio в Registro Mercantil (известны hoja M-898556, inscripción 1ª, дата 29/09/2026)
 - Домен / сайт (в уставе ст. 4 веб-страница пока не определена)
 
 NIF B05675947 и hoja M-898556 получены от владельца 24/10/2026, не из DUE.
@@ -210,7 +210,7 @@ Travesía Huesca, 8, Piso 0, Puerta 3
 Titular: SYNTH MASHI, S.L.
 NIF: B05675947
 Domicilio social: Travesía Huesca, 8, Piso 0, Puerta 3, 28100 Alcobendas, Madrid, España
-Datos registrales: Inscrita en el Registro Mercantil de Madrid, hoja M-898556
+Datos registrales: Inscrita en el Registro Mercantil de Madrid, hoja M-898556, inscripción 1ª
 Correo electrónico: exp.span.group@gmail.com
 Teléfono: +34 634 118 579
 ```

@@ -71,7 +71,11 @@
     "tomo": null,
     "folio": null,
     "hoja": "M-898556",
-    "inscripcion": null
+    "inscripcion": "1ª",
+    "registry_code": "28065",
+    "inscription_date": "2026-09-29",
+    "irus": "1000479645587",
+    "source": "FNMT representative certificate subject (26/10/2026)"
   },
   "timeline": {
     "name_reservation_rmc": "2026-09-07",
@@ -79,10 +83,10 @@
     "notary_appointment": null,
     "notary_appointment_note": "The 2026-09-28 11:30 slot in the DUE draft was a placeholder, per the PAE advisor",
     "incorporation_date": null,
-    "incorporation_date_note": "Unknown; take it from the escritura de constitución",
+    "incorporation_date_note": "Unknown exact date; the Registro Mercantil 1st inscription is dated 2026-09-29, so the escritura was signed on or shortly before that day. Confirm against the escritura.",
     "activity_start": "2026-10-01",
     "due_signed": "2026-10-14",
-    "mercantile_registry_inscription": null
+    "mercantile_registry_inscription": "2026-09-29"
   },
   "name_reservation_certificate": {
     "number": "26155927",
@@ -242,5 +246,11 @@
       }
     ]
   },
-  "source": "Documento Único Electrónico CIRCE 083796579Y, pages 1-4, printed 2026-10-14"
+  "source": "Documento Único Electrónico CIRCE 083796579Y, pages 1-4, printed 2026-10-14",
+  "representative_certificate": {
+    "issuer": "AC Representación (FNMT)",
+    "type": "Administrador único",
+    "valid_until": "2028-10-26",
+    "note": "Installed in the administrator's macOS keychain; not stored in this repo"
+  }
 }
