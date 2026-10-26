@@ -155,6 +155,17 @@ España
 Банковский счёт для домицилирования взносов, NSS и прочие персональные данные
 из черновика в репозиторий намеренно не внесены.
 
+## Чеклист документов для KYC (банк / платёжный провайдер)
+
+| Документ | Статус | Где взять |
+|---|---|---|
+| CIF de la empresa | Есть: B05675947 | Tarjeta NIF / comunicación AEAT |
+| Escritura de constitución | Нет в репозитории | Copia simple у notaria Patricia del Río Fernández (Plaza Santa Bárbara 5, Madrid, 917 002 017) |
+| Impuesto de Sociedades | Ещё не существует | Первый Modelo 200 за 2026 год подаётся 1–25 июля 2027. Вместо него: certificado de situación censal (AEAT) + пояснение «empresa de nueva creación» |
+| DNI del representante legal | Не хранится в репозитории | Скан DNI María Shimina Shimina (обе стороны), действующий |
+| Modelo 036/037 | Для S.L. только 036; его заменяет DUE | Раздел «Declaración censal» DUE 083796579Y или certificado de situación censal из Sede AEAT |
+| Escritura / acta de titular real | Нет в репозитории | Acta de titularidad real у того же нотариуса (часто подписывается вместе с escritura) или certificación de titularidad real из Registro Mercantil (RETIR). Titular real: María Shimina Shimina, 100 % участий |
+
 ## Регистрационные данные CIRCE
 
 | Поле | Значение |
