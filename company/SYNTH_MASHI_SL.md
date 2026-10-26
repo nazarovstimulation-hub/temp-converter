@@ -22,7 +22,7 @@ Política de Privacidad, условия и т.д.).
 | Denominación obtenida de la bolsa del RMC | Sí |
 | Número de personas trabajadoras | 1 |
 | NIF / CIF | B05675947 |
-| NIF-IVA (формат для VIES / счетов в ЕС) | ESB05675947 |
+| NIF-IVA (VIES, счета в ЕС) | ESB05675947 — компания в ROI с 01/10/2026, номер действителен |
 | Registro Mercantil | Registro Mercantil de Madrid (Reg. 28065), hoja M-898556, inscripción 1ª de 29/09/2026, IRUS 1000479645587 |
 
 ## Адреса
@@ -161,7 +161,9 @@ notaría de Génova (Madrid). Какой нотариус подписал escri
 |---|---|
 | IAE, actividad principal | 1*6122 — Com. may. cereales, plantas, abonos, animales |
 | IAE, otras | 1*665 — Com. men. por correo o catálogo |
-| IVA | Régimen general с 01/10/2026 |
+| IVA | Régimen general с 01/10/2026; ROI (operador intracomunitario) с 01/10/2026 |
+| Отчётность | IS годовая (200), IVA квартальная (303), retenciones trabajo квартальные (111) |
+| Administración AEAT | Alcobendas, C/ Ruperto Chapí 30, тел. 913 335 333 |
 | Retenciones | Modelo 111 (trabajo) и 115-подобные по профессиональным — Sí с 01/10/2026 |
 | Mutua de IT | ASEPEYO |
 | Régimen администратора | RETA, grupo 0521 (societario), alta 01/10/2026 |
@@ -175,9 +177,9 @@ notaría de Génova (Madrid). Какой нотариус подписал escri
 |---|---|---|
 | CIF de la empresa | Есть: tarjeta NIF от 26/10/2026 (CSV VZDY5PA7NYX9JYUX), NIF definitivo с 29/09/2026 | Получена в Sede AEAT сертификатом представителя |
 | Escritura de constitución | Нет в репозитории | Copia simple у notaria Patricia del Río Fernández (Plaza Santa Bárbara 5, Madrid, 917 002 017) |
-| Impuesto de Sociedades | Ещё не существует | Первый Modelo 200 за 2026 год подаётся 1–25 июля 2027. Вместо него: certificado de situación censal (AEAT) + пояснение «empresa de nueva creación» |
+| Impuesto de Sociedades | Ещё не существует | Первый Modelo 200 за 2026 год подаётся 1–25 июля 2027. Банку: тот же certificado de situación censal + пояснение «empresa de nueva creación» |
 | DNI del representante legal | Не хранится в репозитории | Скан DNI María Shimina Shimina (обе стороны), действующий |
-| Modelo 036/037 | Для S.L. только 036; его заменяет DUE | Раздел «Declaración censal» DUE 083796579Y или certificado de situación censal из Sede AEAT |
+| Modelo 036/037 | Есть: certificado de situación censal от 26/10/2026 (ref. 22610659799, CSV 94SRETRS44AJ2ZJY) | Получен в Sede AEAT сертификатом представителя |
 | Escritura / acta de titular real | Нет в репозитории | Acta de titularidad real у того же нотариуса (часто подписывается вместе с escritura) или certificación de titularidad real из Registro Mercantil (RETIR). Titular real: María Shimina Shimina, 100 % участий |
 
 ## Регистрационные данные CIRCE

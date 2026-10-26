@@ -105,12 +105,12 @@
   },
   "iae": {
     "principal": {
-      "code": "1*6122",
+      "code": "612.2",
       "description": "Com. may. cereales, plantas, abonos, animales"
     },
     "others": [
       {
-        "code": "1*665",
+        "code": "665",
         "description": "Com. men. por correo o catálogo"
       }
     ]
@@ -262,5 +262,19 @@
     "aeat_office": "Administración de la AEAT 28006 Alcobendas",
     "fiscal_address_as_registered": "TRVA HUESCA, NUM 8 BIS, PUERTA 3, 28100 ALCOBENDAS (MADRID)",
     "social_address_as_registered": "TRVA HUESCA, NUM 8, PLANTA 0, PUERTA 3, 28100 ALCOBENDAS (MADRID)"
+  },
+  "vat_intra_eu_registered": true,
+  "roi_registration_date": "2026-10-01",
+  "tax_obligations": {
+    "impuesto_sociedades": "anual (modelo 200)",
+    "iva": "trimestral (modelo 303), régimen general desde 2026-10-01",
+    "irpf_retencion_trabajo": "trimestral (modelo 111)",
+    "fiscal_year_end": "31/12"
+  },
+  "censal_certificate": {
+    "issued": "2026-10-26",
+    "reference": "22610659799",
+    "csv": "94SRETRS44AJ2ZJY",
+    "aeat_office": "Administración de Alcobendas, CL Ruperto Chapí 30, 28100 Alcobendas, tel. 913335333"
   }
 }
