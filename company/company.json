@@ -51,7 +51,7 @@
     "phone": "+34 634 118 579",
     "phone_raw": "634118579",
     "phone_prefix": "34",
-    "website": null,
+    "website": "https://mashatech.com",
     "notification_channel": "E-mail"
   },
   "share_capital_detail": {
@@ -276,5 +276,15 @@
     "reference": "22610659799",
     "csv": "94SRETRS44AJ2ZJY",
     "aeat_office": "Administración de Alcobendas, CL Ruperto Chapí 30, 28100 Alcobendas, tel. 913335333"
-  }
+  },
+  "websites": [
+    {
+      "url": "https://mashatech.com",
+      "role": "company site per owner (26/10/2026); not in bylaws"
+    },
+    {
+      "name": "Invitalia",
+      "role": "owner's page/project, details unconfirmed"
+    }
+  ]
 }
